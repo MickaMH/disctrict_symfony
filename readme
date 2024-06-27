@@ -1,0 +1,19 @@
+Créer un controller:                php bin/console make:controller accueil
+
+Créer une base de données:          php bin/console doctrine:database:create
+
+Sauvegarder une base de données:    mysqldump --user=admin --password=Afpa1234 district_data > backup_district_data.sql
+
+Supprimer une base de données:      php bin/console doctrine:database:drop --force
+
+Créer une entity (table):           php bin/console make:entity disc
+
+Générer une entity:                 php bin/console d:s:u --force
+
+Créer une fixture:                  php bin/console make:fixture jeu1
+
+Exécuter une fixture:               php bin/console doctrine:fixtures:load
+
+Lien:                               {{ path('app_accueil') }}
+
+Effacer le cache:                   php bin/console cache:clear

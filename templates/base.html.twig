@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Restaurant The District{% endblock %}</title>
+        <link rel="icon" href="/images/district/logo.webp">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% block stylesheets %}
+        {% endblock %}
+    </head>
+
+
+<body class="parallax_desktop">
+
+    {# HEADER #}
+    <header class="container-fluid">
+
+        <div class="row">
+
+            {# NAVBAR #}
+            <nav class="navbar navbar-expand-lg">
+
+                <div class="container-fluid">
+
+                    <a class="navbar-brand" href="{{ path('app_accueil') }}">
+                        <img src="/images/district/logo.webp" alt="Logo The District" width="200" height="auto" class="bordures_logo d-none d-lg-block">
+                        <img src="/images/district/logo.webp" alt="Logo The District" width="100" height="auto" class="bordures_logo d-block d-sm-none">
+                    </a>
+
+                    <button class="navbar-toggler bordures border-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse bg-sm-white" id="navbarNavAltMarkup">
+
+                        <div class="navbar-nav gap-lg-5">
+
+                            <a class=" liens_header fs-1 fw-medium" aria-current="page" href="{{ path('app_accueil') }}">ACCUEIL</a>
+                            <a class=" liens_header fs-1 fw-medium" href="{{ path('app_categories') }}">CATEGORIES</a>
+                            <a class=" liens_header fs-1 fw-medium" href="{{ path('app_plats') }}">PLATS</a>
+                            <a class=" liens_header fs-1 fw-medium" href="{{ path('app_contact') }}">CONTACT</a>
+
+
+                            {# BARRE DE RECHERCHE #}
+                            <div class="row mt-lg-2">
+
+                                <div class="z-3 input-group d-flex flex-column
+                                            d-none d-lg-block champ_recherche" style="width: 25rem; height: 3.6rem;">
+
+                                    <div class="d-flex p-1 ms-2">
+
+                                        <span class="input-group-text fs-5 sans_bordures bg-white">&#x1F50E;</span>
+
+                                        <input type="text" class="ms-1 fs-5 fw-medium form-control sans_bordures"
+                                                placeholder="Rechercher un plat" aria-label="Rechercher" id="recherche_dynamique">
+
+                                    </div>
+
+                                    <div id="suggestions" class="fs-5 fw-medium fond_sugg_recherche"></div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div>
+
+                                {# CONNEXION #}
+                                <a class=" liens_header fs-1 fw-medium justify-content-end" href="#">
+
+                                    <img src="/images/icones/icone_user_district.webp" width="35" height="auto" class="mb-2">
+                                    Connexion
+
+                                </a>
+                                {# <a class="nav-link liens_header fs-1 fw-medium" href="#"><img src="/images/icones/icone_panier_1__district.webp" width="35" height="auto" class="mb-2 me-2">Panier</a> #}
+
+                                {# PANIER #}
+                                {# Button trigger modal #}
+                                <button type="button" class="bg-white border border-white lien_panier liens_header fs-1 fw-medium justify-content-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+                                    <img src="/images/icones/icone_panier_1__district.webp" width="35" height="auto" class="mb-2">
+                                    Panier
+
+                                </button>
+
+                                {# Modal #}
+                                <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                    <div class="modal-dialog modal-lg">
+
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+
+                                                <h1 class="modal-title fs-1 fw-medium" id="exampleModalLabel">Panier</h1>
+
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                                            </div>
+
+                                            <div class="modal-body fs-5 fw-medium">
+
+                                                Votre panier est vide
+
+                                            </div>
+
+                                            <div class="modal-footer">
+
+                                                <button type="button" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-4 ps-2 pe-2 pb-1 pt-1 rounded-3 bouton_categories">Valider le panier</button>
+                                                <button type="button" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-4 ps-2 pe-2 pb-1 pt-1 rounded-3 bouton_fermer_panier" data-bs-dismiss="modal">Fermer</button>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    {# NAV #}
+    <nav class="container-fluid">
+
+        <div class="row fond_logo d-flex align-items-center">
+
+            {# NAV GAUCHE PROMO #}
+            <div class="col-4 d-none d-lg-block">
+
+                <div class="actually mx-auto mb-5">
+                    <p class="fs-2 fw-medium lettres_blanches">" En ce moment "</p>
+                </div>
+
+                <div class="bordures_promo mx-auto">
+                    <p class="promo fw-bold mx-auto mt-3">-10%</p>
+                    <p class="phrase_promo lettres_blanches fw-bold text-center">Sur catégorie VEGGIE</p>
+                </div>
+
+            </div>
+
+            {# NAV CENTRALE VIDEO #}
+            <div class="col-4 display-inline-block d-none d-lg-block bordure_haut">
+
+                <video autoplay loop muted class="img-fluid">
+
+                    <source src="/images/videos/video_the_district_projet.mp4" type="video/mp4">
+                    <p>Votre navigateur ne prend pas en charge la vidéo.</p>
+
+                </video>
+
+            </div>
+
+            {# NAV DROITE ADRESSE #}
+            <div class="col-4 d-none d-lg-block text-center">
+
+                <img src="/images/district/ecriture_district_blanc.webp" class="w-75"><br>
+                <p class="lettres_blanches fs-3">1 rue de la paix 80000 Amiens</p>
+                <p class="lettres_blanches fs-3">Tel: 06.12.34.56.78</p>
+                <p class="lettres_blanches fs-3">Email: TheDistrict@gmail.com</p>
+
+            </div>
+
+        </div>
+
+
+            {# CAROUSEL BIENVENUE MOBILE #}
+            <div class="d-flex justify-content-center align-items-center fw-medium d-block d-sm-none" style="width: 100%; height: 7rem;">
+
+                <div class="carousel-fade" data-bs-ride="carousel">
+
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active" data-bs-interval="4000">
+
+                            <img src="assets/img/district/ecriture_district_blanc.png" class="" style="width: auto; height: 4rem;">
+
+                        </div>
+
+                        <div class="carousel-item" data-bs-interval="4000">
+
+                            <p class="d-block bienvenue_mobile fs-1 my-auto fw-bold">" BIENVENUE "</p>
+
+                        </div>
+
+                        <div class="carousel-item" data-bs-interval="4000">
+
+                            <img src="assets/img/district/ecriture_district_blanc.png" class="" style="width: auto; height: 4rem;">
+
+                        </div>
+
+                        <div class="carousel-item" data-bs-interval="4000">
+
+                            <p class="d-block bienvenue_mobile fs-1 my-auto fw-medium fw-bold">" WELCOME "</p>
+
+                        </div>
+
+                        <div class="carousel-item" data-bs-interval="4000">
+
+                            <img src="assets/img/district/ecriture_district_blanc.png" class="" style="width: auto; height: 4rem;">
+
+                        </div>
+
+                        <div class="carousel-item" data-bs-interval="4000">
+
+                            <p class="d-block bienvenue_mobile fs-1 my-auto fw-bold">" Bienvenida "</p>
+
+                        </div>
+
+                        <div class="carousel-item" data-bs-interval="4000">
+
+                            <img src="assets/img/district/ecriture_district_blanc.png" class="" style="width: auto; height: 4rem;">
+
+                        </div>
+
+                        <div class="carousel-item" data-bs-interval="4000">
+
+                            <p class="d-block bienvenue_mobile fs-1 my-auto fw-bold">" Welkom "</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+    </nav>
+
+
+    {% block body %}{% endblock %}
+
+
+    {# FOOTER #}
+    <footer>
+
+        {# FOOTER DESKTOP #}
+        <div class="container-fluid bordures_footer fond_logo d-none d-lg-block">
+
+            {# PHRASE RESEAUX SOCIAUX #}
+            <div class="row text-center">
+
+                <div class="col-12 col-lg-12 fs-3 fst-italic fw-medium">
+
+                    <p class="lettres_blanches">Retrouvez nous sur vos réseaux sociaux préférés</p>
+
+                </div>
+
+            </div>
+
+            {# ICONES RESEAUX SOCIAUX #}
+            <div class="row">
+
+                <div class="col-lg-5 d-flex align-items-center">
+
+                    <a href="{{ path('app_polit_confid') }}" class="lettres_blanches fs-5 ms-5">Politique de confidentialité</a>
+
+                </div>
+
+                <div class="col-lg-2 mx-auto d-flex align-items-center">
+
+                    <a href="https://www.facebook.com/facebook/" class="text-decoration-none">
+                        <img src="/images/icones/logo_facebook.webp" alt="" title="" style="width: 65%; height : auto"  class="mb-3 shadow-lg">
+                    </a>
+
+                    <a href="https://www.instagram.com/" class="text-decoration-none">
+                        <img src="/images/icones/logo_insta.webp" alt="" title="" style="width: 65%; height : auto" class="mb-3 shadow-lg">
+                    </a>
+
+                    <a href="https://twitter.com/" class="text-decoration-none">
+                        <img src="/images/icones/logo_x.webp" alt="" title="" style="width: 65%; height : auto" class="mb-3 shadow-lg">
+                    </a>
+
+                    <a href="https://fr.linkedin.com/" class="text-decoration-none">
+                        <img src="/images/icones/logo_linkedin.webp" alt="" title="" style="width: 65%; height : auto" class="mb-3 shadow-lg">
+                    </a>
+
+                </div>
+
+                <div class="col-lg-5 d-flex align-items-center justify-content-end">
+
+                    <a href="{{ path('app_ment_legal') }}" class="lettres_blanches fs-5 me-5">Mentions légales</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        {# FOOTER MOBILE #}
+        <div class="container-fluid bordures_footer fond_logo d-block d-sm-none">
+
+            {# PHRASE RESEAUX SOCIAUX #}
+            <div class="row text-center">
+
+                <div class="col-12 fs-3 fst-italic fw-medium">
+
+                    <p class="lettres_blanches">Retrouvez nous sur les réseaux</p>
+
+                </div>
+
+            </div>
+
+            {# ICONES RESEAUX SOCIAUX #}
+            <div class="row">
+
+                <div class="col-6 offset-5 mx-auto d-flex align-items-center">
+
+                    <a href="https://www.facebook.com/facebook/" class="text-decoration-none">
+                        <img src="/images/icones/logo_facebook.webp" alt="" title="" style="width: 81%; height : auto"  class="mb-3 shadow-lg">
+                    </a>
+
+                    <a href="https://www.instagram.com/" class="text-decoration-none">
+                        <img src="/images/icones/logo_insta.webp" alt="" title="" style="width: 81%; height : auto" class="mb-3 shadow-lg">
+                    </a>
+
+                    <a href="https://twitter.com/" class="text-decoration-none">
+                        <img src="/images/icones/logo_x.webp" alt="" title="" style="width: 81%; height : auto" class="mb-3 shadow-lg">
+                    </a>
+
+                    <a href="https://fr.linkedin.com/" class="text-decoration-none">
+                        <img src="/images/icones/logo_linkedin.webp" alt="" title="" style="width: 81%; height : auto" class="mb-3 shadow-lg">
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="row d-flex">
+
+                <div class="col-7 d-flex align-items-center justify-content-start mb-2">
+
+                    <a href="{{ path('app_polit_confid') }}" class="lettres_blanches fs-6">Politique de confidentialité</a>
+
+                </div>
+
+                <div class="col-5 d-flex align-items-center justify-content-end mb-2">
+
+                    <a href="{{ path('app_ment_legal') }}" class="lettres_blanches fs-6">Mentions légales</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    {# LIENS JAVASCRIPT #}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+    {# MES LIENS JAVASCRIPT #}
+    <script src="{{ asset('js/barre_dynamique.js') }}"></script>
+    <script src="{{ asset('js/fonction_accordeon.js') }}"></script>
+
+</body>
+
+</html>

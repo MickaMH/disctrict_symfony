@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plats par catégorie{% endblock %}
+
+{% block body %}
+{# <style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style> #}
+
+
+{# ICI METTRE EN-TETE LIBELLE CATEGORIE, CARDS PLATS PAR CAT., BOUTONS ACCUEIL/CATEGORIES #}
+
+
+{# MAIN #}
+<main class="container-fluid pb-lg-5">
+
+    {# EN-TETE PLATS #}
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-8 col-lg-2 fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
+
+            <p class="lettres fond_intitule text-uppercase"> {{ categorie.libelle }} </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="row d-flex justify-content-around">
+
+        {# <h1>Nombre de catégories trouvées : {{ categories | length }}</h1> #}
+
+        {% for plat in plats %}
+
+            {# {{ categorie.image }}        {{ categorie.libelle |upper }}      {{ categorie.plats | length }} #}
+
+            <div class="col-lg-3 mb-5 mb-lg-5 mt-3 mt-lg-5 ms-lg-2 me-lg-2">
+
+                <div class="card w-auto border-4 bordures rounded-5">
+
+                    <img src="/images/plats/{{ plat.image }}" class="card-img-top p-3 rounded-5" alt="">
+
+                    <h5 class="fs-3 fw-medium ms-3">{{ plat.libelle }}</h5>
+
+                    <p class="fs-5 fw-medium mb-2 ms-3 me-3">Prix: {{ plat.prix }} &#8364;</p>
+
+                    <p class="fs-5 fw-medium fst-italic ms-3 me-3"> {{ plat.description }} </p>
+
+                    {# ACCORDEON #}
+                    {# <div class="accordion-item">
+                        <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fs-5 fw-medium ms-3 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Voir la description du plat &#x25BC;
+                        </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p class="fs-5 fw-medium fst-italic ms-3 me-3"> {{ plat.description }} </p>
+                            </div>
+                        </div>
+                    </div> #}
+
+                    <a href="#" class="btn_card fs-5 fw-medium text-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches">Ajouter au panier</a>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="row mt-lg-5 mb-lg-5">
+
+        <div class="col-4 col-lg-4 d-flex justify-content-center">
+
+            <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 bouton_precedent"
+                style="width: 10rem; height: 3rem;" href="{{ path('app_accueil') }}" role="button">Accueil</a>
+
+        </div>
+
+        <div class="col-4 col-lg-4 d-flex">
+
+            <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 bouton_categories"
+                id="precedent" style="width: 10rem; height: 3rem;"  href="{{ path('app_categories') }}" role="button">Catégories</a>
+
+        </div>
+
+        <div class="col-4 col-lg-4 d-flex">
+
+            <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 bouton_suivant"
+                id="suivant" style="width: 10rem; height: 3rem;"  href="{{ path('app_plats') }}" role="button">Plats</a>
+
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}
