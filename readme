@@ -1,19 +1,67 @@
-Créer un controller:                php bin/console make:controller accueil
+Créer un controller:                    php bin/console make:controller accueil
 
-Créer une base de données:          php bin/console doctrine:database:create
+Créer une base de données:              php bin/console doctrine:database:create
 
-Sauvegarder une base de données:    mysqldump --user=admin --password=Afpa1234 district_data > backup_district_data.sql
+Sauvegarder une base de données:        mysqldump --user=admin --password=Afpa1234 district_data > backup_district_data.sql
 
-Supprimer une base de données:      php bin/console doctrine:database:drop --force
+Supprimer une base de données:          php bin/console doctrine:database:drop --force
 
-Créer une entity (table):           php bin/console make:entity disc
+Créer une entity (table):               php bin/console make:entity disc
 
-Générer une entity:                 php bin/console d:s:u --force
+Générer une entity:                     php bin/console d:s:u --force
 
-Créer une fixture:                  php bin/console make:fixture jeu1
+Créer une fixture:                      php bin/console make:fixture jeu1
 
-Exécuter une fixture:               php bin/console doctrine:fixtures:load
+Exécuter une fixture:                   php bin/console doctrine:fixtures:load
 
-Lien:                               {{ path('app_accueil') }}
+Lien:                                   {{ path('app_accueil') }}
 
-Effacer le cache:                   php bin/console cache:clear
+Effacer le cache:                       php bin/console cache:clear
+
+Valider modifications Entity:           php bin/console make:migration
+                                        php bin/console doctrine:migrations:migrate
+
+
+
+{# PANIER #}
+                                {# Button trigger modal #}
+                                <button type="button" class="bg-white border border-white lien_panier liens_header fs-1 fw-medium justify-content-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+                                    <img src="/images/icones/icone_panier_1__district.webp" width="35" height="auto" class="mb-2">
+                                    Panier
+
+                                </button>
+
+                                {# Modal #}
+                                <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                    <div class="modal-dialog modal-lg">
+
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+
+                                                <h1 class="modal-title fs-1 fw-medium" id="exampleModalLabel">Panier</h1>
+
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                                            </div>
+
+                                            <div class="modal-body fs-5 fw-medium">
+
+                                                Votre panier est vide
+
+                                            </div>
+
+                                            <div class="modal-footer">
+
+                                                <button type="button" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-4 ps-2 pe-2 pb-1 pt-1 rounded-3 bouton_categories">Valider le panier</button>
+                                                <button type="button" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-4 ps-2 pe-2 pb-1 pt-1 rounded-3 bouton_fermer_panier" data-bs-dismiss="modal">Fermer</button>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
