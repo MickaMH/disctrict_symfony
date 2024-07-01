@@ -303,6 +303,11 @@ p{
     font-size: 1.2rem;
 }
 
+.case_coche{
+    width: 1.5rem;
+    height:1.5rem;
+}
+
 /*NEON*/
 .lettres_neon_ok{
     color: #c6e2ff;
