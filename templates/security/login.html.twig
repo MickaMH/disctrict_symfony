@@ -11,7 +11,7 @@
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            Vous êtes déjà connecté avec {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
         </div>
     {% endif %}
 
@@ -61,14 +61,14 @@
 
     </div>
 
-    <div class="col-12 col-lg-12 d-flex justify-content-center mb-3">
+        <div class="col-12 col-lg-12 d-flex justify-content-center mb-3">
 
-    <p class="fs-4">Vous n'avez pas de compte? Créez en un ici</p>
-    </div>
+            <p class="fs-4">Vous n'avez pas de compte? Créez en un ci-dessous.</p>
+        </div>
 
-    <div class="col-12 col-lg-12 d-flex justify-content-center mb-5">
-    <a class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer text-decoration-none" style="width: 15rem; height: 3rem;" href="{{ path('app_register') }}">Créer un compte</a>
-    </div>
+        <div class="col-12 col-lg-12 d-flex justify-content-center mb-5">
+            <a class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer text-decoration-none" style="width: 15rem; height: 3rem;" href="{{ path('app_register') }}">Créer un compte</a>
+        </div>
     </div>
 
     </div>

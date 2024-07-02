@@ -9,110 +9,97 @@
     {% endfor %}
 
     <div class="row d-flex justify-content-center">
-
         <div class="col-12 col-lg-3 fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
-
             <p class="lettres fond_intitule border-3">CRÉER UN COMPTE</p>
-
         </div>
-
     </div>
 
-    <form class="row m-sm-1 m-lg-5 d-flex justify-content-center">
-
+    {{ form_start(registrationForm, {'attr': {'class': 'row m-sm-1 m-lg-5 d-flex justify-content-center'}}) }}
         {{ form_errors(registrationForm) }}
 
-        {{ form_start(registrationForm) }}
-
-            <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
-                {{ form_row(registrationForm.nom, {
-                    'attr': {
+        <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
+            {{ form_row(registrationForm.nom, {
+                'attr': {
                     'class': 'form-control fs-4 border-3 bordures fond_input'
-                    }
-                }) }}
-            </div>
+                }
+            }) }}
+        </div>
 
-            <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
             {{ form_row(registrationForm.prenom, {
                 label: 'Prénom',
                 'attr': {
                     'class': 'form-control fs-4 border-3 bordures fond_input'
-                    }
+                }
             }) }}
-            </div>
+        </div>
 
-            <div class="col-sm-10 col-lg-5 mb-5 fs-4">
-                {{ form_row(registrationForm.email, {
-                    'attr': {
+        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+            {{ form_row(registrationForm.email, {
+                'attr': {
                     'class': 'form-control fs-4 border-3 bordures fond_input'
-                    }
-                }) }}
-            </div>
+                }
+            }) }}
+        </div>
 
-            <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
             {{ form_row(registrationForm.plainPassword, {
                 label: 'Mot de passe',
                 'attr': {
                     'class': 'form-control fs-4 border-3 bordures fond_input'
-                    }
+                }
             }) }}
-            </div>
+        </div>
 
-            <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
             {{ form_row(registrationForm.telephone, {
                 label: 'Téléphone',
                 'attr': {
                     'class': 'form-control fs-4 border-3 bordures fond_input'
-                    }
+                }
             }) }}
-            </div>
+        </div>
 
-            <div class="col-sm-10 col-lg-5 mb-5 fs-4">
-                {{ form_row(registrationForm.adresse, {
-                    'attr': {
+        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+            {{ form_row(registrationForm.adresse, {
+                'attr': {
                     'class': 'form-control fs-4 border-3 bordures fond_input'
-                    }
-                }) }}
-            </div>
+                }
+            }) }}
+        </div>
 
-            <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
             {{ form_row(registrationForm.cp, {
                 label: 'Code postal',
                 'attr': {
                     'class': 'form-control fs-4 border-3 bordures fond_input'
-                    }
+                }
             }) }}
-            </div>
-
-            <div class="col-sm-10 col-lg-5 mb-5 fs-4">
-                {{ form_row(registrationForm.ville, {
-                    'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input'
-                    }
-                }) }}
-            </div>
-
-            <div class="col-sm-10 col-lg-10 mb-5 fs-4">
-                {{ form_row(registrationForm.agreeTerms, {
-                    label: "Accepter les conditions d'utilisation",
-                    'attr': {
-                    'class': 'ms-2 case_coche'
-                    }
-                }) }}
-            </div>
-
-            <div class="col-12 col-lg-12 d-flex justify-content-center">
-
-                <button type="submit" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer" style="width: 15rem; height: 3rem;">
-                    Créer le compte
-                </button>
-
-            </div>
-
-        {{ form_end(registrationForm) }}
-
         </div>
 
-    </form>
+        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+            {{ form_row(registrationForm.ville, {
+                'attr': {
+                    'class': 'form-control fs-4 border-3 bordures fond_input'
+                }
+            }) }}
+        </div>
+
+        <div class="col-sm-10 col-lg-10 mb-5 fs-4">
+            {{ form_row(registrationForm.agreeTerms, {
+                label: "Accepter les conditions d'utilisation",
+                'attr': {
+                    'class': 'ms-2 case_coche'
+                }
+            }) }}
+        </div>
+
+        <div class="col-12 col-lg-12 d-flex justify-content-center">
+            <button type="submit" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer" style="width: 15rem; height: 3rem;">
+                Créer le compte
+            </button>
+        </div>
+
+    {{ form_end(registrationForm) }}
 </main>
 {% endblock %}
