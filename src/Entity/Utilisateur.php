@@ -161,15 +161,15 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setNom(string $nom): static
     {
-        // Vérifiez la longueur du nom (30 caractères maximum)
+        /* // Vérifiez la longueur du nom (30 caractères maximum)
         if (strlen($nom) > 30) {
             throw new \InvalidArgumentException('Le nom doit contenir au maximum 30 caractères.');
         }
 
         // Vérifiez la regex
         if (!preg_match('/^[a-zA-Z][a-zA-Z\' -]{1,30}$/', $nom)) {
-            throw new \InvalidArgumentException('Le nom doit commencer par une lettre et contenir entre 1 et 30 caractères.');
-        }
+            throw new \InvalidArgumentException('Le nom est incorrect.');
+        } */
 
         $this->nom = $nom;
         return $this;
@@ -182,15 +182,15 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setPrenom(string $prenom): static
     {
-        // Vérifiez la longueur du nom (30 caractères maximum)
+        /* // Vérifiez la longueur du nom (30 caractères maximum)
         if (strlen($prenom) > 30) {
             throw new \InvalidArgumentException('Le prénom doit contenir au maximum 30 caractères.');
         }
 
         // Vérifiez la regex
         if (!preg_match('/^[a-zA-Z][a-zA-Z\' -]{1,30}$/', $prenom)) {
-            throw new \InvalidArgumentException('Le prénom doit commencer par une lettre et contenir entre 1 et 30 caractères.');
-        }
+            throw new \InvalidArgumentException('Le prénom est incorrect.');
+        } */
 
         $this->prenom = $prenom;
         return $this;
@@ -203,7 +203,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setTelephone(string $telephone): static
     {
-        // Vérifiez la longueur du nom (30 caractères maximum)
+        /* // Vérifiez la longueur du nom (30 caractères maximum)
         if (strlen($telephone) > 10) {
             throw new \InvalidArgumentException('Le numéro doit contenir au maximum 10 chiffres.');
         }
@@ -211,7 +211,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         // Vérifiez la regex
         if (!preg_match('/^[0-9]{10}$/', $telephone)) {
             throw new \InvalidArgumentException('Le numéro de téléphone est incorrect.');
-        }
+        } */
 
         $this->telephone = $telephone;
         return $this;
@@ -224,10 +224,10 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setAdresse(string $adresse): static
     {
-        // Vérifiez la regex
+        /* // Vérifiez la regex
         if (!preg_match('/^\d+\s/', $adresse)) {
             throw new \InvalidArgumentException("L'adresse est incorrecte.");
-        }
+        } */
 
         $this->adresse = $adresse;
         return $this;
@@ -240,7 +240,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setCp(string $cp): static
     {
-        // Vérifiez la longueur du nom (30 caractères maximum)
+        /* // Vérifiez la longueur du nom (30 caractères maximum)
         if (strlen($cp) > 5) {
             throw new \InvalidArgumentException('Le code postal doit contenir 5 chiffres.');
         }
@@ -248,7 +248,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         // Vérifiez la regex
         if (!preg_match('/\\d{5}/', $cp)) {
             throw new \InvalidArgumentException('Le code postal est incorrect.');
-        }
+        } */
 
         $this->cp = $cp;
         return $this;
@@ -261,7 +261,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setVille(string $ville): static
     {
-        // Vérifiez la longueur du nom (30 caractères maximum)
+        /* // Vérifiez la longueur du nom (30 caractères maximum)
         if (strlen($ville) > 40) {
             throw new \InvalidArgumentException('Le nom de ville doit contenir au maximum 40 caractères.');
         }
@@ -269,7 +269,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         // Vérifiez la regex
         if (!preg_match('/^[a-zA-Z][a-zA-Z\' -]{1,40}$/', $ville)) {
             throw new \InvalidArgumentException('Le nom de ville est incorrect.');
-        }
+        } */
 
         $this->ville = $ville;
 

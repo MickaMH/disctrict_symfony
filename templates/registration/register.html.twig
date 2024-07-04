@@ -32,68 +32,110 @@
                 }
             }) }}
             {{ form_help(registrationForm.nom) }}
-            {{ form_errors(registrationForm.nom) }}
+            <div class="message_erreur">
+                {{ form_errors(registrationForm.nom) }}
+            </div>
         </div>
 
 
-        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
-            {{ form_row(registrationForm.prenom, {
-                label: 'Prénom',
+        <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
+            {{ form_label(registrationForm.prenom, 'Prénom' ) }}
+            {{ form_widget(registrationForm.prenom, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input'
+                    'class': 'form-control fs-4 border-3 bordures fond_input',
                 }
             }) }}
+            {{ form_help(registrationForm.prenom) }}
+            <div class="message_erreur">
+                {{ form_errors(registrationForm.prenom) }}
+            </div>
         </div>
 
         <div class="col-sm-10 col-lg-5 mb-5 fs-4">
-            {{ form_row(registrationForm.email, {
+            {{ form_label(registrationForm.email) }}
+            {{ form_widget(registrationForm.email, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input'
+                    'class': 'form-control fs-4 border-3 bordures fond_input',
                 }
             }) }}
+            {{ form_help(registrationForm.email) }}
+            <div class="message_erreur">
+                {{ form_errors(registrationForm.email) }}
+            </div>
         </div>
 
-        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+        {# <div class="col-sm-10 col-lg-5 mb-5 fs-4">
             {{ form_row(registrationForm.plainPassword, {
                 label: 'Mot de passe',
                 'attr': {
                     'class': 'form-control fs-4 border-3 bordures fond_input'
                 }
             }) }}
+        </div> #}
+
+        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+            {{ form_label(registrationForm.plainPassword, 'Mot de passe' ) }}
+            {{ form_widget(registrationForm.plainPassword, {
+                'attr': {
+                    'class': 'form-control fs-4 border-3 bordures fond_input',
+                }
+            }) }}
+            {{ form_help(registrationForm.plainPassword) }}
+            <div class="message_erreur">
+                {{ form_errors(registrationForm.plainPassword) }}
+            </div>
         </div>
 
         <div class="col-sm-10 col-lg-5 mb-5 fs-4">
-            {{ form_row(registrationForm.telephone, {
-                label: 'Téléphone',
+            {{ form_label(registrationForm.telephone, 'Téléphone' ) }}
+            {{ form_widget(registrationForm.telephone, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input'
+                    'class': 'form-control fs-4 border-3 bordures fond_input',
                 }
             }) }}
+            {{ form_help(registrationForm.telephone) }}
+            <div class="message_erreur">
+                {{ form_errors(registrationForm.telephone) }}
+            </div>
         </div>
 
         <div class="col-sm-10 col-lg-5 mb-5 fs-4">
-            {{ form_row(registrationForm.adresse, {
+            {{ form_label(registrationForm.adresse) }}
+            {{ form_widget(registrationForm.adresse, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input'
+                    'class': 'form-control fs-4 border-3 bordures fond_input',
                 }
             }) }}
+            {{ form_help(registrationForm.adresse) }}
+            <div class="message_erreur">
+            {{ form_errors(registrationForm.adresse) }}
+            </div>
         </div>
 
         <div class="col-sm-10 col-lg-5 mb-5 fs-4">
-            {{ form_row(registrationForm.cp, {
-                label: 'Code postal',
+            {{ form_label(registrationForm.cp, 'Code postal' ) }}
+            {{ form_widget(registrationForm.cp, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input'
+                    'class': 'form-control fs-4 border-3 bordures fond_input',
                 }
             }) }}
+            {{ form_help(registrationForm.cp) }}
+            <div class="message_erreur">
+            {{ form_errors(registrationForm.cp) }}
+            </div>
         </div>
 
         <div class="col-sm-10 col-lg-5 mb-5 fs-4">
-            {{ form_row(registrationForm.ville, {
+            {{ form_label(registrationForm.ville) }}
+            {{ form_widget(registrationForm.ville, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input'
+                    'class': 'form-control fs-4 border-3 bordures fond_input',
                 }
             }) }}
+            {{ form_help(registrationForm.ville) }}
+            <div class="message_erreur">
+            {{ form_errors(registrationForm.ville) }}
+            </div>
         </div>
 
         <div class="col-sm-10 col-lg-10 mb-5 fs-4">

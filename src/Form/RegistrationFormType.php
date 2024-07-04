@@ -11,15 +11,46 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('email')
+
+            ->add('nom', TextType::class, [
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Regex([
+                        'pattern' => '/^(?!-)[a-zA-Z-]*[a-zA-Z]$/',
+                        'message' => 'Le nom est incorrect',
+                    ]),
+                ],
+            ])
+
+            ->add('prenom', TextType::class, [
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Regex([
+                        'pattern' => '/^[a-zA-Z]+(?:-[a-zA-Z]+)*$/',
+                        'message' => 'Le prénom est incorrect',
+                    ]),
+                ],
+            ])
+
+            ->add('email', TextType::class, [
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Regex([
+                        'pattern' => '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/',
+                        'message' => "L'adresse email est incorrecte",
+                    ]),
+                ],
+            ])
+
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -28,6 +59,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
@@ -39,16 +71,52 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit comprendre au moins {{ limit }} caractères',
+                        'minMessage' => 'Le mot de passe doit comprendre entre {{ limit }} et 20 caractères',
                         // max length allowed by Symfony for security reasons
-                        'max' => 4096,
+                        'max' => 20,
                     ]),
                 ],
             ])
-            ->add('telephone')
-            ->add('adresse')
-            ->add('cp')
-            ->add('ville')
+
+            ->add('telephone', TextType::class, [
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Regex([
+                        'pattern' => '/^[0-9]{10}$/',
+                        'message' => 'Le numéro est incorrect',
+                    ]),
+                ],
+            ])
+
+            ->add('adresse', TextType::class, [
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Regex([
+                        'pattern' => '/^[0-9]+\s[A-Za-zÀ-ÿ ]*[A-Za-zÀ-ÿ]+[A-Za-zÀ-ÿ ]*$/i',
+                        'message' => "L'adresse est incorrecte",
+                    ]),
+                ],
+            ])
+
+            ->add('cp', TextType::class, [
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Regex([
+                        'pattern' => '/^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/',
+                        'message' => 'Le code postal est incorrect',
+                    ]),
+                ],
+            ])
+
+            ->add('ville', TextType::class, [
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Regex([
+                        'pattern' => '/^[a-zA-Z][a-zA-Z\' -]{1,40}$/',
+                        'message' => 'Le nom de ville est incorrect',
+                    ]),
+                ],
+            ])
         ;
     }
 

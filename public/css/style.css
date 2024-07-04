@@ -146,6 +146,10 @@ input:focus, input.form-control:focus {
     list-style-type: none;
 }
 
+/* .li {
+    list-style-type: none;
+} */
+
 .bouton{
     background-color: #980848;
     color: white;
@@ -311,6 +315,14 @@ p{
 .case_coche{
     width: 1.5rem;
     height:1.5rem;
+}
+
+.message_erreur{
+    color: red;
+}
+
+.red_border{
+    border: 0.3rem solid red;
 }
 
 /*NEON*/
