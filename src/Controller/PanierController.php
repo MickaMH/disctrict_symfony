@@ -20,10 +20,18 @@ public function index(SessionInterface $session, PlatRepository $platRepository)
     $panierWithData = [];
 
     foreach($panier as $id => $quantite) {
-        $panierWithData[] = [
-            'plat' => $platRepository->find($id),
-            'quantite' => $quantite
-        ];
+        $plat = $platRepository->find($id);
+        if ($plat) {
+            $image = $plat->getImage();
+            $panierWithData[] = [
+                'plat' => $plat,
+                'quantite' => $quantite,
+                'image' => $image
+            ];
+        } else {
+            // handle the case where the plat is not found
+            // you could log an error, or add a default image, etc.
+        }
     }
 
     $total = 0;
@@ -55,6 +63,26 @@ public function add($id, SessionInterface $session)
 
     return $this->redirectToRoute('app_panier');
 }
+
+
+#[Route('/panier/removeOne/{id}', name: 'app_panier_removeOne')]
+public function removeOne($id, SessionInterface $session)
+{
+    $panier = $session->get('panier', []);
+
+    if(!empty($panier[$id])) {
+        $panier[$id]--;
+
+        if($panier[$id] == 0){
+            unset($panier[$id]);
+        }
+    }
+
+    $session->set('panier', $panier);
+
+    return $this->redirectToRoute('app_panier');
+}
+
 
 #[Route('/panier/remove/{id}', name: 'app_panier_remove')]
 public function remove($id, SessionInterface $session)

@@ -23,12 +23,71 @@
 
     </div>
 
-    <div class="row d-flex justify-content-around">
+    <div class="row fs-4 mt-5">
+
+        {# {% if items | length > 0 %}
+
+        {% for item in items %}
+
+        <div class="col-2">
+            <img src="/images/plats/{{ item.plat.image }}" class="p-3 rounded-5 w-50" alt="Image du plat">
+        </div>
+
+        <div class="col-6">
+            {{ item.plat.libelle }}
+            {{ item.plat.prix }} &#8364;
+        </div>
+
+        <div class="col-1">
+            <div>
+                Quantité
+            </div>
+            <div>
+                Prix total
+            </div>
+        </div>
+
+        <div class="col-1">
+            <div class="d-flex">
+            <a href="{{ path('app_panier_add', {'id': item.plat.id}) }}" class="d-flex align-items-center justify-content-center btn btn-success fw-medium lettres_blanches fs-5 rounded-3 me-2" style="width: 2rem; height: 2rem;">
+                +
+            </a>
+            {{ item.quantite }}
+            <a href="{{ path('app_panier_removeOne', {'id': item.plat.id}) }}" class="d-flex align-items-center justify-content-center btn btn-warning fw-medium lettres_blanches fs-5 rounded-3 ms-2" style="width: 2rem; height: 2rem;">
+                -
+            </a>
+            </div>
+            <div>
+            {{ item.plat.prix * item.quantite }}.00 &#8364;
+            </div>
+        </div>
+
+        <div class="col-2">
+            <a href="{{ path('app_panier_remove', {'id': item.plat.id}) }}" class="d-flex align-items-center justify-content-center btn btn-danger fw-medium lettres_blanches fs-5 rounded-3" style="width: 2rem; height: 2rem;">
+                x
+            </a>
+        </div>
+
+        {% endfor %}
+
+        <div class="row">
+            <div class="col-12">
+            Total commande: {{ total }}.00 &#8364;
+            </div>
+        </div>
+
+        {% else %}
+            <p>Surprise, c'est vide !</p>
+        {% endif %} #}
+
+
+
 
         {% if items | length > 0 %}
             <table class="table">
-                <thead>
+                <thead class="fs-3">
                     <tr>
+                        <th></th>
                         <th>Plat</th>
                         <th>Prix</th>
                         <th>Quantité</th>
@@ -36,25 +95,34 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="fs-4">
                     {% for item in items %}
                         <tr>
+                            <td><img src="/images/plats/{{ item.plat.image }}" class="p-3 rounded-5 w-25" alt="Image du plat"></td>
                             <td>{{ item.plat.libelle }}</td>
-                            <td>{{ item.plat.prix }}</td>
-                            <td>{{ item.quantite }}</td>
-                            <td>{{ item.plat.prix * item.quantite }}</td>
+                            <td>{{ item.plat.prix }} &#8364;</td>
+                            <td class="d-flex">
+                                <a href="{{ path('app_panier_add', {'id': item.plat.id}) }}" class="d-flex align-items-center justify-content-center btn btn-success fw-medium lettres_blanches fs-5 rounded-3 me-2" style="width: 2rem; height: 2rem;">
+                                    +
+                                </a>
+                                {{ item.quantite }}
+                                <a href="{{ path('app_panier_removeOne', {'id': item.plat.id}) }}" class="d-flex align-items-center justify-content-center btn btn-warning fw-medium lettres_blanches fs-5 rounded-3 ms-2" style="width: 2rem; height: 2rem;">
+                                    -
+                                </a>
+                            </td>
+                            <td>{{ item.plat.prix * item.quantite }}.00 &#8364;</td>
                             <td>
-                                <a href="{{ path('app_panier_remove', {'id': item.plat.id}) }}" class="btn btn-warning btn-sm">
-                                    <span>&#128465;</span>
+                                <a href="{{ path('app_panier_remove', {'id': item.plat.id}) }}" class="d-flex align-items-center justify-content-center btn btn-danger fw-medium lettres_blanches fs-5 rounded-3" style="width: 2rem; height: 2rem;">
+                                    x
                                 </a>
                             </td>
                         </tr>
                     {% endfor %}
                 </tbody>
-                <tfoot>
+                <tfoot class="fs-4">
                     <tr>
-                        <td colspan="3">Total commande</td>
-                        <td>{{ total }}</td>
+                        <td colspan="4">Total commande</td>
+                        <td>{{ total }}.00 &#8364;</td>
                         <td></td>
                 </tfoot>
             </table>
