@@ -10,8 +10,8 @@
     {% endif %}
 
     {% if app.user %}
-    <div class="mb-3">
-        Vous êtes déjà connecté avec {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+    <div class="fs-3 m-3">
+        Vous êtes déjà connecté avec <span class="fw-medium">{{ app.user.userIdentifier }}</span>, <a href="{{ path('app_logout') }}">Se déconnecter.</a>
     </div>
     {% endif %}
 

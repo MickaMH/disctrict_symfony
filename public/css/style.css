@@ -207,9 +207,24 @@ input:focus, input.form-control:focus {
 .bouton_fermer_panier{
     background-color: white;
     color: #980848;
-    border: 0.1rem solid #980848;
+    border: 0.2rem solid #980848;
     text-decoration: none;
     border-radius: 0.5rem 0.5rem;
+}
+
+.btn_plus{
+    border: 0.2rem solid green;
+    color: green;
+}
+
+.btn_moins{
+    border: 0.2rem solid orange;
+    color: orange;
+}
+
+.btn_suppr{
+    border: 0.2rem solid red;
+    color: red;
 }
 
 .panneaux{
@@ -323,6 +338,14 @@ p{
 
 .red_border{
     border: 0.3rem solid red;
+}
+
+.border_thead{
+    border-bottom: 0.2rem solid #980848;
+}
+
+.border_tfoot{
+    border-top: 0.2rem solid #980848;
 }
 
 /*NEON*/
