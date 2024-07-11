@@ -348,6 +348,10 @@ p{
     border-top: 0.2rem solid #980848;
 }
 
+.border_adresse{
+    border: 0.3rem solid #980848;
+}
+
 /*NEON*/
 .lettres_neon_ok{
     color: #c6e2ff;

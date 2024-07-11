@@ -22,12 +22,143 @@
 
     </div>
 
-    <div class="row d-flex justify-content-center">
+    <div class="row m-5">
 
-        {% for item in panierWithData %}
-            <img src="/images/plats/{{ item.plat.image }}" class="me-3 p-1 rounded-4" style="width: 7rem; height: 7rem;" alt="Image du plat">
-            {{ item.plat.libelle }} - {{ item.quantite }} - {{ item.plat.prix * item.quantite }}.00 &#8364;
-        {% endfor %}
+        <table class="table">
+
+                <thead class="fs-2 border_thead">
+                    <tr>
+                        <th>Plat</th>
+                        <th>Quantité</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+
+                <tbody class="fs-4">
+                    {% set total = 0 %}
+                    {% for item in panierWithData %}
+                    <tr>
+                        <td>
+                            <img src="/images/plats/{{ item.plat.image }}" class="me-3 p-1 rounded-4" style="width: 7rem; height: 7rem;" alt="Image du plat">
+                            {{ item.plat.libelle }}
+                        </td>
+                        <td>{{ item.quantite }}</td>
+                        <td>{{ item.plat.prix * item.quantite }}.00 &#8364;</td>
+                        {% set total = total + (item.plat.prix * item.quantite) %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+                <tfoot class="border_tfoot">
+                    <tr>
+                        <td colspan="2" class="fs-2 fw-medium">Total de la commande</td>
+                        <td class="fs-4 fw-medium">{{ total }}.00 &#8364;</td>
+                    </tr>
+                </tfoot>
+        </table>
+
+    </div>
+
+    <div class="row m-5">
+
+        <div class="col-12">
+
+            <p class="fs-2 fw-bold">Adresses</p>
+
+        </div>
+
+        <div class="col-12 d-flex justify-content-around">
+        {% if app.user %}
+            <div class="col-5">
+                <table class="table border_adresse">
+                <thead class="fs-3 border_thead">
+                    <tr>
+                        <th>Adresse de livraison</th>
+                    </tr>
+                </thead>
+
+                <tbody class="fs-4">
+                    <tr>
+                        <td>Adresse : {{ app.user.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <td>Code postal : {{ app.user.cp }}</td>
+                    </tr>
+                    <tr>
+                        <td>Ville : {{ app.user.ville }}</td>
+                    </tr>
+                </tbody>
+
+                <tfoot class="fs-4 fw-bold text-center">
+                    <tr>
+                        <td>Modifier l'adresse de livraison</td>
+                    </tr>
+                </tfoot>
+                </table>
+            </div>
+
+            <div class="col-5">
+                <table class="table border_adresse">
+                <thead class="fs-3 border_thead">
+                    <tr>
+                        <th>Adresse de facturation</th>
+                    </tr>
+                </thead>
+
+                <tbody class="fs-4">
+                    <tr>
+                        <td>Adresse : {{ app.user.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <td>Code postal : {{ app.user.cp }}</td>
+                    </tr>
+                    <tr>
+                        <td>Ville : {{ app.user.ville }}</td>
+                    </tr>
+                </tbody>
+
+                <tfoot class="fs-4 fw-bold text-center">
+                    <tr>
+                        <td>Modifier l'adresse de facturation</td>
+                    </tr>
+                </tfoot>
+                </table>
+            </div>
+        {% endif %}
+        </div>
+
+    </div>
+
+    <div class="row m-5">
+
+        <div class="col-12">
+
+            <p class="fs-2 fw-bold">Moyens de paiement</p>
+
+        </div>
+
+        <div class="col-6">
+
+            
+
+
+        </div>
+
+    </div>
+
+    <div class="row m-5">
+
+        <div class="col-12">
+
+            <p class="fs-2 fw-bold">CGU</p>
+
+        </div>
+
+        <div class="checkbox mb-5 col-sm-10 col-lg-7 fs-4">
+            <label class="">
+                Accepter les Conditions générales d'utilisation<input type="checkbox" name="accept_cgu" class="ms-2 case_coche">
+            </label>
+        </div>
 
     </div>
 
