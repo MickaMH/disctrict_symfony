@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}COMMANDE{% endblock %}
+
+{% block body %}
+{# <style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style> #}
+
+{# MAIN #}
+<main class="container-fluid pb-lg-5">
+
+    {# EN-TETE RESUMÉ COMMANDE #}
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-8 col-lg-2 fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
+
+            <p class="lettres fond_intitule">COMMANDE</p>
+
+        </div>
+
+    </div>
+
+    <div class="row d-flex justify-content-center">
+
+        {% for item in panierWithData %}
+            <img src="/images/plats/{{ item.plat.image }}" class="me-3 p-1 rounded-4" style="width: 7rem; height: 7rem;" alt="Image du plat">
+            {{ item.plat.libelle }} - {{ item.quantite }} - {{ item.plat.prix * item.quantite }}.00 &#8364;
+        {% endfor %}
+
+    </div>
+
+    <div class="row d-flex justify-content-center">
+
+        <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 bouton_categories"
+                id="precedent" style="width: 15rem; height: 3rem;"  href="{{ path('app_commande_add') }}" role="button">Finaliser la commande</a>
+
+    </div>
+
+</main>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de commande{% endblock %}
+
+{% block body %}
+{# <style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style> #}
+
+<div class="row text-center">
+    <div class="fs-3 m-5">
+        <p>Commande créée avec succès ! Un email récapitulatif de votre commande vous a été envoyé à <span class="fw-medium">utilisateur.email</span>.</p>
+    </div>
+</div>
+
+<div class="row mb-5">
+
+    <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 bouton_categories"
+                id="precedent" style="width: 15rem; height: 3rem;"  href="{{ path('app_accueil') }}" role="button">Retour à l'accueil</a>
+
+</div>
+{% endblock %}

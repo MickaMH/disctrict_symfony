@@ -6,7 +6,7 @@ use App\Entity\Commande;
 use App\Entity\Detail;
 
 use App\Repository\PlatRepository;
-use Doctrine\ORM\EntityManager;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,10 +30,12 @@ class CommandeController extends AbstractController
 
         // Création de la commande
         $commande = new Commande();
+
         // Remplissage de la commande (à compléter avec les valeurs appropriées)
         $commande->setDateCommande(new \DateTime());
-        $commande->setTotal(1); // Exemple : total à calculer
         $commande->setEtat('0'); // Exemple : état initial
+
+        $totalCommande = 0; // Initialisation du prix total
 
         foreach ($panier as $item => $quantite) {
             $detail = new Detail();
@@ -46,16 +48,28 @@ class CommandeController extends AbstractController
             $detail->setPlats($plat);
             $detail->setCommande($commande);
 
+            // Calcul du sous-total pour ce plat
+            $sousTotal = $quantite * $plat->getPrix(); // Assurez-vous que la méthode getPrix() existe dans votre entité Plat
+            // Ajout au prix total de la commande
+            $totalCommande += $sousTotal;
+
             $commande->addDetail($detail);
         }
+
+        // Affectez le prix total à la commande
+        $commande->setTotal($totalCommande);
 
         //On persiste et on flush
         $em->persist($commande);
         $em->flush();
 
+        $session->remove('panier');
 
-        return $this->render('commande/index.html.twig', [
+        $this->addFlash('message', 'Commande créée avec succès');
+        return $this->redirectToRoute('app_confirm_commande');
+
+        /* return $this->render('commande/index.html.twig', [
             'controller_name' => 'CommandeController',
-        ]);
+        ]); */
     }
 }
