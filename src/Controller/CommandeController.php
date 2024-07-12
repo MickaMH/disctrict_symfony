@@ -32,6 +32,7 @@ class CommandeController extends AbstractController
         $commande = new Commande();
 
         // Remplissage de la commande (à compléter avec les valeurs appropriées)
+        $commande->setUtilisateur($this->getUSER());
         $commande->setDateCommande(new \DateTime());
         $commande->setEtat('0'); // Exemple : état initial
 

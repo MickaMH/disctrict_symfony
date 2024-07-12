@@ -91,7 +91,29 @@
 
                 <tfoot class="fs-4 fw-bold text-center">
                     <tr>
-                        <td>Modifier l'adresse de livraison</td>
+                        <td>
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed fs-3 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Modifier l'adresse de livraison
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body fw-normal fs-4 text-start">
+                                            <label for="adresse" class="mb-2">Adresse :</label>
+                                            <input type="text" id="adresse" name="adresse" class="bordures fond_input rounded-3 border-3">
+                                            <br>
+                                            <label for="codepostal" class="mb-2">Code postal :</label>
+                                            <input type="text" id="codepostal" name="codepostal" class="bordures fond_input rounded-3 border-3">
+                                            <br>
+                                            <label for="ville" class="mb-2">Ville :</label>
+                                            <input type="text" id="ville" name="ville" class="bordures fond_input rounded-3 border-3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 </tfoot>
                 </table>
@@ -119,7 +141,29 @@
 
                 <tfoot class="fs-4 fw-bold text-center">
                     <tr>
-                        <td>Modifier l'adresse de facturation</td>
+                        <td>
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed fs-3 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Modifier l'adresse de facturation
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body fw-normal fs-4 text-start">
+                                            <label for="adresse" class="mb-2">Adresse :</label>
+                                            <input type="text" id="adresse" name="adresse" class="bordures fond_input rounded-3 border-3">
+                                            <br>
+                                            <label for="codepostal" class="mb-2">Code postal :</label>
+                                            <input type="text" id="codepostal" name="codepostal" class="bordures fond_input rounded-3 border-3">
+                                            <br>
+                                            <label for="ville" class="mb-2">Ville :</label>
+                                            <input type="text" id="ville" name="ville" class="bordures fond_input rounded-3 border-3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 </tfoot>
                 </table>
@@ -133,14 +177,35 @@
 
         <div class="col-12">
 
-            <p class="fs-2 fw-bold">Moyens de paiement</p>
+            <p class="fs-2 fw-bold">Moyen de paiement</p>
 
         </div>
 
-        <div class="col-6">
+        <div class="col-12 fs-4">
 
-            
-
+            <form action="/traitement_paiement" method="post">
+                <label for="carte">Carte bancaire</label>
+                <input type="radio" id="carte" name="moyen_paiement" value="carte">
+                <br>
+                <label for="paypal">PayPal</label>
+                <input type="radio" id="paypal" name="moyen_paiement" value="paypal">
+                <br>
+                <label for="virement">Virement bancaire</label>
+                <input type="radio" id="virement" name="moyen_paiement" value="virement">
+                <br>
+                <br>
+                <label for="numero_carte" class="mb-2">Numéro de carte :</label>
+                <input type="text" id="numero_carte" name="numero_carte" class="bordures fond_input rounded-3 border-3">
+                <br>
+                <label for="nom_titulaire" class="mb-2">Nom du titulaire :</label>
+                <input type="text" id="nom_titulaire" name="nom_titulaire" class="bordures fond_input rounded-3 border-3">
+                <br>
+                <label for="date_expiration" class="mb-2">Date d'expiration :</label>
+                <input type="text" id="date_expiration" name="date_expiration" class="bordures fond_input rounded-3 border-3">
+                <br>
+                <label for="cvv">CVV :</label>
+                <input type="text" id="cvv" name="cvv" class="bordures fond_input rounded-3 border-3">
+            </form>
 
         </div>
 
@@ -150,14 +215,17 @@
 
         <div class="col-12">
 
-            <p class="fs-2 fw-bold">CGU</p>
+            <p class="fs-2 fw-bold">Conditions générales d'utilisation</p>
 
         </div>
 
         <div class="checkbox mb-5 col-sm-10 col-lg-7 fs-4">
-            <label class="">
-                Accepter les Conditions générales d'utilisation<input type="checkbox" name="accept_cgu" class="ms-2 case_coche">
+
+            <label for="accept_cgu">
+                Accepter les <a href="{{ path('app_cgu') }}">CGU</a>
             </label>
+            <input type="checkbox" id="accept_cgu" name="accept_cgu" class="ms-2 case_coche" required>
+
         </div>
 
     </div>
