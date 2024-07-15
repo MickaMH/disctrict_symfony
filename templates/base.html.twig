@@ -62,8 +62,19 @@
 
                                 </div> #}
 
-                                <a class=" liens_header fs-1 fw-medium" href="{{ path('app_search') }}">RECHERCHER</a>
+                                {# <a class=" liens_header fs-1 fw-medium" href="{{ path('app_search') }}">RECHERCHER</a> #}
+<!-- base.html.twig -->
 
+<div id="search-bar">
+    <input type="text" id="search-input" name="search" value="{{ app.request.query.get('search') }}" />
+    {% if app.request.query.get('search') %}
+        <ul>
+        {% for plat in plats %}
+            <li><a href="{{ path('app_plats_par_cat', {'id': plat.categorie.id}) }}">{{ plat.libelle }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</div>
                             </div>
 
 
