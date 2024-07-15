@@ -34,6 +34,9 @@ class Plat
     #[ORM\ManyToOne(inversedBy: 'plat')]
     private ?Categorie $categories = null;
 
+
+
+
     /**
      * @var Collection<int, Detail>
      */
@@ -43,6 +46,11 @@ class Plat
     public function __construct()
     {
         $this->detail = new ArrayCollection();
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+    return $this->categories;
     }
 
     public function getId(): ?int

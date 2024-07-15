@@ -73,56 +73,6 @@
                 <table class="table border_adresse">
                 <thead class="fs-3 border_thead">
                     <tr>
-                        <th>Adresse de livraison</th>
-                    </tr>
-                </thead>
-
-                <tbody class="fs-4">
-                    <tr>
-                        <td>Adresse : {{ app.user.adresse }}</td>
-                    </tr>
-                    <tr>
-                        <td>Code postal : {{ app.user.cp }}</td>
-                    </tr>
-                    <tr>
-                        <td>Ville : {{ app.user.ville }}</td>
-                    </tr>
-                </tbody>
-
-                <tfoot class="fs-4 fw-bold text-center">
-                    <tr>
-                        <td>
-                            <div class="accordion" id="accordionExample">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed fs-3 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Modifier l'adresse de livraison
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body fw-normal fs-4 text-start">
-                                            <label for="adresse" class="mb-2">Adresse :</label>
-                                            <input type="text" id="adresse" name="adresse" class="bordures fond_input rounded-3 border-3">
-                                            <br>
-                                            <label for="codepostal" class="mb-2">Code postal :</label>
-                                            <input type="text" id="codepostal" name="codepostal" class="bordures fond_input rounded-3 border-3">
-                                            <br>
-                                            <label for="ville" class="mb-2">Ville :</label>
-                                            <input type="text" id="ville" name="ville" class="bordures fond_input rounded-3 border-3">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tfoot>
-                </table>
-            </div>
-
-            <div class="col-5">
-                <table class="table border_adresse">
-                <thead class="fs-3 border_thead">
-                    <tr>
                         <th>Adresse de facturation</th>
                     </tr>
                 </thead>
@@ -168,6 +118,56 @@
                 </tfoot>
                 </table>
             </div>
+
+            <div class="col-5">
+                <table class="table border_adresse">
+                <thead class="fs-3 border_thead">
+                    <tr>
+                        <th>Adresse de livraison</th>
+                    </tr>
+                </thead>
+
+                <tbody class="fs-4">
+                    <tr>
+                        <td>Adresse : {{ app.user.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <td>Code postal : {{ app.user.cp }}</td>
+                    </tr>
+                    <tr>
+                        <td>Ville : {{ app.user.ville }}</td>
+                    </tr>
+                </tbody>
+
+                <tfoot class="fs-4 fw-bold text-center">
+                    <tr>
+                        <td>
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed fs-3 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Modifier l'adresse de livraison
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body fw-normal fs-4 text-start">
+                                            <label for="adresse" class="mb-2">Adresse :</label>
+                                            <input type="text" id="adresse" name="adresse" class="bordures fond_input rounded-3 border-3">
+                                            <br>
+                                            <label for="codepostal" class="mb-2">Code postal :</label>
+                                            <input type="text" id="codepostal" name="codepostal" class="bordures fond_input rounded-3 border-3">
+                                            <br>
+                                            <label for="ville" class="mb-2">Ville :</label>
+                                            <input type="text" id="ville" name="ville" class="bordures fond_input rounded-3 border-3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+                </table>
+            </div>
         {% endif %}
         </div>
 
@@ -177,7 +177,7 @@
 
         <div class="col-12">
 
-            <p class="fs-2 fw-bold">Moyen de paiement</p>
+            <p class="fs-2 fw-bold">Moyen de paiement (Non fonctionnel)</p>
 
         </div>
 
@@ -222,7 +222,7 @@
         <div class="checkbox mb-5 col-sm-10 col-lg-7 fs-4">
 
             <label for="accept_cgu">
-                Accepter les <a href="{{ path('app_cgu') }}">CGU</a>
+                Accepter les <a href="{{ path('app_cgu') }}" class="lettres">CGU</a>
             </label>
             <input type="checkbox" id="accept_cgu" name="accept_cgu" class="ms-2 case_coche" required>
 

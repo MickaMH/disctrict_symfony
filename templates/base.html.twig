@@ -46,7 +46,7 @@
                             {# BARRE DE RECHERCHE #}
                             <div class="row mt-lg-2">
 
-                                <div class="z-3 input-group d-flex flex-column
+                                {# <div class="z-3 input-group d-flex flex-column
                                             d-none d-lg-block champ_recherche" style="width: 25rem; height: 3.6rem;">
 
                                     <div class="d-flex p-1 ms-2">
@@ -60,7 +60,9 @@
 
                                     <div id="suggestions" class="fs-5 fw-medium fond_sugg_recherche"></div>
 
-                                </div>
+                                </div> #}
+
+                                <a class=" liens_header fs-1 fw-medium" href="{{ path('app_search') }}">RECHERCHER</a>
 
                             </div>
 
