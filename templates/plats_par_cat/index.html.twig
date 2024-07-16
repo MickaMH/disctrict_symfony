@@ -18,7 +18,7 @@
     {# EN-TETE PLATS #}
     <div class="row d-flex justify-content-center">
 
-        <div class="col-8 col-lg-2 fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
+        <div class="col-8 col-lg-3 fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
 
             <p class="lettres fond_intitule text-uppercase"> {{ categorie.libelle }} </p>
 
@@ -35,9 +35,9 @@
 
             {# {{ categorie.image }}        {{ categorie.libelle |upper }}      {{ categorie.plats | length }} #}
 
-            <div class="col-lg-3 mb-5 mb-lg-5 mt-3 mt-lg-5 ms-lg-2 me-lg-2">
+            <div class="col-lg-4 mb-5 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-around">
 
-                <div class="card w-auto border-4 bordures rounded-5">
+                <div class="card w-100 border-4 bordures rounded-5">
 
                     <img src="/images/plats/{{ plat.image }}" class="card-img-top p-3 rounded-5" alt="">
 
@@ -45,7 +45,7 @@
 
                     <p class="fs-5 fw-medium mb-2 ms-3 me-3">Prix: {{ plat.prix }} &#8364;</p>
 
-                    <p class="fs-5 fw-medium fst-italic ms-3 me-3"> {{ plat.description }} </p>
+                    <p class="fs-5 fw-medium fst-italic ms-3 me-3" style="width: auto; height: 11rem;"> {{ plat.description }} </p>
 
                     {# ACCORDEON #}
                     {# <div class="accordion-item">
@@ -91,6 +91,17 @@
 
             <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 bouton_suivant"
                 id="suivant" style="width: 10rem; height: 3rem;"  href="{{ path('app_plats') }}" role="button">Plats</a>
+
+        </div>
+
+    </div>
+
+    {# RETOUR HAUT DE PAGE #}
+    <div class="row">
+
+        <div class="col d-flex justify-content-end me-5">
+
+            <a href="#" class="fs-1 text-center lettres_blanches fleche_haut">↑</a>
 
         </div>
 

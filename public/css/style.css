@@ -81,8 +81,9 @@ parallax_desktop{
 
 .fond_intitule{
     background-color: white;
-    border: solid black;
-    border-radius: 0.5rem 0.5rem;
+    /* border: 0.3rem solid #980848;
+    border-radius: 0.5rem 0.5rem; */
+    color:black;
 }
 
 bordures_bienvenue{
@@ -92,7 +93,7 @@ bordures_bienvenue{
 }
 
 .bienvenue_desktop{
-    color: #980848;
+    color: black;
     font-size: 4rem;
 }
 
@@ -351,6 +352,16 @@ p{
 .border_adresse{
     border: 0.3rem solid #980848;
 }
+
+.fleche_haut{
+    /* border: 0.2rem solid #980848; */
+    border-radius: 50%;
+    background-color: #980848;
+    width: 4rem; height: auto;
+    text-decoration: none;
+}
+
+
 
 /*NEON*/
 .lettres_neon_ok{

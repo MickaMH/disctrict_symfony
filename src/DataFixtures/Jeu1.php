@@ -92,7 +92,7 @@ class Jeu1 extends Fixture
         $pizza->addPlat($bianca);
 
         $buffalo_chicken = new PLat();
-        $buffalo_chicken->setLibelle("Wrap Buffalo Chicken");
+        $buffalo_chicken->setLibelle("WRAP Buffalo Chicken");
         $buffalo_chicken->setDescription("Du bon filet de poulet mariné dans notre spécialité sucrée & épicée, enveloppé dans une tortilla blanche douce faite maison.");
         $buffalo_chicken->setPrix("5.00");
         $buffalo_chicken->setImage("chicken_wrap.webp");

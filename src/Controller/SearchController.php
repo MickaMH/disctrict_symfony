@@ -5,32 +5,36 @@
 namespace App\Controller;
 
 use App\Entity\Plat;
+use App\Service\SearchService;
+
+use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\Response;
 
 class SearchController extends AbstractController
 {
-    private $em;
+    private $searchService;
+    private $entityManager;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(SearchService $searchService, EntityManagerInterface $entityManager)
     {
-        $this->em = $em;
+        $this->searchService = $searchService;
+        $this->entityManager = $entityManager;
     }
 
     #[Route('/search', name: 'app_search')]
     public function searchAction(Request $request)
     {
-        $searchQuery = $request->query->get('search');
-        $plats = $this->em->getRepository(Plat::class)->findPlatsBySearchQuery($searchQuery);
+        $searchQuery = $request->query->get('search', ''); // default to an empty string
+        $plats = $this->entityManager->getRepository(Plat::class)->findAll(); // retrieve plats data from database
 
-        return $this->render('search/index.html.twig', array('plats' => $plats));
-    }
+        $filteredPlats = $this->searchService->filterPlatsBySearchQuery($plats, $searchQuery);
 
-    public function indexAction()
-    {
-    return $this->render('SearchController:index.html.twig');
+        return $this->render('search/index.html.twig', array(
+            'plats' => $plats,
+            'search_query' => $searchQuery,
+            'filtered_plats' => $filteredPlats,
+        ));
     }
 }

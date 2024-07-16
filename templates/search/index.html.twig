@@ -1,40 +1,21 @@
-{# {% extends 'base.html.twig' %} #}
+{% extends 'base.html.twig' %}
 
 {% block title %}Search{% endblock %}
 
 {% block body %}
-{# /* <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style> */ #}
-
-    {% set search_query = app.request.get('search') %}
-
-    {% if search_query %}
-    {% set filtered_plats = [] %}
-    {% for plat in plats %}
-    {% if search_query|lower in plat.libelle|lower %}
-    {% set filtered_plats = filtered_plats|merge([plat]) %}
-    {% endif %}
-    {% endfor %}
-    {% else %}
-    {% set filtered_plats = [] %}
-    {% endif %}
-
     <form action="{{ path('search') }}" method="get">
         <input type="text" id="search" name="search" value="{{ search_query }}" />
         {% if search_query %}
-        <ul id="search-suggestions">
-        {% for plat in filtered_plats %}
-            <li>
-                <a href="{{ path('app_plats_par_cat', {'id': plat.categorie.id}) }}">
-                    <img src="/images/plats/{{ plat.image }}" class="me-3 p-1 rounded-4" style="width: 4rem; height: 4rem;" alt="Image du plat">
-                    {{ plat.libelle }}
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
+            <ul id="search-suggestions">
+                {% for plat in filtered_plats %}
+                    <li>
+                        <a href="{{ path('app_plats_par_cat', {'id': plat.categorie.id}) }}">
+                            <img src="/images/plats/{{ plat.image }}" class="me-3 p-1 rounded-4" style="width: 4rem; height: 4rem;" alt="Image du plat">
+                            {{ plat.libelle }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
         {% endif %}
     </form>
-
 {% endblock %}
