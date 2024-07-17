@@ -38,29 +38,18 @@
 
                 <div class="card w-100 border-4 bordures rounded-5">
 
-                    <img src="/images/plats/{{ plat.image }}" class="card-img-top p-3 rounded-5" alt="Image du plat">
+                    <img src="/images/plats/{{ plat.image }}" class="img-fluid m-3 rounded-5 border_image" alt="Image du plat">
 
-                    <h5 class="fs-3 fw-medium ms-3">{{ plat.libelle }}</h5>
+                    {# <h5 class="fs-3 fw-medium ms-3 text-center">{{ plat.libelle }}</h5>
 
                     <p class="fs-5 fw-medium mb-2 ms-3 me-3">Prix: {{ plat.prix }} &#8364;</p>
 
-                    <p class="fs-5 fw-medium fst-italic ms-3 me-3" style="width: auto; height: 11rem;"> {{ plat.description }} </p>
+                    <p class="fs-5 fw-medium fst-italic ms-3 me-3" style="width: auto; height: 11rem;"> {{ plat.description }} </p> #}
 
-                    {# ACCORDEON #}
-                    {# <div class="accordion-item">
-                        <h2 class="accordion-header">
-                        <button class="accordion-button collapsed fs-5 fw-medium ms-3 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Voir la description du plat &#x25BC;
-                        </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <p class="fs-5 fw-medium fst-italic ms-3 me-3"> {{ plat.description }} </p>
-                            </div>
-                        </div>
-                    </div> #}
-
-                    <a href="{{ path('app_panier_add', {'id': plat.id}) }}" class="btn_card fs-5 fw-medium text-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches">Ajouter au panier</a>
+                    <a href="{{ path('app_page_plat', {'id': plat.id}) }}"
+                        class="btn_card fs-4 fw-medium text-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches">
+                        {{ plat.libelle }}
+                    </a>
 
                 </div>
 

@@ -75,7 +75,7 @@
                                             {% for plat in plats %}
                                             <li class="li_recherche bg-white border_suggestions">
 
-                                                <a href="{{ path('app_plats_par_cat', {'id': plat.categorie.id}) }}" class="d-flex liens_header_bonjour">
+                                                <a href="{{ path('app_page_plat', {'id': plat.id}) }}" class="d-flex liens_header_bonjour">
 
                                                     <img src="/images/plats/{{ plat.image }}" class="p-1 rounded-3" style="width: 3.5rem; height: 3.5rem;" alt="Image du plat">
 
@@ -479,8 +479,7 @@
         {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
     {# MES LIENS JAVASCRIPT #}
-    <script src="{{ asset('js/barre_dynamique.js') }}"></script>
-    <script src="{{ asset('js/fonction_accordeon.js') }}"></script>
+
 
 </body>
 

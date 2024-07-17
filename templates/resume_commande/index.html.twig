@@ -232,8 +232,14 @@
 
     <div class="row d-flex justify-content-center">
 
-        <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 bouton_categories"
+        <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories me-5"
                 id="precedent" style="width: 15rem; height: 3rem;"  href="{{ path('app_commande_add') }}" role="button">Finaliser la commande</a>
+
+        <a href="#" onclick="history.back(); return false;"
+                class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_fermer_panier ms-5"
+                style="width: 10rem; height: 3rem;">
+                Retour
+        </a>
 
     </div>
 

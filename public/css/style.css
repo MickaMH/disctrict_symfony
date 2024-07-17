@@ -353,6 +353,10 @@ p{
     border: 0.3rem solid #980848;
 }
 
+.border_image{
+    border: 0.1rem solid lightgrey;
+}
+
 .fleche_haut{
     /* border: 0.2rem solid #980848; */
     border-radius: 50%;
@@ -361,6 +365,10 @@ p{
     text-decoration: none;
 }
 
+/* .online{
+    border: 0.2rem solid green;
+    border-radius: ;
+} */
 
 
 /*NEON*/

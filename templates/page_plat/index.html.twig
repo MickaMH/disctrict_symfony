@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page Plat{% endblock %}
+
+{% block body %}
+{# /* <style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style> */ #}
+
+{# MAIN #}
+<main class="container p-lg-5 d-flex justify-content-center flex-column">
+
+    {# EN-TETE PLATS #}
+    {# <div class="row d-flex justify-content-center">
+
+        <div class="col-8 col-lg-4 fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
+
+            <p class="lettres fond_intitule text-uppercase"> {{ plat.libelle }} </p>
+
+        </div>
+
+    </div> #}
+    
+    <div class="col-10 offset-1 mt-5 mb-5 border_adresse rounded-5">
+
+        <div class="row">
+
+            <div class="col-5">
+
+                <img src="/images/plats/{{ plat.image }}" class="img-fluid rounded-5 m-3 border_image" alt="Image du plat">
+
+            </div>
+
+            <div class="col-7">
+
+                <h5 class="fs-1 fw-medium ms-2 mt-3">{{ plat.libelle }}</h5>
+
+                <p class="fs-3 fw-medium fst-italic ms-2"> {{ plat.description }} </p>
+
+                <p class="fs-3 fw-medium ms-2">Prix: {{ plat.prix }} &#8364;</p>
+
+            </div>
+
+        </div>
+
+        <div class="row d-flex justify-content-center mb-3">
+
+            <div class="col-12">
+
+                <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories"
+                    style="width: 61rem; height: 3rem;" href="{{ path('app_panier_add', {'id': plat.id}) }}" role="button">
+                    Ajouter au panier
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-12">
+
+            <a href="#" onclick="history.back(); return false;"
+                class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories"
+                style="width: 10rem; height: 3rem;">
+                Retour
+            </a>
+
+    </div>
+
+    {# RETOUR HAUT DE PAGE #}
+    <div class="row">
+
+        <div class="col d-flex justify-content-end me-5">
+
+            <a href="#" class="fs-1 text-center lettres_blanches fleche_haut">↑</a>
+
+        </div>
+
+    </div>
+
+</main>
+{% endblock %}
