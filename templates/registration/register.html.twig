@@ -3,15 +3,21 @@
 {% block title %}Créer un compte{% endblock %}
 
 {% block body %}
+
 <main class="container-fluid pb-lg-5">
+
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
     <div class="row d-flex justify-content-center">
+
         <div class="col-12 col-lg-4 fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
+
             <p class="lettres fond_intitule border-3">CRÉER UN COMPTE</p>
+
         </div>
+
     </div>
 
     {{ form_start(registrationForm, {'attr': {'class': 'row m-sm-1 m-lg-5 d-flex justify-content-center'}}) }}
@@ -138,7 +144,8 @@
         </div>
 
         <div class="col-12 col-lg-12 d-flex justify-content-center">
-            <button type="submit" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer" style="width: 15rem; height: 3rem;">
+            <button type="submit" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer"
+                    style="width: 15rem; height: 3rem;">
                 Créer le compte
             </button>
         </div>
