@@ -257,11 +257,11 @@
 
                     <div class="col-lg-3 mb-5 mb-lg-5 d-flex justify-content-center">
 
-                        <div class="card w-100 border-4 bordures rounded-5">
+                        <div class="card w-75 border-4 bordures rounded-5">
 
                             <h5 class="card-text fs-3 mt-3 mb-0 fw-medium text-center">{{ categorie.libelle |upper }}</h5>
 
-                            <img src="/images/categories/{{ categorie.image }}" class="card-img-top p-3 rounded-5" alt="" title="">
+                            <img src="/images/categories/{{ categorie.image }}" class="card-img-top p-3 rounded-5" alt="{{ categorie.libelle }}" title="{{ categorie.libelle }}">
 
                             <a href="{{ path('app_plats_par_cat', {'id': categorie.id}) }}" class="fs-5 fw-medium d-flex justify-content-center align-items-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches bouton_mini">Voir</a>
 
@@ -291,11 +291,11 @@
 
             <div class="col-lg-3 mb-5 mb-lg-5 d-flex justify-content-center">
 
-                <div class="card w-100 border-4 bordures rounded-5">
+                <div class="card w-75 border-4 bordures rounded-5">
 
                     <h5 class="card-text fs-3 mt-3 mb-0 fw-medium text-center">{{ plat.libelle }}</h5>
 
-                    <img src="/images/plats/{{ plat.image }}" class="card-img-top p-3 rounded-5" alt="">
+                    <img src="/images/plats/{{ plat.image }}" class="img-fluid m-3 rounded-5 border_image" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
 
                     <a href="{{ path('app_page_plat', {'id': plat.id}) }}"
                         class="fs-5 fw-medium d-flex justify-content-center align-items-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches bouton_mini">

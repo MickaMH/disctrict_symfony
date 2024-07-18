@@ -10,7 +10,7 @@
                 {% for plat in filtered_plats %}
                     <li>
                         <a href="{{ path('app_plats_par_cat', {'id': plat.categorie.id}) }}">
-                            <img src="/images/plats/{{ plat.image }}" class="me-3 p-1 rounded-4" style="width: 4rem; height: 4rem;" alt="Image du plat">
+                            <img src="/images/plats/{{ plat.image }}" class="me-3 p-1 rounded-4" style="width: 4rem; height: 4rem;" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
                             {{ plat.libelle }}
                         </a>
                     </li>

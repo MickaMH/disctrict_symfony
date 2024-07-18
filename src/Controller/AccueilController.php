@@ -24,7 +24,7 @@ class AccueilController extends AbstractController
     public function index(): Response
     {
         $categories = $this->categorieRepo->findBy(['libelle' => ['burger', 'wrap', 'pâtes']]);
-        $plats = $this->platRepo->findBy(['libelle' => ['wrap buffalo chicken', 'pates lasagnes', 'burger district']]);
+        $plats = $this->platRepo->findBy(['libelle' => ['boisson gazeuse', 'salade cesar', 'burger cheese']]);
 
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',

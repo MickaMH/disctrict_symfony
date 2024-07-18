@@ -38,7 +38,7 @@
 
                         <div class="card w-75 border-4 bordures rounded-5">
 
-                            <img src="/images/categories/{{ categorie.image }}" class="img-fluid m-3 rounded-5 border_image" alt="" title="">
+                            <img src="/images/categories/{{ categorie.image }}" class="img-fluid m-3 rounded-5 border_image" alt="{{ categorie.libelle }}" title="{{ categorie.libelle }}">
 
                             <a href="{{ path('app_plats_par_cat', {'id': categorie.id}) }}"
                                 class="card-text fs-4 fw-medium text-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches">

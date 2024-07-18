@@ -20,72 +20,72 @@
 
     </div>
 
-    {{ form_start(form, {'attr': {'class': 'row m-sm-1 m-lg-5 d-flex justify-content-center'}}) }}
+    {{ form_start(contactForm, {'attr': {'class': 'row m-sm-1 m-lg-5 d-flex justify-content-center'}}) }}
     
-    {{ form_row(form._token) }}
+    {# {{ form_row(contactForm._token) }} #}
 
     <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
-            {{ form_label(form.nom, '*Nom') }}
-            {{ form_widget(form.nom, {
+            {{ form_label(contactForm.nom, '*Nom') }}
+            {{ form_widget(contactForm.nom, {
                 'attr': {
                     'class': 'form-control fs-4 border-3 bordures fond_input',
                 }
             }) }}
-            {{ form_help(form.nom) }}
+            {{ form_help(contactForm.nom) }}
             <div class="message_erreur">
-                {{ form_errors(form.nom) }}
+                {{ form_errors(contactForm.nom) }}
             </div>
     </div>
 
     <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
-            {{ form_label(form.prenom, '*Prénom' ) }}
-            {{ form_widget(form.prenom, {
+            {{ form_label(contactForm.prenom, '*Prénom' ) }}
+            {{ form_widget(contactForm.prenom, {
                 'attr': {
                     'class': 'form-control fs-4 border-3 bordures fond_input',
                 }
             }) }}
-            {{ form_help(form.prenom) }}
+            {{ form_help(contactForm.prenom) }}
             <div class="message_erreur">
-                {{ form_errors(form.prenom) }}
+                {{ form_errors(contactForm.prenom) }}
             </div>
     </div>
 
     <div class="col-sm-10 col-lg-5 mb-5 fs-4">
-            {{ form_label(form.email, '*Email') }}
-            {{ form_widget(form.email, {
+            {{ form_label(contactForm.email, '*Email') }}
+            {{ form_widget(contactForm.email, {
                 'attr': {
                     'class': 'form-control fs-4 border-3 bordures fond_input',
                 }
             }) }}
-            {{ form_help(form.email) }}
+            {{ form_help(contactForm.email) }}
             <div class="message_erreur">
-                {{ form_errors(form.email) }}
+                {{ form_errors(contactForm.email) }}
             </div>
     </div>
 
     <div class="col-sm-10 col-lg-5 mb-5 fs-4">
-            {{ form_label(form.telephone, '*Téléphone' ) }}
-            {{ form_widget(form.telephone, {
+            {{ form_label(contactForm.telephone, '*Téléphone' ) }}
+            {{ form_widget(contactForm.telephone, {
                 'attr': {
                     'class': 'form-control fs-4 border-3 bordures fond_input',
                 }
             }) }}
-            {{ form_help(form.telephone) }}
+            {{ form_help(contactForm.telephone) }}
             <div class="message_erreur">
-                {{ form_errors(form.telephone) }}
+                {{ form_errors(contactForm.telephone) }}
             </div>
     </div>
 
     <div class="col-sm-10 col-lg-10 fs-4">
-            {{ form_label(form.demande, '*Votre demande' ) }}
-            {{ form_widget(form.demande, {
+            {{ form_label(contactForm.demande, '*Votre demande' ) }}
+            {{ form_widget(contactForm.demande, {
                 'attr': {
                     'class': 'form-control fs-4 border-3 bordures fond_input',
                 }
             }) }}
-            {{ form_help(form.demande) }}
+            {{ form_help(contactForm.demande) }}
             <div class="message_erreur">
-                {{ form_errors(form.demande) }}
+                {{ form_errors(contactForm.demande) }}
             </div>
     </div>
 
@@ -95,18 +95,28 @@
 
     </div>
 
-
     <div class="row">
 
-        <button type="submit" class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories"
+        <div class="col-sm-12 col-lg-12 fs-4">
+            {{ form_label(contactForm.submit, 'Envoyer' ) }}
+            {{ form_widget(contactForm.submit, {
+                'attr': {
+                    'class': 'd-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories',
+                    'style': 'width: 10rem; height: 3rem;',
+                }
+                }) 
+            }}
+        </div>
+
+        {# <button type="submit" class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories"
                 style="width: 10rem; height: 3rem;">
 
             Envoyer
 
-        </button>
+        </button> #}
 
     </div>
-    {{ form_end(form) }}
+    {{ form_end(contactForm) }}
 
     {# RETOUR HAUT DE PAGE #}
     <div class="row">

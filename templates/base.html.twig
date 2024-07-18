@@ -77,7 +77,7 @@
 
                                                 <a href="{{ path('app_page_plat', {'id': plat.id}) }}" class="d-flex liens_header_bonjour">
 
-                                                    <img src="/images/plats/{{ plat.image }}" class="p-1 rounded-3" style="width: 3.5rem; height: 3.5rem;" alt="Image du plat">
+                                                    <img src="/images/plats/{{ plat.image }}" class="p-1 rounded-3" style="width: 3.5rem; height: 3.5rem;" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
 
                                                     <div class="fs-5 fw-medium align-content-center ms-1">{{ plat.libelle }}</div>
 

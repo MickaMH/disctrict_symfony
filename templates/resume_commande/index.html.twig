@@ -39,7 +39,7 @@
                     {% for item in panierWithData %}
                     <tr>
                         <td>
-                            <img src="/images/plats/{{ item.plat.image }}" class="me-3 p-1 rounded-4" style="width: 7rem; height: 7rem;" alt="Image du plat">
+                            <img src="/images/plats/{{ item.plat.image }}" class="me-3 p-1 rounded-4" style="width: 7rem; height: 7rem;" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
                             {{ item.plat.libelle }}
                         </td>
                         <td>{{ item.quantite }}</td>
