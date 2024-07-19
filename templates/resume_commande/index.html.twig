@@ -39,7 +39,7 @@
                     {% for item in panierWithData %}
                     <tr>
                         <td>
-                            <img src="/images/plats/{{ item.plat.image }}" class="me-3 p-1 rounded-4" style="width: 7rem; height: 7rem;" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
+                            <img src="/images/plats/{{ item.plat.image }}" class="me-3 p-1 rounded-4" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}">
                             {{ item.plat.libelle }}
                         </td>
                         <td>{{ item.quantite }}</td>
@@ -231,7 +231,7 @@
     </div>
 
     <div class="row d-flex justify-content-center">
-
+        
         <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories me-5"
                 id="precedent" style="width: 15rem; height: 3rem;"  href="{{ path('app_commande_add') }}" role="button">Finaliser la commande</a>
 

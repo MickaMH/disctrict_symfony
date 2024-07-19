@@ -1,0 +1,39 @@
+<!-- order_confirmation.html.twig -->
+
+<h1>Récapitulatif de votre commande</h1>
+
+<p>Chèr(e) {{ app.user.nom }},</p>
+
+<p>Votre commande est en cours de préparation</p>
+
+<h2>Récapitulatif:</h2>
+
+<table>
+    <tr>
+        <th>Produit</th>
+        <th>Quantité</th>
+        <th>Prix unitaire</th>
+        <th>Sous-total</th>
+    </tr>
+    {% set total = 0 %}
+    {% for item in panierWithData %}
+    <tr>
+        <td>
+            {# <img src="/images/plats/{{ item.plat.image }}" class="me-3 p-1 rounded-4" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}"> #}
+            <img src=\"http://localhost/xampp/htdocs/disctrict_symfony/public/images/plats/plat.image\" class="me-3 p-1 rounded-4" style="width: 3rem; height: 3rem;">
+            {{ item.plat.libelle }} 
+        </td>
+        <td>{{ item.quantite }}</td>
+        <td>{{ item.plat.prix }} €</td>
+        <td>{{ item.plat.prix * item.quantite }}.00 €</td>
+        {% set total = total + (item.plat.prix * item.quantite) %}
+    </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="3" class="fw-medium">Total de la commande:</td>
+        <td>{{ total }}.00 &#8364;</td>
+    </tr>
+</table>
+
+
+<p>A bientôt chez The District</p>

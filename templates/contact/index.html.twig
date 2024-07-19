@@ -20,103 +20,79 @@
 
     </div>
 
-    {{ form_start(contactForm, {'attr': {'class': 'row m-sm-1 m-lg-5 d-flex justify-content-center'}}) }}
     
-    {# {{ form_row(contactForm._token) }} #}
+    {# FORMULAIRE DE CONTACT #}
+    {{ form_start(contactForm) }}
+    <div class="row m-sm-1 m-lg-5 d-flex justify-content-center ">
 
-    <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
-            {{ form_label(contactForm.nom, '*Nom') }}
-            {{ form_widget(contactForm.nom, {
-                'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input',
-                }
-            }) }}
-            {{ form_help(contactForm.nom) }}
-            <div class="message_erreur">
-                {{ form_errors(contactForm.nom) }}
+            <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
+
+                {{ form_label(contactForm.nom) }}
+                {{ form_widget(contactForm.nom) }}
+
+                <div class="message_erreur">
+                    {{ form_errors(contactForm.nom) }}
+                </div>
+
             </div>
-    </div>
 
-    <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
-            {{ form_label(contactForm.prenom, '*Prénom' ) }}
-            {{ form_widget(contactForm.prenom, {
-                'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input',
-                }
-            }) }}
-            {{ form_help(contactForm.prenom) }}
-            <div class="message_erreur">
-                {{ form_errors(contactForm.prenom) }}
+            <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
+
+                {{ form_label(contactForm.prenom) }}
+                {{ form_widget(contactForm.prenom) }}
+
+                <div class="message_erreur">
+                    {{ form_errors(contactForm.prenom) }}
+                </div>
+
             </div>
-    </div>
 
-    <div class="col-sm-10 col-lg-5 mb-5 fs-4">
-            {{ form_label(contactForm.email, '*Email') }}
-            {{ form_widget(contactForm.email, {
-                'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input',
-                }
-            }) }}
-            {{ form_help(contactForm.email) }}
-            <div class="message_erreur">
-                {{ form_errors(contactForm.email) }}
+            <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
+
+                {{ form_label(contactForm.email) }}
+                {{ form_widget(contactForm.email) }}
+
+                <div class="message_erreur">
+                    {{ form_errors(contactForm.email) }}
+                </div>
+
             </div>
-    </div>
 
-    <div class="col-sm-10 col-lg-5 mb-5 fs-4">
-            {{ form_label(contactForm.telephone, '*Téléphone' ) }}
-            {{ form_widget(contactForm.telephone, {
-                'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input',
-                }
-            }) }}
-            {{ form_help(contactForm.telephone) }}
-            <div class="message_erreur">
-                {{ form_errors(contactForm.telephone) }}
+            <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
+
+                {{ form_label(contactForm.telephone) }}
+                {{ form_widget(contactForm.telephone) }}
+
+                <div class="message_erreur">
+                    {{ form_errors(contactForm.telephone) }}
+                </div>
+
             </div>
-    </div>
 
-    <div class="col-sm-10 col-lg-10 fs-4">
-            {{ form_label(contactForm.demande, '*Votre demande' ) }}
-            {{ form_widget(contactForm.demande, {
-                'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input',
-                }
-            }) }}
-            {{ form_help(contactForm.demande) }}
-            <div class="message_erreur">
-                {{ form_errors(contactForm.demande) }}
+            <div class="col-sm-10 col-lg-10 mt-3 mt-lg-0 fs-4">
+
+                {{ form_label(contactForm.demande) }}
+                {{ form_widget(contactForm.demande) }}
+
+                <div class="message_erreur">
+                    {{ form_errors(contactForm.demande) }}
+                </div>
+
             </div>
-    </div>
 
-    <div class="col-sm-10 col-lg-10 mb-5 fs-4">
-            
-        <p>* Ces champs sont obligatoires</p>
+            <div class="col-sm-10 col-lg-10 mt-3 mt-lg-0 mb-5 fs-4">
 
-    </div>
+                *Tous les champs sont obligatoires
 
-    <div class="row">
+            </div>
 
-        <div class="col-sm-12 col-lg-12 fs-4">
-            {{ form_label(contactForm.submit, 'Envoyer' ) }}
-            {{ form_widget(contactForm.submit, {
-                'attr': {
-                    'class': 'd-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories',
-                    'style': 'width: 10rem; height: 3rem;',
-                }
-                }) 
-            }}
-        </div>
+            <div class="col-sm-10 col-lg-10 mt-3 mt-lg-0 fs-4">
+                {{ form_widget(contactForm.submit) }}
+            </div>
 
-        {# <button type="submit" class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories"
-                style="width: 10rem; height: 3rem;">
-
-            Envoyer
-
-        </button> #}
+            {{ form_end(contactForm) }}
 
     </div>
-    {{ form_end(contactForm) }}
 
     {# RETOUR HAUT DE PAGE #}
     <div class="row">

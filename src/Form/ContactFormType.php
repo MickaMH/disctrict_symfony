@@ -26,6 +26,12 @@ class ContactFormType extends AbstractType
                     'message' => 'Le nom est incorrect',
                 ]),
             ],
+            'label' => '*Nom',
+            'attr' => [
+                
+                'class' => 'form-control fs-4 border-3 bordures fond_input',
+                // 'placeholder' => 'Entrez votre nom',
+            ],
         ])
 
         ->add('prenom', TextType::class, [
@@ -36,15 +42,27 @@ class ContactFormType extends AbstractType
                     'message' => 'Le prénom est incorrect',
                 ]),
             ],
+            'label' => '*Prénom',
+            'attr' => [
+                
+                'class' => 'form-control fs-4 border-3 bordures fond_input',
+                // 'placeholder' => 'Entrez votre nom',
+            ],
         ])
 
         ->add('email', EmailType::class, [
             'constraints' => [
                 new Assert\NotBlank(),
                 new Assert\Regex([
-                    'pattern' => '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/',
+                    'pattern' => '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
                     'message' => "L'adresse email est incorrecte",
                 ]),
+            ],
+            'label' => '*Email',
+            'attr' => [
+                
+                'class' => 'form-control fs-4 border-3 bordures fond_input',
+                // 'placeholder' => 'Entrez votre nom',
             ],
         ])
 
@@ -56,19 +74,39 @@ class ContactFormType extends AbstractType
                     'message' => 'Le numéro est incorrect',
                 ]),
             ],
+            'label' => '*Téléphone',
+            'attr' => [
+                
+                'class' => 'form-control fs-4 border-3 bordures fond_input',
+                // 'placeholder' => 'Entrez votre nom',
+            ],
         ])
 
         ->add('demande', TextAreaType::class, [
             'constraints' => [
                 new Assert\NotBlank(),
                 new Assert\Regex([
-                    'pattern' => '/^[a-zA-Z0-9\s\.,:\-!?]+$/',
+                    'pattern' => '/^[^<>]{3,300}$/',
                     'message' => 'Caractères incorrects dans la demande',
                 ]),
             ],
+            'label' => '*Votre demande ou question',
+            'attr' => [
+                
+                'class' => 'form-control fs-4 border-3 bordures fond_input',
+                // 'placeholder' => 'Entrez votre nom',
+            ],
         ])
 
-        ->add('submit', SubmitType::class);
+        ->add('submit', SubmitType::class, [
+            'label' => 'Envoyer',
+            'attr' => [
+                
+                'class' => 'd-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories',
+                'style' => 'width: 10rem; height: 3rem;',
+                // 'placeholder' => 'Entrez votre nom',
+            ],
+        ]);
 
     }
 
