@@ -1,9 +1,40 @@
-<h1>The District</h1>
+<style>
+        .display_flex{
+            display: flex;
+        }
+        .bold{
+            font-weight: bold;
+        }
+        .justif_center{
+            display: flex;
+            justify-items: center;
+        }
+        .align_center{
+            display: flex;
+            align-self: center;
+            margin-left: 1rem;
+        }
+        .logo_mail{
+            width: 4rem; height: 4rem;
+            border-radius: 0.5rem 0.5rem;
+        }
+</style>
 
-<p>
-    Votre compte a été créé, veuillez confirmer votre adresse email en cliquant sur le lien suivant: <br><br>
-    <a href="{{ signedUrl|raw }}">Confirmer mon adresse email.</a>
-    Ce lien expire dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
-</p>
+<header class='display_flex'>
 
-<p>Merci, à bientôt chez The District.</p>
+    <img src="cid:logo" alt="Logo The District" class="logo_mail">
+    <h1 class="align_center">Confirmation</h1>
+
+</header>
+
+<main>
+
+    <p>
+        Votre compte a été créé, veuillez confirmer votre adresse email en cliquant sur le lien suivant: <br><br>
+        <a href="{{ signedUrl|raw }}">Confirmer mon adresse email.</a>
+        Ce lien expire dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+    </p>
+
+    <p>Merci, à bientôt chez The District.</p>
+
+</main>

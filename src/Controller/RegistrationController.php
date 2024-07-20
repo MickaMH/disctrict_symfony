@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Part\DataPart;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -48,10 +49,9 @@ class RegistrationController extends AbstractController
                     ->to($user->getEmail())
                     ->subject('Merci de confirmer votre adresse email pour la sécurité de votre compte')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
+                    ->addPart((new DataPart(fopen('C:\xampp\htdocs\disctrict_symfony\public\images\district\logo.webp', 'r'), 'logo', 'image/webp'))->asInline())
             );
             // do anything else you need here, like send an email
-
-            
 
             return $this->redirectToRoute('app_confirm_compte');
         }

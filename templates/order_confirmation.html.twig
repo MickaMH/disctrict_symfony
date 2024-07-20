@@ -1,39 +1,87 @@
 <!-- order_confirmation.html.twig -->
+<style>
+        .display_flex{
+            display: flex;
+        }
+        .bold{
+            font-weight: bold;
+        }
+        .justif_center{
+            display: flex;
+            justify-items: center;
+        }
+        .align_center{
+            display: flex;
+            align-self: center;
+            margin-left: 1rem;
+        }
+        .logo_mail{
+            width: 4rem; height: 4rem;
+            border-radius: 0.5rem 0.5rem;
+        }
+        .plat_mail{
+            width: 4rem; height: 4rem;
+            border-radius: 0.5rem 0.5rem;
+        }
+        .marge{
+            margin-left: 2rem;
+        }
+        .marge_2{
+            margin-left: 1.5rem;
+        }
+        .marge_total{
+            margin-left: 1.5rem;
+        }
+</style>
 
-<h1>Récapitulatif de votre commande</h1>
 
-<p>Chèr(e) {{ app.user.nom }},</p>
+<header class='display_flex'>
 
-<p>Votre commande est en cours de préparation</p>
+    <img src="cid:logo" alt="Logo The District" class="logo_mail">
+    <h1 class="align_center">Récapitulatif de votre commande</h1>
+
+</header>
+
+<main>
+
+<p>Chèr(e) {{ app.user.prenom }},</p>
+
+<p>Votre commande est en cours de préparation.</p>
 
 <h2>Récapitulatif:</h2>
 
-<table>
+<table style="width: 30rem; height: auto;">
     <tr>
         <th>Produit</th>
         <th>Quantité</th>
-        <th>Prix unitaire</th>
         <th>Sous-total</th>
     </tr>
     {% set total = 0 %}
     {% for item in panierWithData %}
     <tr>
-        <td>
-            {# <img src="/images/plats/{{ item.plat.image }}" class="me-3 p-1 rounded-4" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}"> #}
-            <img src=\"http://localhost/xampp/htdocs/disctrict_symfony/public/images/plats/plat.image\" class="me-3 p-1 rounded-4" style="width: 3rem; height: 3rem;">
-            {{ item.plat.libelle }} 
+        <td class="display_flex">
+            <img src="cid:plat" alt="Image du plat" class="plat_mail">
+            <span class="align_center">{{ item.plat.libelle }}</span>
         </td>
-        <td>{{ item.quantite }}</td>
-        <td>{{ item.plat.prix }} €</td>
-        <td>{{ item.plat.prix * item.quantite }}.00 €</td>
+        <td>
+            <span class="marge">{{ item.quantite }}</span>
+        </td>
+        <td>
+            <span class="marge_2">{{ item.plat.prix * item.quantite }}.00 €</span>
+        </td>
         {% set total = total + (item.plat.prix * item.quantite) %}
     </tr>
     {% endfor %}
     <tr>
-        <td colspan="3" class="fw-medium">Total de la commande:</td>
-        <td>{{ total }}.00 &#8364;</td>
+        <td colspan="2" class="bold">Total de la commande:</td>
+        <td>
+            <span class="bold marge_total">{{ total }}.00 &#8364;</span>
+        </td>
     </tr>
 </table>
 
+<br>
+<p>Toute l'équipe vous remercie,</p>
+<p>A bientôt chez The District.</p>
 
-<p>A bientôt chez The District</p>
+</main>

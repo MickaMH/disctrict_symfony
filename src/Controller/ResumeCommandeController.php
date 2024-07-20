@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Mime\Part\DataPart;
 
 class ResumeCommandeController extends AbstractController
 {
@@ -62,12 +63,15 @@ class ResumeCommandeController extends AbstractController
     if ($this->getUser()) {
         $emailAddress = $this->getUser()->getUserIdentifier();
         $email = (new Email())
-            ->from('your_email@example.com') // Remplacez par votre adresse email
+            ->from('TheDistrict@gmail.com') // Remplacez par votre adresse email
             ->to($emailAddress)
-            ->subject('Confirmation de commande')
+            ->subject('Récapitulatif de commande')
             ->html($this->renderView('order_confirmation.html.twig', [
                 'panierWithData' => $panierWithData,
-            ]));
+            ]))
+            ->addPart((new DataPart(fopen('C:\xampp\htdocs\disctrict_symfony\public\images\district\logo.webp', 'r'), 'logo', 'image/webp'))->asInline());
+            // ->addPart((new DataPart(fopen('C:\xampp\htdocs\disctrict_symfony\public\images\plats', 'r'), 'plat', 'image/webp'))->asInline());
+;
 
         $mailer->send($email);
     }
