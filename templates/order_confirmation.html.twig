@@ -15,6 +15,14 @@
             align-self: center;
             margin-left: 1rem;
         }
+        .border_table{
+            border: 0.1rem solid #980848;
+            border-radius: 0.5rem 0.5rem;
+            padding: 0.5rem;
+        }
+        .marge_thead{
+            margin-bottom: 2rem;
+        }
         .logo_mail{
             width: 4rem; height: 4rem;
             border-radius: 0.5rem 0.5rem;
@@ -22,6 +30,7 @@
         .plat_mail{
             width: 4rem; height: 4rem;
             border-radius: 0.5rem 0.5rem;
+            border: 0.1rem solid lightgrey;
         }
         .marge{
             margin-left: 2rem;
@@ -48,14 +57,19 @@
 
 <p>Votre commande est en cours de préparation.</p>
 
-<h2>Récapitulatif:</h2>
+<h3>Commande n° 1 du 02/08/2024</h3>
 
-<table style="width: 30rem; height: auto;">
+<table class="border_table" style="width: 30rem; height: auto;">
+
+    <thead class="marge_thead">
     <tr>
         <th>Produit</th>
         <th>Quantité</th>
         <th>Sous-total</th>
     </tr>
+    </thead>
+
+    <tbody class="border_tbody">
     {% set total = 0 %}
     {% for item in panierWithData %}
     <tr>
@@ -72,12 +86,17 @@
         {% set total = total + (item.plat.prix * item.quantite) %}
     </tr>
     {% endfor %}
+    </tbody>
+
+    <tfoot>
     <tr>
         <td colspan="2" class="bold">Total de la commande:</td>
         <td>
             <span class="bold marge_total">{{ total }}.00 &#8364;</span>
         </td>
     </tr>
+    </tfoot>
+
 </table>
 
 <br>

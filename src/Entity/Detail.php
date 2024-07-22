@@ -22,6 +22,25 @@ class Detail
     #[ORM\ManyToOne(inversedBy: 'details')]
     private ?Commande $commande = null;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Plat::class, inversedBy="details")
+     */
+    private $plat;
+
+    // ...
+
+    public function getPlat(): ?Plat
+    {
+        return $this->plat;
+    }
+
+    public function setPlat(?Plat $plat): self
+    {
+        $this->plat = $plat;
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

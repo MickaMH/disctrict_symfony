@@ -174,12 +174,14 @@
                                                         <div class="accordion-item">
                                                             <h2 class="accordion-header">
                                                                 <button class="accordion-button collapsed fs-4 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                                    Commandes
+                                                                    Historique des commandes
                                                                 </button>
                                                             </h2>
                                                             <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                                                <div class="accordion-body">
-                                                                    <p class="fs-4 mt-3">Historique de vos commandes :</p>
+                                                                <div class="accordion-body fs-5 mb-3">
+                                                                    {% for commande in commandes %}
+                                                                    <p><a href="#">Commande n° {{ commande.id }} du {{ commande.dateCommande|date('Y-m-d') }}</a></p>
+                                                                    {% endfor %}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -252,7 +254,28 @@
 
         <div class="row fond_logo d-flex align-items-center">
 
-            {# NAV GAUCHE PROMO #}
+            {# NAV GAUCHE ADRESSE #}
+            <div class="col-4 d-none d-lg-block text-center">
+
+                <img src="/images/district/ecriture_district_blanc.webp" class="w-75"><br>
+                <p class="lettres_blanches fs-3">Ce site est un projet de formation créé avec le framework Symfony.</p>
+                <p class="lettres_blanches fs-3">Utilisez Mailhog ou Mailtrap pour capter les emails.</p>
+
+            </div>
+
+            {# NAV CENTRALE VIDEO #}
+            <div class="col-4 display-inline-block d-none d-lg-block bordure_haut">
+
+                {# <video autoplay loop muted class="img-fluid">
+
+                    <source src="/images/videos/video_the_district_projet.mp4" type="video/mp4">
+                    <p>Votre navigateur ne prend pas en charge la vidéo.</p>
+
+                </video> #}
+
+            </div>
+
+            {# NAV DROITE PROMO #}
             <div class="col-4 d-none d-lg-block">
 
                 <div class="actually mx-auto mb-4">
@@ -263,26 +286,6 @@
                     <p class="promo fw-bold mx-auto mt-3">-10%</p>
                     <p class="phrase_promo lettres_blanches fw-bold text-center">Sur catégorie VEGGIE</p>
                 </div>
-
-            </div>
-
-            {# NAV CENTRALE VIDEO #}
-            <div class="col-4 display-inline-block d-none d-lg-block bordure_haut">
-
-                <video autoplay loop muted class="img-fluid">
-
-                    <source src="/images/videos/video_the_district_projet.mp4" type="video/mp4">
-                    <p>Votre navigateur ne prend pas en charge la vidéo.</p>
-
-                </video>
-
-            </div>
-
-            {# NAV DROITE ADRESSE #}
-            <div class="col-4 d-none d-lg-block text-center">
-
-                <img src="/images/district/ecriture_district_blanc.webp" class="w-75"><br>
-                <p class="lettres_blanches fs-3">Ce site est un projet de formation créé en Html, Css, Bootstrap et Symfony.</p>
 
             </div>
 

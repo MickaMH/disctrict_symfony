@@ -70,8 +70,8 @@ class ResumeCommandeController extends AbstractController
                 'panierWithData' => $panierWithData,
             ]))
             ->addPart((new DataPart(fopen('C:\xampp\htdocs\disctrict_symfony\public\images\district\logo.webp', 'r'), 'logo', 'image/webp'))->asInline());
-            // ->addPart((new DataPart(fopen('C:\xampp\htdocs\disctrict_symfony\public\images\plats', 'r'), 'plat', 'image/webp'))->asInline());
-;
+            // ->addPart((new DataPart(fopen('C:\xampp\htdocs\disctrict_symfony\public\images\plats\image_plat_vierge.webp', 'r'), 'plat', 'image/webp'))->asInline());
+
 
         $mailer->send($email);
     }

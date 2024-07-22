@@ -13,7 +13,7 @@
 
         <div class="col fs-3 m-5">
 
-            <p>Commande créée avec succès ! Un email récapitulatif de votre commande vous a été envoyé à 
+            <p>Commande créée avec succès ! Un email récapitulant votre commande vous a été envoyé à 
 
                 <span class="fw-medium">{{ app.user.email }}</span>.
                 
@@ -22,6 +22,16 @@
         </div>
 
     </div>
+
+    <h1>Dernière commande</h1>
+    <ul>
+    {% for commande in commandes %}
+        <li class="fs-4">
+            <a href="#">Commande n° {{ commande.id }} du {{ commande.dateCommande|date('Y-m-d') }}</a>
+            {# Total: {{ commande.total }}€. Etat: {{ commande.etat }}. #}
+        </li>
+    {% endfor %}
+    </ul>
 
     <div class="row mb-5">
 

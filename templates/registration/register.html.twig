@@ -23,13 +23,6 @@
     {{ form_start(registrationForm, {'attr': {'class': 'row m-sm-1 m-lg-5 d-flex justify-content-center'}}) }}
     {{ form_errors(registrationForm) }}
 
-        {# <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
-            {{ form_row(registrationForm.nom, {
-                'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input'
-                }
-            }) }}
-        </div> #}
         <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
             {{ form_label(registrationForm.nom) }}
             {{ form_widget(registrationForm.nom, {
