@@ -46,6 +46,10 @@ parallax_desktop{
     border-color: #980848;
 }
 
+.bordures_accordion{
+    border: 0.1rem solid #980848;
+}
+
 .bordure_haut{
     border-top: 0.4rem solid;
     border-color: #980848;
