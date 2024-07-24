@@ -118,7 +118,7 @@
 
                                     <p class="liens_header_bonjour fs-1 fw-medium me-2">Bonjour</p>
 
-                                    <a class="liens_header fs-1 fw-medium" href="{{ path('app_compte') }}">
+                                    <a class="liens_header fs-1 fw-medium" href="{{ path('app_compte', { userId: app.user.id }) }}">
                                         <p class="liens_header_souligne fs-1 fw-medium"> {{ app.user.prenom }} </p>
                                     </a>
 

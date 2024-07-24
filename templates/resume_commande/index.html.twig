@@ -43,7 +43,7 @@
                             {{ item.plat.libelle }}
                         </td>
                         <td class="text-center">{{ item.quantite }}</td>
-                        <td class="text-center">{{ item.plat.prix * item.quantite }}.00 &#8364;</td>
+                        <td class="text-center">{{ item.plat.prix * item.quantite }}.00 €</td>
                         {% set total = total + (item.plat.prix * item.quantite) %}
                     </tr>
                     {% endfor %}
@@ -52,7 +52,7 @@
                 <tfoot class="border_tfoot">
                     <tr>
                         <td colspan="2" class="fs-2 fw-bold">Total de la commande</td>
-                        <td class="fs-4 fw-medium text-center">{{ total }}.00 &#8364;</td>
+                        <td class="fs-4 fw-medium text-center">{{ total }}.00 €</td>
                     </tr>
                 </tfoot>
         </table>

@@ -23,16 +23,6 @@
 
     </div>
 
-    <h1>Dernière commande</h1>
-    <ul>
-    {% for commande in commandes %}
-        <li class="fs-4">
-            <a href="#">Commande n° {{ commande.id }} du {{ commande.dateCommande|date('Y-m-d') }}</a>
-            {# Total: {{ commande.total }}€. Etat: {{ commande.etat }}. #}
-        </li>
-    {% endfor %}
-    </ul>
-
     <div class="row mb-5">
 
         <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 bouton_categories"

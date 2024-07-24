@@ -68,9 +68,5 @@ class CommandeController extends AbstractController
 
         $this->addFlash('message', 'Commande créée avec succès');
         return $this->redirectToRoute('app_confirm_commande');
-
-        /* return $this->render('commande/index.html.twig', [
-            'controller_name' => 'CommandeController',
-        ]); */
     }
 }

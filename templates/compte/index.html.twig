@@ -102,7 +102,6 @@
                                 Modifier les informations
                             </button>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -115,22 +114,23 @@
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body col-6">
-                    {% for commande in commandes %}
+                        {% for commande in commandes %}
                         {# Button trigger modal #}
                         <button type="button" class="bg-white border border-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <p class="fs-4 text-decoration-none lettres">Commande n° {{ commande.id }} du {{ commande.dateCommande|date('Y-m-d') }}</p>
                         </button>
+
                         {# Modal #}
                         <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <!-- Vertically centered scrollable modal -->
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-2" id="exampleModalLabel">Commande n° 1 du 16/07/2024</h1>
+                                        <h1 class="modal-title fs-2" id="exampleModalLabel">Commande n° {{ commande.id }} du {{ commande.dateCommande|date('Y-m-d') }}</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body">  
 
+                                    <div class="modal-body">  
                                         <table class="col-12">
                                             <thead class="border_thead">
                                                 <tr>
@@ -143,30 +143,21 @@
                                                 <tr>
                                                     <td>
                                                         <img src="#">
-                                                        Libellé du plat
+                                                        
                                                     </td>
-                                                    <td class="text-center">2</td>
-                                                    <td class="text-center">.00 €</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="#">
-                                                        Libellé du plat
-                                                    </td>
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">.00 €</td>
+                                                    <td class="text-center"></td>
+                                                    <td class="text-center"></td>
                                                 </tr>
                                             </tbody>
                                             <tfoot class="border_tfoot fs-3">
                                                 <tr>
                                                     <td colspan="2" class="fw-medium">Total de la commande:</td>
                                                     <td class="text-center">
-                                                        <span class="fw-medium">.00 €</span>
+                                                        <span class="fw-medium">{{ commande.total }} €</span>
                                                     </td>
                                                 </tr>
                                             </tfoot>
                                         </table>
-
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-4 ps-2 pe-2 pb-1 pt-1 rounded-3 bouton_fermer_panier" data-bs-dismiss="modal">
@@ -176,8 +167,7 @@
                                 </div>
                             </div>
                         </div>
-                        {# <p class="fs-4"><a href="#" class="text-decoration-none lettres">Commande n° {{ commande.id }} du {{ commande.dateCommande|date('Y-m-d') }}</a></p> #}
-                    {% endfor %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
