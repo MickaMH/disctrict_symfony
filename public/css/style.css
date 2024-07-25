@@ -47,7 +47,7 @@ parallax_desktop{
 }
 
 .bordures_accordion{
-    border: 0.1rem solid #980848;
+    border: 0.2rem solid #980848;
 }
 
 .bordure_haut{
@@ -368,6 +368,11 @@ p{
     width: 4rem; height: auto;
     text-decoration: none;
 }
+
+.border_historique{
+    border-bottom: 0.1rem solid #980848;
+}
+
 
 /* .online{
     border: 0.2rem solid green;

@@ -8,6 +8,7 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style> #}
 
+
 {# MAIN #}
 <main class="container-fluid pb-lg-5">
 
@@ -224,14 +225,14 @@
             <label for="accept_cgu">
                 Accepter les <a href="{{ path('app_cgu') }}" class="lettres">CGU</a>
             </label>
-            <input type="checkbox" id="accept_cgu" name="accept_cgu" class="ms-2 case_coche" required>
+            <input type="checkbox" id="accept_cgu" name="accept_cgu" class="ms-2 case_coche">
 
         </div>
 
     </div>
 
     <div class="row d-flex justify-content-center">
-        
+
         <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories me-5"
                 id="precedent" style="width: 15rem; height: 3rem;"  href="{{ path('app_commande_add') }}" role="button">Finaliser la commande</a>
 

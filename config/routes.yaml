@@ -9,3 +9,5 @@ search:
     path: /search
     controller: App\Controller\SearchController::searchAction
     methods: [GET]
+
+    
