@@ -174,16 +174,16 @@
 
                 <div class="d-flex">
 
-                    <div class="card shadow-lg border-4 bordures rounded-5 zoom mx-auto mb-4 me-3" style="width: 10rem; height: 10rem;">
+                    <div class="card shadow-lg border-4 bordures rounded-5 zoom mx-auto mb-4 me-2 col-6">
 
                         <div>
 
-                            <p class="card-text mb-1 fw-medium">Toutes les<br> catégories de plat</p>
+                            <p class="card-text mb-1 fw-medium"> Catégories de plat</p>
                             <img src="/images/icones/icone_categories_transp_2.webp" class="card-img mt-1" style="width: 33%;" alt="" title="">
 
                         </div>
 
-                        <div class="mt-3 ms-2 me-2 rounded-5 fond_logo text-center" style="height: 1.6rem;">
+                        <div class="mt-3 ms-2 me-2 mb-2 rounded-5 fond_logo text-center" style="height: 1.6rem;">
 
                             <a href="{{ path('app_categories') }}" class="text-decoration-none">
                             <p class="fw-medium lettres_blanches">CATÉGORIES</p>
@@ -193,19 +193,19 @@
 
                     </div>
 
-                    <div class="card shadow-lg border-4 bordures rounded-5 zoom mx-auto mb-4 ms-3" style="width: 10rem; height: 10rem;">
+                    <div class="card shadow-lg border-4 bordures rounded-5 zoom mx-auto mb-4 ms-2 col-6">
 
                         <div>
 
-                        <p class="card-text mb-1 fw-medium">Retrouvez tous<br> les plats</p>
+                        <p class="card-text mb-1 fw-medium">Retrouvez tous les plats</p>
                         <img src="/images/icones/icone_plats_transp_2.webp" class="card-img mt-1" style="width: 37%;" alt="" title="">
 
                         </div>
 
-                        <div class="mt-3 ms-2 me-2 rounded-5 fond_logo text-center" style="height: 1.6rem;">
+                        <div class="mt-3 ms-2 me-2 mb-2 rounded-5 fond_logo text-center" style="height: 1.6rem;">
 
                         <a href="{{ path('app_plats') }}" class="text-decoration-none">
-                        <p class="fw-medium lettres_blanches">PLATS</p>
+                            <p class="fw-medium lettres_blanches">PLATS</p>
                         </a>
 
                         </div>
@@ -214,19 +214,19 @@
 
                 </div>
 
-                <div class="card shadow-lg border-4 bordures rounded-5 zoom mx-auto" style="width: 10rem; height: 10rem;">
+                <div class="card shadow-lg border-4 bordures rounded-5 zoom mx-auto col-6">
 
                     <div>
 
-                        <p class="card-text mb-1 fw-medium">Adressez nous<br> vos demandes</p>
+                        <p class="card-text mb-1 fw-medium">Adressez vos demandes</p>
                         <img src="/images/icones/icone_contact_transp_2.webp" class="card-img mt-1 ms-2" style="width: 30%;" alt="" title="">
 
                     </div>
 
-                    <div class="mt-3 ms-2 me-2 rounded-5 fond_logo text-center" style="height: 1.6rem;">
+                    <div class="mt-3 ms-2 me-2 mb-2 rounded-5 fond_logo text-center" style="height: 1.6rem;">
 
                         <a href="{{ path('app_contact') }}" class="text-decoration-none">
-                        <p class="fw-medium lettres_blanches">CONTACT</p>
+                            <p class="fw-medium lettres_blanches">CONTACT</p>
                         </a>
 
                     </div>
@@ -299,7 +299,7 @@
 
                     <a href="{{ path('app_page_plat', {'id': plat.id}) }}"
                         class="fs-5 fw-medium d-flex justify-content-center align-items-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches bouton_mini">
-                        Voir le plat
+                        Voir
                     </a>
 
                 </div>
@@ -332,10 +332,21 @@
 
         </div> #}
 
-        {# RETOUR HAUT DE PAGE #}
-        <div class="row">
+        {# RETOUR HAUT DE PAGE DESKTOP #}
+        <div class="row d-none d-lg-block">
 
             <div class="col d-flex justify-content-end me-5">
+
+                <a href="#" class="fs-1 text-center lettres_blanches fleche_haut">↑</a>
+
+            </div>
+
+        </div>
+
+        {# RETOUR HAUT DE PAGE MOBILE #}
+        <div class="row d-block d-sm-none">
+
+            <div class="col d-flex justify-content-end me-5 mb-3">
 
                 <a href="#" class="fs-1 text-center lettres_blanches fleche_haut">↑</a>
 

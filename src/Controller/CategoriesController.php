@@ -19,7 +19,7 @@ class CategoriesController extends AbstractController
     #[Route('/categories', name: 'app_categories')]
     public function index(): Response
     {
-        $categories = $this->categorieRepo->findAll();
+        $categories = $this->categorieRepo->findBy(['active' => 1]);
 
         return $this->render('categories/index.html.twig', [
             'controller_name' => 'CategoriesController',

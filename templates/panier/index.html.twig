@@ -15,7 +15,7 @@
     {# EN-TETE PLATS #}
     <div class="row d-flex justify-content-center">
 
-        <div class="col-8 col-lg-2 fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
+        <div class="col-8 col-lg-2 fs-1 fw-medium mb-lg-3 mt-3 mt-lg-3 text-center">
 
             <p class="lettres fond_intitule">PANIER</p>
 
@@ -23,7 +23,7 @@
 
     </div>
 
-    <div class="row m-5">
+    <div class="row m-lg-5">
 
         {% if items | length > 0 %}
             <table class="table">
@@ -99,14 +99,39 @@
 
     <div class="row d-flex justify-content-center">
 
-        <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories me-5"
-                id="precedent" style="width: 15rem; height: 3rem;" href="{{ path('app_resume_commande') }}" role="button">Valider le panier</a>
+        {# BOUTONS DESKTOP #}
+        <div class="d-none d-lg-block">
+            <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories me-5"
+                id="precedent" style="width: 15rem; height: 3rem;" href="{{ path('app_resume_commande') }}" role="button">
+                Valider le panier
+            </a>
 
-        <a href="#" onclick="history.back(); return false;"
-            class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_fermer_panier ms-5"
-            style="width: 10rem; height: 3rem;">
-            Retour
-        </a>
+            <a href="#" onclick="history.back(); return false;"
+                class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_fermer_panier ms-5"
+                style="width: 10rem; height: 3rem;">
+                Retour
+            </a>
+        </div>
+
+        {# BOUTONS MOBILES #}
+        <div class="col-sm-12 d-block d-sm-none d-flex justify-content-center">
+
+            <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories mb-3"
+                id="precedent" style="width: 15rem; height: 3rem;" href="{{ path('app_resume_commande') }}" role="button">
+                Valider le panier
+            </a>
+
+        </div>
+
+        <div class="col-sm-12 d-block d-sm-none d-flex justify-content-center mb-5">
+
+            <a href="#" onclick="history.back(); return false;"
+                class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_fermer_panier"
+                style="width: 10rem; height: 3rem;">
+                Retour
+            </a>
+
+        </div>
 
     </div>
 

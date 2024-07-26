@@ -19,7 +19,7 @@ class PlatsController extends AbstractController
     #[Route('/plats', name: 'app_plats')]
     public function index(): Response
     {
-        $plats = $this->platRepo->findAll();
+        $plats = $this->platRepo->findBy(['active' => 1], ['categories' => 'ASC']);
 
         return $this->render('plats/index.html.twig', [
             'controller_name' => 'PlatsController',
