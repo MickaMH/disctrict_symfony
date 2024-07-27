@@ -383,6 +383,10 @@ p{
     border-bottom: 0.1rem solid #980848;
 }
 
+.border_panier_mobile{
+    border-bottom: 0.1rem solid lightgrey;
+}
+
 
 /* .online{
     border: 0.2rem solid green;
