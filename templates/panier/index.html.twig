@@ -23,7 +23,7 @@
 
     </div>
 
-    <div class="row m-lg-5">
+    <div class="row m-lg-5 d-none d-lg-block">
 
         {% if items | length > 0 %}
             <table class="table">
@@ -97,10 +97,86 @@
 
     </div>
 
-    <div class="row d-flex justify-content-center">
+    <div class="row m-lg-5 d-block d-sm-none">
+
+        {% if items | length > 0 %}
+            <table class="table">
+
+                <thead class="fs-2 border_thead">
+                    <tr>
+                        <th>Plat</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody class="fs-4">
+                    {% for item in items %}
+                        <tr>
+                            <td>
+                                <img src="/images/plats/{{ item.plat.image }}" class="me-3 p-1 rounded-4" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}">
+                                {{ item.plat.libelle }}
+                            </td>
+
+                            <td>
+                                <div class="mt-4">
+                                    {{ item.plat.prix }} &#8364;
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="d-flex mt-4">
+                                    <a href="{{ path('app_panier_add', {'id': item.plat.id}) }}" class="d-flex align-items-center justify-content-center btn_plus text-decoration-none shadow-lg fw-medium lettres_blanches fs-5 rounded-3 me-4" style="width: 2rem; height: 2rem;">
+                                        +
+                                    </a>
+                                    {{ item.quantite }}
+                                    <a href="{{ path('app_panier_removeOne', {'id': item.plat.id}) }}" class="d-flex align-items-center justify-content-center btn_moins text-decoration-none shadow-lg fw-medium lettres_blanches fs-5 rounded-3 ms-4" style="width: 2rem; height: 2rem;">
+                                        -
+                                    </a>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="mt-4">
+                                    {{ item.plat.prix * item.quantite }}.00 &#8364;
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="mt-4">
+                                    <a href="{{ path('app_panier_remove', {'id': item.plat.id}) }}" class="d-flex align-items-center justify-content-center btn_suppr text-decoration-none shadow-lg fw-medium lettres_blanches fs-5 rounded-3" style="width: 2rem; height: 2rem;">
+                                        x
+                                    </a>
+                                </div>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+                <tfoot class="border_tfoot">
+                    <tr>
+                        <td colspan="3" class="fs-2 fw-bold">Total de la commande</td>
+                        <td class="fs-4 fw-medium">{{ total }}.00 &#8364;</td>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+        {% else %}
+            <p class="fs-2 text-center">Votre panier est vide !</p>
+        {% endif %}
+
+    </div>
+
+
+    <div class="row d-none d-lg-block">
 
         {# BOUTONS DESKTOP #}
-        <div class="d-none d-lg-block">
+        <div class="col-lg-12 d-flex justify-content-center">
+
             <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories me-5"
                 id="precedent" style="width: 15rem; height: 3rem;" href="{{ path('app_resume_commande') }}" role="button">
                 Valider le panier
@@ -111,10 +187,15 @@
                 style="width: 10rem; height: 3rem;">
                 Retour
             </a>
+
         </div>
 
+    </div>
+
+    <div class="row d-block d-sm-none">
+
         {# BOUTONS MOBILES #}
-        <div class="col-sm-12 d-block d-sm-none d-flex justify-content-center">
+        <div class="col-sm-12 d-flex justify-content-center">
 
             <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories mb-3"
                 id="precedent" style="width: 15rem; height: 3rem;" href="{{ path('app_resume_commande') }}" role="button">
@@ -123,7 +204,7 @@
 
         </div>
 
-        <div class="col-sm-12 d-block d-sm-none d-flex justify-content-center mb-5">
+        <div class="col-sm-12 d-flex justify-content-center mb-5">
 
             <a href="#" onclick="history.back(); return false;"
                 class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_fermer_panier"

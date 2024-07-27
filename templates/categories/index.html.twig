@@ -3,13 +3,6 @@
 {% block title %}Catégories{% endblock %}
 
 {% block body %}
-{# <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style> #}
-
-
-{# ICI METTRE L'ENTETE, LES CARDS CATEGORIES #}
 
 
 {# MAIN #}
@@ -28,39 +21,25 @@
 
     <div class="row d-flex justify-content-around">
 
-                {# <h1>Nombre de catégories trouvées : {{ categories | length }}</h1> #}
+        {# <h1>Nombre de catégories trouvées : {{ categories | length }}</h1> #}
+        {# {{ categorie.image }}        {{ categorie.libelle |upper }}      {{ categorie.plats | length }} #}
 
-                {% for categorie in categories %}
+        {% for categorie in categories %}
+        <div class="col-lg-4 mb-5 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-around">
 
-                    {# {{ categorie.image }}        {{ categorie.libelle |upper }}      {{ categorie.plats | length }} #}
+            <div class="card w-75 border-4 bordures rounded-5">
 
-                    <div class="col-lg-4 mb-5 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-around">
+                <img src="/images/categories/{{ categorie.image }}" class="img-fluid m-3 rounded-5 border_image" alt="{{ categorie.libelle }}" title="{{ categorie.libelle }}">
 
-                        <div class="card w-75 border-4 bordures rounded-5">
+                <a href="{{ path('app_plats_par_cat', {'id': categorie.id}) }}"
+                    class="card-text fs-5 fw-medium text-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches">
+                    {{ categorie.libelle |upper }}
+                </a>
 
-                            <img src="/images/categories/{{ categorie.image }}" class="img-fluid m-3 rounded-5 border_image" alt="{{ categorie.libelle }}" title="{{ categorie.libelle }}">
-
-                            <a href="{{ path('app_plats_par_cat', {'id': categorie.id}) }}"
-                                class="card-text fs-4 fw-medium text-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches">
-                                {{ categorie.libelle |upper }}
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                {% endfor %}
-
-    </div>
-
-    {# RETOUR HAUT DE PAGE #}
-    <div class="row">
-
-        <div class="col d-flex justify-content-end me-lg-5 mb-3">
-
-            <a href="#" class="fs-1 text-center lettres_blanches fleche_haut">↑</a>
+            </div>
 
         </div>
+        {% endfor %}
 
     </div>
 

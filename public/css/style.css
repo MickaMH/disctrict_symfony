@@ -365,7 +365,17 @@ p{
     /* border: 0.2rem solid #980848; */
     border-radius: 50%;
     background-color: #980848;
-    width: 4rem; height: auto;
+    width: 4rem;
+    height: auto;
+    text-decoration: none;
+}
+
+.fleche_haut_mobile{
+    /* border: 0.2rem solid #980848; */
+    border-radius: 100%;
+    background-color: #980848;
+    width: 3rem;
+    height: auto;
     text-decoration: none;
 }
 
