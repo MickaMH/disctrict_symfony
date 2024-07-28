@@ -19,7 +19,8 @@
 
     </div>
 
-    <div class="row m-lg-5">
+    {# PANIER DESKTOP #}
+    <div class="row m-lg-5 d-none d-lg-block">
 
         <table class="table">
 
@@ -56,44 +57,142 @@
 
     </div>
 
-    <div class="row m-5">
+    {# PANIER MOBILE #}
+    <div class="row mb-3 d-block d-sm-none">
 
-        <div class="col-sm-12 col-lg-12">
+            <table class="table">
+
+                <thead class="fs-3 border_thead">
+
+                    <tr>
+
+                        <th>Plat</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody class="fs-5 border_panier_mobile">
+
+                    {% set total = 0 %}
+                    {% for item in panierWithData %}
+                        <tr>
+                            <td class="text-nowrap d-flex justify-content-between">
+                                
+                                <div class="fw-medium">
+
+                                    <p class="my-auto">{{ item.plat.libelle }}</p>
+
+                                </div>
+
+                                <div class="d-flex justify-content-end">
+
+                                    <a href="{{ path('app_panier_remove', {'id': item.plat.id}) }}" class="d-flex align-items-center justify-content-center btn_suppr text-decoration-none shadow-lg fw-medium lettres_blanches fs-5 rounded-3" style="width: 2rem; height: 2rem;">
+                                        x
+                                    </a>
+
+                                </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="d-flex">
+                            
+                                <div class="">
+
+                                    <img src="/images/plats/{{ item.plat.image }}" class=" rounded-4" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}">
+                                
+                                </div>
+
+                                <div class="ms-5">
+
+                                    <div class="d-flex ">
+
+                                        <p class="me-2">Prix: </p>{{ item.plat.prix }} €
+
+                                    </div>
+
+                                    <div class="d-flex mb-2">
+
+                                        <a href="{{ path('app_panier_add', {'id': item.plat.id}) }}" class="d-flex align-items-center justify-content-center btn_plus text-decoration-none shadow-lg fw-medium lettres_blanches fs-5 rounded-3 me-3" style="width: 2rem; height: 2rem;">
+                                            +
+                                        </a>
+
+                                        {{ item.quantite }}
+
+                                        <a href="{{ path('app_panier_removeOne', {'id': item.plat.id}) }}" class="d-flex align-items-center justify-content-center btn_moins text-decoration-none shadow-lg fw-medium lettres_blanches fs-5 rounded-3 ms-3" style="width: 2rem; height: 2rem;">
+                                            -
+                                        </a>
+
+                                    </div>
+
+                                    <div class="d-flex fw-medium">
+
+                                        <p class="me-2">Total: </p>{{ item.plat.prix * item.quantite }}.00 €
+                                        {% set total = total + (item.plat.prix * item.quantite) %}
+                                    </div>
+
+                                </div>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+
+                <tfoot class="border_tfoot">
+                    <tr>
+                        <td class="fs-3 fw-bold d-flex">
+                            <p class="me-4">Total commande: </p>{{ total }}.00 €
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+    </div>
+
+    {# ADRESSES #}
+    <div class="row mb-5 m-lg-5">
+
+        <div class="col-lg-12">
 
             <p class="fs-2 fw-bold">Adresses</p>
 
         </div>
 
-        <div class="col-sm-12 col-lg-12 d-flex justify-content-around">
+        <div class="col-lg-12 d-lg-flex justify-content-around">
 
             {% if app.user %}
-            {# ADRESSE DE FACTURATION #}
-            <div class="col-sm-10 col-lg-5 border_adresse">
+
+            {# ADRESSE DE FACTURATION DESKTOP #}
+            <div class="col-lg-5 border_adresse d-none d-lg-block">
                 
-                <div class="col-12 fs-3 fw-bold border_thead">
+                <div class="fs-3 fw-bold border_thead">
                     <p class="my-auto ms-2 mt-2 mb-2">Adresse de facturation</p>
                 </div>
                 
-                <table class="table col-12">
+                <table class="table">
 
                     <tbody class="fs-4">
                         <tr>
-                            <td class="col-4">Adresse :</td>
-                            <td class="col-8">{{ app.user.adresse }}</td>
+                            <td class="col-lg-4 fw-medium">Adresse :</td>
+                            <td class="col-lg-8">{{ app.user.adresse }}</td>
                         </tr>
                         <tr>
-                            <td>Code postal :</td>
+                            <td class="fw-medium">Code postal :</td>
                             <td>{{ app.user.cp }}</td>
                         </tr>
                         <tr>
-                            <td>Ville :</td>
+                            <td class="fw-medium">Ville :</td>
                             <td>{{ app.user.ville }}</td>
                         </tr>
                     </tbody>
 
                 </table>
 
-                <div class="col-12 fs-4 fw-bold text-center">
+                <div class="fs-4 fw-bold text-center">
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
 
@@ -107,25 +206,25 @@
 
                                 <div class="accordion-body fw-normal fs-4 text-start">
 
-                                    <table class="table col-12">
+                                    <table class="table">
 
-                                        <tbody class="col-12 fs-4">
+                                        <tbody class="fs-4">
                                             <tr>
-                                                <td>Adresse :</td>
+                                                <td class="fw-medium">Adresse :</td>
                                                 <td>
                                                     <input type="text" id="adresse" name="adresse" class="bordures fond_input rounded-3 border-3" maxlength="50">
                                                     
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Code postal :</td>
+                                                <td class="fw-medium">Code postal :</td>
                                                 <td>
                                                     <input type="text" id="codepostal" name="codepostal" class="bordures fond_input rounded-3 border-3" maxlength="5" style="width: 5rem;">
                                                     
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Ville :</td>
+                                                <td class="fw-medium">Ville :</td>
                                                 <td>
                                                     <input type="text" id="ville" name="ville" class="bordures fond_input rounded-3 border-3" maxlength="30">
                                                 
@@ -145,33 +244,128 @@
 
             </div>
 
-            {# ADRESSE DE LIVRAISON #}
-            <div class="col-sm-10 col-lg-5 border_adresse">
-
-                <div class="col-12 fs-3 fw-bold border_thead">
-                    <p class="my-auto ms-2 mt-2 mb-2">Adresse de livraison</p>
+            {# ADRESSE DE FACTURATION MOBILE #}
+            <div class="col-12 border_adresse d-block d-sm-none mb-4">
+                
+                <div class="fs-3 fw-bold border_thead">
+                    <p class="my-auto ms-2 mt-2 mb-2">Adresse de facturation</p>
                 </div>
-
-                <table class="table col-12">
+                
+                <table class="table">
 
                     <tbody class="fs-4">
+
                         <tr>
-                            <td class="col-4">Adresse :</td>
-                            <td class="col-8">{{ app.user.adresse }}</td>
+                            <td class="fw-medium">Adresse :</td>
                         </tr>
+                        <tr class="border_panier_mobile">
+                            <td>{{ app.user.adresse }}</td>
+                        </tr>
+
                         <tr>
-                            <td>Code postal :</td>
+                            <td class="fw-medium">Code postal :</td>
+                        </tr>
+                        <tr class="border_panier_mobile">
                             <td>{{ app.user.cp }}</td>
                         </tr>
+
                         <tr>
-                            <td>Ville :</td>
+                            <td class="fw-medium">Ville :</td>
+                        </tr>
+                        <tr class="border_panier_mobile">
                             <td>{{ app.user.ville }}</td>
                         </tr>
                     </tbody>
 
                 </table>
 
-                <div class="col-12 fs-4 fw-bold text-center">
+                <div class="fs-4 fw-bold">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed fs-3 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Modifier l'adresse de facturation
+                                </button>
+                            </h2>
+
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+
+                                <div class="accordion-body fw-normal fs-4">
+
+                                    <table class="table">
+
+                                        <tbody class="fs-4">
+
+                                            <tr>
+                                                <td class="fw-medium">Adresse :</td>
+                                            </tr>
+                                            <tr class="border_panier_mobile">
+                                                <td>
+                                                    <input type="text" id="adresse" name="adresse" class="col-12 bordures fond_input rounded-3 border-3" maxlength="50">
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="fw-medium">Code postal :</td>
+                                            </tr>
+                                            <tr class="border_panier_mobile">
+                                                <td>
+                                                    <input type="text" id="codepostal" name="codepostal" class="col-4 bordures fond_input rounded-3 border-3" maxlength="5">
+                                                    
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="fw-medium">Ville :</td>
+                                            </tr>
+                                            <tr class="border_panier_mobile">
+                                                <td>
+                                                    <input type="text" id="ville" name="ville" class="col-12 bordures fond_input rounded-3 border-3" maxlength="30">
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {# ADRESSE DE LIVRAISON #}
+            <div class="col-lg-5 border_adresse d-none d-lg-block">
+
+                <div class="fs-3 fw-bold border_thead">
+                    <p class="my-auto ms-2 mt-2 mb-2">Adresse de livraison</p>
+                </div>
+
+                <table class="table">
+
+                    <tbody class="fs-4">
+                        <tr>
+                            <td class="col-lg-4 fw-medium">Adresse :</td>
+                            <td class="col-lg-8">{{ app.user.adresse }}</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-medium">Code postal :</td>
+                            <td>{{ app.user.cp }}</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-medium">Ville :</td>
+                            <td>{{ app.user.ville }}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                <div class="fs-4 fw-bold text-center">
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
 
@@ -185,19 +379,19 @@
 
                                 <div class="accordion-body fw-normal fs-4 text-start">
 
-                                    <table class="table col-12">
+                                    <table class="table">
 
-                                        <tbody class="col-12 fs-4">
+                                        <tbody class="fs-4">
                                             <tr>
-                                                <td>Adresse :</td>
+                                                <td class="fw-medium">Adresse :</td>
                                                 <td><input type="text" id="adresse" name="adresse" class="bordures fond_input rounded-3 border-3" maxlength="50"></td>
                                             </tr>
                                             <tr>
-                                                <td>Code postal :</td>
+                                                <td class="fw-medium">Code postal :</td>
                                                 <td><input type="text" id="codepostal" name="codepostal" class="bordures fond_input rounded-3 border-3" maxlength="5" style="width: 5rem;"></td>
                                             </tr>
                                             <tr>
-                                                <td>Ville :</td>
+                                                <td class="fw-medium">Ville :</td>
                                                 <td><input type="text" id="ville" name="ville" class="bordures fond_input rounded-3 border-3" maxlength="30"></td>
                                             </tr>
                                         </tbody>
@@ -221,18 +415,126 @@
 
                         </div>
                     </div>
+
                 </div>
+
             </div>
+
+            {# ADRESSE DE LIVRAISON MOBILE #}
+            <div class="col-12 border_adresse d-block d-sm-none">
+                
+                <div class="fs-3 fw-bold border_thead">
+                    <p class="my-auto ms-2 mt-2 mb-2">Adresse de livraison</p>
+                </div>
+                
+                <table class="table">
+
+                    <tbody class="fs-4">
+                        <tr>
+                            <td class="fw-medium">Adresse :</td>
+                        </tr>
+                        <tr class="border_panier_mobile">
+                            <td>{{ app.user.adresse }}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="fw-medium">Code postal :</td>
+                        </tr>
+                        <tr class="border_panier_mobile">
+                            <td>{{ app.user.cp }}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="fw-medium">Ville :</td>
+                        </tr>
+                        <tr class="border_panier_mobile">
+                            <td>{{ app.user.ville }}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                <div class="fs-4 fw-bold">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed fs-3 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Modifier l'adresse de livraison
+                                </button>
+                            </h2>
+
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+
+                                <div class="accordion-body fw-normal fs-4">
+
+                                    <table class="table">
+
+                                        <tbody class="fs-4">
+
+                                            <tr>
+                                                <td class="fw-medium">Adresse :</td>
+                                            </tr>
+                                            <tr class="border_panier_mobile">
+                                                <td>
+                                                    <input type="text" id="adresse" name="adresse" class="col-12 bordures fond_input rounded-3 border-3" maxlength="50">
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="fw-medium">Code postal :</td>
+                                            </tr>
+                                            <tr class="border_panier_mobile">
+                                                <td>
+                                                    <input type="text" id="codepostal" name="codepostal" class="col-4 bordures fond_input rounded-3 border-3" maxlength="5">
+                                                    
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="fw-medium">Ville :</td>
+                                            </tr>
+                                            <tr class="border_panier_mobile">
+                                                <td>
+                                                    <input type="text" id="ville" name="ville" class="col-12 bordures fond_input rounded-3 border-3" maxlength="30">
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
             {% endif %}
+
         </div>
 
     </div>
 
-    <div class="row m-5">
 
-        <div class="col-12">
+    {# MOYEN DE PAIEMENT #}
+    <div class="row mb-3 m-lg-5">
+
+        {# TITRE DESKTOP #}
+        <div class="col-12 d-none d-lg-block">
 
             <p class="fs-2 fw-bold">Moyen de paiement (Non fonctionnel)</p>
+
+        </div>
+
+        {# TITRE MOBILE #}
+        <div class="col-12 d-block d-sm-none">
+
+            <p class="fs-2 fw-bold">Moyen de paiement<br>(Non fonctionnel)</p>
 
         </div>
 
@@ -240,6 +542,7 @@
 
             <form action="/traitement_paiement" method="post" class="ms-3">
 
+                {# BOUTONS RADIO #}
                 <label for="carte">Carte bancaire</label>
                 <input type="radio" id="carte" name="moyen_paiement" value="carte">
                 <br>
@@ -251,26 +554,66 @@
                 <label for="virement">Virement bancaire</label>
                 <input type="radio" id="virement" name="moyen_paiement" value="virement">
 
-                <table class="table col-12 mt-3">
+                {# PARTIE PAIEMENT DESKTOP #}
+                <table class="table col-12 mt-3 d-none d-lg-block">
 
                     <tbody class="fs-4 border border-white">
                         <tr>
-                            <td class="col-2">Numéro de carte :</td>
+                            <td class="col-lg-2">Numéro de carte :</td>
                             <td><input type="text" id="numero_carte" name="numero_carte" class="bordures fond_input rounded-3 border-3 text-center"
                                         maxlength="19" style="width: 15rem;" placeholder="0000 0000 0000 0000"></td>
                         </tr>
                         <tr>
-                            <td class="col-2">Nom du titulaire :</td>
+                            <td class="col-lg-2">Nom du titulaire :</td>
                             <td><input type="text" id="nom_titulaire" name="nom_titulaire" class="bordures fond_input rounded-3 border-3"
                                         maxlength="50" style="width: 20rem;" placeholder="Dupont Pierre"></td>
                         </tr>
                         <tr>
-                            <td class="col-2">Date d'expiration :</td>
+                            <td class="col-lg-2">Date d'expiration :</td>
                             <td><input type="text" id="date_expiration" name="date_expiration" class="bordures fond_input rounded-3 border-3 text-center"
                                         maxlength="5" style="width: 5rem;" placeholder="01/25"></td>
                         </tr>
                         <tr>
-                            <td class="col-2">CVV :</td>
+                            <td class="col-lg-2">CVV :</td>
+                            <td><input type="text" id="cvv" name="cvv" class="bordures fond_input rounded-3 border-3 text-center"
+                                        maxlength="3" style="width: 4rem;"placeholder="000"></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                {# PARTIE PAIEMENT MOBILE #}
+                <table class="table mt-3 d-block d-sm-none">
+
+                    <tbody class="fs-4 border border-white">
+                        <tr>
+                            <td>Numéro de carte :</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="numero_carte" name="numero_carte" class="bordures fond_input rounded-3 border-3 text-center"
+                                    maxlength="19" placeholder="0000 0000 0000 0000"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Nom du titulaire :</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="nom_titulaire" name="nom_titulaire" class="bordures fond_input rounded-3 border-3"
+                                        maxlength="50" placeholder="Dupont Pierre"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Date d'expiration :</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="date_expiration" name="date_expiration" class="bordures fond_input rounded-3 border-3 text-center"
+                                        maxlength="5" style="width: 5rem;" placeholder="01/25"></td>
+                        </tr>
+
+                        <tr>
+                            <td>CVV :</td>
+                        </tr>
+                        <tr>
                             <td><input type="text" id="cvv" name="cvv" class="bordures fond_input rounded-3 border-3 text-center"
                                         maxlength="3" style="width: 4rem;"placeholder="000"></td>
                         </tr>
@@ -295,15 +638,17 @@
 
     </div>
 
-    <div class="row m-5">
 
-        <div class="col-12">
+    {# CGU #}
+    <div class="row mb-5 m-lg-5">
+
+        <div class="col-lg-12">
 
             <p class="fs-2 fw-bold">Conditions générales d'utilisation</p>
 
         </div>
 
-        <div class="checkbox ms-3 mb-3 col-sm-10 col-lg-7 fs-4">
+        <div class="checkbox ms-3 col-lg-7 fs-4">
 
             <label for="accept_cgu">
                 Accepter les <a href="{{ path('app_cgu') }}" class="lettres">CGU</a>
@@ -314,18 +659,51 @@
 
     </div>
 
-    <div class="row d-flex justify-content-center">
 
-        <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories me-5"
-                id="precedent" style="width: 15rem; height: 3rem;"  href="{{ path('app_commande_add') }}" role="button">Finaliser la commande</a>
+    {# BOUTONS DESKTOP #}
+    <div class="row d-none d-lg-block">
 
-        <a href="#" onclick="history.back(); return false;"
+        <div class="col-lg-12 d-flex justify-content-center">
+
+            <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories me-5"
+                id="precedent" style="width: 15rem; height: 3rem;"  href="{{ path('app_commande_add') }}" role="button">
+                Finaliser la commande
+            </a>
+
+            <a href="#" onclick="history.back(); return false;"
                 class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_fermer_panier ms-5"
                 style="width: 10rem; height: 3rem;">
                 Retour
-        </a>
+            </a>
+
+        </div>
 
     </div>
+
+    {# BOUTONS MOBILE #}
+    <div class="row d-block d-sm-none">
+
+        <div class="d-flex justify-content-center mb-3">
+
+            <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories"
+                id="precedent" style="width: 15rem; height: 3rem;"  href="{{ path('app_commande_add') }}" role="button">
+                Finaliser la commande
+            </a>
+
+        </div>
+
+        <div class="d-flex justify-content-center mb-5">
+
+            <a href="#" onclick="history.back(); return false;"
+                class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_fermer_panier"
+                style="width: 10rem; height: 3rem;">
+                Retour
+            </a>
+
+        </div>
+
+    </div>
+
 
 </main>
 {% endblock %}
