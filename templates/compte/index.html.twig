@@ -8,7 +8,7 @@
 {# MAIN #}
 <main class="container-fluid pb-lg-5">
 
-    {# EN-TETE PLATS #}
+    {# EN-TETE COMPTE #}
     <div class="row d-flex justify-content-center">
 
         <div class="col-sm-10 col-lg-3 fs-1 fw-medium mb-lg-3 mt-3 mt-lg-3 text-center">
@@ -23,6 +23,7 @@
 
         <div class="accordion col-lg-7" id="accordionExample">
 
+            {# INFOS PERSONNELLES #}
             <div class="accordion-item bordures_accordion">
 
                 <h2 class="accordion-header">
@@ -102,7 +103,7 @@
                         {# INFOS MOBILE #}
                         <div class="d-block d-sm-none">
                         <table class="table">
-                            <tbody class="fs-4">
+                            <tbody class="fs-4 border border-white">
 
                                 <tr>
                                     <td class="fw-medium">
@@ -199,20 +200,28 @@
                 </div>
             </div>
 
+            {# HISTORIQUE COMMANDES #}
             <div class="accordion-item bordures_accordion">
+
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed fs-3 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Historique des commandes
                     </button>
                 </h2>
+
                 <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+
                     <div class="accordion-body">
-                        <table class="table col-sm-12 col-lg-6">
+
+                        {# HISTORIQUE DESKTOP #}
+                        <div class="d-none d-lg-block">
+                            <table class="table">
+
                             {% for commande in commandes %}
                             <tbody class="fs-4">
                                 <tr class="border_historique">
                                     <td>
-                                        Commande n° <span class="fw-medium">{{ commande.id }}</span> du <span class="fw-medium">{{ commande.dateCommande|date('Y-m-d') }}</span>
+                                        Commande n° <span class="fw-medium">{{ commande.id }}</span> du <span class="fw-medium">{{ commande.dateCommande|date('Y-m-d') }}</span>.
                                     </td>
                                     <td>
                                         Montant: <span class="fw-medium">{{ commande.total }} €</span>
@@ -223,9 +232,53 @@
                                 </tr>
                             </tbody>
                             {% endfor %}
-                        </table>
+
+                            </table>
+                        </div>
+
+                        {# HISTORIQUE MOBILE #}
+                        <div class="d-block d-sm-none">
+
+                            <table class="table">
+
+                                {% for commande in commandes %}
+                                <tbody class="fs-4 border border-white">
+
+                                    <tr>
+                                        <td>
+                                            Commande n° <span class="fw-medium">{{ commande.id }}</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            du <span class="fw-medium">{{ commande.dateCommande|date('Y-m-d') }}</span>.
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            Montant: <span class="fw-medium">{{ commande.total }} €</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="border_historique">
+                                        <td class="text-success">
+                                            Livrée &#10003;
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                                {% endfor %}
+
+                            </table>
+
+                        </div>
+
                     </div>
+
                 </div>
+
             </div>
 
             <div class="accordion-item bordures_accordion">

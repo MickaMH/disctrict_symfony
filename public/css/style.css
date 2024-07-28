@@ -387,6 +387,13 @@ p{
     border-bottom: 0.1rem solid grey;
 }
 
+.online{
+    color: #3FFF00;
+}
+
+.offline{
+    color: red;
+}
 
 /* .online{
     border: 0.2rem solid green;

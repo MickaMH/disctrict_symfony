@@ -122,7 +122,8 @@
                                     <p class="liens_header_bonjour fs-1 fw-medium me-2">Bonjour</p>
 
                                     <a class="liens_header fs-1 fw-medium" href="{{ path('app_compte', { userId: app.user.id }) }}">
-                                        <p class="liens_header_souligne fs-1 fw-medium"> {{ app.user.prenom }} </p>
+                                        <span class="liens_header_souligne fs-1 fw-medium">{{ app.user.prenom }}</span>
+                                        <sup class="online">&#x25CF;</sup>
                                     </a>
 
                                 </div>
@@ -131,6 +132,7 @@
                                 <a class=" liens_header fs-1 fw-medium justify-content-end" href="{{ path('app_login') }}">
                                     <img src="/images/icones/icone_user_district.webp" width="35" height="auto" class="mb-2">
                                     Connexion
+                                    <sup class="offline">&#x25CF;</sup>
                                 </a>
 
                                 <a class="liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">
@@ -168,35 +170,34 @@
 
                         </div>
 
-                        <div class="mt-3">
+                        <div class="mt-3 d-flex">
 
                             {# CONNEXION #}
                             {% if app.user %}
-                            <a class="me-2 liens_header fs-1 fw-medium justify-content-end" href="{{ path('app_compte') }}">
-                                <img src="/images/icones/icone_user_district.webp" width="45" height="auto" class="mb-2">
+                            <a class="liens_header fw-medium" href="{{ path('app_panier') }}">
+                                <img src="/images/icones/icone_panier_1__district.webp" width="45" height="auto" class="mb-2 me-3">
                             </a>
 
-                            <a class="liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">
-                                <img src="/images/icones/icone_panier_1__district.webp" width="45" height="auto" class="mb-2">
+                            <a class="liens_header fw-medium" href="{{ path('app_compte') }}">
+                                <img src="/images/icones/icone_user_district.webp" width="45" height="auto" class="">
+                                <sup class="online">&#x25CF;</sup>
                             </a>
 
                                 {# <div class="d-flex mt-0">
-
                                     <p class="liens_header_bonjour fs-1 fw-medium me-2">Bonjour</p>
-
                                     <a class="liens_header fs-1 fw-medium" href="{{ path('app_compte', { userId: app.user.id }) }}">
                                         <p class="liens_header_souligne fs-1 fw-medium"> {{ app.user.prenom }} </p>
                                     </a>
-
                                 </div> #}
 
                             {% else %}
-                            <a class="me-2 liens_header fs-1 fw-medium justify-content-end" href="{{ path('app_login') }}">
-                                <img src="/images/icones/icone_user_district.webp" width="45" height="auto" class="mb-2">
+                            <a class="liens_header fw-medium" href="{{ path('app_panier') }}">
+                                <img src="/images/icones/icone_panier_1__district.webp" width="45" height="auto" class="mb-2 me-3">
                             </a>
 
-                            <a class="liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">
-                                <img src="/images/icones/icone_panier_1__district.webp" width="45" height="auto" class="mb-2">
+                            <a class="liens_header fw-medium" href="{{ path('app_login') }}">
+                                <img src="/images/icones/icone_user_district.webp" width="45" height="auto" class="">
+                                <sup class="offline">&#x25CF;</sup>
                             </a>
                             {% endif %}
 
@@ -227,10 +228,6 @@
                             {# CONNEXION #}
                             {% if app.user %}
                             <li class="nav-item">
-                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_logout') }}">DECONNEXION</a>
-                            </li>
-
-                            <li class="nav-item">
                                 <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">PANIER</a>
                             </li>
 
@@ -238,13 +235,17 @@
                                 <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_compte') }}">COMPTE</a>
                             </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_logout') }}">DECONNEXION</a>
+                            </li>
+
                             {% else %}
                             <li class="nav-item">
-                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_login') }}">CONNEXION</a>
+                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">PANIER</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">PANIER</a>
+                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_login') }}">CONNEXION</a>
                             </li>
                             {% endif %}
 
@@ -308,8 +309,15 @@
     {# NAV MOBILE #}
     <nav class="container-fluid d-block d-sm-none">
 
+        <video autoplay loop muted class="img-fluid">
+
+            <source src="/images/videos/video_the_district_projet.mp4" type="video/mp4">
+            {# <p>Votre navigateur ne prend pas en charge la vidéo.</p> #}
+
+        </video>
+
         {# CAROUSEL BIENVENUE MOBILE #}
-        <div class="row d-flex justify-content-center align-items-center fw-medium d-block d-sm-none fond_logo">
+        {# <div class="row d-flex justify-content-center align-items-center fw-medium d-block d-sm-none fond_logo">
 
             <div class="col-12">
 
@@ -317,7 +325,7 @@
 
             </div>
 
-        </div>
+        </div> #}
 
     </nav>
 
@@ -325,7 +333,7 @@
     {% block body %}{% endblock %}
 
 
-    {# RETOUR HAUT DE PAGE #}
+    {# RETOUR HAUT DE PAGE DESKTOP #}
     <div class="row d-none d-lg-block">
 
         <div class="col-12 d-flex justify-content-end">
