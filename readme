@@ -20,3 +20,5 @@ Effacer le cache:                       php bin/console cache:clear
 
 Valider modifications Entity:           php bin/console make:migration
                                         php bin/console doctrine:migrations:migrate
+
+Créer un formulaire:                    php bin/console make:form
