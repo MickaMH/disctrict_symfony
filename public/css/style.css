@@ -1,9 +1,21 @@
 parallax_desktop{
-    background-image: url("/images/parallax/parallax_bois.jpeg");
+    background-image: url("/images/parallax/image_main.webp");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+eader {
+    background-image: url('/images/parallax/image_nav.webp');
+    background-size: cover;
+    background-position: center;   
+}
+
+ain {
+    background-image: url('/images/parallax/image_main.webp');
+    background-size: cover;
+    background-position: center;   
 }
 
 .couleur_fond{
@@ -90,20 +102,14 @@ parallax_desktop{
     color:black;
 }
 
-bordures_bienvenue{
-    background-color: white;
-    border-radius: 2rem 2rem;
-    border: 0.2rem solid black;
-}
-
 .bienvenue_desktop{
     color: black;
     font-size: 4rem;
 }
 
 .bienvenue_mobile{
-    color: white;
-    font-size: 4rem;
+    color: black;
+    font-size: 2.5rem;
 }
 
 .liens_header{
@@ -395,10 +401,18 @@ p{
     color: red;
 }
 
-/* .online{
-    border: 0.2rem solid green;
-    border-radius: ;
-} */
+.bordures_suggestions{
+    /* border: 0.3rem solid #980848;
+    border-top: none;
+    border-bottom-left-radius: 2rem 2rem;
+    border-bottom-right-radius: 2rem 2rem; */
+    border-bottom: 0.1rem solid grey;
+}
+
+.bordures_suggestions_mobile{
+    border-bottom-left-radius: 2rem 2rem;border: 0.3rem solid #980848;
+    border-bottom-right-radius: 2rem 2rem;
+}
 
 
 /*NEON*/

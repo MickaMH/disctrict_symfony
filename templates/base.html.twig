@@ -23,10 +23,10 @@
     {# HEADER #}
     <header class="container-fluid">
 
-        <div class="row">
+        {# NAVBAR DESKTOP #}
+        <div class="row d-none d-lg-block">
 
-            {# NAVBAR DESKTOP #}
-            <nav class="navbar navbar-expand-lg d-none d-lg-block">
+            <nav class="navbar navbar-expand-lg">
 
                 <div class="container-fluid">
 
@@ -60,12 +60,12 @@
                             {# BARRE DE RECHERCHE #}
                             <div class="row mt-lg-5 d-flex justify-content-center">
 
-                                <form action="#" method="get" class="z-3 d-flex champ_recherche" style="width: 44rem; height: 3rem;">
+                                <form action="#" method="get" class="z-3 d-flex champ_recherche fond_input" style="width: 44rem; height: 3rem;">
 
-                                    <span class="input-group-text fs-4 sans_bordures bg-white ms-1">&#x1F50E;</span>
+                                    <span class="input-group-text fs-4 sans_bordures fond_input ms-1">&#x1F50E;</span>
 
                                     <input type="search" name="query" value="{{ app.request.query.get('query') }}"
-                                        placeholder="Tapez une recherche puis Entrée" class="fs-5 fw-medium sans_bordures" style="width: 28rem; height: 2.4rem;">
+                                        placeholder="Tapez une recherche puis Entrée" class="fs-5 fw-medium sans_bordures fond_input" style="width: 28rem; height: 2.4rem;">
 
                                     {# Résultats de recherche #}
                                     <div class="me-2">
@@ -78,7 +78,7 @@
                                         <ul style="width: 21rem; height: auto;">
 
                                             {% for plat in plats %}
-                                            <li class="li_recherche bg-white border_suggestions">
+                                            <li class="li_recherche fond_input">
 
                                                 <a href="{{ path('app_page_plat', {'id': plat.id}) }}" class="d-flex liens_header_bonjour">
 
@@ -123,7 +123,7 @@
 
                                     <a class="liens_header fs-1 fw-medium" href="{{ path('app_compte', { userId: app.user.id }) }}">
                                         <span class="liens_header_souligne fs-1 fw-medium">{{ app.user.prenom }}</span>
-                                        <sup class="online">&#x25CF;</sup>
+                                        <sup class="online fs-2">&#x25CF;</sup>
                                     </a>
 
                                 </div>
@@ -132,7 +132,7 @@
                                 <a class=" liens_header fs-1 fw-medium justify-content-end" href="{{ path('app_login') }}">
                                     <img src="/images/icones/icone_user_district.webp" width="35" height="auto" class="mb-2">
                                     Connexion
-                                    <sup class="offline">&#x25CF;</sup>
+                                    <sup class="offline fs-2">&#x25CF;</sup>
                                 </a>
 
                                 <a class="liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">
@@ -151,20 +151,24 @@
 
             </nav>
 
-            {# NAVBAR MOBILE #}
-            <nav class="navbar navbar-expand-lg d-block d-lg-none">
+        </div>
+
+        {# NAVBAR MOBILE #}
+        <div class="row d-block d-lg-none">
+
+            <nav class="navbar navbar-expand-lg">
 
                 <div class="container-fluid">
 
-                    <a class="navbar-brand" href="{{ path('app_accueil') }}">
+                    {# <a class="navbar-brand" href="{{ path('app_accueil') }}">
                         <img src="/images/district/logo.webp" alt="Logo The District" width="100" height="auto" class="bordures_logo">
-                    </a>
+                    </a> #}
     
-                    <div class="">
+                    {# <div class=""> #}
 
                         <div class="d-flex justify-content-end">
 
-                            <button class="navbar-toggler bordures border-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="navbar-toggler bordures border-4 fond_input" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
 
@@ -180,7 +184,7 @@
 
                             <a class="liens_header fw-medium" href="{{ path('app_compte') }}">
                                 <img src="/images/icones/icone_user_district.webp" width="45" height="auto" class="">
-                                <sup class="online">&#x25CF;</sup>
+                                <sup class="online fs-1">&#x25CF;</sup>
                             </a>
 
                                 {# <div class="d-flex mt-0">
@@ -197,13 +201,13 @@
 
                             <a class="liens_header fw-medium" href="{{ path('app_login') }}">
                                 <img src="/images/icones/icone_user_district.webp" width="45" height="auto" class="">
-                                <sup class="offline">&#x25CF;</sup>
+                                <sup class="offline fs-1">&#x25CF;</sup>
                             </a>
                             {% endif %}
 
                         </div>
 
-                    </div>
+                    {# </div> #}
 
                     <div class="collapse navbar-collapse" id="navbarNav">
                         
@@ -259,6 +263,51 @@
 
         </div>
 
+
+        {# BARRE DE RECHERCHE MOBILE #}
+        <div class="row mt-lg-5 mb-2 d-block d-lg-none">
+
+            <form action="#" method="get" class="col-12 d-flex champ_recherche fond_input">
+
+                <span class="input-group-text fs-5 sans_bordures p-1 fond_input">&#x1F50E;</span>
+
+                <input type="search" name="query" value="{{ app.request.query.get('query') }}"
+                        placeholder="Tapez une recherche et Entrée" class="col-10 fs-6 fw-medium sans_bordures fond_input">
+
+            </form>
+
+            {# Résultats de recherche #}
+            <div class="col-11 mx-auto">
+
+                {% if app.request.query.get('query') %}
+
+                {% set searchQuery = app.request.query.get('query') %}
+                {% set plats = search_service.searchPlatsByQuery(searchQuery) %}
+    
+                {# <ul> #}
+
+                {% for plat in plats %}
+                <li class="col-12 li_recherche bg-white mb-2 border_historique">
+
+                    <a href="{{ path('app_page_plat', {'id': plat.id}) }}" class="d-flex liens_header_bonjour">
+
+                        <img src="/images/plats/{{ plat.image }}" class="m-1 rounded-3 w-25 border_image img-fluid" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
+
+                        <div class="fs-5 fw-medium align-content-center ms-1">{{ plat.libelle }}</div>
+
+                    </a>
+
+                </li>
+                {% endfor %}
+
+                {# </ul> #}
+        
+                {% endif %}
+
+            </div>
+
+        </div>
+
     </header>
 
 
@@ -306,26 +355,22 @@
 
     </nav>
 
+
     {# NAV MOBILE #}
-    <nav class="container-fluid d-block d-sm-none">
+    <nav class="container-fluid d-block d-lg-none">
 
-        <video autoplay loop muted class="img-fluid">
-
-            <source src="/images/videos/video_the_district_projet.mp4" type="video/mp4">
-            {# <p>Votre navigateur ne prend pas en charge la vidéo.</p> #}
-
-        </video>
-
-        {# CAROUSEL BIENVENUE MOBILE #}
-        {# <div class="row d-flex justify-content-center align-items-center fw-medium d-block d-sm-none fond_logo">
+        {# LOGO DISTRICT NAV MOBILE #}
+        <div class="row d-flex justify-content-center align-items-center fw-medium fond_logo">
 
             <div class="col-12">
 
-                <img src="/images/district/ecriture_district_blanc.webp" class="img-fluid mt-4 mb-4">
+                <a href="{{ path('app_accueil') }}">
+                    <img src="/images/district/district_nav_mobile.webp" class="img-fluid" alt="Logo District / Lien vers Accueil" title="Logo District / Lien vers Accueil">
+                </a>
 
             </div>
 
-        </div> #}
+        </div>
 
     </nav>
 
