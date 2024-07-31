@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation suppression{% endblock %}
+
+{% block body %}
+<main>
+
+    <div class="row text-center">
+
+        <div class="col fs-3 m-5">
+            <p>Votre compte a bien été supprimé.</p>
+            <p>A bientôt chez The District.</p>
+        </div>
+
+    </div>
+
+    <div class="row mb-5">
+
+        <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 bouton_categories"
+            id="precedent" style="width: 15rem; height: 3rem;"  href="{{ path('app_accueil') }}" role="button">Retour à l'accueil</a>
+
+    </div>
+
+</main>
+{% endblock %}

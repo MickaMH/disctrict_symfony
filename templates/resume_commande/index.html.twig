@@ -155,6 +155,7 @@
 
     {# ADRESSES #}
     <div class="row mb-5 m-lg-5">
+        {% if app.user %}
 
         <div class="col-lg-12">
 
@@ -163,8 +164,6 @@
         </div>
 
         <div class="col-lg-12 d-lg-flex justify-content-around">
-
-            {% if app.user %}
 
             {# ADRESSE DE FACTURATION DESKTOP #}
             <div class="col-lg-5 border_adresse d-none d-lg-block">
@@ -178,15 +177,15 @@
                     <tbody class="fs-4">
                         <tr>
                             <td class="col-lg-4 fw-medium">Adresse :</td>
-                            <td class="col-lg-8">{{ app.user.adresse }}</td>
+                            <td class="col-lg-8">{{ app.user.adresseFacturation ?: app.user.adresse }}</td>
                         </tr>
                         <tr>
                             <td class="fw-medium">Code postal :</td>
-                            <td>{{ app.user.cp }}</td>
+                            <td>{{ app.user.cpFacturation ?: app.user.cp }}</td>
                         </tr>
                         <tr>
                             <td class="fw-medium">Ville :</td>
-                            <td>{{ app.user.ville }}</td>
+                            <td>{{ app.user.villeFacturation ?: app.user.ville }}</td>
                         </tr>
                     </tbody>
 
@@ -205,6 +204,8 @@
                             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 
                                 <div class="accordion-body fw-normal fs-4 text-start">
+                                    {{ form_start(formFacturation) }}
+                                    {{ form_errors(formFacturation) }}
 
                                     <table class="table">
 
@@ -212,28 +213,57 @@
                                             <tr>
                                                 <td class="fw-medium">Adresse :</td>
                                                 <td>
-                                                    <input type="text" id="adresse" name="adresse" class="bordures fond_input rounded-3 border-3" maxlength="50">
-                                                    
+                                                    {{ form_widget(formFacturation.adresse_facturation, {
+                                                        'attr': {
+                                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formFacturation.adresse_facturation) }}
+                                                    </div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="fw-medium">Code postal :</td>
                                                 <td>
-                                                    <input type="text" id="codepostal" name="codepostal" class="bordures fond_input rounded-3 border-3" maxlength="5" style="width: 5rem;">
-                                                    
+                                                    {{ form_widget(formFacturation.cp_facturation, {
+                                                        'attr': {
+                                                        'class': 'col-3 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formFacturation.cp_facturation) }}
+                                                    </div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="fw-medium">Ville :</td>
                                                 <td>
-                                                    <input type="text" id="ville" name="ville" class="bordures fond_input rounded-3 border-3" maxlength="30">
-                                                
+                                                    {{ form_widget(formFacturation.ville_facturation, {
+                                                        'attr': {
+                                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formFacturation.ville_facturation) }}
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </tbody>
 
                                     </table>
 
+                                    <div class="col-12 mt-3 d-flex justify-content-center">
+                                        {{ form_row(formFacturation.modifier_facturation, {
+                                            label: "Modifier",
+                                                'attr': {
+                                                'class': 'd-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer',
+                                                'style': 'width: 10rem; height: 3rem;'
+                                                }
+                                        }) }}
+                                    </div>
+
+                                    {{ form_end(formFacturation) }}
                                 </div>
 
                             </div>
@@ -259,21 +289,21 @@
                             <td class="fw-medium">Adresse :</td>
                         </tr>
                         <tr class="border_panier_mobile">
-                            <td>{{ app.user.adresse }}</td>
+                            <td>{{ app.user.adresseFacturation ?: app.user.adresse }}</td>
                         </tr>
 
                         <tr>
                             <td class="fw-medium">Code postal :</td>
                         </tr>
                         <tr class="border_panier_mobile">
-                            <td>{{ app.user.cp }}</td>
+                            <td>{{ app.user.cpFacturation ?: app.user.cp }}</td>
                         </tr>
 
                         <tr>
                             <td class="fw-medium">Ville :</td>
                         </tr>
                         <tr class="border_panier_mobile">
-                            <td>{{ app.user.ville }}</td>
+                            <td>{{ app.user.villeFacturation ?: app.user.ville }}</td>
                         </tr>
                     </tbody>
 
@@ -292,6 +322,8 @@
                             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 
                                 <div class="accordion-body fw-normal fs-4">
+                                    {{ form_start(formFacturationMobile) }}
+                                    {{ form_errors(formFacturationMobile) }}
 
                                     <table class="table">
 
@@ -302,7 +334,14 @@
                                             </tr>
                                             <tr class="border_panier_mobile">
                                                 <td>
-                                                    <input type="text" id="adresse" name="adresse" class="col-12 bordures fond_input rounded-3 border-3" maxlength="50">
+                                                    {{ form_widget(formFacturationMobile.adresse_facturation, {
+                                                        'attr': {
+                                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formFacturationMobile.adresse_facturation) }}
+                                                    </div>
                                                 </td>
                                             </tr>
 
@@ -311,8 +350,14 @@
                                             </tr>
                                             <tr class="border_panier_mobile">
                                                 <td>
-                                                    <input type="text" id="codepostal" name="codepostal" class="col-4 bordures fond_input rounded-3 border-3" maxlength="5">
-                                                    
+                                                    {{ form_widget(formFacturationMobile.cp_facturation, {
+                                                        'attr': {
+                                                        'class': 'col-4 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formFacturationMobile.cp_facturation) }}
+                                                    </div>
                                                 </td>
                                             </tr>
 
@@ -321,7 +366,14 @@
                                             </tr>
                                             <tr class="border_panier_mobile">
                                                 <td>
-                                                    <input type="text" id="ville" name="ville" class="col-12 bordures fond_input rounded-3 border-3" maxlength="30">
+                                                    {{ form_widget(formFacturationMobile.ville_facturation, {
+                                                        'attr': {
+                                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formFacturationMobile.ville_facturation) }}
+                                                    </div>
                                                 </td>
                                             </tr>
 
@@ -329,6 +381,17 @@
 
                                     </table>
 
+                                    <div class="col-12 mt-3 d-flex justify-content-center">
+                                        {{ form_row(formFacturationMobile.modifier_facturation_mobile, {
+                                            label: "Modifier",
+                                                'attr': {
+                                                'class': 'd-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer',
+                                                'style': 'width: 10rem; height: 3rem;'
+                                                }
+                                        }) }}
+                                    </div>
+
+                                    {{ form_end(formFacturationMobile) }}
                                 </div>
 
                             </div>
@@ -339,7 +402,7 @@
 
             </div>
 
-            {# ADRESSE DE LIVRAISON #}
+            {# ADRESSE DE LIVRAISON DESKTOP #}
             <div class="col-lg-5 border_adresse d-none d-lg-block">
 
                 <div class="fs-3 fw-bold border_thead">
@@ -351,15 +414,15 @@
                     <tbody class="fs-4">
                         <tr>
                             <td class="col-lg-4 fw-medium">Adresse :</td>
-                            <td class="col-lg-8">{{ app.user.adresse }}</td>
+                            <td class="col-lg-8">{{ app.user.adresseLivraison ?: app.user.adresse }}</td>
                         </tr>
                         <tr>
                             <td class="fw-medium">Code postal :</td>
-                            <td>{{ app.user.cp }}</td>
+                            <td>{{ app.user.cpLivraison ?: app.user.cp }}</td>
                         </tr>
                         <tr>
                             <td class="fw-medium">Ville :</td>
-                            <td>{{ app.user.ville }}</td>
+                            <td>{{ app.user.villeLivraison ?: app.user.ville }}</td>
                         </tr>
                     </tbody>
 
@@ -378,37 +441,66 @@
                             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 
                                 <div class="accordion-body fw-normal fs-4 text-start">
+                                    {{ form_start(formLivraison) }}
+                                    {{ form_errors(formLivraison) }}
 
                                     <table class="table">
 
                                         <tbody class="fs-4">
                                             <tr>
                                                 <td class="fw-medium">Adresse :</td>
-                                                <td><input type="text" id="adresse" name="adresse" class="bordures fond_input rounded-3 border-3" maxlength="50"></td>
+                                                <td>
+                                                    {{ form_widget(formLivraison.adresse_livraison, {
+                                                        'attr': {
+                                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formLivraison.adresse_livraison) }}
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="fw-medium">Code postal :</td>
-                                                <td><input type="text" id="codepostal" name="codepostal" class="bordures fond_input rounded-3 border-3" maxlength="5" style="width: 5rem;"></td>
+                                                <td>
+                                                    {{ form_widget(formLivraison.cp_livraison, {
+                                                        'attr': {
+                                                        'class': 'col-3 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formLivraison.cp_livraison) }}
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="fw-medium">Ville :</td>
-                                                <td><input type="text" id="ville" name="ville" class="bordures fond_input rounded-3 border-3" maxlength="30"></td>
+                                                <td>
+                                                    {{ form_widget(formLivraison.ville_livraison, {
+                                                        'attr': {
+                                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formLivraison.ville_livraison) }}
+                                                    </div>
+                                                </td>
                                             </tr>
                                         </tbody>
 
                                     </table>
 
-                                    {# <label for="adresse" class="mb-2">Adresse :</label>
-                                    <input type="text" id="adresse" name="adresse" class="bordures fond_input rounded-3 border-3">
-                                    <br>
+                                    <div class="col-12 mt-3 d-flex justify-content-center">
+                                        {{ form_row(formLivraison.modifier_livraison, {
+                                            label: "Modifier",
+                                                'attr': {
+                                                'class': 'd-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer',
+                                                'style': 'width: 10rem; height: 3rem;'
+                                                }
+                                        }) }}
+                                    </div>
 
-                                    <label for="codepostal" class="mb-2">Code postal :</label>
-                                    <input type="text" id="codepostal" name="codepostal" class="bordures fond_input rounded-3 border-3">
-                                    <br>
-
-                                    <label for="ville" class="mb-2">Ville :</label>
-                                    <input type="text" id="ville" name="ville" class="bordures fond_input rounded-3 border-3"> #}
-
+                                    {{ form_end(formLivraison) }}
                                 </div>
 
                             </div>
@@ -434,21 +526,21 @@
                             <td class="fw-medium">Adresse :</td>
                         </tr>
                         <tr class="border_panier_mobile">
-                            <td>{{ app.user.adresse }}</td>
+                            <td>{{ app.user.adresseLivraison ?: app.user.adresse }}</td>
                         </tr>
 
                         <tr>
                             <td class="fw-medium">Code postal :</td>
                         </tr>
                         <tr class="border_panier_mobile">
-                            <td>{{ app.user.cp }}</td>
+                            <td>{{ app.user.cpLivraison ?: app.user.cp }}</td>
                         </tr>
 
                         <tr>
                             <td class="fw-medium">Ville :</td>
                         </tr>
                         <tr class="border_panier_mobile">
-                            <td>{{ app.user.ville }}</td>
+                            <td>{{ app.user.villeLivraison ?: app.user.ville }}</td>
                         </tr>
                     </tbody>
 
@@ -467,6 +559,8 @@
                             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 
                                 <div class="accordion-body fw-normal fs-4">
+                                    {{ form_start(formLivraisonMobile) }}
+                                    {{ form_errors(formLivraisonMobile) }}
 
                                     <table class="table">
 
@@ -477,7 +571,14 @@
                                             </tr>
                                             <tr class="border_panier_mobile">
                                                 <td>
-                                                    <input type="text" id="adresse" name="adresse" class="col-12 bordures fond_input rounded-3 border-3" maxlength="50">
+                                                    {{ form_widget(formLivraisonMobile.adresse_livraison, {
+                                                        'attr': {
+                                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formLivraisonMobile.adresse_livraison) }}
+                                                    </div>
                                                 </td>
                                             </tr>
 
@@ -486,7 +587,14 @@
                                             </tr>
                                             <tr class="border_panier_mobile">
                                                 <td>
-                                                    <input type="text" id="codepostal" name="codepostal" class="col-4 bordures fond_input rounded-3 border-3" maxlength="5">
+                                                    {{ form_widget(formLivraisonMobile.cp_livraison, {
+                                                        'attr': {
+                                                        'class': 'col-4 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formLivraisonMobile.cp_livraison) }}
+                                                    </div>
                                                     
                                                 </td>
                                             </tr>
@@ -496,7 +604,14 @@
                                             </tr>
                                             <tr class="border_panier_mobile">
                                                 <td>
-                                                    <input type="text" id="ville" name="ville" class="col-12 bordures fond_input rounded-3 border-3" maxlength="30">
+                                                    {{ form_widget(formLivraisonMobile.ville_livraison, {
+                                                        'attr': {
+                                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formLivraisonMobile.ville_livraison) }}
+                                                    </div>
                                                 </td>
                                             </tr>
 
@@ -504,6 +619,17 @@
 
                                     </table>
 
+                                    <div class="col-12 mt-3 d-flex justify-content-center">
+                                        {{ form_row(formLivraisonMobile.modifier_livraison_mobile, {
+                                            label: "Modifier",
+                                                'attr': {
+                                                'class': 'd-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer',
+                                                'style': 'width: 10rem; height: 3rem;'
+                                                }
+                                        }) }}
+                                    </div>
+
+                                    {{ form_end(formLivraisonMobile) }}
                                 </div>
 
                             </div>
@@ -514,10 +640,9 @@
 
             </div>
 
-            {% endif %}
-
         </div>
 
+        {% endif %}
     </div>
 
 

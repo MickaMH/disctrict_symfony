@@ -17,10 +17,6 @@ class FacturationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            
-            // ->add('adresse_facturation')
-            // ->add('cp_facturation')
-            // ->add('ville_facturation')
 
             // ->add('adresse_facturation', TextareaType::class, [
             //     'label' => 'Adresse facturation',
@@ -58,8 +54,7 @@ class FacturationType extends AbstractType
                 ],
             ])
 
-            ->add('modifier_facturation', SubmitType::class, [
-                'label' => "Modifier l'adresse"])
+            ->add('modifier_facturation', SubmitType::class)
 
         ;
     }

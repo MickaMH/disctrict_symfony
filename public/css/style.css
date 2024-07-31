@@ -208,6 +208,7 @@ input:focus, input.form-control:focus {
     background-color: #980848;
     color: white;
     border: none;
+    text-decoration: none;
 }
 
 .bouton_mini{

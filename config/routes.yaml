@@ -10,4 +10,7 @@ search:
     controller: App\Controller\SearchController::searchAction
     methods: [GET]
 
-    
+
+app_compte_supprimer:
+    path: /compte/supprimer
+    controller: App\Controller\CompteController::supprimerCompte

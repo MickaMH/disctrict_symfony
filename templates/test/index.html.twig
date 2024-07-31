@@ -10,6 +10,8 @@
 
 <h1>Hello {{ controller_name }}! ✅</h1>
 
+
+{# FACTURATION #}
 <div class="">
 
 <div class="">
@@ -20,7 +22,7 @@
             {{ app.user.getAdresseFacturation() }}<br>
             {{ app.user.getCpFacturation() }}<br>
             {{ app.user.getVilleFacturation() }} 
-        {% endif %}
+
 
     </div>
 
@@ -29,6 +31,125 @@
 <br>
 
 <div>
+{{ form_start(formFacturation, {'attr': {'class': 'row m-sm-1 m-lg-5 d-flex justify-content-center'}}) }}
+    {{ form_errors(formFacturation) }}
+
+
+
+        
+
+        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+            {{ form_label(formFacturation.ville_facturation) }}
+            {{ form_widget(formFacturation.ville_facturation, {
+                'attr': {
+                    'class': 'form-control fs-4 border-3 bordures fond_input',
+                }
+            }) }}
+            {{ form_help(formFacturation.ville_facturation) }}
+            <div class="message_erreur">
+            {{ form_errors(formFacturation.ville_facturation) }}
+            </div>
+        </div>
+
+        <div class="col-12 mt-3">
+            {{ form_row(formFacturation.modifier_facturation, {
+                label: "Modifier",
+                'attr': {
+                    'class': 'd-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer',
+                    'style': 'width: 10rem; height: 3rem;'
+                }
+            }) }}
+        </div>
+
+        {# ADRESSE DE FACTURATION DESKTOP #}
+            <div class="col-lg-5 border_adresse d-none d-lg-block">
+                
+                <div class="fs-3 fw-bold border_thead">
+                    <p class="my-auto ms-2 mt-2 mb-2">Adresse de facturation</p>
+                </div>
+                
+                <table class="table">
+
+                    <tbody class="fs-4">
+                        <tr>
+                            <td class="col-lg-4 fw-medium">Adresse :</td>
+                            <td class="col-lg-8">{{ app.user.getAdresseFacturation }}</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-medium">Code postal :</td>
+                            <td>{{ app.user.getCpFacturation }}</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-medium">Ville :</td>
+                            <td>{{ app.user.getVilleFacturation }}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                <div class="fs-4 fw-bold text-center">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed fs-3 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Modifier l'adresse de facturation
+                                </button>
+                            </h2>
+
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+
+                                <div class="accordion-body fw-normal fs-4 text-start">
+
+                                    <table class="table">
+
+                                        <tbody class="fs-4">
+                                            <tr>
+                                                <td class="fw-medium">Adresse :</td>
+                                                <td>
+                                                    {{ form_widget(formFacturation.adresse_facturation, {
+                                                        'attr': {
+                                                        'class': 'form-control fs-4 border-3 bordures fond_input',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formFacturation.adresse_facturation) }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-medium">Code postal :</td>
+                                                <td>
+                                                    {{ form_widget(formFacturation.cp_facturation, {
+                                                        'attr': {
+                                                        'class': 'form-control fs-4 border-3 bordures fond_input',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                        z{{ form_errors(formFacturation.cp_facturation) }}
+            </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-medium">Ville :</td>
+                                                <td>
+                                                    <input type="text" id="ville" name="ville" class="bordures fond_input rounded-3 border-3" maxlength="30">
+                                                
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
     {{ form(formFacturation) }} 
 
@@ -36,16 +157,16 @@
 
 </div>
 
-
+{# LIVRAISON #}
 <div class="mt-5">
 
     <div>
 
-        {% if app.user %}
+
             {{ app.user.getAdresseLivraison() }}<br>
             {{ app.user.getCpLivraison() }}<br>
             {{ app.user.getVilleLivraison() }} 
-        {% endif %}
+
 
     </div>
 
@@ -60,4 +181,11 @@
 </div>
 
 </div>
+
+
+
+            
+
+{% endif %}
+
 {% endblock %}

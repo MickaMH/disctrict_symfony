@@ -19,7 +19,13 @@
 
     </div>
 
-    <div class="row d-flex justify-content-around mt-2 mb-5">
+    <div class="row">
+
+        <p class="col-lg-6 offset-lg-3 liens_header_bonjour fs-2 fw-medium">Bonjour <span class="lettres">{{ app.user.prenom }}<span></p>
+
+    </div>
+
+    <div class="row d-flex justify-content-around mb-5">
 
         <div class="accordion col-lg-7" id="accordionExample">
 
@@ -281,6 +287,7 @@
 
             </div>
 
+            {# SUPPRIMER LE COMPTE #}
             <div class="accordion-item bordures_accordion">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed fs-3 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -290,12 +297,23 @@
                 <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <p class="fs-4 mt-2">Vous pouvez supprimer votre compte ci-dessous :</p>
-                        <button type="button" class="d-none d-lg-block mb-3 mx-auto d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer" style="width: 18rem; height: 3rem;">
+
+                        <div class="d-none d-lg-block">
+                        <a href="{{ path('app_compte_supprimer') }}"
+                                class="mb-3 d-flex justify-content-center align-items-center mx-auto fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer"
+                                style="width: 18rem; height: 3rem;">
                             Supprimer le compte
-                        </button>
-                        <button type="button" class="d-block d-sm-none mb-3 mx-auto d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer" style="width: 15rem; height: 3rem;">
+                        </a>
+                        </div>
+                        
+                        <div class="d-block d-sm-none">
+                        <a href="{{ path('app_compte_supprimer') }}"
+                                class="mb-3 mx-auto d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer"
+                                style="width: 15rem; height: 3rem;">
                             Supprimer le compte
-                        </button>
+                        </a>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -303,13 +321,13 @@
 
     </div>
 
-    {# BOUTON ACCUEIL #}
-    <div class="row mb-5">
+    {# BOUTON SE DECONNECTER #}
+    <div class="row mt-5 mb-5">
 
         <div class="col-sm-12 col-lg-12 d-flex justify-content-center">
 
             <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories"
-                style="width: 10rem; height: 3rem;" href="{{ path('app_logout') }}" role="button">Se déconnecter</a>
+                style="width: 15rem; height: 3rem;" href="{{ path('app_logout') }}" role="button">Se déconnecter</a>
 
         </div>
 

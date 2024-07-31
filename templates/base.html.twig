@@ -42,11 +42,11 @@
 
                         <div class="navbar-nav">
 
-                            <div class="container ms-5">
+                            <div class="container ms-lg-5">
 
-                            <div class="row">
+                            <div class="row ms-lg-5">
 
-                                <div class="col d-flex gap-lg-5">
+                                <div class="col-lg-12 d-flex gap-lg-5">
 
                                     <a class=" liens_header fs-1 fw-medium" aria-current="page" href="{{ path('app_accueil') }}">ACCUEIL</a>
                                     <a class=" liens_header fs-1 fw-medium" href="{{ path('app_categories') }}">CATÉGORIES</a>
@@ -58,7 +58,7 @@
                             </div>
 
                             {# BARRE DE RECHERCHE #}
-                            <div class="row mt-lg-5 d-flex justify-content-center">
+                            <div class="row mt-lg-5 ms-lg-5 d-flex justify-content-center">
 
                                 <form action="#" method="get" class="z-3 d-flex champ_recherche fond_input" style="width: 44rem; height: 3rem;">
 
@@ -103,7 +103,9 @@
 
                             </div>
 
-                            <div class="container ms-5 d-flex flex-column">
+                            <div class="container ms-lg-5 d-flex flex-column">
+
+                                <div class="row ms-lg-5">
 
                                 {# CONNEXION #}
                                 {% if app.user %}
@@ -141,6 +143,8 @@
                                 </a>
                                 {% endif %}
 
+                                </div>
+
                             </div>
 
                         </div>
@@ -163,8 +167,6 @@
                     {# <a class="navbar-brand" href="{{ path('app_accueil') }}">
                         <img src="/images/district/logo.webp" alt="Logo The District" width="100" height="auto" class="bordures_logo">
                     </a> #}
-    
-                    {# <div class=""> #}
 
                         <div class="d-flex justify-content-end">
 
@@ -206,8 +208,6 @@
                             {% endif %}
 
                         </div>
-
-                    {# </div> #}
 
                     <div class="collapse navbar-collapse" id="navbarNav">
                         

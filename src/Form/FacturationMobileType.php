@@ -12,13 +12,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class LivraisonType extends AbstractType
+class FacturationMobileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
 
-            ->add('adresse_livraison', TextType::class, [
+            // ->add('adresse_facturation', TextareaType::class, [
+            //     'label' => 'Adresse facturation',
+            //     'required' => false
+            //     ]
+            // )
+
+            ->add('adresse_facturation', TextType::class, [
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Regex([
@@ -28,7 +34,7 @@ class LivraisonType extends AbstractType
                 ],
             ])
 
-            ->add('cp_livraison', TextType::class, [
+            ->add('cp_facturation', TextType::class, [
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Regex([
@@ -38,7 +44,7 @@ class LivraisonType extends AbstractType
                 ],
             ])
 
-            ->add('ville_livraison', TextType::class, [
+            ->add('ville_facturation', TextType::class, [
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Regex([
@@ -48,7 +54,7 @@ class LivraisonType extends AbstractType
                 ],
             ])
 
-            ->add('modifier_livraison', SubmitType::class)
+            ->add('modifier_facturation_mobile', SubmitType::class)
 
         ;
     }

@@ -5,18 +5,23 @@ namespace App\Form;
 use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class LivraisonType extends AbstractType
+class LivraisonMobileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
+            // ->add('adresse_facturation', TextareaType::class, [
+            //     'label' => 'Adresse facturation',
+            //     'required' => false
+            //     ]
+            // )
 
             ->add('adresse_livraison', TextType::class, [
                 'constraints' => [
@@ -48,7 +53,7 @@ class LivraisonType extends AbstractType
                 ],
             ])
 
-            ->add('modifier_livraison', SubmitType::class)
+            ->add('modifier_livraison_mobile', SubmitType::class)
 
         ;
     }
