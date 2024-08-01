@@ -1,96 +1,65 @@
 <?php
 
+// src/Controller/TestController.php
+
 namespace App\Controller;
 
-use App\Entity\Commande;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\CommandeRepository;
+use App\Repository\PlatRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\Part\DataPart;
-use Symfony\Component\Routing\Attribute\Route;
 
 class TestController extends AbstractController
 {
     #[Route('/test', name: 'app_test')]
-public function index(EntityManagerInterface $entityManager, MailerInterface $mailer): Response
-{
-    $lastOrder = $this->getLastOrder($entityManager);
-    $plats = [];
-
-    if ($lastOrder) {
-        $commande = [
-            // Récupérez les données de la commande que vous souhaitez envoyer par email
-            'id' => $lastOrder->getId(),
-            'date' => $lastOrder->getDateCommande(),
-            // ...
-        ];
-
-        // Récupérez les détails de la commande
-        $details = $lastOrder->getDetails();
-
-        // Envoyer un email à l'utilisateur avec les informations de sa commande
-        // $this->sendNewConfirmationEmail($commande, $details, $mailer);
-    }
-
-    $plats = $this->getPlatsFromDetails($details);
-    dump($plats); // Add this line
-    return $this->render('test/index.html.twig', [
-    'commande' => $commande ?? [],
-    'details' => $details ?? [],
-    'plats' => $plats,
-]);
-}
-
-    private function getLastOrder(EntityManagerInterface $entityManager): ?Commande
+    public function index(CommandeRepository $commandeRepository, PlatRepository $platRepository, MailerInterface $mailer): Response
     {
-        if ($this->getUser()) {
-            $userId = $this->getUser()->getId();
-            $lastOrder = $entityManager->getRepository(Commande::class)->findOneBy(['utilisateur' => $userId], ['id' => 'DESC']);
+        // Récupère l'utilisateur connecté
+        $user = $this->getUser();
 
-            return $lastOrder;
+        // Récupère la dernière commande de l'utilisateur connecté
+        $lastCommande = $commandeRepository->findOneBy(['utilisateur' => $user], ['id' => 'DESC']);
+
+        // Récupère les détails de la commande
+        $details = $lastCommande->getDetails();
+
+        // Récupère les plats associés à chaque détail de commande
+        foreach ($details as $detail) {
+            $plat = $platRepository->find($detail->getPlats());
+            $detail->setPlat($plat);
         }
 
-        return null;
-    }
+        // Crée un email
+        $email = (new Email())
+        ->from('expediteur@example.com')
+        ->to($user->getEmail())
+        ->subject('Confirmation de commande')
+        ->html($this->renderView('new_confirmation.html.twig', [
+            'app' => [
+                'user' => $user,
+                ],
+            'last_commande' => $lastCommande,
+            'details' => $details,
+        ]))
 
-    private function getPlatsFromDetails(Collection $details): array
-{
-    $plats = [];
-    foreach ($details as $detail) {
-        dump($detail); // Add this line
-        $plat = $detail->getPlat();
-        if ($plat) {
-            dump($plat); // Add this line
-            $plats[] = [
-                'id' => $plat->getId(),
-                'libelle' => $plat->getLibelle(),
-                'prix' => $plat->getPrix(),
-                'image' => $detail->getImage(),
-            ];
+        ->addPart((new DataPart(fopen('C:\xampp\htdocs\disctrict_symfony\public\images\district\logo.webp', 'r'), 'logo', 'image/webp'))->asInline());
+
+        foreach ($details as $detail) {
+        $imagePath = 'C:\xampp\htdocs\disctrict_symfony\public\images\plats\\' . $detail->getPlat()->getImage();
+        $email->addPart((new DataPart(fopen($imagePath, 'r'), 'plat', 'image/webp'))->asInline());
         }
-    }
-    return $plats;
-}
 
-    private function sendNewConfirmationEmail(array $commande, Collection $details, MailerInterface $mailer)
-    {
-        if ($this->getUser()) {
-            $emailAddress = $this->getUser()->getUserIdentifier();
-            $email = (new Email())
-                ->from('TheDistrict@gmail.com') // Remplacez par votre adresse email
-                ->to($emailAddress)
-                ->subject('Récapitulatif de commande')
-                ->html($this->renderView('new_confirmation.html.twig', [
-                    'commande' => $commande,
-                    'details' => $details,
-                ]))
-                ->addPart((new DataPart(fopen('C:\xampp\htdocs\disctrict_symfony\public\images\district\logo.webp', 'r'), 'logo', 'image/webp'))->asInline());
-            // ->addPart((new DataPart(fopen('C:\xampp\htdocs\disctrict_symfony\public\images\plats\image_plat_vierge.webp', 'r'), 'plat', 'image/webp'))->asInline());
+        // Envoie l'email
+        $mailer->send($email);
 
-            $mailer->send($email);
-        }
+        return $this->render('test/index.html.twig', [
+            'controller_name' => 'TestController',
+            'last_commande' => $lastCommande,
+            'details' => $details,
+        ]);
     }
 }

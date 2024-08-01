@@ -4,15 +4,44 @@
 
 {% block body %}
 
-<!-- Afficher les données de la commande -->
-<h1>Commande n°{{ commande.id }} du {{ commande.date|date('d/m/Y') }}</h1>
+
+<!-- test/index.html.twig -->
+
+<h1>Dernière commande</h1>
+
+{% if last_commande %}
+
+    <p>Numéro de commande : {{ last_commande.id }}</p>
+    <p>Date de commande : {{ last_commande.dateCommande | date('d/m/Y') }}</p>
+    <p>Total de la commande : {{ last_commande.total }} €</p>
+    <p>Etat : {{ last_commande.etat }} </p>
 
 
-<!-- Afficher les détails de la commande -->
 <h2>Détails de la commande</h2>
 
-<p>Quantité :{% for detail in details %}{{ detail.quantite }}{% endfor %}</p>
+    <ul>
 
+    {% for detail in details %}
+
+        <li class="d-flex gap-5">
+            <img src="/images/plats/{{ detail.plat.image }}" alt="{{ detail.plat.libelle }}" class="w-25">
+            <p>{{ detail.plat.libelle }}</p>
+            <p>Quantité : {{ detail.quantite }}</p>
+            <p>Sous-total: {{ (detail.plat.prix * detail.quantite)|number_format(2, '.', ',') }} €</p>
+        </li>
+
+    {% endfor %}
+
+    </ul>
+
+<h3>Total de la commande : {{ last_commande.total }}</h3>
+
+
+
+{% else %}
+    <p>Aucune commande trouvée.</p>
+
+{% endif %}
 
 
 
