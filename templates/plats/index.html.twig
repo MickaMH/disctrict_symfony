@@ -37,6 +37,12 @@
 
                     <p class="fs-5 fw-medium fst-italic ms-3 me-3" style="width: auto; height: 11rem;"> {{ plat.description }} </p> #}
 
+                    <a href="{{ path('app_panier_add', {'id': plat.id}) }}" class="position-absolute d-flex justify-content-end">
+
+                        <img src="/images/icones/icone_panier_plus_district.webp" class="mt-1 me-1 mt-lg-0 me-lg-0 p-lg-1 w-25 panier_plus">
+
+                    </a>
+
                     <a href="{{ path('app_page_plat', {'id': plat.id}) }}"
                         class="btn_card fs-5 fw-medium text-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches">
 

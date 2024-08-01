@@ -415,6 +415,9 @@ p{
     border-bottom-right-radius: 2rem 2rem;
 }
 
+.panier_plus{
+    border-radius: 4rem 4rem;
+}
 
 /*NEON*/
 .lettres_neon_ok{
