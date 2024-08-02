@@ -19,7 +19,7 @@
 
     </div>
 
-    {# PANIER DESKTOP #}
+    {# RESUME PANIER DESKTOP #}
     <div class="row m-lg-5 d-none d-lg-block">
 
         <table class="table">
@@ -27,8 +27,9 @@
                 <thead class="fs-2 border_thead">
                     <tr>
                         <th>Plat</th>
+                        <th class="text-center">Prix unit.</th>
                         <th class="text-center">Quantité</th>
-                        <th class="text-center">Total</th>
+                        <th class="text-center">Sous-total</th>
                     </tr>
                 </thead>
 
@@ -37,11 +38,12 @@
                     {% for item in panierWithData %}
                     <tr>
                         <td>
-                            <img src="/images/plats/{{ item.plat.image }}" class="me-3 p-1 rounded-4" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}">
+                            <img src="/images/plats/{{ item.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}">
                             {{ item.plat.libelle }}
                         </td>
+                        <td class="text-center">{{ item.plat.prix }} €</td>
                         <td class="text-center">{{ item.quantite }}</td>
-                        <td class="text-center">{{ item.plat.prix * item.quantite }}.00 €</td>
+                        <td class="text-center fw-medium">{{ item.plat.prix * item.quantite }}.00 €</td>
                         {% set total = total + (item.plat.prix * item.quantite) %}
                     </tr>
                     {% endfor %}
@@ -49,8 +51,8 @@
 
                 <tfoot class="border_tfoot">
                     <tr>
-                        <td colspan="2" class="fs-2 fw-bold">Total de la commande</td>
-                        <td class="fs-4 fw-medium text-center">{{ total }}.00 €</td>
+                        <td colspan="3" class="fs-2 fw-bold">Total de la commande</td>
+                        <td class="fs-4 fw-bold text-center">{{ total }}.00 €</td>
                     </tr>
                 </tfoot>
         </table>
@@ -101,7 +103,7 @@
                             
                                 <div class="">
 
-                                    <img src="/images/plats/{{ item.plat.image }}" class=" rounded-4" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}">
+                                    <img src="/images/plats/{{ item.plat.image }}" class="img-fluid rounded-4 border_image" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}">
                                 
                                 </div>
 
@@ -746,17 +748,6 @@
 
                 </table>
 
-                {# <label for="numero_carte" class="mb-2">Numéro de carte :</label>
-                <input type="text" id="numero_carte" name="numero_carte" class="bordures fond_input rounded-3 border-3 text-center" maxlength="19" style="width: 15rem;" placeholder="0000 0000 0000 0000">
-                <br>
-                <label for="nom_titulaire" class="mb-2">Nom du titulaire :</label>
-                <input type="text" id="nom_titulaire" name="nom_titulaire" class="bordures fond_input rounded-3 border-3" maxlength="50" style="width: 20rem;">
-                <br>
-                <label for="date_expiration" class="mb-2">Date d'expiration :</label>
-                <input type="text" id="date_expiration" name="date_expiration" class="bordures fond_input rounded-3 border-3 text-center" maxlength="5" style="width: 5rem;" placeholder="01/24">
-                <br>
-                <label for="cvv">CVV :</label>
-                <input type="text" id="cvv" name="cvv" class="bordures fond_input rounded-3 border-3 text-center" maxlength="3" style="width: 4rem;"placeholder="000"> #}
             </form>
 
         </div>
@@ -808,7 +799,7 @@
     {# BOUTONS MOBILE #}
     <div class="row d-block d-sm-none">
 
-        <div class="d-flex justify-content-center mb-3">
+        <div class="d-flex justify-content-center mb-4">
 
             <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories"
                 id="precedent" style="width: 15rem; height: 3rem;"  href="{{ path('app_commande_add') }}" role="button">

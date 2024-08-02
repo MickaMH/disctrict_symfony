@@ -28,9 +28,9 @@
                 <thead class="fs-2 border_thead">
                     <tr>
                         <th>Plat</th>
-                        <th>Prix</th>
+                        <th>Prix unit.</th>
                         <th>Quantité</th>
-                        <th>Total</th>
+                        <th>Sous-total</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -39,12 +39,12 @@
                     {% for item in items %}
                         <tr>
                             <td>
-                                <img src="/images/plats/{{ item.plat.image }}" class="me-3 p-1 rounded-4" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}">
+                                <img src="/images/plats/{{ item.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}">
                                 {{ item.plat.libelle }}
                             </td>
 
                             <td>
-                                <div class="mt-4">
+                                <div class="mt-4 ms-4">
                                     {{ item.plat.prix }} &#8364;
                                 </div>
                             </td>
@@ -62,8 +62,8 @@
                             </td>
 
                             <td>
-                                <div class="mt-4">
-                                    {{ item.plat.prix * item.quantite }}.00 &#8364;
+                                <div class="mt-4 fw-medium">
+                                    {{ item.plat.prix * item.quantite }}.00 €
                                 </div>
                             </td>
 
@@ -82,7 +82,7 @@
                 <tfoot class="border_tfoot">
                     <tr>
                         <td colspan="3" class="fs-2 fw-bold">Total de la commande</td>
-                        <td class="fs-4 fw-medium">{{ total }}.00 &#8364;</td>
+                        <td class="fs-4 fw-bold">{{ total }}.00 €</td>
                     </tr>
                 </tfoot>
 
@@ -139,7 +139,7 @@
                             
                                 <div class="">
 
-                                    <img src="/images/plats/{{ item.plat.image }}" class=" rounded-4" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}">
+                                    <img src="/images/plats/{{ item.plat.image }}" class="img-fluid  rounded-4 border_image" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}">
                                 
                                 </div>
 
@@ -218,7 +218,7 @@
     {# BOUTONS MOBILES #}
     <div class="row d-block d-sm-none">
 
-        <div class="col-sm-12 d-flex justify-content-center mb-3">
+        <div class="col-sm-12 d-flex justify-content-center mb-4">
 
             <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories"
                 id="precedent" style="width: 15rem; height: 3rem;" href="{{ path('app_resume_commande') }}" role="button">

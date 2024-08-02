@@ -235,63 +235,159 @@
 
                         {# HISTORIQUE DESKTOP #}
                         <div class="d-none d-lg-block">
-                            <table class="table">
 
                             {% for commande in commandes %}
-                            <tbody class="fs-4">
-                                <tr class="border_historique">
-                                    <td>
-                                        Commande n° <span class="fw-medium">{{ commande.id }}</span> du <span class="fw-medium">{{ commande.dateCommande|date('d/m/Y') }}</span>
-                                    </td>
-                                    <td>
-                                        Montant: <span class="fw-medium">{{ commande.total }} €</span>
-                                    </td>
-                                    <td class="text-success">
-                                        Livrée &#10003;
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="col-12 modal_bouton" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ loop.index }}">
+                                <div class="fs-4 border_historique mt-2 text-start">
+                                    <p>Commande n°<span class="fw-medium">{{ commande.commande.id }}</span> du <span class="fw-medium">{{ commande.commande.dateCommande|date('d/m/Y') }}</span></p>
+                                </div>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal-{{ loop.index }}" tabindex="-1" aria-labelledby="exampleModalLabel-{{ loop.index }}" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header border_thead">
+                                            <h1 class="modal-title fs-2 fw-bold" id="exampleModalLabel-{{ loop.index }}">Commande n°{{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }} <span class="ms-5 text text-success">Livrée &#10003;</span></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+
+                                        <div class="modal-body fs-4">
+
+                                            <p class="fs-3 fw-bold">Détails de la commande</p>
+
+                                            <table class="table">
+
+                                                <tbody class="fs-4 border_historique">
+                                                    {% for detail in commande.details %}
+                                                    <tr class="fw-medium">
+                                                        <td>{{ detail.plat.libelle }}</td>
+                                                        <td>Prix unit.</td>
+                                                        <td>Quantité</td>
+                                                        <td>Sous-total</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <img src="/images/plats/{{ detail.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 8rem; height: 8rem;" alt="{{ detail.plat.libelle }}" title="{{ detail.plat.libelle }}">
+                                                        </td>
+                                                        <td class="">{{ detail.plat.prix }} €</td>
+                                                        <td>{{ detail.quantite }}</td>
+                                                        <td class="fw-medium">{{ detail.plat.prix * detail.quantite }}.00 €</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="3" class="fs-3 fw-bold">Total de la commande</td>
+                                                        <td class="fw-bold">{{ commande.commande.total }} €</td>
+                                                    </tr>
+                                                </tfoot>
+
+                                            </table>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-4 me-5 bouton_fermer_panier" data-bs-dismiss="modal">Fermer</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                             {% endfor %}
 
-                            </table>
                         </div>
 
                         {# HISTORIQUE MOBILE #}
                         <div class="d-block d-sm-none">
 
-                            <table class="table">
+                            {# <table class="table">
 
                                 {% for commande in commandes %}
                                 <tbody class="fs-4 border border-white">
 
                                     <tr>
                                         <td>
-                                            Commande n° <span class="fw-medium">{{ commande.id }}</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            du <span class="fw-medium">{{ commande.dateCommande|date('Y-m-d') }}</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            Montant: <span class="fw-medium">{{ commande.total }} €</span>
+                                            Commande n°<span class="fw-medium">{{ commande.commande.id }}</span>
                                         </td>
                                     </tr>
 
                                     <tr class="border_historique">
-                                        <td class="text-success">
-                                            Livrée &#10003;
+                                        <td>
+                                            du <span class="fw-medium">{{ commande.commande.dateCommande|date('d/m/Y') }}</span>
                                         </td>
                                     </tr>
 
                                 </tbody>
                                 {% endfor %}
 
-                            </table>
+                            </table> #}
+
+                            {% for commande in commandes %}
+                            <!-- Button trigger modal -->
+                            <button type="button" class=" modal_bouton" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ loop.index }}">
+                                <div class="fs-4 border_historique mt-2 text-start">
+                                    <p>Commande n°<span class="fw-medium">{{ commande.commande.id }}</span> du <span class="fw-medium">{{ commande.commande.dateCommande|date('d/m/Y') }}</span></p>
+                                </div>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal-{{ loop.index }}" tabindex="-1" aria-labelledby="exampleModalLabel-{{ loop.index }}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header border_thead">
+                                            <h1 class="modal-title fs-2 fw-bold" id="exampleModalLabel-{{ loop.index }}">Commande n°{{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }} <span class="ms-5 text text-success">Livrée &#10003;</span></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+
+                                        <div class="modal-body fs-4">
+
+                                            <p class="fs-3 fw-bold">Détails de la commande</p>
+
+                                            <table class="table">
+
+                                                <tbody class="fs-4 border_historique">
+                                                    {% for detail in commande.details %}
+                                                    <tr class="fw-medium">
+                                                        <td>{{ detail.plat.libelle }}</td>
+                                                        <td>Prix unit.</td>
+                                                        <td>Quantité</td>
+                                                        <td>Sous-total</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <img src="/images/plats/{{ detail.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 8rem; height: 8rem;" alt="{{ detail.plat.libelle }}" title="{{ detail.plat.libelle }}">
+                                                        </td>
+                                                        <td class="">{{ detail.plat.prix }} €</td>
+                                                        <td>{{ detail.quantite }}</td>
+                                                        <td class="fw-medium">{{ detail.plat.prix * detail.quantite }}.00 €</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="3" class="fs-3 fw-bold">Total de la commande</td>
+                                                        <td class="fw-bold">{{ commande.commande.total }} €</td>
+                                                    </tr>
+                                                </tfoot>
+
+                                            </table>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-4 me-5 bouton_fermer_panier" data-bs-dismiss="modal">Fermer</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
 
                         </div>
 

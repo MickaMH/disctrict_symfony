@@ -369,7 +369,6 @@ p{
 }
 
 .fleche_haut{
-    /* border: 0.2rem solid #980848; */
     border-radius: 50%;
     background-color: #980848;
     width: 4rem;
@@ -378,7 +377,6 @@ p{
 }
 
 .fleche_haut_mobile{
-    /* border: 0.2rem solid #980848; */
     border-radius: 100%;
     background-color: #980848;
     width: 3rem;
@@ -403,10 +401,6 @@ p{
 }
 
 .bordures_suggestions{
-    /* border: 0.3rem solid #980848;
-    border-top: none;
-    border-bottom-left-radius: 2rem 2rem;
-    border-bottom-right-radius: 2rem 2rem; */
     border-bottom: 0.1rem solid grey;
 }
 
@@ -418,6 +412,14 @@ p{
 .panier_plus{
     border-radius: 4rem 4rem;
 }
+
+.modal_bouton{
+    border: none;
+    background-color: white;
+}
+
+
+
 
 /*NEON*/
 .lettres_neon_ok{

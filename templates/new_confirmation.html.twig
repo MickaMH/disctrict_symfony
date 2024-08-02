@@ -6,6 +6,9 @@
         .bold{
             font-weight: bold;
         }
+        .medium{
+            font-weight: bolder;
+        }
         .justif_center{
             display: flex;
             justify-items: center;
@@ -33,10 +36,10 @@
             border: 0.1rem solid lightgrey;
         }
         .marge{
-            margin-left: 2rem;
+            margin-left: 1rem;
         }
         .marge_2{
-            margin-left: 1.5rem;
+            margin-left: 2rem;
         }
         .marge_total{
             margin-left: 1.5rem;
@@ -64,7 +67,8 @@
     <thead class="marge_thead">
     <tr>
         <th>Produit</th>
-        <th>Quantité</th>
+        <th>Prix unit.</th>
+        <th>Qté</th>
         <th>Sous-total</th>
     </tr>
     </thead>
@@ -74,14 +78,17 @@
 
     <tr>
         <td class="display_flex">
-            <img src="cid:plat" alt="Image du plat" class="plat_mail">
+            <img src="cid:plat_{{ detail.plat.id }}" alt="Image du plat" class="plat_mail">
             <span class="align_center">{{ detail.plat.libelle }}</span>
+        </td>
+        <td>
+            <span class="marge">{{ detail.plat.prix }} €</span>
         </td>
         <td>
             <span class="marge">{{ detail.quantite }}</span>
         </td>
         <td>
-            <span class="marge_2">{{ (detail.plat.prix * detail.quantite)|number_format(2, '.', ',') }} €</span>
+            <span class="medium marge_total">{{ (detail.plat.prix * detail.quantite)|number_format(2, '.', ',') }} €</span>
         </td>
 
     </tr>
@@ -91,7 +98,7 @@
 
     <tfoot>
     <tr>
-        <td colspan="2" class="bold">Total de la commande:</td>
+        <td colspan="3" class="bold">Total de la commande:</td>
         <td>
             <span class="bold marge_total">{{ last_commande.total }} €</span>
         </td>
