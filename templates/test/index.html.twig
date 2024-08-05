@@ -5,43 +5,7 @@
 {% block body %}
 
 
-<!-- test/index.html.twig -->
 
-{% for commande in commandes %}
-    <p class="fs-3 fw-medium">Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande | date('d/m/Y')  }}</p>
-
-    <p class="fs-4">Montant : {{ commande.commande.total }} €</p>
-    <p class="fs-4">Etat : Livrée &#10003;</p>
-
-    <p class="fs-4 fw-medium">Détails de la commande</p>
-
-        {% for detail in commande.details %}
-                <img src="/images/plats/{{ detail.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 7rem; height: 7rem;" alt="{{ detail.plat.libelle }}" title="{{ detail.plat.libelle }}">
-                {{ detail.plat.libelle }} Prix unitaire : {{ detail.plat.prix }} € Quantité : {{ detail.quantite }} Sous-total : {{ detail.plat.prix * detail.quantite }}.00 €
-        
-        {% endfor %}
-
-{% endfor %}
-
-<table class="table">
-
-                            {% for commande in commandes %}
-                            <tbody class="fs-4">
-                                <tr class="border_historique">
-                                    <td>
-                                        Commande n° <span class="fw-medium">{{ commande.commande.id }}</span> du <span class="fw-medium">{{ commande.commande.dateCommande|date('d/m/Y') }}</span>
-                                    </td>
-                                    <td>
-                                        Montant: <span class="fw-medium">{{ commande.commande.total }} €</span>
-                                    </td>
-                                    <td class="text-success">
-                                        Livrée &#10003;
-                                    </td>
-                                </tr>
-                            </tbody>
-                            {% endfor %}
-
-</table>
 
 
 {% endblock %}
