@@ -46,6 +46,9 @@ class ResumeCommandeController extends AbstractController
             $this->adresseLivraison($request, $entityManager, $security, $formLivraison);
             $this->adresseLivraisonMobile($request, $entityManager, $security, $formLivraisonMobile);
 
+            // Ajouter un message flash pour informer l'utilisateur
+            $this->addFlash('success', "L'adresse a bien été mise à jour.");
+
             return $this->redirectToRoute('app_resume_commande');
         }
 
