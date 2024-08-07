@@ -15,6 +15,11 @@
 {# <a href="{{ path('app_test') }}" class="text-decoration-none">
     <p class="fw-medium">TEST</p>
 </a> #}
+
+<a href="{{ path('admin') }}" class="text-decoration-none">
+    <p class="fw-medium">ADMIN</p>
+</a>
+
         {# CAROUSEL BIENVENUE DESKTOP #}
         <div class="container-fluid  d-flex align-self-center w-50 d-none d-lg-block">
 
@@ -118,6 +123,19 @@
                 </div>
 
             </div>
+
+        </div>
+
+        <div class="row d-block d-md-none text-center">
+
+                <div class="col-12">
+
+                    <p class="fs-5 fw-medium fst-italic">
+                        " Ce site est un projet de formation créé avec le framework Symfony.<br>
+                        Utilisez Mailhog pour capter les emails. "
+                    </p>
+
+                </div>
 
         </div>
 
@@ -322,7 +340,7 @@
 
                             <h5 class="card-text fs-3 mt-3 mb-0 fw-medium text-center">{{ categorie.libelle |upper }}</h5>
 
-                            <img src="/images/categories/{{ categorie.image }}" class="card-img-top p-3 rounded-5" alt="{{ categorie.libelle }}" title="{{ categorie.libelle }}">
+                            <img src="/images/categories/{{ categorie.image }}" class="m-3 img-fluid rounded-5 border_image" alt="{{ categorie.libelle }}" title="{{ categorie.libelle }}">
 
                             <a href="{{ path('app_plats_par_cat', {'id': categorie.id}) }}"
                                 class="fs-5 fw-medium d-flex justify-content-center align-items-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches bouton_mini">

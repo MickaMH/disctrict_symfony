@@ -83,6 +83,7 @@ ain {
 .zoom_2{
     transition: transform .6s;
 }
+
 .zoom_2:hover{
     transform: scale(1.3);
 }
