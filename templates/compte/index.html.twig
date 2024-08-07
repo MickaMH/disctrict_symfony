@@ -31,16 +31,32 @@
 
         <div class="accordion col-lg-7" id="accordionExample">
 
+            {% if 'ROLE_ADMIN' in app.user.roles %}
+            {# ACCES ADMIN #}
+            <div class="accordion-item bordures_accordion">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fs-3 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Administration du site
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <a class="nav-link liens_header fs-3 fw-medium" href="{{ path('admin') }}">→ Accéder au tableau de bord (Dashboard)</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
             {# INFOS PERSONNELLES #}
             <div class="accordion-item bordures_accordion">
 
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed fs-3 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <button class="accordion-button collapsed fs-3 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Informations personnelles
                     </button>
                 </h2>
 
-                <div id="collapseOne" class="accordion-collapse collapse col-lg-12" data-bs-parent="#accordionExample">
+                <div id="collapseTwo" class="accordion-collapse collapse col-lg-12" data-bs-parent="#accordionExample">
 
                     <div class="accordion-body d-flex flex-column fs-4">
 
@@ -64,14 +80,6 @@
                                         {{ app.user.prenom }}
                                     </td>
                                 </tr>
-                                {# <tr class="border_historique">
-                                    <td class="fw-medium">
-                                        Email :
-                                    </td>
-                                    <td>
-                                        {{ app.user.email }}
-                                    </td>
-                                </tr> #}
                                 <tr class="border_historique">
                                     <td class="fw-medium">
                                         Téléphone :
@@ -134,17 +142,6 @@
                                         {{ app.user.prenom }}
                                     </td>
                                 </tr>
-
-                                {# <tr>
-                                    <td class="fw-medium">
-                                        Email :
-                                    </td>
-                                </tr>
-                                <tr class="border_historique">
-                                    <td>
-                                        {{ app.user.email }}
-                                    </td>
-                                </tr> #}
 
                                 <tr>
                                     <td class="fw-medium">
@@ -226,12 +223,12 @@
             <div class="accordion-item bordures_accordion">
 
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed fs-3 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <button class="accordion-button collapsed fs-3 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Historique des commandes
                     </button>
                 </h2>
 
-                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     
                     <div class="accordion-body">
                         {% for commande in commandes %}
@@ -344,10 +341,10 @@
 
                                                 <tbody class="fs-6">
                                                     {% for detail in commande.details %}
-                    
+
                                                     <tr>
                                                         <td>
-                                
+
                                                             <div class="fw-medium">
 
                                                                 <p class="my-auto">{{ detail.plat.libelle }}</p>
@@ -360,11 +357,11 @@
 
                                                     <tr>
                                                         <td class="d-flex">
-                            
+
                                                             <div>
 
                                                                 <img src="/images/plats/{{ detail.plat.image }}" class="img-fluid rounded-4 border_image" style="width: 7rem; height: 7rem;" alt="{{ detail.plat.libelle }}" title="{{ detail.plat.libelle }}">
-                                
+
                                                             </div>
 
                                                             <div class="ms-2 d-flex flex-column">

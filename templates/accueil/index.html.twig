@@ -8,6 +8,10 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style> #}
 
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+
 
 {# MAIN #}
 <main class="container-fluid pb-lg-5">
@@ -16,9 +20,9 @@
     <p class="fw-medium">TEST</p>
 </a> #}
 
-<a href="{{ path('admin') }}" class="text-decoration-none">
+{# <a href="{{ path('admin') }}" class="text-decoration-none">
     <p class="fw-medium">ADMIN</p>
-</a>
+</a> #}
 
         {# CAROUSEL BIENVENUE DESKTOP #}
         <div class="container-fluid  d-flex align-self-center w-50 d-none d-lg-block">

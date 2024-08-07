@@ -7,6 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 
 use App\Entity\Categorie;
 use App\Entity\Plat;
+use App\Entity\Utilisateur;
 
 class Jeu1 extends Fixture
 {
@@ -15,7 +16,26 @@ class Jeu1 extends Fixture
         // $product = new Product();
         // $manager->persist($product);
 
-/* CATEGORIES */
+    // ADMINISTRATEUR
+
+        // $utilisateurs = [];
+
+        // $admin = new Utilisateur();
+        // $admin->setEmail('admindistrict@email.fr');
+        // $admin->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+        // $admin->setPassword('admindistrict');
+        // $admin->isVerified(true);
+        // $admin->setNom('Admin');
+        // $admin->setPrenom('Admin');
+        // $admin->setTelephone('0000000000');
+        // $admin->setAdresse('1 rue du District');
+        // $admin->setCp('75000');
+        // $admin->setVille('Paris');
+
+        // $utilisateurs[] = $admin;
+        // $manager->persist($admin);
+
+    /* CATEGORIES */
 
         $pizza = new Categorie();
         $pizza->setLibelle("Pizza");
@@ -71,7 +91,7 @@ class Jeu1 extends Fixture
         $boisson->setActive("1");
         $manager->persist($boisson);
 
-/* PLATS */
+    /* PLATS */
 
         $district = new PLat();
         $district->setLibelle("BURGER District");
