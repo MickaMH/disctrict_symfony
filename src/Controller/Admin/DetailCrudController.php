@@ -2,28 +2,27 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Utilisateur;
+use App\Entity\Detail;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-class UtilisateurCrudController extends AbstractCrudController
+class DetailCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Utilisateur::class;
+        return Detail::class;
     }
 
 
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInPlural('Utilisateurs')
-            ->setEntityLabelInSingular('Utilisateur');
+            ->setEntityLabelInPlural('Details')
+            ->setEntityLabelInSingular('Detail');
     }
 
 
@@ -33,27 +32,15 @@ class UtilisateurCrudController extends AbstractCrudController
             IdField::new('id')
             ->setFormTypeOption('disabled', 'disabled'),
 
-            ArrayField::new('roles'),
-
-            TextField::new('nom')
+            IntegerField::new('plats_id')
             ->setFormTypeOption('disabled', 'disabled'),
 
-            TextField::new('prenom')
+            IntegerField::new('quantite')
             ->setFormTypeOption('disabled', 'disabled'),
 
-            TextField::new('email')
+            IntegerField::new('commande_id')
             ->setFormTypeOption('disabled', 'disabled'),
-
-            TextField::new('adresse')
-            ->setFormTypeOption('disabled', 'disabled'),
-
-            TextField::new('cp')
-            ->setFormTypeOption('disabled', 'disabled'),
-
-            TextField::new('ville')
-            ->setFormTypeOption('disabled', 'disabled'),
-            
-            // TextEditorField::new('description'),
         ];
     }
+
 }

@@ -31,7 +31,7 @@
 
         <div class="accordion col-lg-7" id="accordionExample">
 
-            {% if 'ROLE_ADMIN' in app.user.roles %}
+            {% if 'ROLE_ADMIN' in app.user.roles or 'ROLE_CHEF' in app.user.roles %}
             {# ACCES ADMIN #}
             <div class="accordion-item bordures_accordion">
                 <h2 class="accordion-header">
@@ -41,7 +41,7 @@
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <a class="nav-link liens_header fs-3 fw-medium" href="{{ path('admin') }}">→ Accéder au tableau de bord (Dashboard)</a>
+                        <a class="nav-link liens_header fs-3 fw-medium" href="{{ path('admin') }}">→ Accéder au tableau de bord</a>
                     </div>
                 </div>
             </div>

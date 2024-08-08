@@ -4,7 +4,7 @@ Créer une base de données:              php bin/console doctrine:database:crea
 
 Sauvegarder une base de données:        mysqldump --user=admin --password=Afpa1234 district_data > backup_district_data.sql
 
-Supprimer une base de données:          php bin/console doctrine:database:drop --force
+Supprimer une base de données:          php bin/console doctrine:database:drop --force        ATTENTION!!!!!!!
 
 Créer une entity (table):               php bin/console make:entity disc
 
