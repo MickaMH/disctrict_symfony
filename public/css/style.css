@@ -1,8 +1,24 @@
-parallax_desktop{
-    background-image: url("/images/parallax/image_main.webp");
+.parallax_desktop{
+    background-image: url("/images/parallax/bg_resto_2_modif_2.webp");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: inherit;
+}
+
+parallax_nav{
+    background-image: url("/images/parallax/bg_resto_2_nav.webp");
+    /* background-attachment: fixed; */
+    /* background-position: center; */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+}
+
+parallax_main{
+    background-image: url("/images/parallax/bg_resto_2_main.webp");
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-repeat: repeat;
     background-size: cover;
 }
 
@@ -70,7 +86,7 @@ ain {
 .rond{
     border-radius: 5rem 5rem;
     border: 0.2rem solid black;
-    background-color: white;
+    /* background-color: white; */
 }
 
 .zoom{
@@ -423,6 +439,9 @@ p{
     background-color: white;
 }
 
+.border_none{
+    border: none;
+}
 
 
 

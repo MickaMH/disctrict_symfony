@@ -21,7 +21,7 @@
 <body class="parallax_desktop">
 
     {# HEADER #}
-    <header class="container-fluid">
+    <header class="container-fluid parallax_nav">
 
         {# NAVBAR DESKTOP #}
         <div class="row d-none d-lg-block">
@@ -31,7 +31,7 @@
                 <div class="container-fluid">
 
                     <a class="navbar-brand" href="{{ path('app_accueil') }}">
-                        <img src="/images/district/logo.webp" alt="Logo The District" width="200" height="auto" class="bordures_logo">
+                        <img src="/images/district/logo.webp" alt="Logo The District" width="200" height="auto" class="bordures_logo mt-1">
                     </a>
 
                     <button class="navbar-toggler bordures border-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -267,17 +267,17 @@
         {# BARRE DE RECHERCHE MOBILE #}
         <div class="row mt-lg-5 mb-2 d-block d-lg-none">
 
-            <form action="#" method="get" class="col-12 d-flex champ_recherche fond_input">
+            <form action="#" method="get" class="col-11 p-1 ps-2 pe-2 mx-auto d-flex champ_recherche fond_input">
 
-                <span class="input-group-text fs-5 sans_bordures p-1 fond_input">&#x1F50E;</span>
+                <span class="col-1 sans_bordures fond_input">&#x1F50E;</span>
 
                 <input type="search" name="query" value="{{ app.request.query.get('query') }}"
-                        placeholder="Tapez une recherche et Entrée" class="col-10 fs-6 fw-medium sans_bordures fond_input">
+                        placeholder="Tapez une recherche et Entrée" class="col-11 fw-medium sans_bordures fond_input">
 
             </form>
 
             {# Résultats de recherche #}
-            <div class="col-11 mx-auto">
+            <div class="col-12 mx-auto">
 
                 {% if app.request.query.get('query') %}
 
