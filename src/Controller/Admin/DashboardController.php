@@ -7,6 +7,8 @@ use App\Entity\Commande;
 use App\Entity\Detail;
 use App\Entity\Plat;
 use App\Entity\Utilisateur;
+use App\Repository\CommandeRepository;
+use App\Repository\PlatRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -16,15 +18,50 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class DashboardController extends AbstractDashboardController
 {
+    private $commandeRepository;
+    private $platRepository;
+
+    public function __construct(CommandeRepository $commandeRepository, PlatRepository $platRepository)
+    {
+        $this->commandeRepository = $commandeRepository;
+        $this->platRepository = $platRepository;
+    }
+    
+
     #[Route('/admin', name: 'admin')]
     #[IsGranted('ROLE_CHEF')]
     public function index(): Response
     {
-        // return parent::index();
+    // Récupère les commandes avec état 0
+    $commandes = $this->commandeRepository->findBy(['etat' => 0]);
 
+    // Prépare un tableau pour stocker les commandes avec leurs détails et plats
+    $commandesAvecDetails = [];
 
-        return $this->render('admin/dashboard.html.twig');
+    // Boucle sur chaque commande
+    foreach ($commandes as $commande) {
+        // Récupère les détails de la commande
+        $details = $commande->getDetails();
+
+        // Boucle sur chaque détail pour récupérer le plat associé
+        foreach ($details as $detail) {
+            $plat = $this->platRepository->find($detail->getPlats());
+            $detail->setPlat($plat);
+        }
+
+        // Stocke la commande avec ses détails et plats dans le tableau
+        $commandesAvecDetails[] = [
+            'commande' => $commande,
+            'details' => $details,
+        ];
     }
+
+    return $this->render('admin/dashboard.html.twig', [
+        'controller_name' => 'DashboardController',
+        'commandesAvecDetails' => $commandesAvecDetails,
+    ]);
+    }
+
 
     public function configureDashboard(): Dashboard
     {
@@ -42,4 +79,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Details', 'fas fa-table-cells', Detail::class);
         yield MenuItem::linkToCrud('Commandes', 'fas fa-shopping-basket', Commande::class);
     }
+    
 }

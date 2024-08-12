@@ -17,19 +17,6 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class CompteController extends AbstractController
 {
-    
-    // private $commandeRepo;
-    // private $detailRepo;
-    // private $platRepo;
-
-    // public function __construct(CommandeRepository $commandeRepo, DetailRepository $detailRepo, PlatRepository $platRepo)
-    // {
-        
-    //     $this->commandeRepo = $commandeRepo;
-    //     $this->detailRepo = $detailRepo;
-    //     $this->platRepo = $platRepo;
-    // }
-
     #[Route('/compte', name: 'app_compte')]
     public function index(CommandeRepository $commandeRepository, PlatRepository $platRepository): Response
     {
