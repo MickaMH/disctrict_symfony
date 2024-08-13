@@ -251,8 +251,29 @@
                                     <div class="modal-content">
 
                                         <div class="modal-header border_thead">
-                                            <h1 class="modal-title fs-2 fw-bold" id="exampleModalLabel-{{ loop.index }}">Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }} <span class="ms-5 text text-success">Livrée &#10003;</span></h1>
+
+                                            <h1 class="modal-title fs-2 fw-bold" id="exampleModalLabel-{{ loop.index }}">
+                                            
+                                                Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }} 
+                                            
+                                                <span class="ms-5">
+                                                {% if commande.commande.etat == 0 %}
+                                                Enregistrée
+                                                {% elseif commande.commande.etat == 1 %}
+                                                Préparation
+                                                {% elseif commande.commande.etat == 2 %}
+                                                Livraison
+                                                {% elseif commande.commande.etat == 3 %}
+                                                Livrée
+                                                {% else %}
+                                                État inconnu
+                                                {% endif %}
+                                                </span>
+                                            
+                                            </h1>
+
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
                                         </div>
 
                                         <div class="modal-body fs-4">

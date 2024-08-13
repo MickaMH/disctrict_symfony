@@ -22,3 +22,5 @@ Valider modifications Entity:           php bin/console make:migration
                                         php bin/console doctrine:migrations:migrate
 
 Créer un formulaire:                    php bin/console make:form
+
+Arreter serveur symfony:                symfony serve:stop

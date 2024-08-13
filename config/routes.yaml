@@ -14,3 +14,15 @@ search:
 app_compte_supprimer:
     path: /compte/supprimer
     controller: App\Controller\CompteController::supprimerCompte
+
+
+admin:
+    path: /admin
+    controller: App\Controller\Admin\DashboardController::index
+
+update_etat_commande:
+    path: /admin/commande/{id}/etat
+    controller: App\Controller\Admin\DashboardController::updateEtat
+    methods: [POST]
+    requirements:
+        id: \d+
