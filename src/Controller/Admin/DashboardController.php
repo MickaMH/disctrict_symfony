@@ -49,6 +49,10 @@ public function index(): Response
     // Récupère les commandes avec état 3
     $commandesLivrees = $this->commandeRepository->findBy(['etat' => 3]);
 
+    // Récupère toutes les commandes
+    $commandesAll = $this->commandeRepository->findAll();
+
+
     // Prépare un tableau pour stocker les commandes avec leurs détails et plats
     $commandesAvecDetails = [];
 
@@ -139,6 +143,7 @@ public function index(): Response
         'commandesEnCoursAvecDetails' => $commandesEnCoursAvecDetails,
         'commandesTermineesAvecDetails' => $commandesTermineesAvecDetails,
         'commandesLivreesAvecDetails' => $commandesLivreesAvecDetails,
+        'commandesAll' => $commandesAll,
     ]);
 }
 

@@ -65,9 +65,9 @@
                         {% if commande.commande.etat == 0 %}
                         Enregistrée
                         {% elseif commande.commande.etat == 1 %}
-                        Préparation
+                        En préparation
                         {% elseif commande.commande.etat == 2 %}
-                        Livraison
+                        En livraison
                         {% elseif commande.commande.etat == 3 %}
                         Livrée
                         {% else %}
@@ -264,7 +264,7 @@
             {% endfor %}
 
             {% else %}
-            <p class="text-center mt-5">" Aucune nouvelle commande pour le moment. "</p>
+            <p class="text-center mt-5">" Pas de nouvelle commande pour le moment. "</p>
             {% endif %}
 
         </div>
@@ -285,9 +285,9 @@
                         {% if commande.commande.etat == 0 %}
                         Enregistrée
                         {% elseif commande.commande.etat == 1 %}
-                        Préparation
+                        En préparation
                         {% elseif commande.commande.etat == 2 %}
-                        Livraison
+                        En livraison
                         {% elseif commande.commande.etat == 3 %}
                         Livrée
                         {% else %}
@@ -484,7 +484,7 @@
             {% endfor %}
 
             {% else %}
-            <p class="text-center mt-5">" Aucune commande en préparation pour le moment. "</p>
+            <p class="text-center mt-5">" Pas de commande en préparation pour le moment. "</p>
             {% endif %}
 
         </div>
@@ -505,9 +505,9 @@
                         {% if commande.commande.etat == 0 %}
                         Enregistrée
                         {% elseif commande.commande.etat == 1 %}
-                        Préparation
+                        En préparation
                         {% elseif commande.commande.etat == 2 %}
-                        Livraison
+                        En livraison
                         {% elseif commande.commande.etat == 3 %}
                         Livrée
                         {% else %}
@@ -704,7 +704,7 @@
             {% endfor %}
 
             {% else %}
-            <p class="text-center mt-5">" Aucune commande en livraison pour le moment. "</p>
+            <p class="text-center mt-5">" Pas de commande en livraison pour le moment. "</p>
             {% endif %}
 
         </div>
@@ -714,27 +714,56 @@
             {% if commandesLivreesAvecDetails|length > 0 %}
 
             {% for commande in commandesLivreesAvecDetails %}
-            <div class="card mt-5" style="width: auto;">
+            <!-- Bouton pour ouvrir la modal -->
+            <div class="d-flex flex-column">
+            <button type="button" class="bg-white border-0" data-toggle="modal" data-target="#modal-{{ commande.commande.id }}">
+                <div class="fw-medium d-flex justify-content-between">
 
-                <div class="card-header fw-medium d-flex justify-content-between">
+                    <p>Commande n° {{ commande.commande.id }}</p>
+                    
+                    <p>du {{ commande.commande.dateCommande|date('d/m/Y') }}</p>
 
-                    <p>Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}.<p>
-
-                    <p>
-                        {% if commande.commande.etat == 0 %}
-                        Enregistrée
-                        {% elseif commande.commande.etat == 1 %}
-                        Préparation
-                        {% elseif commande.commande.etat == 2 %}
-                        Livraison
-                        {% elseif commande.commande.etat == 3 %}
-                        Livrée
-                        {% else %}
-                        État inconnu
-                        {% endif %}
-                    </p>
+                    <p>Montant total : {{ commande.commande.total }} €</p>
 
                 </div>
+            </button>
+            </div>
+
+            <!-- La modal -->
+            <div class="modal fade" id="modal-{{ commande.commande.id }}" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-body">
+                        <!-- Contenu de la modal -->
+        
+                            <div class="card mt-5" style="width: auto;">
+
+                                <div class="card-header fw-medium d-flex justify-content-between">
+
+                                    <p>Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}</p>
+
+                                    <p>Montant total : {{ commande.commande.total }} €</p>
+
+                                    <p>
+                                    {% if commande.commande.etat == 0 %}
+                                    Enregistrée
+                                    {% elseif commande.commande.etat == 1 %}
+                                    En préparation
+                                    {% elseif commande.commande.etat == 2 %}
+                                    En livraison
+                                    {% elseif commande.commande.etat == 3 %}
+                                    Livrée <span class="text-success fw-bold">&#x2713;</span>
+                                    {% else %}
+                                    État inconnu
+                                    {% endif %}
+                                    </p>
+
+                                    <button type="button" class="close w-auto h-25 rounded-2" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" class="fw-bold">&times;</span>
+                                    </button>
+
+                                </div>
 
                 <ul class="list-group list-group-flush">
 
@@ -909,18 +938,80 @@
                 </ul>
 
             </div>
+                        
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 me-5 bouton_fermer_panier" data-dismiss="modal">Fermer</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
             {% endfor %}
 
             {% else %}
-            <p class="text-center mt-5">" Aucune commande livrée pour le moment. "</p>
+            <p class="text-center mt-5">" Pas de commande livrée pour le moment. "</p>
             {% endif %}
+
 
         </div>
 
         {# ONGLET STATISTIQUES #}
         <div class="tab-pane fade" id="statistiques" role="tabpanel" aria-labelledby="contact-tab">
-            
-            
+
+            <table class="table">
+
+                <thead class="">
+                <tr class="">
+                <th class="">
+                    Date
+                </th>
+                <th class="">
+                    N° commande
+                </th>
+                <th class="">
+                    Libelle
+                </th>
+                <th class="">
+                    Prix unitaire
+                </th>
+                <th class="">
+                    Quantité
+                </th>
+                <th class="">
+                    Montant total
+                </th>
+                </tr>
+                </thead>
+
+                <tbody class="">
+                {% for commande in commandesAll %}
+                {% for detail in commande.details %}
+                    <tr class="">
+                        <td class="">
+                            {{ commande.dateCommande|date('d/m/Y') }}
+                        </td>
+                        <td>
+                            {{ commande.id }}
+                        </td>
+                        <td class="">
+                            {{ detail.plat.libelle }}
+                        </td>
+                        <td>
+                            {{ detail.plat.prix }} €
+                        </td>
+                        <td class="">
+                            {{ detail.quantite }}
+                        </td>
+                        <td>
+                            {{ detail.plat.prix * detail.quantite }}.00 €
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% endfor %}
+                </tbody>
+            </table>
 
         </div>
 
