@@ -6,7 +6,9 @@
 {% for message in app.flashes('success') %}
     <div class="alert alert-success">{{ message }}</div>
 {% endfor %}
-
+{% for message in app.flashes('error') %}
+    <div class="alert alert-danger">{{ message }}</div>
+{% endfor %}
 {# MAIN #}
 <main class="container-fluid pb-lg-5">
 
@@ -253,9 +255,9 @@
                                         <div class="modal-header border_thead">
 
                                             <h1 class="modal-title fs-2 fw-bold" id="exampleModalLabel-{{ loop.index }}">
-                                            
+
                                                 Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }} 
-                                            
+
                                                 <span class="ms-5">
                                                 {% if commande.commande.etat == 0 %}
                                                 Enregistrée
@@ -269,7 +271,7 @@
                                                 État inconnu
                                                 {% endif %}
                                                 </span>
-                                            
+
                                             </h1>
 
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -433,49 +435,51 @@
             </div>
 
             {# IDENTIFIANTS #}
-            {# <div class="accordion-item bordures_accordion">
+            <div class="accordion-item bordures_accordion">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed fs-3 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <button class="accordion-button collapsed fs-3 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                         Identifiants de connexion
                     </button>
                 </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
 
                         <p class="fs-3 fw-medium mt-2">Email</p>
+
+                        <p class="fs-4 mt-2">Vous pouvez modifier votre adresse email ci-dessous :</p>
 
                         <p class="fs-3 fw-medium mt-2">Mot de passe</p>
 
                         <p class="fs-4 mt-2">Vous pouvez modifier votre mot de passe ci-dessous :</p>
 
-                        <div class="d-none d-lg-block">
-                            <a href="#"
-                                class="mb-3 d-flex justify-content-center align-items-center mx-auto fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer"
-                                style="width: 10rem; height: 3rem;">
-                                Modifier
-                            </a>
-                        </div>
-                        
-                        <div class="d-block d-sm-none">
-                            <a href="#"
-                                class="mb-3 mx-auto d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer"
-                                style="width: 10rem; height: 3rem;">
-                                Modifier
-                            </a>
-                        </div>
+                        <form action="{{ path('app_compte_changer_mot_de_passe') }}" method="post" class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-lg-5 fs-4 d-flex flex-column mx-auto">
+
+                            <label for="old_password">Ancien mot de passe</label>
+                            <input type="password" id="old_password" name="old_password" class="form-control fs-4 border-3 bordures fond_input">
+
+                            <label for="new_password">Nouveau mot de passe</label>
+                            <input type="password" id="new_password" name="new_password" class="form-control fs-4 border-3 bordures fond_input">
+
+                            <label for="confirm_new_password">Confirmer le nouveau mot de passe</label>
+                            <input type="password" id="confirm_new_password" name="confirm_new_password" class="form-control fs-4 border-3 bordures fond_input">
+
+                            <button type="submit" class="mt-3 mb-3 d-flex justify-content-center align-items-center mx-auto fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer"
+                                style="width: 10rem; height: 3rem;">Modifier</button>
+
+                        </form>
 
                     </div>
                 </div>
-            </div> #}
+            </div>
 
             {# SUPPRIMER LE COMPTE #}
             <div class="accordion-item bordures_accordion">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed fs-3 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <button class="accordion-button collapsed fs-3 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                         Suppression du compte
                     </button>
                 </h2>
-                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <p class="fs-4 mt-2">Vous pouvez supprimer votre compte ci-dessous :</p>
 

@@ -26,3 +26,7 @@ update_etat_commande:
     methods: [POST]
     requirements:
         id: \d+
+
+app_compte_changer_mot_de_passe:
+    path: /compte/changer-mot-de-passe
+    controller: App\Controller\CompteController::changerMotDePasse
