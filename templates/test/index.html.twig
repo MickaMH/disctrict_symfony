@@ -61,6 +61,86 @@
 
     </div>
 
+    {# RESUME PANIER MOBILE #}
+    <div class="row mb-3 d-block d-sm-none">
+
+            <table class="table">
+
+                <thead class="fs-3 border_thead">
+
+                    <tr>
+
+                        <th>Plat</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody class="fs-5 border_panier_mobile">
+
+                    {% set total = 0 %}
+                    {% for item in panierWithData %}
+                        <tr>
+                            <td class="text-nowrap d-flex justify-content-between">
+                                
+                                <div class="fw-medium">
+
+                                    <p class="my-auto">{{ item.plat.libelle }}</p>
+
+                                </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="d-flex">
+                            
+                                <div class="">
+
+                                    <img src="/images/plats/{{ item.plat.image }}" class="img-fluid rounded-4 border_image" style="width: 7.5rem; height: 7.5rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}">
+                                
+                                </div>
+
+                                <div class="ms-2">
+
+                                    <div class="d-flex ">
+
+                                        <p class="me-2 fw-medium">Prix : </p> {{ item.plat.prix }} €
+
+                                    </div>
+
+                                    <div class="d-flex">
+
+                                        <p class="me-2 fw-medium">Quantité : </p> {{ item.quantite }}
+
+                                    </div>
+
+                                    <div class="d-flex">
+
+                                        <p class="me-2 fw-medium">Total : </p> {{ item.plat.prix * item.quantite }}.00 €
+                                        {% set total = total + (item.plat.prix * item.quantite) %}
+                                    </div>
+
+                                </div>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+
+                <tfoot class="border_tfoot">
+                    <tr>
+                        <td class="fs-3 fw-bold d-flex">
+                            <p class="me-4">Total commande: </p>{{ total }}.00 €
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+    </div>
+
 
     {# ADRESSES DESKTOP #}
     <div class="row mb-5 m-lg-5">
@@ -79,7 +159,7 @@
             {% if app.user %}
 
             {# FACTURATION DESKTOP #}
-            <div class="col-lg-5 border_adresse fond_intitule d-none d-lg-block">
+            <div class="col-lg-5 border_adresse fond_intitule">
                 
                 <div class="fs-3 fw-bold border_thead">
                     <p class="my-auto ms-2 mt-2 mb-2">Adresse de facturation</p>
@@ -108,7 +188,7 @@
                             <td>
                                 {{ form_widget(formAdressesDesktop.cp_facturation, {
                                     'attr': {
-                                        'class': 'col-3 fs-4 bordures fond_input rounded-3 border-3',
+                                        'class': 'col-6 col-lg-3 fs-4 bordures fond_input rounded-3 border-3',
                                         },
                                     'value': app.user.cp
                                 }) }}
@@ -138,7 +218,7 @@
             </div>
 
             {# LIVRAISON DESKTOP #}
-            <div class="col-lg-5 border_adresse fond_intitule d-none d-lg-block">
+            <div class="col-lg-5 border_adresse fond_intitule">
 
                 <div class="fs-3 fw-bold border_thead">
                     <p class="my-auto ms-2 mt-2 mb-2">Adresse de livraison</p>
@@ -166,7 +246,7 @@
                             <td>
                                 {{ form_widget(formAdressesDesktop.cp_livraison, {
                                     'attr': {
-                                        'class': 'col-3 fs-4 bordures fond_input rounded-3 border-3',
+                                        'class': 'col-6 col-lg-3 fs-4 bordures fond_input rounded-3 border-3',
                                         },
                                     'value': app.user.cp
                                 }) }}
@@ -195,6 +275,141 @@
 
             </div>
 
+            {# ADRESSE DE FACTURATION MOBILE #}
+            {# <div class="col-12 border_adresse d-block d-sm-none mb-4">
+                {{ form_start(formAdressesMobile) }}
+                {{ form_errors(formAdressesMobile) }}
+                <div class="fs-3 fw-bold border_thead">
+                    <p class="my-auto ms-2 mt-2 mb-2">Adresse de facturation</p>
+                </div>
+                
+                <table class="table">
+
+                    <tbody class="fs-4">
+
+                        <tr>
+                            <td class="fw-medium">Adresse :</td>
+                        </tr>
+                        <tr class="">
+                            <td>
+                                {{ form_widget(formAdressesMobile.adresse_facturation, {
+                                    'attr': {
+                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                        },
+                                    'value': app.user.adresse
+                                }) }}
+                                <div class="message_erreur">
+                                    {{ form_errors(formAdressesMobile.adresse_facturation) }}
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="fw-medium">Code postal :</td>
+                        </tr>
+                        <tr class="">
+                            <td>
+                                {{ form_widget(formAdressesMobile.cp_facturation, {
+                                    'attr': {
+                                        'class': 'col-4 fs-4 bordures fond_input rounded-3 border-3',
+                                        },
+                                    'value': app.user.cp
+                                }) }}
+                                <div class="message_erreur">
+                                    {{ form_errors(formAdressesMobile.cp_facturation) }}
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="fw-medium">Ville :</td>
+                        </tr>
+                        <tr class="">
+                            <td>
+                                {{ form_widget(formAdressesMobile.ville_facturation, {
+                                    'attr': {
+                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                        },
+                                    'value': app.user.ville
+                                }) }}
+                                <div class="message_erreur">
+                                    {{ form_errors(formAdressesMobile.ville_facturation) }}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div> #}
+
+            {# ADRESSE DE LIVRAISON MOBILE #}
+            {# <div class="col-12 border_adresse d-block d-sm-none">
+
+                <div class="fs-3 fw-bold border_thead">
+                    <p class="my-auto ms-2 mt-2 mb-2">Adresse de livraison</p>
+                </div>
+                
+                <table class="table">
+
+                    <tbody class="fs-4">
+
+                        <tr>
+                            <td class="fw-medium">Adresse :</td>
+                        </tr>
+                        <tr class="">
+                            <td>
+                                {{ form_widget(formAdressesMobile.adresse_livraison, {
+                                    'attr': {
+                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                        },
+                                    'value': app.user.adresse
+                                }) }}
+                                <div class="message_erreur">
+                                    {{ form_errors(formAdressesMobile.adresse_livraison) }}
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="fw-medium">Code postal :</td>
+                        </tr>
+                        <tr class="">
+                            <td>
+                                {{ form_widget(formAdressesMobile.cp_livraison, {
+                                    'attr': {
+                                        'class': 'col-4 fs-4 bordures fond_input rounded-3 border-3',
+                                        },
+                                    'value': app.user.cp
+                                }) }}
+                                <div class="message_erreur">
+                                    {{ form_errors(formAdressesMobile.cp_livraison) }}
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="fw-medium">Ville :</td>
+                        </tr>
+                        <tr class="">
+                            <td>
+                                {{ form_widget(formAdressesMobile.ville_livraison, {
+                                    'attr': {
+                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                        },
+                                    'value': app.user.ville
+                                }) }}
+                                <div class="message_erreur">
+                                    {{ form_errors(formAdressesMobile.ville_livraison) }}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div> #}
+
             {% endif %}
             </div>
 
@@ -222,7 +437,7 @@
 
         <div class="col-12 fs-4">
 
-                {# BOUTONS RADIO #}
+                {# BOUTONS RADIO / NON FONCTIONNEL, PAS DANS BASE DE DONNEES #}
                 {# {{ form_widget(formAdressesDesktop.boutons_radio) }} #}
 
                 {# PARTIE PAIEMENT DESKTOP #}
@@ -250,7 +465,8 @@
                 </table> #}
 
 
-                {# BOUTONS RADIO #}
+                {# BOUTONS RADIO / ESTHETIQUE #}
+                <div class="ms-3">
                 <label for="carte">Carte bancaire</label>
                 <input type="radio" id="carte" name="moyen_paiement" value="carte">
                 <br>
@@ -261,9 +477,10 @@
 
                 <label for="virement">Virement bancaire</label>
                 <input type="radio" id="virement" name="moyen_paiement" value="virement">
+                </div>
 
                 {# PARTIE PAIEMENT DESKTOP #}
-                <table class="table mt-3 d-none d-lg-block">
+                <table class="table ms-4 mt-3 d-none d-lg-block">
 
                     <tbody class="fs-4">
                         <tr>
@@ -292,14 +509,14 @@
 
 
                 {# PARTIE PAIEMENT MOBILE #}
-                <table class="table mt-3 d-block d-sm-none">
+                <table class="table ms-2 mt-3 d-block d-sm-none">
 
                     <tbody class="fs-4 border border-white">
                         <tr>
                             <td>Numéro de carte :</td>
                         </tr>
                         <tr>
-                            <td><input type="text" id="numero_carte" name="numero_carte" class="bordures fond_input rounded-3 border-3 text-center"
+                            <td><input type="text" id="numero_carte" name="numero_carte" class="bordures fond_input rounded-3 border-3"
                                     maxlength="19" placeholder="0000 0000 0000 0000"></td>
                         </tr>
 
@@ -315,7 +532,7 @@
                             <td>Date d'expiration :</td>
                         </tr>
                         <tr>
-                            <td><input type="text" id="date_expiration" name="date_expiration" class="bordures fond_input rounded-3 border-3 text-center"
+                            <td><input type="text" id="date_expiration" name="date_expiration" class="bordures fond_input rounded-3 border-3"
                                         maxlength="5" style="width: 5rem;" placeholder="01/25"></td>
                         </tr>
 
@@ -323,7 +540,7 @@
                             <td>CVV :</td>
                         </tr>
                         <tr>
-                            <td><input type="text" id="cvv" name="cvv" class="bordures fond_input rounded-3 border-3 text-center"
+                            <td><input type="text" id="cvv" name="cvv" class="bordures fond_input rounded-3 border-3"
                                         maxlength="3" style="width: 4rem;"placeholder="000"></td>
                         </tr>
                     </tbody>
@@ -371,7 +588,7 @@
                 'label': 'Finaliser la commande'
             }) }}
         </div>
-
+        {# {{ form_end(formAdressesMobile) }} #}
         {{ form_end(formAdressesDesktop) }}
         
         <div class="d-flex justify-content-center mb-5">
