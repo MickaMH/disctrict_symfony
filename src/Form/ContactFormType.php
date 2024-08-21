@@ -102,8 +102,8 @@ class ContactFormType extends AbstractType
             'label' => 'Envoyer',
             'attr' => [
                 
-                'class' => 'd-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories',
-                'style' => 'width: 10rem; height: 3rem;',
+                'class' => 'd-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-3 bouton_categories',
+                'style' => 'width: 15rem; height: 3rem;',
                 // 'placeholder' => 'Entrez votre nom',
             ],
         ]);
