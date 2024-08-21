@@ -1,11 +1,251 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TestController!{% endblock %}
+{% block title %}COMMANDE TEST{% endblock %}
 
 {% block body %}
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+
+{# MAIN #}
+<main class="container-fluid pb-lg-5">
+
+    {# EN-TETE RESUMÉ COMMANDE #}
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-8 col-lg-2 fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
+
+            <p>COMMANDE TEST</p>
+
+        </div>
+
+    </div>
+
+    {# RESUME PANIER DESKTOP #}
+    <div class="row m-lg-5 d-none d-lg-block">
+
+        <table class="table">
+
+                <thead class="fs-2 border_thead">
+                    <tr>
+                        <th>Plat</th>
+                        <th class="text-center">Prix unit.</th>
+                        <th class="text-center">Quantité</th>
+                        <th class="text-center">Sous-total</th>
+                    </tr>
+                </thead>
+
+                <tbody class="fs-4">
+                    {% set total = 0 %}
+                    {% for item in panierWithData %}
+                    <tr>
+                        <td>
+                            <img src="/images/plats/{{ item.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 7rem; height: 7rem;" alt="{{ item.plat.libelle }}" title="{{ item.plat.libelle }}">
+                            {{ item.plat.libelle }}
+                        </td>
+                        <td class="text-center">{{ item.plat.prix }} €</td>
+                        <td class="text-center">{{ item.quantite }}</td>
+                        <td class="text-center fw-medium">{{ item.plat.prix * item.quantite }}.00 €</td>
+                        {% set total = total + (item.plat.prix * item.quantite) %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+                <tfoot class="border_tfoot">
+                    <tr>
+                        <td colspan="3" class="fs-2 fw-bold">Total de la commande</td>
+                        <td class="fs-4 fw-bold text-center">{{ total }}.00 €</td>
+                    </tr>
+                </tfoot>
+        </table>
+
+    </div>
 
 
+    {# ADRESSES DESKTOP#}
+    <div class="row mb-5 m-lg-5">
 
 
+        <div class="row">
 
+            <p class="fs-2 fw-bold">Adresses</p>
+
+        </div>
+
+        <div class="row">
+            {{ form_start(formAdressesDesktop) }}
+            {{ form_errors(formAdressesDesktop) }}
+            <div class="col-12 d-lg-flex justify-content-around">
+            {# ADRESSE FACTURATION DESKTOP #}
+            <div class="col-lg-5 border_adresse fond_intitule d-none d-lg-block">
+                
+                <div class="fs-3 fw-bold border_thead">
+                    <p class="my-auto ms-2 mt-2 mb-2">Adresse de facturation</p>
+                </div>
+                
+
+                                    <table class="table">
+
+                                        <tbody class="fs-4">
+                                            <tr>
+                                                <td class="col-3 fw-medium">Adresse :</td>
+                                                <td class="col-8">
+                                                    {{ form_widget(formAdressesDesktop.adresse_facturation, {
+                                                        'attr': {
+                                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formAdressesDesktop.adresse_facturation) }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-medium">Code postal :</td>
+                                                <td>
+                                                    {{ form_widget(formAdressesDesktop.cp_facturation, {
+                                                        'attr': {
+                                                        'class': 'col-3 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formAdressesDesktop.cp_facturation) }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-medium">Ville :</td>
+                                                <td>
+                                                    {{ form_widget(formAdressesDesktop.ville_facturation, {
+                                                        'attr': {
+                                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formAdressesDesktop.ville_facturation) }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+
+            </div>
+
+            
+
+            {# ADRESSE LIVRAISON DESKTOP #}
+            <div class="col-lg-5 border_adresse fond_intitule d-none d-lg-block">
+
+                <div class="fs-3 fw-bold border_thead">
+                    <p class="my-auto ms-2 mt-2 mb-2">Adresse de livraison</p>
+                </div>
+
+                <table class="table">
+
+                                        <tbody class="fs-4">
+                                            <tr>
+                                                <td class="col-3 fw-medium">Adresse :</td>
+                                                <td class="col-8">
+                                                    {{ form_widget(formAdressesDesktop.adresse_livraison, {
+                                                        'attr': {
+                                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formAdressesDesktop.adresse_livraison) }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-medium">Code postal :</td>
+                                                <td>
+                                                    {{ form_widget(formAdressesDesktop.cp_livraison, {
+                                                        'attr': {
+                                                        'class': 'col-3 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formAdressesDesktop.cp_livraison) }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-medium">Ville :</td>
+                                                <td>
+                                                    {{ form_widget(formAdressesDesktop.ville_livraison, {
+                                                        'attr': {
+                                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                                        }
+                                                    }) }}
+                                                    <div class="message_erreur">
+                                                        {{ form_errors(formAdressesDesktop.ville_livraison) }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+
+            </div>
+            </div>
+            
+        </div>
+
+        
+    </div>
+
+
+    {# CGU #}
+    <div class="row mb-5 m-lg-5">
+
+        <div class="col-lg-12">
+
+            <p class="fs-2 fw-bold">Conditions générales d'utilisation</p>
+
+        </div>
+
+        <div class="checkbox ms-3 col-lg-7 fs-4">
+
+            <label for="accept_cgu">
+                Accepter les <a href="{{ path('app_cgu') }}" class="lettres">CGU</a>
+            </label>
+            <input type="checkbox" id="accept_cgu" name="accept_cgu" class="ms-2 case_coche">
+
+        </div>
+
+        <div class="col-sm-10 col-lg-10 mb-5 fs-4">
+            {{ form_row(formAdressesDesktop.cgu, {
+                label: "Accepter les CGU",
+                'attr': {
+                    'class': 'ms-3 mt-3 case_coche'
+                }
+            }) }}
+        </div>
+
+    </div>
+
+
+    {# BOUTONS #}
+    <div class="row">
+
+
+        <div class="col-12 mt-3 d-flex justify-content-center">
+        {{ form_widget(formAdressesDesktop.creation_commande) }}
+        </div>
+        {{ form_end(formAdressesDesktop) }}
+        
+        <div class="d-flex justify-content-center mb-5">
+
+            <a href="#" onclick="history.back(); return false;"
+                class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_fermer_panier"
+                style="width: 10rem; height: 3rem;">
+                Retour
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
 {% endblock %}

@@ -27,6 +27,24 @@ class Detail
      */
     private $plat;
 
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $adresse_facturation = null;
+
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $cp_facturation = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $ville_facturation = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $adresse_livraison = null;
+
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $cp_livraison = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $ville_livraison = null;
+
     // ...
 
     public function getPlat(): ?Plat
@@ -78,6 +96,78 @@ class Detail
     public function setCommande(?Commande $commande): static
     {
         $this->commande = $commande;
+
+        return $this;
+    }
+
+    public function getAdresseFacturation(): ?string
+    {
+        return $this->adresse_facturation;
+    }
+
+    public function setAdresseFacturation(?string $adresse_facturation): static
+    {
+        $this->adresse_facturation = $adresse_facturation;
+
+        return $this;
+    }
+
+    public function getCpFacturation(): ?string
+    {
+        return $this->cp_facturation;
+    }
+
+    public function setCpFacturation(?string $cp_facturation): static
+    {
+        $this->cp_facturation = $cp_facturation;
+
+        return $this;
+    }
+
+    public function getVilleFacturation(): ?string
+    {
+        return $this->ville_facturation;
+    }
+
+    public function setVilleFacturation(?string $ville_facturation): static
+    {
+        $this->ville_facturation = $ville_facturation;
+
+        return $this;
+    }
+
+    public function getAdresseLivraison(): ?string
+    {
+        return $this->adresse_livraison;
+    }
+
+    public function setAdresseLivraison(?string $adresse_livraison): static
+    {
+        $this->adresse_livraison = $adresse_livraison;
+
+        return $this;
+    }
+
+    public function getCpLivraison(): ?string
+    {
+        return $this->cp_livraison;
+    }
+
+    public function setCpLivraison(?string $cp_livraison): static
+    {
+        $this->cp_livraison = $cp_livraison;
+
+        return $this;
+    }
+
+    public function getVilleLivraison(): ?string
+    {
+        return $this->ville_livraison;
+    }
+
+    public function setVilleLivraison(?string $ville_livraison): static
+    {
+        $this->ville_livraison = $ville_livraison;
 
         return $this;
     }

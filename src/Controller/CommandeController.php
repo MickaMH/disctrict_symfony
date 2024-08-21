@@ -50,7 +50,7 @@ class CommandeController extends AbstractController
             $detail->setCommande($commande);
 
             // Calcul du sous-total pour ce plat
-            $sousTotal = $quantite * $plat->getPrix(); // Assurez-vous que la méthode getPrix() existe dans votre entité Plat
+            $sousTotal = $quantite * $plat->getPrix();
             // Ajout au prix total de la commande
             $totalCommande += $sousTotal;
 
@@ -64,32 +64,10 @@ class CommandeController extends AbstractController
         $em->persist($commande);
         $em->flush();
 
-        // $panierWithData = $this->resumeCommande($session, $platRepository);
-
         $session->remove('panier');
 
         $this->addFlash('message', 'Commande créée avec succès');
         return $this->redirectToRoute('app_confirm_commande');
     }
 
-    // public function resumeCommande(SessionInterface $session, PlatRepository $platRepository): array
-    // {
-    //     $panier = $session->get('panier', []);
-
-    //     $panierWithData = [];
-
-    //     foreach ($panier as $id => $quantite) {
-    //         $plat = $platRepository->find($id);
-    //         if ($plat) {
-    //             $image = $plat->getImage();
-    //             $panierWithData[] = [
-    //                 'plat' => $plat,
-    //                 'quantite' => $quantite,
-    //                 'image' => $image
-    //             ];
-    //         }
-    //     }
-        
-    //     return $panierWithData;
-    // }
 }
