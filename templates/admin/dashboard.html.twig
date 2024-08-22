@@ -52,6 +52,9 @@
 
         {# ONGLET NOUVELLES COMMANDES #}
         <div class="tab-pane fade show active" id="enregistree" role="tabpanel" aria-labelledby="home-tab">
+
+            <h2 class="mt-4">Nouvelles commandes</h2>
+
             {% if commandesAvecDetails|length > 0 %}
 
             {% for commande in commandesAvecDetails %}
@@ -119,11 +122,7 @@
                                         Adresse :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.adresseFacturation is null %}
-                                        {{ commande.commande.utilisateur.adresse }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.adresseFacturation }}
-                                        {% endif %}
+                                        {{ commande.commande.adresseFacturation }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -131,11 +130,7 @@
                                         Code postal :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.cpFacturation is null %}
-                                        {{ commande.commande.utilisateur.cp }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.cpFacturation }}
-                                        {% endif %}
+                                        {{ commande.commande.cpFacturation }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -143,11 +138,7 @@
                                         Ville :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.villeFacturation is null %}
-                                        {{ commande.commande.utilisateur.ville }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.villeFacturation }}
-                                        {% endif %}
+                                        {{ commande.commande.villeFacturation }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -183,11 +174,7 @@
                                         Adresse :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.adresseLivraison is null %}
-                                        {{ commande.commande.utilisateur.adresse }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.adresseLivraison }}
-                                        {% endif %}
+                                        {{ commande.commande.adresseLivraison }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -195,11 +182,7 @@
                                         Code postal :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.cpLivraison is null %}
-                                        {{ commande.commande.utilisateur.cp }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.cpLivraison }}
-                                        {% endif %}
+                                        {{ commande.commande.cpLivraison }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -207,11 +190,7 @@
                                         Ville :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.villeLivraison is null %}
-                                        {{ commande.commande.utilisateur.ville }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.villeLivraison }}
-                                        {% endif %}
+                                        {{ commande.commande.villeLivraison }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -249,10 +228,10 @@
 
                     {# BOUTON VALIDER POUR PREPARATION #}
                     <li class="list-group-item mx-auto">
-                        
-                        <a href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}" 
-                            class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories mt-3 mb-5"
-                            style="width: 15rem; height: 3rem;">
+
+                        <a class="btn btn-success d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5"
+                            href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
+                            role="button" style="width: 15rem; height: 3rem;">
                             Valider pour préparation
                         </a>
 
@@ -272,6 +251,7 @@
 
         {# ONGLET COMMANDES EN PREPARATION #}
         <div class="tab-pane fade" id="preparation" role="tabpanel" aria-labelledby="contact-tab">
+            <h2 class="mt-4">En préparation</h2>
             {% if commandesEnCoursAvecDetails|length > 0 %}
 
             {% for commande in commandesEnCoursAvecDetails %}
@@ -339,11 +319,7 @@
                                         Adresse :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.adresseFacturation is null %}
-                                        {{ commande.commande.utilisateur.adresse }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.adresseFacturation }}
-                                        {% endif %}
+                                        {{ commande.commande.adresseFacturation }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -351,11 +327,7 @@
                                         Code postal :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.cpFacturation is null %}
-                                        {{ commande.commande.utilisateur.cp }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.cpFacturation }}
-                                        {% endif %}
+                                        {{ commande.commande.cpFacturation }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -363,11 +335,7 @@
                                         Ville :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.villeFacturation is null %}
-                                        {{ commande.commande.utilisateur.ville }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.villeFacturation }}
-                                        {% endif %}
+                                        {{ commande.commande.villeFacturation }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -403,11 +371,7 @@
                                         Adresse :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.adresseLivraison is null %}
-                                        {{ commande.commande.utilisateur.adresse }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.adresseLivraison }}
-                                        {% endif %}
+                                        {{ commande.commande.adresseLivraison }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -415,11 +379,7 @@
                                         Code postal :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.cpLivraison is null %}
-                                        {{ commande.commande.utilisateur.cp }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.cpLivraison }}
-                                        {% endif %}
+                                        {{ commande.commande.cpLivraison }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -427,11 +387,7 @@
                                         Ville :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.villeLivraison is null %}
-                                        {{ commande.commande.utilisateur.ville }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.villeLivraison }}
-                                        {% endif %}
+                                        {{ commande.commande.villeLivraison }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -469,10 +425,10 @@
 
                     {# BOUTON VALIDER POUR LIVRAISON #}
                     <li class="list-group-item mx-auto">
-                        
-                        <a href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}" 
-                            class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories mt-3 mb-5"
-                            style="width: 15rem; height: 3rem;">
+
+                        <a class="btn btn-success d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5"
+                            href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
+                            role="button" style="width: 15rem; height: 3rem;">
                             Valider pour livraison
                         </a>
 
@@ -492,6 +448,9 @@
 
         {# ONGLET COMMANDES EN LIVRAISON #}
         <div class="tab-pane fade" id="livraison" role="tabpanel" aria-labelledby="profile-tab">
+
+            <h2 class="mt-4">En livraison</h2>
+
             {% if commandesTermineesAvecDetails|length > 0 %}
 
             {% for commande in commandesTermineesAvecDetails %}
@@ -559,11 +518,7 @@
                                         Adresse :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.adresseFacturation is null %}
-                                        {{ commande.commande.utilisateur.adresse }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.adresseFacturation }}
-                                        {% endif %}
+                                        {{ commande.commande.adresseFacturation }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -571,11 +526,7 @@
                                         Code postal :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.cpFacturation is null %}
-                                        {{ commande.commande.utilisateur.cp }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.cpFacturation }}
-                                        {% endif %}
+                                        {{ commande.commande.cpFacturation }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -583,11 +534,7 @@
                                         Ville :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.villeFacturation is null %}
-                                        {{ commande.commande.utilisateur.ville }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.villeFacturation }}
-                                        {% endif %}
+                                        {{ commande.commande.villeFacturation }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -623,11 +570,7 @@
                                         Adresse :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.adresseLivraison is null %}
-                                        {{ commande.commande.utilisateur.adresse }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.adresseLivraison }}
-                                        {% endif %}
+                                        {{ commande.commande.adresseLivraison }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -635,11 +578,7 @@
                                         Code postal :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.cpLivraison is null %}
-                                        {{ commande.commande.utilisateur.cp }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.cpLivraison }}
-                                        {% endif %}
+                                        {{ commande.commande.cpLivraison }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -647,11 +586,7 @@
                                         Ville :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.villeLivraison is null %}
-                                        {{ commande.commande.utilisateur.ville }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.villeLivraison }}
-                                        {% endif %}
+                                        {{ commande.commande.villeLivraison }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -689,10 +624,10 @@
 
                     {# BOUTON VALIDER POUR LIVREE #}
                     <li class="list-group-item mx-auto">
-                        
-                        <a href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}" 
-                            class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories mt-3 mb-5"
-                            style="width: 15rem; height: 3rem;">
+
+                        <a class="btn btn-success d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5"
+                            href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
+                            role="button" style="width: 15rem; height: 3rem;">
                             Valider pour livrée
                         </a>
 
@@ -711,22 +646,36 @@
 
         {# ONGLET COMMANDES LIVREES #}
         <div class="tab-pane fade" id="livrees" role="tabpanel" aria-labelledby="contact-tab">
+
+            <h2 class="mt-4 mb-4">Commandes livrées</h2>
+
             {% if commandesLivreesAvecDetails|length > 0 %}
 
             {% for commande in commandesLivreesAvecDetails %}
             <!-- Bouton pour ouvrir la modal -->
             <div class="d-flex flex-column">
-            <button type="button" class="bg-white border-0" data-toggle="modal" data-target="#modal-{{ commande.commande.id }}">
-                <div class="fw-medium d-flex justify-content-between">
 
-                    <p>Commande n° {{ commande.commande.id }}</p>
-                    
-                    <p>du {{ commande.commande.dateCommande|date('d/m/Y') }}</p>
+                <button type="button" class="bg-white border-0" data-toggle="modal" data-target="#modal-{{ commande.commande.id }}">
 
-                    <p>Montant total : {{ commande.commande.total }} €</p>
+                    <div>
 
-                </div>
-            </button>
+                        <table class="table">
+                            <tbody class="fs-4">
+                                <tr>
+                                    <td class="col-3">
+                                        Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}
+                                    </td>
+                                    <td class="col-3">
+                                        Montant total : {{ commande.commande.total }} €
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </button>
+
             </div>
 
             <!-- La modal -->
@@ -807,11 +756,7 @@
                                         Adresse :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.adresseFacturation is null %}
-                                        {{ commande.commande.utilisateur.adresse }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.adresseFacturation }}
-                                        {% endif %}
+                                        {{ commande.commande.adresseFacturation }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -819,11 +764,7 @@
                                         Code postal :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.cpFacturation is null %}
-                                        {{ commande.commande.utilisateur.cp }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.cpFacturation }}
-                                        {% endif %}
+                                        {{ commande.commande.cpFacturation }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -831,11 +772,7 @@
                                         Ville :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.villeFacturation is null %}
-                                        {{ commande.commande.utilisateur.ville }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.villeFacturation }}
-                                        {% endif %}
+                                        {{ commande.commande.villeFacturation }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -871,11 +808,7 @@
                                         Adresse :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.adresseLivraison is null %}
-                                        {{ commande.commande.utilisateur.adresse }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.adresseLivraison }}
-                                        {% endif %}
+                                        {{ commande.commande.adresseLivraison }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -883,11 +816,7 @@
                                         Code postal :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.cpLivraison is null %}
-                                        {{ commande.commande.utilisateur.cp }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.cpLivraison }}
-                                        {% endif %}
+                                        {{ commande.commande.cpLivraison }}
                                     </td>
                                 </tr>
                                 <tr class="">
@@ -895,11 +824,7 @@
                                         Ville :
                                     </td>
                                     <td>
-                                        {% if commande.commande.utilisateur.villeLivraison is null %}
-                                        {{ commande.commande.utilisateur.ville }}
-                                        {% else %}
-                                        {{ commande.commande.utilisateur.villeLivraison }}
-                                        {% endif %}
+                                        {{ commande.commande.villeLivraison }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -939,14 +864,19 @@
 
             </div>
                         
-                        </div>
+            </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 me-5 bouton_fermer_panier" data-dismiss="modal">Fermer</button>
-                        </div>
+            <div class="modal-footer">
+                {# <button type="button" class="btn d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 me-5" data-dismiss="modal">Fermer</button> #}
 
-                    </div>
-                </div>
+                <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5"
+                        style="width: 5rem; height: 3rem;" data-dismiss="modal">
+                    Fermer
+                </button>
+            </div>
+
+            </div>
+            </div>
             </div>
             {% endfor %}
 
@@ -1023,8 +953,8 @@
 {# BOUTON RETOUR AU SITE #}
 <div class="row m-5 d-flex justify-content-center">
 
-    <a class="d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5 bouton_categories mt-5"
-        id="precedent" style="width: 15rem; height: 3rem;"  href="{{ path('app_compte') }}" role="button">
+    <a class="btn btn-primary d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5" href="{{ path('app_compte') }}"
+        role="button" style="width: 15rem; height: 3rem;">
         Retour au site
     </a>
 

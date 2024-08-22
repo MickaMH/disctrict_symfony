@@ -3,9 +3,6 @@
 {% block title %}COMMANDE TEST{% endblock %}
 
 {% block body %}
-{% for message in app.flashes('success') %}
-    <div class="alert alert-success">{{ message }}</div>
-{% endfor %}
 
 {# MAIN #}
 <main class="container-fluid pb-lg-5">
@@ -142,8 +139,8 @@
     </div>
 
 
-    {# ADRESSES DESKTOP #}
-    <div class="row mb-5 m-lg-5">
+    {# ADRESSES #}
+    <div class="row mb- m-lg-5">
 
         <div class="row">
 
@@ -151,41 +148,45 @@
 
         </div>
 
-        <div class="row">
+        <div class="row mb-4 mb-lg-0">
             {{ form_start(formAdressesDesktop) }}
             {{ form_errors(formAdressesDesktop) }}
 
             <div class="col-12 d-lg-flex justify-content-around">
             {% if app.user %}
 
-            {# FACTURATION DESKTOP #}
-            <div class="col-lg-5 border_adresse fond_intitule">
+                {# ADRESSE FACTURATION #}
+                <div class="col-12 col-lg-5 border_adresse fond_intitule mb-3 mb-lg-0">
                 
-                <div class="fs-3 fw-bold border_thead">
-                    <p class="my-auto ms-2 mt-2 mb-2">Adresse de facturation</p>
-                </div>
+                    <div class="fs-3 fw-bold border_thead">
+                        <p class="my-auto ms-2 mt-2 mb-2">Adresse de facturation</p>
+                    </div>
+
+                    <div class="m-2 m-lg-2 mt-lg-4">
                 
+                        <div class="fs-4 d-lg-flex">
 
-                <table class="table">
-
-                    <tbody class="fs-4">
-                        <tr>
-                            <td class="col-3 fw-medium">Adresse :</td>
-                            <td class="col-8">
+                            <p class="col-12 col-lg-3 fw-medium mb-0 mb-lg-3">Adresse :</p>
+                        
+                            <div class="col-12 col-lg-9">
                                 {{ form_widget(formAdressesDesktop.adresse_facturation, {
-                                    'attr': {
-                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
-                                        },
-                                    'value': app.user.adresse
+                                'attr': {
+                                    'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
+                                },
+                                'value': app.user.adresse
                                 }) }}
                                 <div class="message_erreur">
                                     {{ form_errors(formAdressesDesktop.adresse_facturation) }}
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="fw-medium">Code postal :</td>
-                            <td>
+                            </div>
+
+                        </div>
+
+                        <div class="fs-4 d-lg-flex">
+
+                            <p class="col-12 col-lg-3 fw-medium mb-0 mb-lg-3">Code postal :</p>
+                        
+                            <div class="col-12 col-lg-9">
                                 {{ form_widget(formAdressesDesktop.cp_facturation, {
                                     'attr': {
                                         'class': 'col-6 col-lg-3 fs-4 bordures fond_input rounded-3 border-3',
@@ -195,11 +196,15 @@
                                 <div class="message_erreur">
                                     {{ form_errors(formAdressesDesktop.cp_facturation) }}
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="fw-medium">Ville :</td>
-                            <td>
+                            </div>
+
+                        </div>
+
+                        <div class="fs-4 d-lg-flex">
+
+                            <p class="col-12 col-lg-3 fw-medium mb-0 mb-lg-3">Ville :</p>
+                        
+                            <div class="col-12 col-lg-9">
                                 {{ form_widget(formAdressesDesktop.ville_facturation, {
                                     'attr': {
                                         'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
@@ -209,210 +214,84 @@
                                 <div class="message_erreur">
                                     {{ form_errors(formAdressesDesktop.ville_facturation) }}
                                 </div>
-                            </td>
-                        </tr>
-                    </tbody>
+                            </div>
 
-                </table>
+                        </div>
 
-            </div>
+                    </div>
 
-            {# LIVRAISON DESKTOP #}
-            <div class="col-lg-5 border_adresse fond_intitule">
-
-                <div class="fs-3 fw-bold border_thead">
-                    <p class="my-auto ms-2 mt-2 mb-2">Adresse de livraison</p>
                 </div>
 
-                <table class="table">
+                {# ADRESSE LIVRAISON #}
+                <div class="col-12 col-lg-5 border_adresse fond_intitule mb-3 mb-lg-0">
+                
+                    <div class="fs-3 fw-bold border_thead">
+                        <p class="my-auto ms-2 mt-2 mb-2">Adresse de livraison</p>
+                    </div>
 
-                    <tbody class="fs-4">
-                        <tr>
-                            <td class="col-3 fw-medium">Adresse :</td>
-                            <td class="col-8">
+                    <div class="m-2 m-lg-2 mt-lg-4">
+                
+                        <div class="fs-4 d-lg-flex">
+
+                            <p class="col-12 col-lg-3 fw-medium mb-0 mb-lg-3">Adresse :</p>
+                        
+                            <div class="col-12 col-lg-9">
                                 {{ form_widget(formAdressesDesktop.adresse_livraison, {
                                     'attr': {
                                         'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
-                                        },
+                                            },
                                     'value': app.user.adresse
                                 }) }}
                                 <div class="message_erreur">
                                     {{ form_errors(formAdressesDesktop.adresse_livraison) }}
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="fw-medium">Code postal :</td>
-                            <td>
+                            </div>
+
+                        </div>
+
+                        <div class="fs-4 d-lg-flex">
+
+                            <p class="col-12 col-lg-3 fw-medium mb-0 mb-lg-3">Code postal :</p>
+                        
+                            <div class="col-12 col-lg-9">
                                 {{ form_widget(formAdressesDesktop.cp_livraison, {
                                     'attr': {
                                         'class': 'col-6 col-lg-3 fs-4 bordures fond_input rounded-3 border-3',
-                                        },
+                                            },
                                     'value': app.user.cp
                                 }) }}
                                 <div class="message_erreur">
                                     {{ form_errors(formAdressesDesktop.cp_livraison) }}
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="fw-medium">Ville :</td>
-                            <td>
+                            </div>
+
+                        </div>
+
+                        <div class="fs-4 d-lg-flex">
+
+                            <p class="col-12 col-lg-3 fw-medium mb-0 mb-lg-3">Ville :</p>
+                        
+                            <div class="col-12 col-lg-9">
                                 {{ form_widget(formAdressesDesktop.ville_livraison, {
                                     'attr': {
                                         'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
-                                        },
+                                            },
                                     'value': app.user.ville
                                 }) }}
                                 <div class="message_erreur">
                                     {{ form_errors(formAdressesDesktop.ville_livraison) }}
                                 </div>
-                            </td>
-                        </tr>
-                    </tbody>
+                            </div>
 
-                </table>
+                        </div>
 
-            </div>
+                    </div>
 
-            {# ADRESSE DE FACTURATION MOBILE #}
-            {# <div class="col-12 border_adresse d-block d-sm-none mb-4">
-                {{ form_start(formAdressesMobile) }}
-                {{ form_errors(formAdressesMobile) }}
-                <div class="fs-3 fw-bold border_thead">
-                    <p class="my-auto ms-2 mt-2 mb-2">Adresse de facturation</p>
                 </div>
-                
-                <table class="table">
-
-                    <tbody class="fs-4">
-
-                        <tr>
-                            <td class="fw-medium">Adresse :</td>
-                        </tr>
-                        <tr class="">
-                            <td>
-                                {{ form_widget(formAdressesMobile.adresse_facturation, {
-                                    'attr': {
-                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
-                                        },
-                                    'value': app.user.adresse
-                                }) }}
-                                <div class="message_erreur">
-                                    {{ form_errors(formAdressesMobile.adresse_facturation) }}
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="fw-medium">Code postal :</td>
-                        </tr>
-                        <tr class="">
-                            <td>
-                                {{ form_widget(formAdressesMobile.cp_facturation, {
-                                    'attr': {
-                                        'class': 'col-4 fs-4 bordures fond_input rounded-3 border-3',
-                                        },
-                                    'value': app.user.cp
-                                }) }}
-                                <div class="message_erreur">
-                                    {{ form_errors(formAdressesMobile.cp_facturation) }}
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="fw-medium">Ville :</td>
-                        </tr>
-                        <tr class="">
-                            <td>
-                                {{ form_widget(formAdressesMobile.ville_facturation, {
-                                    'attr': {
-                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
-                                        },
-                                    'value': app.user.ville
-                                }) }}
-                                <div class="message_erreur">
-                                    {{ form_errors(formAdressesMobile.ville_facturation) }}
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-
-                </table>
-
-            </div> #}
-
-            {# ADRESSE DE LIVRAISON MOBILE #}
-            {# <div class="col-12 border_adresse d-block d-sm-none">
-
-                <div class="fs-3 fw-bold border_thead">
-                    <p class="my-auto ms-2 mt-2 mb-2">Adresse de livraison</p>
-                </div>
-                
-                <table class="table">
-
-                    <tbody class="fs-4">
-
-                        <tr>
-                            <td class="fw-medium">Adresse :</td>
-                        </tr>
-                        <tr class="">
-                            <td>
-                                {{ form_widget(formAdressesMobile.adresse_livraison, {
-                                    'attr': {
-                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
-                                        },
-                                    'value': app.user.adresse
-                                }) }}
-                                <div class="message_erreur">
-                                    {{ form_errors(formAdressesMobile.adresse_livraison) }}
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="fw-medium">Code postal :</td>
-                        </tr>
-                        <tr class="">
-                            <td>
-                                {{ form_widget(formAdressesMobile.cp_livraison, {
-                                    'attr': {
-                                        'class': 'col-4 fs-4 bordures fond_input rounded-3 border-3',
-                                        },
-                                    'value': app.user.cp
-                                }) }}
-                                <div class="message_erreur">
-                                    {{ form_errors(formAdressesMobile.cp_livraison) }}
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="fw-medium">Ville :</td>
-                        </tr>
-                        <tr class="">
-                            <td>
-                                {{ form_widget(formAdressesMobile.ville_livraison, {
-                                    'attr': {
-                                        'class': 'col-12 fs-4 bordures fond_input rounded-3 border-3',
-                                        },
-                                    'value': app.user.ville
-                                }) }}
-                                <div class="message_erreur">
-                                    {{ form_errors(formAdressesMobile.ville_livraison) }}
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-
-                </table>
-
-            </div> #}
 
             {% endif %}
             </div>
-
+        
         </div>
 
     </div>
@@ -421,17 +300,10 @@
     {# MOYEN DE PAIEMENT #}
     <div class="row mb-3 m-lg-5">
 
-        {# TITRE DESKTOP #}
-        <div class="col-12 d-none d-lg-block">
+        {# EN-TETE PAIEMENT #}
+        <div class="col-12">
 
-            <p class="fs-2 fw-bold">Moyen de paiement (Non fonctionnel)</p>
-
-        </div>
-
-        {# TITRE MOBILE #}
-        <div class="col-12 d-block d-sm-none">
-
-            <p class="fs-2 fw-bold">Moyen de paiement<br>(Non fonctionnel)</p>
+            <p class="fs-2 fw-bold">Moyen de paiement <br class="d-block d-sm-none">(Non fonctionnel)</p>
 
         </div>
 
@@ -466,86 +338,69 @@
 
 
                 {# BOUTONS RADIO / ESTHETIQUE #}
-                <div class="ms-3">
-                <label for="carte">Carte bancaire</label>
-                <input type="radio" id="carte" name="moyen_paiement" value="carte">
-                <br>
+                <div class="ms-lg-3">
 
-                <label for="paypal">PayPal</label>
-                <input type="radio" id="paypal" name="moyen_paiement" value="paypal">
-                <br>
+                    <label for="carte">Carte bancaire</label>
+                    <input type="radio" id="carte" name="moyen_paiement" value="carte">
+                    <br>
 
-                <label for="virement">Virement bancaire</label>
-                <input type="radio" id="virement" name="moyen_paiement" value="virement">
+                    <label for="paypal">PayPal</label>
+                    <input type="radio" id="paypal" name="moyen_paiement" value="paypal">
+                    <br>
+
+                    <label for="virement">Virement bancaire</label>
+                    <input type="radio" id="virement" name="moyen_paiement" value="virement">
+
                 </div>
 
-                {# PARTIE PAIEMENT DESKTOP #}
-                <table class="table ms-4 mt-3 d-none d-lg-block">
+                {# PARTIE PAIEMENT / ESTHETIQUE #}
+                <div class="mt-2 m-lg-3 ms-lg-5">
+                
+                        <div class="fs-4 d-lg-flex">
 
-                    <tbody class="fs-4">
-                        <tr>
-                            <td class="col-lg-2 bg-transparent">Numéro de carte :</td>
-                            <td class="bg-transparent"><input type="text" id="numero_carte" name="numero_carte" class="bordures fond_input rounded-3 border-3 text-center"
-                                        maxlength="19" style="width: 15rem;" placeholder="0000 0000 0000 0000"></td>
-                        </tr>
-                        <tr>
-                            <td class="col-lg-2 bg-transparent">Nom du titulaire :</td>
-                            <td class="bg-transparent"><input type="text" id="nom_titulaire" name="nom_titulaire" class="bordures fond_input rounded-3 border-3"
-                                        maxlength="50" style="width: 20rem;" placeholder="Dupont Pierre"></td>
-                        </tr>
-                        <tr>
-                            <td class="col-lg-2 bg-transparent">Date d'expiration :</td>
-                            <td class="bg-transparent"><input type="text" id="date_expiration" name="date_expiration" class="bordures fond_input rounded-3 border-3 text-center"
-                                        maxlength="5" style="width: 5rem;" placeholder="01/25"></td>
-                        </tr>
-                        <tr>
-                            <td class="col-lg-2 bg-transparent">CVV :</td>
-                            <td class="bg-transparent"><input type="text" id="cvv" name="cvv" class="bordures fond_input rounded-3 border-3 text-center"
-                                        maxlength="3" style="width: 4rem;"placeholder="000"></td>
-                        </tr>
-                    </tbody>
+                            <p class="col-12 col-lg-2 mb-0 mb-lg-3">Numéro de carte :</p>
+                        
+                            <div class="col-12 col-lg-9">
+                                <input type="text" id="numero_carte" name="numero_carte" class="col-9 col-lg-3 bordures fond_input rounded-3 border-3"
+                                        maxlength="19" placeholder="0000 0000 0000 0000">
+                            </div>
 
-                </table>
+                        </div>
 
+                        <div class="fs-4 d-lg-flex">
 
-                {# PARTIE PAIEMENT MOBILE #}
-                <table class="table ms-2 mt-3 d-block d-sm-none">
+                            <p class="col-12 col-lg-2 mb-0 mb-lg-3">Nom du titulaire :</p>
+                        
+                            <div class="col-12 col-lg-9">
+                                <input type="text" id="nom_titulaire" name="nom_titulaire" class="col-12 col-lg-5 bordures fond_input rounded-3 border-3"
+                                        maxlength="50" placeholder="Dupont Pierre">
+                            </div>
 
-                    <tbody class="fs-4 border border-white">
-                        <tr>
-                            <td>Numéro de carte :</td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" id="numero_carte" name="numero_carte" class="bordures fond_input rounded-3 border-3"
-                                    maxlength="19" placeholder="0000 0000 0000 0000"></td>
-                        </tr>
+                        </div>
 
-                        <tr>
-                            <td>Nom du titulaire :</td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" id="nom_titulaire" name="nom_titulaire" class="bordures fond_input rounded-3 border-3"
-                                        maxlength="50" placeholder="Dupont Pierre"></td>
-                        </tr>
+                        <div class="fs-4 d-lg-flex">
 
-                        <tr>
-                            <td>Date d'expiration :</td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" id="date_expiration" name="date_expiration" class="bordures fond_input rounded-3 border-3"
-                                        maxlength="5" style="width: 5rem;" placeholder="01/25"></td>
-                        </tr>
+                            <p class="col-12 col-lg-2 mb-0 mb-lg-3">Date d'expiration :</p>
+                        
+                            <div class="col-12 col-lg-9">
+                                <input type="text" id="date_expiration" name="date_expiration" class="col-3 col-lg-1 bordures fond_input rounded-3 border-3"
+                                        maxlength="5" placeholder="01/25">
+                            </div>
 
-                        <tr>
-                            <td>CVV :</td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" id="cvv" name="cvv" class="bordures fond_input rounded-3 border-3"
-                                        maxlength="3" style="width: 4rem;"placeholder="000"></td>
-                        </tr>
-                    </tbody>
+                        </div>
 
-                </table>
+                        <div class="fs-4 d-lg-flex">
+
+                            <p class="col-12 col-lg-2 mb-0 mb-lg-3">CVV :</p>
+                        
+                            <div class="col-12 col-lg-9">
+                                <input type="text" id="cvv" name="cvv" class="col-2 col-lg-1 bordures fond_input rounded-3 border-3"
+                                        maxlength="3" placeholder="000">
+                            </div>
+
+                        </div>
+
+                    </div>
 
         </div>
 
@@ -577,7 +432,6 @@
     {# BOUTONS #}
     <div class="row">
 
-
         <div class="col-12 mb-4 d-flex justify-content-center">
             {{ form_widget(formAdressesDesktop.creation_commande, {
                 'attr': {
@@ -588,7 +442,6 @@
                 'label': 'Finaliser la commande'
             }) }}
         </div>
-        {# {{ form_end(formAdressesMobile) }} #}
         {{ form_end(formAdressesDesktop) }}
         
         <div class="d-flex justify-content-center mb-5">
