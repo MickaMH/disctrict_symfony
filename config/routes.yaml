@@ -20,12 +20,14 @@ admin:
     path: /admin
     controller: App\Controller\Admin\DashboardController::index
 
+
 update_etat_commande:
     path: /admin/commande/{id}/etat
     controller: App\Controller\Admin\DashboardController::updateEtat
     methods: [POST]
     requirements:
         id: \d+
+
 
 app_compte_changer_mot_de_passe:
     path: /compte/changer-mot-de-passe

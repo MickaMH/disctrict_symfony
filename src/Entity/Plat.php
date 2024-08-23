@@ -34,6 +34,9 @@ class Plat
     #[ORM\ManyToOne(inversedBy: 'plat')]
     private ?Categorie $categories = null;
 
+    #[ORM\Column(type: Types::INTEGER)]
+    private $categories_id;
+
 
 
 
@@ -47,6 +50,19 @@ class Plat
     {
         $this->detail = new ArrayCollection();
     }
+
+    
+public function getCategoriesId(): ?int
+{
+    return $this->categories_id;
+}
+
+public function setCategoriesId(int $categories_id): self
+{
+    $this->categories_id = $categories_id;
+
+    return $this;
+}
 
     public function getCategorie(): ?Categorie
     {

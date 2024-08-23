@@ -16,6 +16,12 @@
             Bienvenue dans l'interface de gestion The District.
         </h1>
 
+        {# BOUTON RETOUR AU SITE #}
+        <a class="btn btn-primary d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5" href="{{ path('app_compte') }}"
+            role="button" style="width: 10rem; height: 3rem;">
+            Retour au site
+        </a>
+
     </div>
 
 </div>
@@ -226,13 +232,13 @@
 
                     </li>
 
-                    {# BOUTON VALIDER POUR PREPARATION #}
+                    {# BOUTON PREPARER LA COMMANDE #}
                     <li class="list-group-item mx-auto">
 
                         <a class="btn btn-success d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5"
                             href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
                             role="button" style="width: 15rem; height: 3rem;">
-                            Valider pour préparation
+                            Préparer la commande
                         </a>
 
                     </li>
@@ -423,13 +429,13 @@
 
                     </li>
 
-                    {# BOUTON VALIDER POUR LIVRAISON #}
+                    {# BOUTON COMMANDE PRETE #}
                     <li class="list-group-item mx-auto">
 
                         <a class="btn btn-success d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5"
                             href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
                             role="button" style="width: 15rem; height: 3rem;">
-                            Valider pour livraison
+                            Commande prête
                         </a>
 
                     </li>
@@ -622,13 +628,13 @@
 
                     </li>
 
-                    {# BOUTON VALIDER POUR LIVREE #}
+                    {# BOUTON COMMANDE LIVREE #}
                     <li class="list-group-item mx-auto">
 
                         <a class="btn btn-success d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5"
                             href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
                             role="button" style="width: 15rem; height: 3rem;">
-                            Valider pour livrée
+                            Commande livrée
                         </a>
 
                     </li>
@@ -954,7 +960,7 @@
 <div class="row m-5 d-flex justify-content-center">
 
     <a class="btn btn-primary d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5" href="{{ path('app_compte') }}"
-        role="button" style="width: 15rem; height: 3rem;">
+        role="button" style="width: 10rem; height: 3rem;">
         Retour au site
     </a>
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\DetailRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DetailRepository::class)]
@@ -45,7 +46,37 @@ class Detail
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $ville_livraison = null;
 
+    #[ORM\Column(type: Types::INTEGER)]
+    private $commande_id;
+
+    #[ORM\Column(type: Types::INTEGER)]
+    private $plats_id;
+
     // ...
+
+public function getCommandeId(): ?int
+{
+    return $this->commande_id;
+}
+
+public function setCommandeId(int $commande_id): self
+{
+    $this->commande_id = $commande_id;
+
+    return $this;
+}
+
+public function getPlatsId(): ?int
+{
+    return $this->plats_id;
+}
+
+public function setPlatsId(int $plats_id): self
+{
+    $this->plats_id = $plats_id;
+
+    return $this;
+}
 
     public function getPlat(): ?Plat
     {
