@@ -24,29 +24,33 @@
     <header class="container-fluid">
 
         {# NAVBAR DESKTOP #}
-        <div class="row d-none d-xl-block">
+        <div class="row d-none d-xxl-block">
 
-            <nav class="navbar navbar-expand-lg">
+            <nav class="navbar navbar-expand-md">
 
                 <div class="container-fluid">
 
-                    <a class="navbar-brand" href="{{ path('app_accueil') }}">
-                        <img src="/images/district/logo.webp" alt="Logo The District" width="200" height="auto" class="bordures_logo mt-1">
-                    </a>
+                    <div class="col-2">
 
-                    <button class="navbar-toggler bordures border-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                        <a class="navbar-brand" href="{{ path('app_accueil') }}">
+                            <img src="/images/district/logo.webp" alt="Logo The District" width="200" height="auto" class="bordures_logo mt-1">
+                        </a>
+
+                        <button class="navbar-toggler bordures border-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                    </div>
 
                     <div class="collapse navbar-collapse bg-sm-white" id="navbarNavAltMarkup">
 
                         <div class="navbar-nav">
 
-                            <div class="container">
+                            <div class="col-xxl-9">
 
                             <div class="row">
 
-                                <div class="col-lg-12 d-flex gap-lg-5">
+                                <div class="col-12 d-flex gap-lg-5 justify-content-center">
 
                                     <a class=" liens_header fs-1 fw-medium" aria-current="page" href="{{ path('app_accueil') }}">ACCUEIL</a>
                                     <a class=" liens_header fs-1 fw-medium" href="{{ path('app_categories') }}">CATÉGORIES</a>
@@ -103,7 +107,7 @@
 
                             </div>
 
-                            <div class="container d-flex flex-column">
+                            <div class="col-3 d-flex flex-column">
 
                                 <div class="row">
 
@@ -319,8 +323,8 @@
                 <img src="/images/district/ecriture_district_blanc.webp" class="w-75"><br>
 
                 <p class="lettres_blanches fs-3">
-                    " Ce site est un projet de formation créé avec le framework Symfony.<br>
-                    Utilisez Mailhog pour capter les emails. "
+                    "Ce site est un projet de formation créé avec le framework Symfony.<br>
+                    Utilisez Mailhog pour capter les emails."
                 </p>
 
             </div>
