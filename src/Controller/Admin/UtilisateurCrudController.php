@@ -44,6 +44,9 @@ class UtilisateurCrudController extends AbstractCrudController
             TextField::new('email')
             ->setFormTypeOption('disabled', 'disabled'),
 
+            TextField::new('telephone')
+            ->setFormTypeOption('disabled', 'disabled'),
+
             TextField::new('adresse')
             ->setFormTypeOption('disabled', 'disabled'),
 

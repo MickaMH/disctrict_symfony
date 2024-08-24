@@ -2,24 +2,30 @@
 
 {% block content %}
 
+{% for message in app.flashes('error') %}
+    <div class="alert alert-danger">{{ message }}</div>
+{% endfor %}
+
 <main>
 
 <div class="row m-5 d-flex">
 
-    <div class="col-12 d-flex">
+    <div class="col-12 d-flex justify-content-between">
 
         <a href="{{ path('app_accueil') }}">
-            <img src="/images/district/logo.webp" alt="Logo The District" width="150" height="auto" class="bordures_logo rounded-4">
+            <img src="/images/district/logo_transparent.png" alt="Logo The District" width="150" height="auto" class="bordures_logo rounded-4 btn-primary">
         </a>
 
-        <h1 class="d-flex align-items-center ms-5">
-            Bienvenue dans l'interface de gestion The District.
-        </h1>
+        <p class="d-flex align-items-center fs-1 fw-medium text-center">
+            Bienvenue dans l'interface de gestion
+            <br>
+            The District
+        </p>
 
         {# BOUTON RETOUR AU SITE #}
-        <a class="btn btn-primary d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5" href="{{ path('app_compte') }}"
-            role="button" style="width: 10rem; height: 3rem;">
-            Retour au site
+        <a class="btn btn-primary d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5" href="{{ path('app_compte') }}"
+            role="button" style="width: 7rem; height: 3rem;">
+            Compte
         </a>
 
     </div>
@@ -32,23 +38,23 @@
     <ul class="nav nav-tabs fs-3 fw-medium">
 
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#enregistree" role="tab" aria-controls="enregistree" aria-selected="true">Nouvelles commandes</a>
+            <a class="nav-link active text-black" data-toggle="tab" href="#enregistree" role="tab" aria-controls="enregistree" aria-selected="true">Nouvelles commandes</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#preparation" role="tab" aria-controls="preparation" aria-selected="false">Préparation</a>
+            <a class="nav-link text-danger" data-toggle="tab" href="#preparation" role="tab" aria-controls="preparation" aria-selected="false">En préparation</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#livraison" role="tab" aria-controls="livraison" aria-selected="false">Livraison</a>
+            <a class="nav-link text-warning" data-toggle="tab" href="#livraison" role="tab" aria-controls="livraison" aria-selected="false">En livraison</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#livrees" role="tab" aria-controls="livrees" aria-selected="false">Livrées</a>
+            <a class="nav-link text-success" data-toggle="tab" href="#livrees" role="tab" aria-controls="livrees" aria-selected="false">Commandes livrées</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#statistiques" role="tab" aria-controls="statistiques" aria-selected="false">Statistiques</a>
+            <a class="nav-link text-black" data-toggle="tab" href="#statistiques" role="tab" aria-controls="statistiques" aria-selected="false">Statistiques</a>
         </li>
 
     </ul>
@@ -257,7 +263,7 @@
 
         {# ONGLET COMMANDES EN PREPARATION #}
         <div class="tab-pane fade" id="preparation" role="tabpanel" aria-labelledby="contact-tab">
-            <h2 class="mt-4">En préparation</h2>
+            <h2 class="mt-4 text-danger">En préparation</h2>
             {% if commandesEnCoursAvecDetails|length > 0 %}
 
             {% for commande in commandesEnCoursAvecDetails %}
@@ -455,7 +461,7 @@
         {# ONGLET COMMANDES EN LIVRAISON #}
         <div class="tab-pane fade" id="livraison" role="tabpanel" aria-labelledby="profile-tab">
 
-            <h2 class="mt-4">En livraison</h2>
+            <h2 class="mt-4 text-warning">En livraison</h2>
 
             {% if commandesTermineesAvecDetails|length > 0 %}
 
@@ -653,11 +659,12 @@
         {# ONGLET COMMANDES LIVREES #}
         <div class="tab-pane fade" id="livrees" role="tabpanel" aria-labelledby="contact-tab">
 
-            <h2 class="mt-4 mb-4">Commandes livrées</h2>
+            <h2 class="mt-4 mb-4 text-success">Commandes livrées</h2>
 
             {% if commandesLivreesAvecDetails|length > 0 %}
 
-            {% for commande in commandesLivreesAvecDetails %}
+            {# {% for commande in commandesLivreesAvecDetails %} #}
+            {% for commande in commandesLivreesAvecDetails|sort((a, b) => b.commande.dateCommande <=> a.commande.dateCommande) %}
             <!-- Bouton pour ouvrir la modal -->
             <div class="d-flex flex-column">
 
@@ -668,10 +675,10 @@
                         <table class="table">
                             <tbody class="fs-4">
                                 <tr>
-                                    <td class="col-3">
+                                    <td class="col-7 text-start">
                                         Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}
                                     </td>
-                                    <td class="col-3">
+                                    <td class="col-5 text-start">
                                         Montant total : {{ commande.commande.total }} €
                                     </td>
                                 </tr>
@@ -869,7 +876,7 @@
                 </ul>
 
             </div>
-                        
+
             </div>
 
             <div class="modal-footer">
@@ -895,6 +902,8 @@
 
         {# ONGLET STATISTIQUES #}
         <div class="tab-pane fade" id="statistiques" role="tabpanel" aria-labelledby="contact-tab">
+
+            <h2 class="mt-4">Statistiques</h2>
 
             <table class="table">
 
@@ -922,7 +931,7 @@
                 </thead>
 
                 <tbody class="">
-                {% for commande in commandesAll %}
+                {% for commande in commandesAll|sort((a, b) => b.dateCommande <=> a.dateCommande) %}
                 {% for detail in commande.details %}
                     <tr class="">
                         <td class="">
@@ -956,13 +965,32 @@
 </div>
 
 
-{# BOUTON RETOUR AU SITE #}
-<div class="row m-5 d-flex justify-content-center">
+{# RETOUR HAUT DE PAGE DESKTOP #}
+<div class="row d-none d-lg-block">
 
-    <a class="btn btn-primary d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5" href="{{ path('app_compte') }}"
-        role="button" style="width: 10rem; height: 3rem;">
-        Retour au site
-    </a>
+    <div class="col-12 d-flex justify-content-end">
+
+        <a href="#" class="mb-lg-3 me-lg-3 fs-1 text-center shadow-lg btn-primary text-white rounded-circle"
+            style="width: 4rem; height: auto;">
+            ↑
+        </a>
+
+    </div>
+
+</div>
+
+
+{# RETOUR HAUT DE PAGE MOBILE #}
+<div class="row d-block d-sm-none">
+
+    <div class="col-12 d-flex justify-content-end">
+
+        <a href="#" class="mb-3 me-3 fs-1 text-center shadow-lg bg-primary text-white rounded-circle"
+            style="width: 3rem; height: auto;">
+            ↑
+        </a>
+
+    </div>
 
 </div>
 

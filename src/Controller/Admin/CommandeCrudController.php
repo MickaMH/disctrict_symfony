@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Commande;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
@@ -69,6 +71,13 @@ class CommandeCrudController extends AbstractCrudController
             TextField::new('ville_livraison')
             ->setFormTypeOption('disabled', 'disabled'),
         ];
+    }
+
+
+    public function configureActions(Actions $actions): Actions
+    {
+    return $actions
+        ->disable(Action::DELETE);
     }
 
 }

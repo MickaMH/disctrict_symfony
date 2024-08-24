@@ -12,6 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Validator\Constraints\Image;
 
 class PlatCrudController extends AbstractCrudController
 {
@@ -44,10 +45,17 @@ class PlatCrudController extends AbstractCrudController
             TextField::new('prix'),
 
             ImageField::new('image') // Ajout de ce champ d'upload d'image
-                ->setBasePath('/images/plats/') // Chemin vers le dossier d'upload
-                ->setUploadDir('public/images/plats/') // Actual server directory
+                ->setBasePath('images/plats/') // Chemin vers le dossier d'upload
+                ->setUploadDir('images/plats/') // Actual server directory
+                ->setHelp('Formats autorisés : PNG, JPEG') // Aide pour les utilisateurs
                 ->setLabel('Image') // Libellé du champ
-                ->setRequired(false),
+                ->setRequired(false)
+                ->setFileConstraints(new Image(
+                    maxSize: '500k',
+                    mimeTypes: ['image/png', 'image/jpeg'],
+                    maxWidth: 1024,
+                    maxHeight: 768,
+                )),
                 
             BooleanField::new('active'),
         ];

@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Detail;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -41,6 +43,13 @@ class DetailCrudController extends AbstractCrudController
             IntegerField::new('commande_id')
             ->setFormTypeOption('disabled', 'disabled'),
         ];
+    }
+
+
+    public function configureActions(Actions $actions): Actions
+    {
+    return $actions
+        ->disable(Action::DELETE);
     }
 
 }
