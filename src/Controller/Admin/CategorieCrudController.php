@@ -11,6 +11,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use Symfony\Component\Validator\Constraints\Image;
+use Intervention\Image\ImageTransformer;
+use Intervention\Image\ImageResize;
+use Intervention\Image\Box;
 
 class CategorieCrudController extends AbstractCrudController
 {
@@ -40,15 +43,15 @@ class CategorieCrudController extends AbstractCrudController
 
             ImageField::new('image') // Ajout de ce champ d'upload d'image
                 ->setBasePath('images/categories/') // Chemin vers le dossier d'upload
-                ->setUploadDir('images/categories/') // Actual server directory
-                ->setHelp('Formats autorisés : PNG, JPEG') // Aide pour les utilisateurs
+                ->setUploadDir('public/images/categories/') // Actual server directory
+                ->setHelp('Formats autorisés : png, jpg, jpeg. Taille autorisée : 400x500 pixels max.') // Aide pour les utilisateurs
                 ->setLabel('Image') // Libellé du champ
                 ->setRequired(false)
                 ->setFileConstraints(new Image(
                     maxSize: '500k',
-                    mimeTypes: ['image/png', 'image/jpeg'],
-                    maxWidth: 1024,
-                    maxHeight: 768,
+                    mimeTypes: ['image/png', 'image/jpg', 'image/jpeg'],
+                    maxWidth: 400,
+                    maxHeight: 500,
                 )),
 
             BooleanField::new('active'),

@@ -46,15 +46,15 @@ class PlatCrudController extends AbstractCrudController
 
             ImageField::new('image') // Ajout de ce champ d'upload d'image
                 ->setBasePath('images/plats/') // Chemin vers le dossier d'upload
-                ->setUploadDir('images/plats/') // Actual server directory
-                ->setHelp('Formats autorisés : PNG, JPEG') // Aide pour les utilisateurs
+                ->setUploadDir('public/images/plats/') // Actual server directory
+                ->setHelp('Formats autorisés : png, jpg, jpeg. Taille autorisée : 400x400 pixels max.') // Aide pour les utilisateurs
                 ->setLabel('Image') // Libellé du champ
                 ->setRequired(false)
                 ->setFileConstraints(new Image(
                     maxSize: '500k',
-                    mimeTypes: ['image/png', 'image/jpeg'],
-                    maxWidth: 1024,
-                    maxHeight: 768,
+                    mimeTypes: ['image/png', 'image/jpg', 'image/jpeg'],
+                    maxWidth: 400,
+                    maxHeight: 400,
                 )),
                 
             BooleanField::new('active'),

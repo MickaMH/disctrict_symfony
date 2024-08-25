@@ -2,9 +2,9 @@
 
 {% block content %}
 
-{% for message in app.flashes('error') %}
+{# {% for message in app.flashes('error') %}
     <div class="alert alert-danger">{{ message }}</div>
-{% endfor %}
+{% endfor %} #}
 
 <main>
 
@@ -13,7 +13,7 @@
     <div class="col-12 d-flex justify-content-between">
 
         <a href="{{ path('app_accueil') }}">
-            <img src="/images/district/logo_transparent.png" alt="Logo The District" width="150" height="auto" class="bordures_logo rounded-4 btn-primary">
+            <img src="/images/district/logo_transparent.png" alt="Logo The District" style="width: 10rem;height: auto;" class="bordures_logo rounded-4 btn-primary shadow-lg">
         </a>
 
         <p class="d-flex align-items-center fs-1 fw-medium text-center">
@@ -23,9 +23,11 @@
         </p>
 
         {# BOUTON RETOUR AU SITE #}
-        <a class="btn btn-primary d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5" href="{{ path('app_compte') }}"
-            role="button" style="width: 7rem; height: 3rem;">
-            Compte
+        <a class="btn btn-primary fw-medium shadow-lg fs-5 rounded-4 d-flex align-items-center justify-content-center" href="{{ path('app_compte') }}"
+            role="button" style="width: 10rem; height: auto;">
+            Retour<br>
+            au<br>
+            compte
         </a>
 
     </div>
@@ -35,26 +37,26 @@
 <div class="row m-5">
 
     {# TITRES ONGLETS #}
-    <ul class="nav nav-tabs fs-3 fw-medium">
+    <ul class="nav nav-tabs fs-3 fw-medium border-3">
 
         <li class="nav-item">
-            <a class="nav-link active text-black" data-toggle="tab" href="#enregistree" role="tab" aria-controls="enregistree" aria-selected="true">Nouvelles commandes</a>
+            <a class="nav-link active text-danger border-3" data-toggle="tab" href="#enregistree" role="tab" aria-controls="enregistree" aria-selected="true">Nouvelles commandes</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-danger" data-toggle="tab" href="#preparation" role="tab" aria-controls="preparation" aria-selected="false">En préparation</a>
+            <a class="nav-link text-warning border-3" data-toggle="tab" href="#preparation" role="tab" aria-controls="preparation" aria-selected="false">En préparation</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-warning" data-toggle="tab" href="#livraison" role="tab" aria-controls="livraison" aria-selected="false">En livraison</a>
+            <a class="nav-link border-3" style="color: yellowgreen;" data-toggle="tab" href="#livraison" role="tab" aria-controls="livraison" aria-selected="false">En livraison</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-success" data-toggle="tab" href="#livrees" role="tab" aria-controls="livrees" aria-selected="false">Commandes livrées</a>
+            <a class="nav-link text-success border-3" data-toggle="tab" href="#livrees" role="tab" aria-controls="livrees" aria-selected="false">Livrées</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-black" data-toggle="tab" href="#statistiques" role="tab" aria-controls="statistiques" aria-selected="false">Statistiques</a>
+            <a class="nav-link text-black border-3" data-toggle="tab" href="#statistiques" role="tab" aria-controls="statistiques" aria-selected="false">Statistiques</a>
         </li>
 
     </ul>
@@ -65,7 +67,7 @@
         {# ONGLET NOUVELLES COMMANDES #}
         <div class="tab-pane fade show active" id="enregistree" role="tabpanel" aria-labelledby="home-tab">
 
-            <h2 class="mt-4">Nouvelles commandes</h2>
+            <h2 class="mt-4 text-danger">Nouvelles commandes</h2>
 
             {% if commandesAvecDetails|length > 0 %}
 
@@ -241,7 +243,7 @@
                     {# BOUTON PREPARER LA COMMANDE #}
                     <li class="list-group-item mx-auto">
 
-                        <a class="btn btn-success d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5"
+                        <a class="btn btn-danger d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-3"
                             href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
                             role="button" style="width: 15rem; height: 3rem;">
                             Préparer la commande
@@ -263,7 +265,7 @@
 
         {# ONGLET COMMANDES EN PREPARATION #}
         <div class="tab-pane fade" id="preparation" role="tabpanel" aria-labelledby="contact-tab">
-            <h2 class="mt-4 text-danger">En préparation</h2>
+            <h2 class="mt-4 text-warning">En préparation</h2>
             {% if commandesEnCoursAvecDetails|length > 0 %}
 
             {% for commande in commandesEnCoursAvecDetails %}
@@ -293,7 +295,7 @@
 
                     {% for detail in commande.details %}
                     <li class="list-group-item d-flex align-items-center">
-                        
+
                         <img src="/images/plats/{{ detail.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 6rem; height: 6rem;" alt="{{ detail.plat.libelle }}" title="{{ detail.plat.libelle }}">
                         
                         <div class="col-4 ms-5">{{ detail.plat.libelle }}</div>
@@ -438,7 +440,7 @@
                     {# BOUTON COMMANDE PRETE #}
                     <li class="list-group-item mx-auto">
 
-                        <a class="btn btn-success d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5"
+                        <a class="btn btn-warning d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-3"
                             href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
                             role="button" style="width: 15rem; height: 3rem;">
                             Commande prête
@@ -461,7 +463,7 @@
         {# ONGLET COMMANDES EN LIVRAISON #}
         <div class="tab-pane fade" id="livraison" role="tabpanel" aria-labelledby="profile-tab">
 
-            <h2 class="mt-4 text-warning">En livraison</h2>
+            <h2 class="mt-4" style="color: yellowgreen;">En livraison</h2>
 
             {% if commandesTermineesAvecDetails|length > 0 %}
 
@@ -637,9 +639,9 @@
                     {# BOUTON COMMANDE LIVREE #}
                     <li class="list-group-item mx-auto">
 
-                        <a class="btn btn-success d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5"
+                        <a class="btn d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-3 text-white"
                             href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
-                            role="button" style="width: 15rem; height: 3rem;">
+                            role="button" style="width: 15rem; height: 3rem; background-color: yellowgreen;">
                             Commande livrée
                         </a>
 
@@ -659,7 +661,7 @@
         {# ONGLET COMMANDES LIVREES #}
         <div class="tab-pane fade" id="livrees" role="tabpanel" aria-labelledby="contact-tab">
 
-            <h2 class="mt-4 mb-4 text-success">Commandes livrées</h2>
+            <h2 class="mt-4 mb-4 text-success">Livrées <span class="text-success fw-bold">&#x2713;</span></h2>
 
             {% if commandesLivreesAvecDetails|length > 0 %}
 
@@ -927,6 +929,9 @@
                 <th class="">
                     Montant total
                 </th>
+                <th class="">
+                    Etat
+                </th>
                 </tr>
                 </thead>
 
@@ -951,6 +956,19 @@
                         </td>
                         <td>
                             {{ detail.plat.prix * detail.quantite }}.00 €
+                        </td>
+                        <td>
+                            {% if commande.etat == 0 %}
+                                    Enregistrée
+                                    {% elseif commande.etat == 1 %}
+                                    En préparation
+                                    {% elseif commande.etat == 2 %}
+                                    En livraison
+                                    {% elseif commande.etat == 3 %}
+                                    Livrée <span class="text-success fw-bold">&#x2713;</span>
+                                    {% else %}
+                                    État inconnu
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}

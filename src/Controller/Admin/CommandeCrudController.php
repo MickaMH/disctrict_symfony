@@ -48,8 +48,8 @@ class CommandeCrudController extends AbstractCrudController
             ChoiceField::new('etat')
             ->setChoices([
             'Enregistrée' => 0,
-            'Préparation' => 1,
-            'Livraison' => 2,
+            'En préparation' => 1,
+            'En livraison' => 2,
             'Livrée' => 3,
             ]),
 

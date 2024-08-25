@@ -50,7 +50,7 @@
 
                             <div class="row">
 
-                                <div class="col-12 d-flex gap-lg-5 justify-content-center">
+                                <div class="col-8 gap-5 d-flex">
 
                                     <a class=" liens_header fs-1 fw-medium" aria-current="page" href="{{ path('app_accueil') }}">ACCUEIL</a>
                                     <a class=" liens_header fs-1 fw-medium" href="{{ path('app_categories') }}">CATÉGORIES</a>
@@ -62,7 +62,7 @@
                             </div>
 
                             {# BARRE DE RECHERCHE #}
-                            <div class="row mt-lg-5 d-flex justify-content-center">
+                            <div class="row mt-lg-5 ms-lg-5">
 
                                 <form action="#" method="get" class="z-3 d-flex champ_recherche fond_input" style="width: 44rem; height: 3rem;">
 
@@ -107,13 +107,13 @@
 
                             </div>
 
-                            <div class="col-3 d-flex flex-column">
+                            <div class="col-4 d-flex flex-column">
 
                                 <div class="row">
 
                                 {# CONNEXION #}
                                 {% if app.user %}
-                                <a class=" liens_header fs-1 fw-medium justify-content-end" href="{{ path('app_logout') }}">
+                                <a class=" liens_header fs-1 fw-medium" href="{{ path('app_logout') }}">
                                     <img src="/images/icones/icone_user_district.webp" width="35" height="auto" class="mb-2">
                                     Déconnexion
                                 </a>

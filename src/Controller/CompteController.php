@@ -98,7 +98,6 @@ class CompteController extends AbstractController
     }
 
 
-
     #[Route('/compte/supprimer', name: 'app_compte_supprimer')]
     public function supprimerCompte(EntityManagerInterface $entityManager): Response
     {
@@ -130,6 +129,5 @@ class CompteController extends AbstractController
 
         return $this->redirectToRoute('app_confirm_suppression');
     }
-
 
 }
