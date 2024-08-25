@@ -55,6 +55,69 @@ class CompteController extends AbstractController
     }
 
 
+    #[Route('/compte/modifEmail', name: 'app_compte_modifEmail')]
+    public function changerEmail(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser(); // Get the connected user
+    if (!$user instanceof Utilisateur) {
+        throw new \Exception('Vous devez être connecté pour supprimer votre compte');
+    }
+
+        $oldEmail = $request->get('old_email');
+        $newEmail = $request->get('new_email');
+        $confirmNewEmail = $request->get('confirm_new_email');
+
+        if (empty($oldEmail)) {
+        // Le champ email est vide
+            $this->addFlash('error', 'Veuillez entrer votre ancien email');
+            return $this->redirectToRoute('app_compte');
+        }
+        if ($oldEmail !== $user->getEmail()) {
+        // L'email est incorrect
+            $this->addFlash('error', 'Ancien email incorrect');
+            return $this->redirectToRoute('app_compte');
+        }
+
+        $passwordDeux = $request->get('password_deux');
+        if (empty($passwordDeux)) {
+        // Le champ password est vide
+            $this->addFlash('error', 'Veuillez entrer votre mot de passe');
+            return $this->redirectToRoute('app_compte');
+        }
+        // Vérifier que le mot de passe est correct
+        if (!$passwordHasher->isPasswordValid($user, $passwordDeux)) {
+            // Le mot de passe est incorrect
+            $this->addFlash('error', 'Mot de passe incorrect');
+            return $this->redirectToRoute('app_compte');
+        }
+
+        if (empty($newEmail)) {
+            // Le champ nouveau email est vide
+                $this->addFlash('error', 'Veuillez entrer votre nouvel email');
+                return $this->redirectToRoute('app_compte');
+            }
+        if (empty($confirmNewEmail)) {
+            // Le champ confirmer nouveau email est vide
+                $this->addFlash('error', 'Veuillez confirmer votre nouvel email');
+                return $this->redirectToRoute('app_compte');
+            }
+            
+        // Vérifier que les deux nouveaux emails sont identiques
+        if ($newEmail !== $confirmNewEmail) {
+            // Les deux nouveaux emails ne sont pas identiques
+            $this->addFlash('error', 'Les deux nouveaux emails ne sont pas identiques');
+            return $this->redirectToRoute('app_compte');
+        }
+
+        // Mettre à jour l'email de l'utilisateur
+        $user->setEmail($newEmail);
+        $entityManager->flush();
+
+        // Afficher un message de confirmation
+        $this->addFlash('success', 'Adresse email mise à jour avec succès');
+        return $this->redirectToRoute('app_compte');
+    }
+
 
     #[Route('/compte/modifPassword', name: 'app_compte_modifPassword')]
     public function changerMotDePasse(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
@@ -64,12 +127,28 @@ class CompteController extends AbstractController
         $newPassword = $request->get('new_password');
         $confirmNewPassword = $request->get('confirm_new_password');
 
+        if (empty($oldPassword)) {
+            // Le champ ancien mot de passe est vide
+                $this->addFlash('error', 'Veuillez entrer votre ancien mot de passe');
+                return $this->redirectToRoute('app_compte');
+            }
         // Vérifier que l'ancien mot de passe est correct
         if (!$passwordHasher->isPasswordValid($user, $oldPassword)) {
             // L'ancien mot de passe est incorrect
             $this->addFlash('error', 'Ancien mot de passe incorrect');
             return $this->redirectToRoute('app_compte');
         }
+
+        if (empty($newPassword)) {
+            // Le champ nouveau mot de passe est vide
+                $this->addFlash('error', 'Veuillez entrer votre nouveau mot de passe');
+                return $this->redirectToRoute('app_compte');
+            }
+        if (empty($confirmNewPassword)) {
+            // Le champ confirmer nouveau mot de passe est vide
+                $this->addFlash('error', 'Veuillez confirmer votre nouveau mot de passe');
+                return $this->redirectToRoute('app_compte');
+            }
 
         // Vérifier que les deux nouveaux mots de passe sont identiques
         if ($newPassword !== $confirmNewPassword) {
@@ -99,12 +178,40 @@ class CompteController extends AbstractController
 
 
     #[Route('/compte/supprimer', name: 'app_compte_supprimer')]
-    public function supprimerCompte(EntityManagerInterface $entityManager): Response
+    public function supprimerCompte(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
+
     $user = $this->getUser(); // Get the connected user
     if (!$user instanceof Utilisateur) {
         throw new \Exception('Vous devez être connecté pour supprimer votre compte');
     }
+
+        $email = $request->get('email');
+        if (empty($email)) {
+        // Le champ email est vide
+            $this->addFlash('error', 'Veuillez entrer votre adresse email');
+            return $this->redirectToRoute('app_compte');
+        }
+
+        if ($email !== $user->getEmail()) {
+        // L'email est incorrect
+            $this->addFlash('error', 'Adresse email incorrecte');
+            return $this->redirectToRoute('app_compte');
+        }
+
+        $password = $request->get('password');
+        if (empty($password)) {
+        // Le champ password est vide
+            $this->addFlash('error', 'Veuillez entrer votre mot de passe');
+            return $this->redirectToRoute('app_compte');
+        }
+
+        // Vérifier que le mot de passe est correct
+        if (!$passwordHasher->isPasswordValid($user, $password)) {
+            // Le mot de passe est incorrect
+            $this->addFlash('error', 'Mot de passe incorrect');
+            return $this->redirectToRoute('app_compte');
+        }
 
     // Delete the Detail entities associated with the Commande entities
     $commandes = $entityManager

@@ -21,14 +21,14 @@
 <body class="">
 
     {# HEADER #}
-    <header class="container-fluid">
+    <header class="container">
 
         {# NAVBAR DESKTOP #}
         <div class="row d-none d-xxl-block">
 
             <nav class="navbar navbar-expand-md">
 
-                <div class="container-fluid">
+                <div class="container">
 
                     <div class="col-2">
 
@@ -46,11 +46,11 @@
 
                         <div class="navbar-nav">
 
-                            <div class="col-xxl-9">
+                            <div class="col-9">
 
                             <div class="row">
 
-                                <div class="col-8 gap-5 d-flex">
+                                <div class="gap-5 d-flex">
 
                                     <a class=" liens_header fs-1 fw-medium" aria-current="page" href="{{ path('app_accueil') }}">ACCUEIL</a>
                                     <a class=" liens_header fs-1 fw-medium" href="{{ path('app_categories') }}">CATÉGORIES</a>
@@ -135,7 +135,7 @@
                                 </div>
 
                                 {% else %}
-                                <a class=" liens_header fs-1 fw-medium justify-content-end" href="{{ path('app_login') }}">
+                                <a class=" liens_header fs-1 fw-medium" href="{{ path('app_login') }}">
                                     <img src="/images/icones/icone_user_district.webp" width="35" height="auto" class="mb-2">
                                     Connexion
                                     <sup class="offline fs-2">&#x25CF;</sup>

@@ -32,3 +32,9 @@ update_etat_commande:
 app_compte_changer_mot_de_passe:
     path: /compte/changer-mot-de-passe
     controller: App\Controller\CompteController::changerMotDePasse
+
+
+app_compte_changer_email:
+    path: /compte/modifEmail
+    controller: App\Controller\CompteController::changerEmail
+    methods: [GET, POST]

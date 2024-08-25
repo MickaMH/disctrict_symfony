@@ -464,6 +464,25 @@
 
                         <p class="fs-4 mt-2">Vous pouvez modifier votre adresse email ci-dessous :</p>
 
+                        <form action="{{ path('app_compte_changer_email') }}" method="post" class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-lg-5 fs-4 d-flex flex-column mx-auto">
+
+                            <label for="old_email">Ancien email</label>
+                            <input type="email" id="old_email" name="old_email" class="form-control fs-4 border-3 bordures fond_input">
+
+                            <label for="password_deux">Mot de passe</label>
+                            <input type="password" id="password_deux" name="password_deux" class="form-control fs-4 border-3 bordures fond_input">
+
+                            <label for="new_email">Nouvel email</label>
+                            <input type="email" id="new_email" name="new_email" class="form-control fs-4 border-3 bordures fond_input">
+
+                            <label for="confirm_new_email">Confirmer le nouvel email</label>
+                            <input type="email" id="confirm_new_email" name="confirm_new_email" class="form-control fs-4 border-3 bordures fond_input">
+
+                            <button type="submit" class="mt-3 mb-3 d-flex justify-content-center align-items-center mx-auto fw-medium shadow-lg fs-5 rounded-3 bouton_envoyer"
+                                    style="width: 15rem; height: 3rem;">Modifier l'email</button>
+
+                        </form>
+
                         <p class="fs-3 fw-medium mt-2">Mot de passe</p>
 
                         <p class="fs-4 mt-2">Vous pouvez modifier votre mot de passe ci-dessous :</p>
@@ -480,7 +499,7 @@
                             <input type="password" id="confirm_new_password" name="confirm_new_password" class="form-control fs-4 border-3 bordures fond_input">
 
                             <button type="submit" class="mt-3 mb-3 d-flex justify-content-center align-items-center mx-auto fw-medium shadow-lg fs-5 rounded-3 bouton_envoyer"
-                                style="width: 15rem; height: 3rem;">Modifier</button>
+                                style="width: 15rem; height: 3rem;">Modifier le mot de passe</button>
 
                         </form>
 
@@ -498,14 +517,6 @@
                 <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
 
-                        {# <p class="fs-4 mt-2">Vous pouvez supprimer votre compte ci-dessous :</p>
-
-                        <a href="{{ path('app_compte_supprimer') }}"
-                            class="mb-3 d-flex justify-content-center align-items-center mx-auto fw-medium shadow-lg fs-5 rounded-3 bouton_envoyer"
-                            style="width: 15rem; height: 3rem;">
-                            Supprimer
-                        </a> #}
-
                         <p class="fs-4 mt-2">Vous pouvez supprimer votre compte ci-dessous :</p>
 
                         <form action="{{ path('app_compte_supprimer') }}" method="post" class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-lg-5 fs-4 d-flex flex-column mx-auto">
@@ -517,7 +528,7 @@
                             <input type="password" id="password" name="password" class="form-control fs-4 border-3 bordures fond_input">
 
                             <button type="submit" class="mt-3 mb-3 d-flex justify-content-center align-items-center mx-auto fw-medium shadow-lg fs-5 rounded-3 bouton_envoyer"
-                                    style="width: 15rem; height: 3rem;">Supprimer</button>
+                                    style="width: 15rem; height: 3rem;">Supprimer le compte</button>
 
                         </form>
 
