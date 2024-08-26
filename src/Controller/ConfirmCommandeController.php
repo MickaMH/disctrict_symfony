@@ -36,7 +36,7 @@ class ConfirmCommandeController extends AbstractController
         ->from('TheDistrict@email.fr')
         ->to($user->getEmail())
         ->subject('Confirmation de commande')
-        ->html($this->renderView('new_confirmation.html.twig', [
+        ->html($this->renderView('email/new_confirmation.html.twig', [
             'app' => [
                 'user' => $user,
                 ],

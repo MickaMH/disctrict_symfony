@@ -34,9 +34,9 @@ class DashboardController extends AbstractDashboardController
     
 
     #[Route('/admin', name: 'admin')]
-#[IsGranted('ROLE_CHEF')]
-public function index(): Response
-{
+    #[IsGranted('ROLE_CHEF')]
+    public function index(): Response
+    {
     // Récupère les commandes avec état 0
     $commandes = $this->commandeRepository->findBy(['etat' => 0]);
 
@@ -145,7 +145,7 @@ public function index(): Response
         'commandesLivreesAvecDetails' => $commandesLivreesAvecDetails,
         'commandesAll' => $commandesAll,
     ]);
-}
+    }
 
 
     public function configureDashboard(): Dashboard

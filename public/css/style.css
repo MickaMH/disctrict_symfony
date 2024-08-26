@@ -476,7 +476,7 @@ $blue-color: #04d9ff; */
     align-items: center;
     justify-content: center;
     width: 30rem; height: 6rem;
-    background: #0a0025;
+    /* background: #0a0025; */
     overflow: hidden;
 }
 
@@ -484,12 +484,12 @@ $blue-color: #04d9ff; */
     font-family: 'Commissioner', sans-serif;
     font-size: 3rem;
     color: #ffd6d6;
-    padding: 2rem;
+    /* padding: 2rem; */
     line-height: 1;
     border: 10px solid #c6e2ff;
     border-radius: 2rem 2rem;
     text-transform: uppercase;
-    animation: flashing 3.0s infinite alternate;
+    animation: flashing 5.0s infinite alternate;
 }
     
 
@@ -503,7 +503,7 @@ $blue-color: #04d9ff; */
             0 0 90px #ff035b,
             0 0 124px #ff035b;
         box-shadow:
-            0 0 8px #fff,
+            0 0 8px #04d9ff,
             inset 0 0 8px #04d9ff,
             0 0 32px #04d9ff,
             inset 0 0 32px #04d9ff,
