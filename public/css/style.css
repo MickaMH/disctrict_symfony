@@ -467,3 +467,52 @@ p{
                     0 0 34px #720536,
                     0 0 54px #bb0a59;
 }
+
+/* $red-color: #ff035b;
+$blue-color: #04d9ff; */
+
+.body_neon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30rem; height: 6rem;
+    background: #0a0025;
+    overflow: hidden;
+}
+
+.span_neon {
+    font-family: 'Commissioner', sans-serif;
+    font-size: 3rem;
+    color: #ffd6d6;
+    padding: 2rem;
+    line-height: 1;
+    border: 10px solid #c6e2ff;
+    border-radius: 2rem 2rem;
+    text-transform: uppercase;
+    animation: flashing 3.0s infinite alternate;
+}
+    
+
+@keyframes flashing {
+    0%, 99% {
+        text-shadow:
+            0 0 16px #ff035b,
+            0 0 16px #ff035b,
+            0 0 32px #ff035b,
+            0 0 64px #ff035b,
+            0 0 90px #ff035b,
+            0 0 124px #ff035b;
+        box-shadow:
+            0 0 8px #fff,
+            inset 0 0 8px #04d9ff,
+            0 0 32px #04d9ff,
+            inset 0 0 32px #04d9ff,
+            0 0 64px #04d9ff,
+            inset 0 0 64px #04d9ff;
+    }
+    100% {
+        text-shadow: none;
+        box-shadow: none;
+    }
+
+}

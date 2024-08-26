@@ -21,156 +21,139 @@
 <body class="">
 
     {# HEADER #}
-    <header class="container">
+    <header class="container-fluid">
 
         {# NAVBAR DESKTOP #}
-        <div class="row d-none d-xxl-block">
+        <div class="col-12 d-none d-lg-block d-lg-flex">
 
-            <nav class="navbar navbar-expand-md">
+            <div class="col-2 mt-2 mb-2">
 
-                <div class="container">
+                <a class="navbar-brand" href="{{ path('app_accueil') }}">
+                    <img src="/images/district/logo.webp" alt="Logo The District" width="200" height="auto" class="bordures_logo">
+                </a>
 
-                    <div class="col-2">
+            </div>
 
-                        <a class="navbar-brand" href="{{ path('app_accueil') }}">
-                            <img src="/images/district/logo.webp" alt="Logo The District" width="200" height="auto" class="bordures_logo mt-1">
-                        </a>
+            <div class="col-7 mt-2">
 
-                        <button class="navbar-toggler bordures border-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+                {# LIENS HEADER #}
+                <div class="row">
 
-                    </div>
+                    <div class="gap-5 d-flex">
 
-                    <div class="collapse navbar-collapse bg-sm-white" id="navbarNavAltMarkup">
-
-                        <div class="navbar-nav">
-
-                            <div class="col-9">
-
-                            <div class="row">
-
-                                <div class="gap-5 d-flex">
-
-                                    <a class=" liens_header fs-1 fw-medium" aria-current="page" href="{{ path('app_accueil') }}">ACCUEIL</a>
-                                    <a class=" liens_header fs-1 fw-medium" href="{{ path('app_categories') }}">CATÉGORIES</a>
-                                    <a class=" liens_header fs-1 fw-medium" href="{{ path('app_plats') }}">PLATS</a>
-                                    <a class=" liens_header fs-1 fw-medium" href="{{ path('app_contact') }}">CONTACT</a>
-
-                                </div>
-
-                            </div>
-
-                            {# BARRE DE RECHERCHE #}
-                            <div class="row mt-lg-5 ms-lg-5">
-
-                                <form action="#" method="get" class="z-3 d-flex champ_recherche fond_input" style="width: 44rem; height: 3rem;">
-
-                                    <span class="input-group-text fs-4 sans_bordures fond_input ms-1">&#x1F50E;</span>
-
-                                    <input type="search" name="query" value="{{ app.request.query.get('query') }}"
-                                        placeholder="Tapez une recherche puis Entrée" class="fs-5 fw-medium sans_bordures fond_input" style="width: 28rem; height: 2.4rem;">
-
-                                    {# Résultats de recherche #}
-                                    <div class="me-2">
-
-                                        {% if app.request.query.get('query') %}
-
-                                        {% set searchQuery = app.request.query.get('query') %}
-                                        {% set plats = search_service.searchPlatsByQuery(searchQuery) %}
-    
-                                        <ul style="width: 21rem; height: auto;">
-
-                                            {% for plat in plats %}
-                                            <li class="li_recherche fond_input">
-
-                                                <a href="{{ path('app_page_plat', {'id': plat.id}) }}" class="d-flex liens_header_bonjour">
-
-                                                    <img src="/images/plats/{{ plat.image }}" class="p-1 rounded-3" style="width: 3.5rem; height: 3.5rem;" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
-
-                                                    <div class="fs-5 fw-medium align-content-center ms-1">{{ plat.libelle }}</div>
-
-                                                </a>
-
-                                            </li>
-                                            {% endfor %}
-                                            
-                                        </ul>
-        
-                                        {% endif %}
-
-                                    </div>
-
-                                </form>
-
-                            </div>
-
-                            </div>
-
-                            <div class="col-4 d-flex flex-column">
-
-                                <div class="row">
-
-                                {# CONNEXION #}
-                                {% if app.user %}
-                                <a class=" liens_header fs-1 fw-medium" href="{{ path('app_logout') }}">
-                                    <img src="/images/icones/icone_user_district.webp" width="35" height="auto" class="mb-2">
-                                    Déconnexion
-                                </a>
-
-                                <a class="liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">
-                                    <img src="/images/icones/icone_panier_1__district.webp" width="35" height="auto" class="mb-2">
-                                    Panier
-                                </a>
-
-                                <div class="d-flex mt-0">
-
-                                    <p class="liens_header_bonjour fs-1 fw-medium me-2">Bonjour</p>
-
-                                    <a class="liens_header fs-1 fw-medium" href="{{ path('app_compte', { userId: app.user.id }) }}">
-                                        <span class="liens_header_souligne fs-1 fw-medium">{{ app.user.prenom }}</span>
-                                        <sup class="online fs-2">&#x25CF;</sup>
-                                    </a>
-
-                                </div>
-
-                                {% else %}
-                                <a class=" liens_header fs-1 fw-medium" href="{{ path('app_login') }}">
-                                    <img src="/images/icones/icone_user_district.webp" width="35" height="auto" class="mb-2">
-                                    Connexion
-                                    <sup class="offline fs-2">&#x25CF;</sup>
-                                </a>
-
-                                <a class="liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">
-                                    <img src="/images/icones/icone_panier_1__district.webp" width="35" height="auto" class="mb-2">
-                                    Panier
-                                </a>
-                                {% endif %}
-
-                                </div>
-
-                            </div>
-
-                        </div>
+                        <a class=" liens_header fs-1 fw-medium" aria-current="page" href="{{ path('app_accueil') }}">ACCUEIL</a>
+                        <a class=" liens_header fs-1 fw-medium" href="{{ path('app_categories') }}">CATÉGORIES</a>
+                        <a class=" liens_header fs-1 fw-medium" href="{{ path('app_plats') }}">PLATS</a>
+                        <a class=" liens_header fs-1 fw-medium" href="{{ path('app_contact') }}">CONTACT</a>
 
                     </div>
 
                 </div>
 
-            </nav>
+                {# BARRE DE RECHERCHE #}
+                <div class="row mt-lg-5 ms-lg-5">
+
+                    <form action="#" method="get" class="z-3 d-flex champ_recherche fond_input" style="width: 44rem; height: 3rem;">
+
+                        <span class="input-group-text fs-4 sans_bordures fond_input ms-1">&#x1F50E;</span>
+
+                        <input type="search" name="query" value="{{ app.request.query.get('query') }}"
+                                placeholder="Tapez une recherche puis Entrée" class="fs-5 fw-medium sans_bordures fond_input" style="width: 28rem; height: 2.4rem;">
+
+                        {# Résultats de recherche #}
+                        <div class="me-2">
+
+                            {% if app.request.query.get('query') %}
+
+                            {% set searchQuery = app.request.query.get('query') %}
+                            {% set plats = search_service.searchPlatsByQuery(searchQuery) %}
+    
+                            <ul style="width: 21rem; height: auto;">
+
+                                {% for plat in plats %}
+                                <li class="li_recherche fond_input">
+
+                                    <a href="{{ path('app_page_plat', {'id': plat.id}) }}" class="d-flex liens_header_bonjour">
+
+                                        <img src="/images/plats/{{ plat.image }}" class="p-1 rounded-3" style="width: 3.5rem; height: 3.5rem;" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
+
+                                        <div class="fs-5 fw-medium align-content-center ms-1">{{ plat.libelle }}</div>
+
+                                    </a>
+
+                                </li>
+                                {% endfor %}
+                                            
+                            </ul>
+        
+                            {% endif %}
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <div class="col-3 mt-2">
+
+                <div class="row">
+
+                    {# CONNEXION #}
+                    {% if app.user %}
+                    <a class=" liens_header fs-1 fw-medium" href="{{ path('app_logout') }}">
+                        <img src="/images/icones/icone_user_district.webp" width="35" height="auto" class="mb-2">
+                        Déconnexion
+                    </a>
+
+                    <a class="liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">
+                        <img src="/images/icones/icone_panier_1__district.webp" width="35" height="auto" class="mb-2">
+                        Panier
+                    </a>
+
+                    <div class="d-flex mt-0">
+
+                        <p class="liens_header_bonjour fs-1 fw-medium me-2">Bonjour</p>
+
+                        <a class="liens_header fs-1 fw-medium" href="{{ path('app_compte', { userId: app.user.id }) }}">
+                            <span class="liens_header_souligne fs-1 fw-medium">{{ app.user.prenom }}</span>
+                            <sup class="online fs-2">&#x25CF;</sup>
+                        </a>
+
+                    </div>
+
+                    {% else %}
+                    <a class=" liens_header fs-1 fw-medium" href="{{ path('app_login') }}">
+                        <img src="/images/icones/icone_user_district.webp" width="35" height="auto" class="mb-2">
+                        Connexion
+                        <sup class="offline fs-2">&#x25CF;</sup>
+                    </a>
+
+                    <a class="liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">
+                        <img src="/images/icones/icone_panier_1__district.webp" width="35" height="auto" class="mb-2">
+                        Panier
+                    </a>
+                    {% endif %}
+
+                </div>
+
+            </div>
 
         </div>
 
         {# NAVBAR MOBILE #}
-        <div class="row d-block d-xl-none">
+        <div class="col-12 d-block d-lg-none">
 
-            <nav class="navbar navbar-expand-lg">
+            <div class="row">
 
-                <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg">
 
-                    {# <a class="navbar-brand" href="{{ path('app_accueil') }}">
-                        <img src="/images/district/logo.webp" alt="Logo The District" width="100" height="auto" class="bordures_logo">
-                    </a> #}
+                    <div class="container-fluid">
+
+                        {# <a class="navbar-brand" href="{{ path('app_accueil') }}">
+                            <img src="/images/district/logo.webp" alt="Logo The District" width="100" height="auto" class="bordures_logo">
+                        </a> #}
 
                         <div class="d-flex justify-content-end">
 
@@ -193,12 +176,12 @@
                                 <sup class="online fs-1">&#x25CF;</sup>
                             </a>
 
-                                {# <div class="d-flex mt-0">
-                                    <p class="liens_header_bonjour fs-1 fw-medium me-2">Bonjour</p>
-                                    <a class="liens_header fs-1 fw-medium" href="{{ path('app_compte', { userId: app.user.id }) }}">
-                                        <p class="liens_header_souligne fs-1 fw-medium"> {{ app.user.prenom }} </p>
-                                    </a>
-                                </div> #}
+                            {# <div class="d-flex mt-0">
+                                <p class="liens_header_bonjour fs-1 fw-medium me-2">Bonjour</p>
+                                <a class="liens_header fs-1 fw-medium" href="{{ path('app_compte', { userId: app.user.id }) }}">
+                                    <p class="liens_header_souligne fs-1 fw-medium"> {{ app.user.prenom }} </p>
+                                </a>
+                            </div> #}
 
                             {% else %}
                             <a class="liens_header fw-medium" href="{{ path('app_panier') }}">
@@ -213,97 +196,98 @@
 
                         </div>
 
-                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <div class="collapse navbar-collapse" id="navbarNav">
                         
-                        <ul class="navbar-nav">
+                            <ul class="navbar-nav">
 
-                            <li class="nav-item">
-                                <a class="nav-link liens_header fs-1 fw-medium" aria-current="page" href="{{ path('app_accueil') }}">ACCUEIL</a>
-                            </li>
-        
-                            <li class="nav-item">
-                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_categories') }}">CATÉGORIES</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link liens_header fs-1 fw-medium" aria-current="page" href="{{ path('app_accueil') }}">ACCUEIL</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_plats') }}">PLATS</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_categories') }}">CATÉGORIES</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_plats') }}">PLATS</a>
+                                </li>
                             
-                            <li class="nav-item">
-                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_contact') }}">CONTACT</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_contact') }}">CONTACT</a>
+                                </li>
 
-                            {# CONNEXION #}
-                            {% if app.user %}
-                            <li class="nav-item">
-                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">PANIER</a>
-                            </li>
+                                {# CONNEXION #}
+                                {% if app.user %}
+                                <li class="nav-item">
+                                    <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">PANIER</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_compte') }}">COMPTE</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_compte') }}">COMPTE</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_logout') }}">DECONNEXION</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_logout') }}">DECONNEXION</a>
+                                </li>
 
-                            {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">PANIER</a>
-                            </li>
+                                {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_panier') }}">PANIER</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_login') }}">CONNEXION</a>
-                            </li>
-                            {% endif %}
+                                <li class="nav-item">
+                                    <a class="nav-link liens_header fs-1 fw-medium" href="{{ path('app_login') }}">CONNEXION</a>
+                                </li>
+                                {% endif %}
 
-                        </ul>
+                            </ul>
+
+                        </div>
 
                     </div>
 
+                </nav>
+
+            </div>
+
+            {# BARRE DE RECHERCHE MOBILE #}
+            <div class="row mt-lg-5 mb-2">
+
+                <form action="#" method="get" class="col-11 p-1 ps-2 pe-2 mx-auto d-flex champ_recherche fond_input">
+
+                    <span class="col-1 sans_bordures fond_input">&#x1F50E;</span>
+
+                    <input type="search" name="query" value="{{ app.request.query.get('query') }}"
+                            placeholder="Tapez une recherche et Entrée" class="col-11 fw-medium sans_bordures fond_input">
+
+                </form>
+
+                {# Résultats de recherche #}
+                <div class="col-12 mx-auto">
+
+                    {% if app.request.query.get('query') %}
+
+                    {% set searchQuery = app.request.query.get('query') %}
+                    {% set plats = search_service.searchPlatsByQuery(searchQuery) %}
+
+
+                    {% for plat in plats %}
+                    <li class="col-12 li_recherche bg-white mb-2 border_historique">
+
+                        <a href="{{ path('app_page_plat', {'id': plat.id}) }}" class="d-flex liens_header_bonjour">
+
+                            <img src="/images/plats/{{ plat.image }}" class="m-1 rounded-3 w-25 border_image img-fluid" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
+
+                            <div class="fs-5 fw-medium align-content-center ms-1">{{ plat.libelle }}</div>
+
+                        </a>
+
+                    </li>
+                    {% endfor %}
+
+                    {% endif %}
+
                 </div>
-
-            </nav>
-
-        </div>
-
-
-        {# BARRE DE RECHERCHE MOBILE #}
-        <div class="row mt-lg-5 mb-2 d-block d-xl-none">
-
-            <form action="#" method="get" class="col-11 p-1 ps-2 pe-2 mx-auto d-flex champ_recherche fond_input">
-
-                <span class="col-1 sans_bordures fond_input">&#x1F50E;</span>
-
-                <input type="search" name="query" value="{{ app.request.query.get('query') }}"
-                        placeholder="Tapez une recherche et Entrée" class="col-11 fw-medium sans_bordures fond_input">
-
-            </form>
-
-            {# Résultats de recherche #}
-            <div class="col-12 mx-auto">
-
-                {% if app.request.query.get('query') %}
-
-                {% set searchQuery = app.request.query.get('query') %}
-                {% set plats = search_service.searchPlatsByQuery(searchQuery) %}
-
-
-                {% for plat in plats %}
-                <li class="col-12 li_recherche bg-white mb-2 border_historique">
-
-                    <a href="{{ path('app_page_plat', {'id': plat.id}) }}" class="d-flex liens_header_bonjour">
-
-                        <img src="/images/plats/{{ plat.image }}" class="m-1 rounded-3 w-25 border_image img-fluid" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
-
-                        <div class="fs-5 fw-medium align-content-center ms-1">{{ plat.libelle }}</div>
-
-                    </a>
-
-                </li>
-                {% endfor %}
-
-                {% endif %}
 
             </div>
 

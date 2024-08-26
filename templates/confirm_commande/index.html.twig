@@ -12,11 +12,17 @@
 
             <p>Commande créée avec succès !
 
-                <br class="d-block d-sm-none">
+                <br>
 
-                Un email récapitulant votre commande vous a été envoyé à 
+                Un email récapitulatif vous a été envoyé à 
 
                 <span class="fw-medium">{{ app.user.email }}</span>.
+
+                <br>
+
+                Vous pouvez suivre la progression de votre commande dans votre 
+                
+                <a href="{{ path('app_compte') }}" class="lettres">espace compte</a>.
                 
             </p>
 
