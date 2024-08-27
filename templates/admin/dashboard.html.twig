@@ -243,7 +243,7 @@
                     {# BOUTON PREPARER LA COMMANDE #}
                     <li class="list-group-item mx-auto">
 
-                        <a class="btn btn-danger d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-3"
+                        <a class="btn-danger d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-3"
                             href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
                             role="button" style="width: 15rem; height: 3rem;">
                             Préparer la commande
@@ -440,7 +440,7 @@
                     {# BOUTON COMMANDE PRETE #}
                     <li class="list-group-item mx-auto">
 
-                        <a class="btn btn-warning d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-3"
+                        <a class="bg-warning text-white d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-3"
                             href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
                             role="button" style="width: 15rem; height: 3rem;">
                             Commande prête
