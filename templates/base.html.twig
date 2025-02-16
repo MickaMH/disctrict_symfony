@@ -3,17 +3,20 @@
 
     <head>
         <meta charset="UTF-8">
+        <title>{% block title %}Restaurant The District{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <meta name="description" content="The District est un restaurant situé à Paris">
         <meta name="keywords" content="restaurant, paris, 75000">
         <meta name="robots" content="noindex">
 
         <link rel="icon" href="/images/district/logo.webp">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-        <title>{% block title %}Restaurant The District{% endblock %}</title>
         {% block stylesheets %}
+        {% endblock %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
 
@@ -23,8 +26,118 @@
     {# HEADER #}
     <header class="container-fluid">
 
+        {# NAVBAR DESKTOP 2 #}
+        <div class="row mt-2 mb-2 d-none d-lg-block d-lg-flex">
+
+            <div class="col-2">
+
+                <a class="navbar-brand" href="{{ path('app_accueil') }}">
+                    <img src="/images/district/logo.webp" alt="Logo The District" class="w-100 bordures_logo">
+                </a>
+
+            </div>
+         
+
+            <div class="col-7">
+
+                <div class="d-flex justify-content-around">
+
+                    <a class=" liens_header fs-2 fw-medium" aria-current="page" href="{{ path('app_accueil') }}">ACCUEIL</a>
+                    <a class=" liens_header fs-2 fw-medium" href="{{ path('app_categories') }}">CATÉGORIES</a>
+                    <a class=" liens_header fs-2 fw-medium" href="{{ path('app_plats') }}">PLATS</a>
+                    <a class=" liens_header fs-2 fw-medium" href="{{ path('app_contact') }}">CONTACT</a>
+
+                </div>
+
+                {# BARRE DE RECHERCHE #}
+                <div class="row d-flex justify-content-center mt-5">
+
+                    <form action="#" method="get" class="z-3 d-flex champ_recherche fond_input" style="width: 40rem; height: 2.5rem;">
+
+                        <span class="input-group-text fs-4 sans_bordures fond_input ms-1">&#x1F50E;</span>
+
+                        <input type="search" name="query" value="{{ app.request.query.get('query') }}"
+                                placeholder="Tapez une recherche puis Entrée" class="fs-5 fw-medium sans_bordures fond_input" style="width: 24rem; height: 1.9rem;">
+
+                        {# Résultats de recherche #}
+                        <div class="me-2">
+
+                            {% if app.request.query.get('query') %}
+
+                            {% set searchQuery = app.request.query.get('query') %}
+                            {% set plats = search_service.searchPlatsByQuery(searchQuery) %}
+    
+                            <ul style="width: 17rem; height: auto;">
+
+                                {% for plat in plats %}
+                                <li class="li_recherche fond_input">
+
+                                    <a href="{{ path('app_page_plat', {'id': plat.id}) }}" class="d-flex liens_header_bonjour">
+
+                                        <img src="/images/plats/{{ plat.image }}" class="p-1 rounded-3" style="width: 3.5rem; height: 3.5rem;" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
+
+                                        <div class="fs-5 fw-medium align-content-center ms-1">{{ plat.libelle }}</div>
+
+                                    </a>
+
+                                </li>
+                                {% endfor %}
+                                            
+                            </ul>
+        
+                            {% endif %}
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <div class="col-3">
+
+                {% if app.user is not null %}
+                <a class=" liens_header fs-2 fw-medium" href="{{ path('app_logout') }}">
+                    <img src="/images/icones/icone_user_district.webp" width="35" height="auto" class="mb-2">
+                    Déconnexion
+                </a>
+                <br>
+                <a class=" liens_header fs-2 fw-medium" href="{{ path('app_panier') }}">
+                    <img src="/images/icones/icone_panier_1__district.webp" width="35" height="auto" class="mb-2">
+                    Panier
+                </a>
+                <div class="d-flex mt-0">
+
+                    <p class="liens_header_bonjour fs-2 fw-medium me-2">Bonjour</p>
+
+                    <a class="liens_header fs-2 fw-medium" href="{{ path('app_compte', { userId: app.user.id }) }}">
+                        <span class="liens_header_souligne fs-2 fw-medium">{{ app.user.prenom }}</span>
+                        <sup class="online fs-3">&#x25CF;</sup>
+                    </a>
+
+                </div>
+
+                {% else %}
+                <a class=" liens_header fs-2 fw-medium" href="{{ path('app_login') }}">
+                    <img src="/images/icones/icone_user_district.webp" width="35" height="auto" class="mb-2">
+                    Connexion
+                    <sup class="offline fs-3">&#x25CF;</sup>
+                </a>
+                <br>
+                <a class=" liens_header fs-2 fw-medium" href="{{ path('app_panier') }}">
+                    <img src="/images/icones/icone_panier_1__district.webp" width="35" height="auto" class="mb-2">
+                    Panier
+                </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
         {# NAVBAR DESKTOP #}
-        <div class="col-12 d-none d-lg-block d-lg-flex">
+        {# <div class="col-12 d-none d-lg-block d-lg-flex">
 
             <div class="col-2 mt-2 mb-2">
 
@@ -34,10 +147,10 @@
 
             </div>
 
-            <div class="col-7 mt-2">
+            <div class="col-7 mt-2"> #}
 
                 {# LIENS HEADER #}
-                <div class="row">
+                {# <div class="row">
 
                     <div class="gap-5 d-flex">
 
@@ -48,20 +161,20 @@
 
                     </div>
 
-                </div>
+                </div> #}
 
                 {# BARRE DE RECHERCHE #}
-                <div class="row mt-lg-5 ms-lg-5">
+                {# <div class="row mt-lg-5 ms-lg-5">
 
                     <form action="#" method="get" class="z-3 d-flex champ_recherche fond_input" style="width: 44rem; height: 3rem;">
 
                         <span class="input-group-text fs-4 sans_bordures fond_input ms-1">&#x1F50E;</span>
 
                         <input type="search" name="query" value="{{ app.request.query.get('query') }}"
-                                placeholder="Tapez une recherche puis Entrée" class="fs-5 fw-medium sans_bordures fond_input" style="width: 28rem; height: 2.4rem;">
+                                placeholder="Tapez une recherche puis Entrée" class="fs-5 fw-medium sans_bordures fond_input" style="width: 28rem; height: 2.4rem;"> #}
 
                         {# Résultats de recherche #}
-                        <div class="me-2">
+                        {# <div class="me-2">
 
                             {% if app.request.query.get('query') %}
 
@@ -98,10 +211,10 @@
 
             <div class="col-3 mt-2">
 
-                <div class="row">
+                <div class="row"> #}
 
                     {# CONNEXION #}
-                    {% if app.user %}
+                    {# {% if app.user %}
                     <a class=" liens_header fs-1 fw-medium" href="{{ path('app_logout') }}">
                         <img src="/images/icones/icone_user_district.webp" width="35" height="auto" class="mb-2">
                         Déconnexion
@@ -140,7 +253,7 @@
 
             </div>
 
-        </div>
+        </div> #}
 
         {# NAVBAR MOBILE #}
         <div class="col-12 d-block d-lg-none">
@@ -307,8 +420,7 @@
                 <img src="/images/district/ecriture_district_blanc.webp" class="w-75"><br>
 
                 <p class="lettres_blanches fs-3">
-                    "Ce site est un projet de formation créé avec le framework Symfony.<br>
-                    Utilisez Mailhog pour capter les emails."
+                    "Ce site est un projet de formation créé avec le framework Symfony"
                 </p>
 
             </div>
@@ -328,9 +440,9 @@
             {# NAV DROITE PROMO #}
             <div class="col-lg-4">
 
-                <div class="actually mx-auto mb-4">
-                    <p class="fs-2 fw-medium lettres_blanches">" En ce moment "</p>
-                </div>
+                {# <div class="actually mx-auto mb-4">
+                    <p class="fs-3 fw-medium lettres_blanches">" En ce moment "</p>
+                </div> #}
 
                 <div class="bordures_promo mx-auto">
                     <p class="promo fw-bold mx-auto mt-3">-10%</p>
@@ -505,13 +617,7 @@
     </footer>
 
     {# LIENS JAVASCRIPT #}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
-    {% block javascripts %}
-        {% block importmap %}{{ importmap('app') }}{% endblock %}
-    {% endblock %}
+    
     {# MES LIENS JAVASCRIPT #}
 
 

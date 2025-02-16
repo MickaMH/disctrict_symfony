@@ -44,10 +44,10 @@ class ConfirmCommandeController extends AbstractController
             'details' => $details,
         ]))
 
-        ->addPart((new DataPart(fopen('C:\xampp\htdocs\disctrict_symfony\public\images\district\logo.webp', 'r'), 'logo', 'image/webp'))->asInline());
+        ->addPart((new DataPart(fopen('C:\Users\Micka Bmax\Documents\Développement\Mes projets\Symfony\disctrict_symfony\public\images\district\logo.webp', 'r'), 'logo', 'image/webp'))->asInline());
 
         foreach ($details as $detail) {
-        $imagePath = 'C:\xampp\htdocs\disctrict_symfony\public\images\plats\\' . $detail->getPlat()->getImage();
+        $imagePath = 'C:\Users\Micka Bmax\Documents\Développement\Mes projets\Symfony\disctrict_symfony\public\images\plats\\' . $detail->getPlat()->getImage();
         $email->addPart((new DataPart(fopen($imagePath, 'r'), 'plat_'.$detail->getPlat()->getId(), 'image/webp'))->asInline());
 }
 

@@ -49,7 +49,7 @@ class RegistrationController extends AbstractController
                     ->to($user->getEmail())
                     ->subject('Merci de confirmer votre adresse email pour la sécurité de votre compte')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
-                    ->addPart((new DataPart(fopen('C:\xampp\htdocs\disctrict_symfony\public\images\district\logo.webp', 'r'), 'logo', 'image/webp'))->asInline())
+                    ->addPart((new DataPart(fopen('C:\Users\Micka Bmax\Documents\Développement\Mes projets\Symfony\disctrict_symfony\public\images\district\logo.webp', 'r'), 'logo', 'image/webp'))->asInline())
             );
             // do anything else you need here, like send an email
 
