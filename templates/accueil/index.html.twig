@@ -3,10 +3,6 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-{# <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style> #}
 
 {% for message in app.flashes('success') %}
     <div class="alert alert-success">{{ message }}</div>
@@ -15,14 +11,6 @@
 
 {# MAIN #}
 <main class="container-fluid pb-lg-5">
-
-{# <a href="{{ path('app_test') }}" class="text-decoration-none">
-    <p class="fw-medium">TEST</p>
-</a> #}
-
-{# <a href="{{ path('admin') }}" class="text-decoration-none">
-    <p class="fw-medium">ADMIN</p>
-</a> #}
 
         {# CAROUSEL BIENVENUE DESKTOP #}
         <div class="container-fluid d-lg-flex align-self-center justify-content-center d-none d-lg-block">
@@ -34,50 +22,6 @@
                     <p class="body_neon span_neon">BIENVENUE</p>
 
                 </div>
-
-                {# <div class="fw-medium text-center">
-
-                    <div id="carousel_desktop" class="carousel-fade" data-bs-ride="carousel">
-
-                        <div class="carousel-inner">
-
-                            <div class="carousel-item active d-flex align-items-center justify-content-center" data-bs-interval="4000">
-
-                                <img src="/images/icones/france_flag.webp" style="width: 3rem;" class="mb-3 border border-dark rounded-5">
-                                <p class="d-block w-50 bienvenue_desktop">BIENVENUE</p>
-                                <img src="/images/icones/france_flag.webp" style="width: 3rem;" class="mb-3 border border-dark rounded-5">
-
-                            </div>
-
-                            <div class="carousel-item d-flex align-items-center justify-content-center" data-bs-interval="4000">
-
-                                <img src="/images/icones/british_flag.webp" style="width: 3rem;" class="mb-3 border border-dark rounded-5">
-                                <p class="d-block w-50 bienvenue_desktop">WELCOME</p>
-                                <img src="/images/icones/british_flag.webp" style="width: 3rem;" class="mb-3 border border-dark rounded-5">
-
-                            </div>
-
-                            <div class="carousel-item d-flex align-items-center justify-content-center" data-bs-interval="4000">
-
-                                <img src="/images/icones/spain_flag.webp" style="width: 3rem;" class="mb-3 border border-dark rounded-5">
-                                <p class="d-block w-50 bienvenue_desktop">BIENVENIDA</p>
-                                <img src="/images/icones/spain_flag.webp" style="width: 3rem;" class="mb-3 border border-dark rounded-5">
-
-                            </div>
-
-                            <div class="carousel-item d-flex align-items-center justify-content-center" data-bs-interval="4000">
-
-                                <img src="/images/icones/nl_flag.webp" style="width: 3rem;" class="mb-3 border border-dark rounded-5">
-                                <p class="d-block w-50 bienvenue_desktop">WELKOM</p>
-                                <img src="/images/icones/nl_flag.webp" style="width: 3rem;" class="mb-3 border border-dark rounded-5">
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div> #}
 
             </div>
 
@@ -93,50 +37,6 @@
                     <p class="body_neon span_neon p-4 rounded-4" style="height: 1rem; font-size: 2rem;">BIENVENUE</p>
 
                 </div>
-
-                {# <div class="fw-medium text-center">
-
-                    <div id="carousel_desktop" class="carousel-fade" data-bs-ride="carousel">
-
-                        <div class="carousel-inner">
-
-                            <div class="carousel-item active d-flex align-items-center" data-bs-interval="4000">
-
-                                <img src="/images/icones/france_flag.webp" style="width: 2rem;" class="mb-3">
-                                <p class="d-block w-100 bienvenue_mobile">BIENVENUE</p>
-                                <img src="/images/icones/france_flag.webp" style="width: 2rem;" class="mb-3">
-
-                            </div>
-
-                            <div class="carousel-item d-flex align-items-center" data-bs-interval="4000">
-
-                                <img src="/images/icones/british_flag.webp" style="width: 2rem;" class="mb-3">
-                                <p class="d-block w-100 bienvenue_mobile">WELCOME</p>
-                                <img src="/images/icones/british_flag.webp" style="width: 2rem;" class="mb-3">
-
-                            </div>
-
-                            <div class="carousel-item d-flex align-items-center" data-bs-interval="4000">
-
-                                <img src="/images/icones/spain_flag.webp" style="width: 2rem;" class="mb-3">
-                                <p class="d-block w-100 bienvenue_mobile">BIENVENIDA</p>
-                                <img src="/images/icones/spain_flag.webp" style="width: 2rem;" class="mb-3">
-
-                            </div>
-
-                            <div class="carousel-item d-flex align-items-center" data-bs-interval="4000">
-
-                                <img src="/images/icones/nl_flag.webp" style="width: 2rem;" class="mb-3">
-                                <p class="d-block w-100 bienvenue_mobile">WELKOM</p>
-                                <img src="/images/icones/nl_flag.webp" style="width: 2rem;" class="mb-3">
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div> #}
 
             </div>
 
@@ -156,7 +56,7 @@
 
 
         {# Cards Navigation Desktop #}
-        <div class="col-4 border border-3 border-black rounded-5 mx-auto p-3 m-5 d-none d-lg-block">
+        <div class="col-5 border border-3 border-black rounded-5 mx-auto p-3 m-5 d-none d-lg-block">
 
             <div class="row d-flex justify-content-center">
 
@@ -187,7 +87,7 @@
                 <div class="col-5 d-flex justify-content-center">
                     <div class="card w-100 border-3 border-black rounded-4 zoom z-1 shadow-lg">
                         <div class="card-body d-flex justify-content-center flex-column">
-                            <h5 class="card-title text-center">Tous les plats actifs</h5>
+                            <h5 class="card-title text-center">Retrouvez tous les plats actifs</h5>
                             <img src="/images/icones/icone_plats_transp_2.webp" class="img-fluid mx-auto w-50 m-2">
                             <a href="{{ path('app_plats') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none text-center rounded-3 mt-2">PLATS</a>
                         </div>
@@ -249,10 +149,10 @@
             </div>
 
 
-        {# TOP 3 CATEGORIES #}
+        {# INTITULE TOP 3 CATEGORIES #}
         <div class="row mb-3 mb-lg-5 mt-5 mt-lg-5 d-flex justify-content-center">
 
-            <div class="col-lg-10 d-flex justify-content-center">
+            <div class="col col-lg-10 d-flex justify-content-center">
 
                 <p class="fs-3 d-flex justify-content-center align-items-center fw-medium panneaux">Top 3 des Catégories</p>
 
@@ -260,38 +160,35 @@
 
         </div>
 
+        {# CARD TOP 3 CATEGORIES #}
         <div class="row mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-center">
 
-            {# {{ categorie.image }}        {{ categorie.libelle |upper }}      {{ categorie.plats | length }} #}
-
             {% for categorie in top3Categories %}
-                    <div class="col-lg-3 mb-5 mb-lg-5 d-flex justify-content-center">
+            <div class="col-12 col-md-7 col-lg-3 mb-5 mb-lg-5 d-flex justify-content-around">
 
-                        <div class="card w-75 border-4 bordures rounded-5">
-
-                            <h5 class="card-text fs-3 mt-3 mb-0 fw-medium text-center">{{ categorie.categorie.libelle |upper }}</h5>
-
-                            <img src="/images/categories/{{ categorie.categorie.image }}" class="m-3 img-fluid rounded-5 border_image" alt="{{ categorie.categorie.libelle }}" title="{{ categorie.categorie.libelle }}">
-
-                            <a href="{{ path('app_plats_par_cat', {'id': categorie.categorie.id}) }}"
-                                class="fs-5 fw-medium d-flex justify-content-center align-items-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches bouton_mini">
-
-                                Voir
-
-                            </a>
-
-                        </div>
-
-                    </div>
-                    {% endfor %}
+                <div class="card border-4 bordures rounded-5">
+    
+                    {# IMAGE DE CATEGORIE #}
+                    <img src="/images/categories/{{ categorie.categorie.image }}" class="img-fluid m-3 rounded-4 border_image" alt="{{ categorie.categorie.libelle }}" title="{{ categorie.categorie.libelle }}">
+    
+                    {# BOUTON LIBELLE CATEGORIE #}
+                    <a href="{{ path('app_plats_par_cat', {'id': categorie.categorie.id}) }}"
+                        class="card-text fs-5 fw-medium text-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches">
+                        {{ categorie.categorie.libelle |upper }}
+                    </a>
+    
+                </div>
+    
+            </div>
+            {% endfor %}
 
         </div>
 
 
-        {# TOP 3 PLATS #}
+        {# INTITULE TOP 3 PLATS #}
         <div class="row mt-lg-5 mb-lg-5 d-flex justify-content-center">
 
-            <div class="col-lg-10 d-flex justify-content-center">
+            <div class="col col-lg-10 d-flex justify-content-center">
 
                 <p class="fs-3 d-flex justify-content-center align-items-center fw-medium panneaux">Top 3 des Plats</p>
 
@@ -299,33 +196,35 @@
 
         </div>
 
+        {# CARD TOP 3 PLATS #}
         <div class="row mt-3 mt-lg-5 mb-3 mb-lg-3 d-flex justify-content-center">
 
             {% for plat in top3Plats %}
-            <div class="col-lg-3 mb-5 mb-lg-5 d-flex justify-content-center">
+            <div class="col-12 col-md-7 col-lg-3 mb-5 mb-lg-5 d-flex justify-content-around">
 
-                <div class="card w-75 border-4 bordures rounded-5">
+                <div class="card border-4 bordures rounded-5">
 
-                    <h5 class="card-text fs-3 mt-3 mb-0 fw-medium text-center">{{ plat.plat.libelle }}</h5>
+                    {# IMAGE DU PLAT #}
+                    <img src="/images/plats/{{ plat.plat.image }}" class="img-fluid m-3 rounded-4 border_image" alt="{{ plat.plat.libelle }}" title="{{ plat.plat.libelle }}">
 
-                    <img src="/images/plats/{{ plat.plat.image }}" class="m-3 img-fluid  rounded-5 border_image" alt="{{ plat.plat.libelle }}" title="{{ plat.plat.libelle }}">
-
+                    {# BOUTON AJOUTER AU PANIER ABSOLUTE #}
                     <a href="{{ path('app_panier_add', {'id': plat.plat.id}) }}" class="position-absolute d-flex justify-content-end">
 
-                        <img src="/images/icones/icone_panier_plus_district.webp" class="mt-5 me-1 w-25 panier_plus">
+                        <img src="/images/icones/icone_panier_plus_district.webp" class="mt-1 me-1 mt-lg-0 me-lg-0 p-lg-2 w-25 panier_plus">
 
                     </a>
 
+                    {# BOUTON LIBELLE PLAT #}
                     <a href="{{ path('app_page_plat', {'id': plat.plat.id}) }}"
-                        class="fs-5 fw-medium d-flex justify-content-center align-items-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches bouton_mini">
+                        class="btn_card fs-5 fw-medium text-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches">
 
-                        Voir
+                        {{ plat.plat.libelle }}
 
                     </a>
 
                 </div>
 
-            </div>
+                </div>
             {% endfor %}
 
         </div>

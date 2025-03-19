@@ -8,19 +8,48 @@
 {# MAIN #}
 <main class="container p-lg-5 d-flex justify-content-center flex-column">
 
-    {# EN-TETE PLATS #}
-    {# <div class="row d-flex justify-content-center">
+    {# CARD PLAT #}
+    <div class="row mt-5 mb-5">
 
-        <div class="col-8 col-lg-4 fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
+        <div class="col-12 col-lg-10 mx-auto">
 
-            <p class="lettres fond_intitule text-uppercase"> {{ plat.libelle }} </p>
+            <div class="card rounded-5 mb-3 border_adresse">
+
+                <div class="row g-0">
+
+                    {# IMAGE DU PLAT #}
+                    <div class="col-12 col-md-4 col-lg-4 p-3 pb-0 pb-lg-3">
+                        <img src="/images/plats/{{ plat.image }}" class="img-fluid rounded-4 border_image" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
+                    </div>
+
+                    {# BODY CARD #}
+                    <div class="col-12 col-md-7 col-lg-7">
+                        <div class="card-body">
+                            <h5 class="card-title fs-2 fw-medium">{{ plat.libelle }}</h5>
+                            <p class="card-text fs-5 fst-italic">{{ plat.description }}</p>
+                            <p class="card-text fs-5">Prix: {{ plat.prix }} &#8364;</p>
+                        </div>
+                    </div>
+
+                    {# BOUTON AJOUTER AU PANIER #}
+                    <div class="col-12 col-md-12 col-lg-12 text-center mb-3">
+                        {# <a href="#" class="btn fs-5 fw-medium btn_card bouton_categories">Ajouter au panier</a> #}
+                        <a class="ms-3 me-3 d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories"
+                            style="width: auto; height: 3rem;" href="{{ path('app_panier_add', {'id': plat.id}) }}" role="button">
+                            Ajouter au panier
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
-    </div> #}
+    </div>
     
     {# CARD PLAT DESKTOP #}
-    <div class="d-none d-lg-block col-lg-10 offset-1 mt-5 mb-5 border_adresse rounded-5 fond_intitule">
+    {# <div class="d-none d-lg-block col-lg-10 offset-1 mt-5 mb-5 border_adresse rounded-5 fond_intitule">
 
         <div class="row">
 
@@ -55,10 +84,10 @@
 
         </div>
 
-    </div>
+    </div> #}
 
     {# CARD PLAT MOBILE #}
-    <div class="d-block d-sm-none m-2 mt-5 mb-5">
+    {# <div class="d-block d-sm-none m-2 mt-5 mb-5">
 
         <div class="row">
 
@@ -83,15 +112,16 @@
 
         </div>
 
-    </div>
+    </div> #}
 
+    {# BOUTON RETOUR #}
     <div class="row mb-5">
 
         <div class="col-sm-12 col-lg-12 d-flex justify-content-center">
 
             <a href="#" onclick="history.back(); return false;"
-                    class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-3 bouton_categories"
-                    style="width: 15rem; height: 3rem;">
+                    class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories"
+                    style="width: 10rem; height: 3rem;">
                 Retour
             </a>
             

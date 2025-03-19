@@ -11,7 +11,7 @@
     {# EN-TETE CATEGORIES #}
     <div class="row d-flex justify-content-center">
 
-        <div class="col-12 col-lg-4 fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
+        <div class="col fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
 
             <p>LES CATÉGORIES DE PLAT</p>
 
@@ -19,18 +19,18 @@
 
     </div>
 
+    {# CARD CATEGORIE #}
     <div class="row d-flex justify-content-around">
 
-        {# <h1>Nombre de catégories trouvées : {{ categories | length }}</h1> #}
-        {# {{ categorie.image }}        {{ categorie.libelle |upper }}      {{ categorie.plats | length }} #}
-
         {% for categorie in categories %}
-        <div class="col-lg-4 mb-5 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-around">
+        <div class="col-12 col-md-7 col-lg-4 p-lg-5 mb-5 mb-lg-0 d-flex justify-content-around">
 
-            <div class="card w-75 border-4 bordures rounded-5">
+            <div class="card border-4 bordures rounded-5">
 
-                <img src="/images/categories/{{ categorie.image }}" class="img-fluid m-3 rounded-5 border_image" alt="{{ categorie.libelle }}" title="{{ categorie.libelle }}">
+                {# IMAGE DE CATEGORIE #}
+                <img src="/images/categories/{{ categorie.image }}" class="img-fluid m-3 rounded-4 border_image" alt="{{ categorie.libelle }}" title="{{ categorie.libelle }}">
 
+                {# BOUTON LIBELLE CATEGORIE #}
                 <a href="{{ path('app_plats_par_cat', {'id': categorie.id}) }}"
                     class="card-text fs-5 fw-medium text-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches">
                     {{ categorie.libelle |upper }}

@@ -19,31 +19,25 @@
 
     </div>
 
-
+    {# CARD PLAT #}
     <div class="row d-flex justify-content-around">
 
-            {# <h1>Nombre de catégories trouvées : {{ categories | length }}</h1> #}
-            {# {{ categorie.image }}        {{ categorie.libelle |upper }}      {{ categorie.plats | length }} #}
+        {% for plat in plats %}
+            <div class="col-12 col-md-7 col-lg-4 p-lg-5 mt-3 mb-5 mt-lg-0 mb-lg-0 d-flex justify-content-around">
 
-            {% for plat in plats %}
-            <div class="col-lg-4 mb-5 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-around">
+                <div class="card border-4 bordures rounded-5">
 
-                <div class="card w-75 border-4 bordures rounded-5">
+                    {# IMAGE DU PLAT #}
+                    <img src="/images/plats/{{ plat.image }}" class="img-fluid m-3 rounded-4 border_image" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
 
-                    <img src="/images/plats/{{ plat.image }}" class="img-fluid m-3 rounded-5 border_image" alt="{{ plat.libelle }}" title="{{ plat.libelle }}">
-
-                    {# <h5 class="fs-3 fw-medium ms-3">{{ plat.libelle }}</h5>
-
-                    <p class="fs-5 fw-medium mb-2 ms-3 me-3">Prix: {{ plat.prix }} &#8364;</p>
-
-                    <p class="fs-5 fw-medium fst-italic ms-3 me-3" style="width: auto; height: 11rem;"> {{ plat.description }} </p> #}
-
+                    {# BOUTON AJOUTER PANIER ABSOLUTE #}
                     <a href="{{ path('app_panier_add', {'id': plat.id}) }}" class="position-absolute d-flex justify-content-end">
 
                         <img src="/images/icones/icone_panier_plus_district.webp" class="mt-1 me-1 mt-lg-0 me-lg-0 p-lg-2 w-25 panier_plus">
 
                     </a>
 
+                    {# BOUTON LIBELLE PLAT #}
                     <a href="{{ path('app_page_plat', {'id': plat.id}) }}"
                         class="btn_card fs-5 fw-medium text-center shadow-lg p-2 m-3 mt-0 rounded-4 text-decoration-none fond_logo lettres_blanches">
 
@@ -54,17 +48,18 @@
                 </div>
 
             </div>
-            {% endfor %}
+        {% endfor %}
 
     </div>
 
+    {# BOUTON RETOUR #}
     <div class="row mb-5">
 
         <div class="col-sm-12 col-lg-12 d-flex justify-content-center">
 
             <a href="#" onclick="history.back(); return false;"
-                    class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-3 bouton_categories"
-                    style="width: 15rem; height: 3rem;">
+                    class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories"
+                    style="width: 10rem; height: 3rem;">
                 Retour
             </a>
             
