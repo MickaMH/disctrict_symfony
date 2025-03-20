@@ -345,22 +345,15 @@
 
 
     {# RETOUR HAUT DE PAGE DESKTOP #}
-    <div class="row d-none d-md-block">
+    <div class="row">
 
-        <div class="col-12 d-flex justify-content-end">
+        <div class="col d-flex justify-content-end mb-3">
 
-            <a href="#" class="mb-lg-3 me-lg-3 fs-1 text-center shadow-lg lettres_blanches fleche_haut">↑</a>
-
-        </div>
-
-    </div>
-
-    {# RETOUR HAUT DE PAGE MOBILE #}
-    <div class="row d-block d-sm-none">
-
-        <div class="col-12 d-flex justify-content-end">
-
-            <a href="#" class="mb-3 me-3 fs-1 text-center shadow-lg lettres_blanches fleche_haut_mobile">↑</a>
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#980848" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+                </svg>
+            </a>
 
         </div>
 
@@ -369,15 +362,15 @@
     {# FOOTER #}
     <footer>
 
-        {# FOOTER DESKTOP #}
-        <div class="container-fluid bordures_footer fond_logo d-none d-lg-block">
+        {# FOOTER #}
+        <div class="container-fluid bordures_footer fond_logo">
 
             {# PHRASE RESEAUX SOCIAUX #}
             <div class="row text-center">
 
-                <div class="col-12 col-lg-12 fs-3 fst-italic fw-medium">
+                <div class="col fs-4 fst-italic fw-medium">
 
-                    <p class="lettres_blanches">Retrouvez nous sur vos réseaux sociaux préférés</p>
+                    <p class="lettres_blanches">Retrouvez nous sur les réseaux</p>
 
                 </div>
 
@@ -386,13 +379,7 @@
             {# ICONES RESEAUX SOCIAUX #}
             <div class="row">
 
-                <div class="col-lg-5 d-flex align-items-center">
-
-                    <a href="{{ path('app_polit_confid') }}" class="lettres_blanches fs-5 ms-5">Politique de confidentialité</a>
-
-                </div>
-
-                <div class="col-lg-2 mx-auto d-flex align-items-center">
+                <div class="col-8 col-md-4 col-lg-2 mx-auto d-flex align-items-center">
 
                     <a href="https://www.facebook.com/facebook/" class="text-decoration-none">
                         <img src="/images/icones/logo_facebook.webp" alt="" title="" style="width: 65%; height : auto"  class="mb-3 shadow-lg">
@@ -412,69 +399,22 @@
 
                 </div>
 
-                <div class="col-lg-5 d-flex align-items-center justify-content-end">
-
-                    <a href="{{ path('app_ment_legal') }}" class="lettres_blanches fs-5 me-5">Mentions légales</a>
-
-                </div>
-
             </div>
 
-        </div>
+            <div class="row d-lg-flex justify-content-between">
 
+                <div class="col-12 col-md-6 col-lg-6 text-center mb-2">
 
-        {# FOOTER MOBILE #}
-        <div class="container-fluid bordures_footer fond_logo d-block d-sm-none">
-
-            {# PHRASE RESEAUX SOCIAUX #}
-            <div class="row text-center">
-
-                <div class="col-12 fs-4 fst-italic fw-medium">
-
-                    <p class="lettres_blanches">Retrouvez nous sur les réseaux</p>
+                    <a href="{{ path('app_polit_confid') }}" class="lettres_blanches fs-5 text-decoration-none">Politique de confidentialité</a>
 
                 </div>
 
-            </div>
+                <div class="col-12 col-md-6 col-lg-6 text-center mb-2">
 
-            {# ICONES RESEAUX SOCIAUX #}
-            <div class="row">
-
-                <div class="col-6 offset-5 mx-auto d-flex align-items-center">
-
-                    <a href="https://www.facebook.com/facebook/" class="text-decoration-none">
-                        <img src="/images/icones/logo_facebook.webp" alt="" title="" style="width: 81%; height : auto"  class="mb-3 shadow-lg">
-                    </a>
-
-                    <a href="https://www.instagram.com/" class="text-decoration-none">
-                        <img src="/images/icones/logo_insta.webp" alt="" title="" style="width: 81%; height : auto" class="mb-3 shadow-lg">
-                    </a>
-
-                    <a href="https://twitter.com/" class="text-decoration-none">
-                        <img src="/images/icones/logo_x.webp" alt="" title="" style="width: 81%; height : auto" class="mb-3 shadow-lg">
-                    </a>
-
-                    <a href="https://fr.linkedin.com/" class="text-decoration-none">
-                        <img src="/images/icones/logo_linkedin.webp" alt="" title="" style="width: 81%; height : auto" class="mb-3 shadow-lg">
-                    </a>
+                    <a href="{{ path('app_ment_legal') }}" class="lettres_blanches fs-5 text-decoration-none">Mentions légales</a>
 
                 </div>
 
-            </div>
-
-            <div class="row d-flex">
-
-                <div class="col-6 d-flex align-items-center justify-content-start mb-2">
-
-                    <a href="{{ path('app_polit_confid') }}" class="lettres_blanches fs-6">Politique de confidentialité</a>
-
-                </div>
-
-                <div class="col-6 d-flex align-items-end justify-content-end mb-2">
-
-                    <a href="{{ path('app_ment_legal') }}" class="lettres_blanches fs-6">Mentions légales</a>
-
-                </div>
 
             </div>
 

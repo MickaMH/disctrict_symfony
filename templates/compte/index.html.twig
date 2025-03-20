@@ -10,12 +10,12 @@
     <div class="alert alert-danger">{{ message }}</div>
 {% endfor %}
 {# MAIN #}
-<main class="container-fluid pb-lg-5">
+<main class="container-fluid">
 
     {# EN-TETE COMPTE #}
     <div class="row d-flex justify-content-center">
 
-        <div class="col-sm-10 col-lg-3 fs-1 fw-medium mb-lg-3 mt-3 mt-lg-3 text-center">
+        <div class="col fs-1 fw-medium mb-lg-3 mt-3 mt-lg-3 text-center">
 
             <p>ESPACE COMPTE</p>
 
@@ -234,13 +234,13 @@
 
                                 <span class="ms-lg-5">
                                     {% if commande.commande.etat == 0 %}
-                                    Enregistrée
+                                    <span class="text-danger">Enregistrée</span>
                                     {% elseif commande.commande.etat == 1 %}
-                                    En préparation
+                                    <span class="text-warning">En préparation</span>
                                     {% elseif commande.commande.etat == 2 %}
-                                    En livraison
+                                    <span class="yellowgreen">En livraison</span>
                                     {% elseif commande.commande.etat == 3 %}
-                                    Livrée <span class="text-success fw-bold">&#x2713;</span>
+                                    <span class="text-success">Livrée</span> <span class="text-success fw-bold">&#x2713;</span>
                                     {% else %}
                                     État inconnu
                                     {% endif %}
@@ -266,18 +266,18 @@
 
                                                 Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }} 
 
-                                                <span class="ms-5">
-                                                {% if commande.commande.etat == 0 %}
-                                                Enregistrée
-                                                {% elseif commande.commande.etat == 1 %}
-                                                En préparation
-                                                {% elseif commande.commande.etat == 2 %}
-                                                En livraison
-                                                {% elseif commande.commande.etat == 3 %}
-                                                Livrée <span class="text-success fw-bold">&#x2713;</span>
-                                                {% else %}
-                                                État inconnu
-                                                {% endif %}
+                                                <span class="ms-lg-5">
+                                                    {% if commande.commande.etat == 0 %}
+                                                    <span class="text-danger">Enregistrée</span>
+                                                    {% elseif commande.commande.etat == 1 %}
+                                                    <span class="text-warning">En préparation</span>
+                                                    {% elseif commande.commande.etat == 2 %}
+                                                    <span class="yellowgreen">En livraison</span>
+                                                    {% elseif commande.commande.etat == 3 %}
+                                                    <span class="text-success">Livrée</span> <span class="text-success fw-bold">&#x2713;</span>
+                                                    {% else %}
+                                                    État inconnu
+                                                    {% endif %}
                                                 </span>
 
                                             </h1>
@@ -346,15 +346,15 @@
                                                 du {{ commande.commande.dateCommande|date('d/m/Y') }}
                                                 <br>
                                                 {% if commande.commande.etat == 0 %}
-                                                Enregistrée
-                                                {% elseif commande.commande.etat == 1 %}
-                                                En préparation
-                                                {% elseif commande.commande.etat == 2 %}
-                                                En livraison
-                                                {% elseif commande.commande.etat == 3 %}
-                                                Livrée <span class="text-success fw-bold">&#x2713;</span>
-                                                {% else %}
-                                                État inconnu
+                                                    <span class="text-danger">Enregistrée</span>
+                                                    {% elseif commande.commande.etat == 1 %}
+                                                    <span class="text-warning">En préparation</span>
+                                                    {% elseif commande.commande.etat == 2 %}
+                                                    <span class="yellowgreen">En livraison</span>
+                                                    {% elseif commande.commande.etat == 3 %}
+                                                    <span class="text-success">Livrée</span> <span class="text-success fw-bold">&#x2713;</span>
+                                                    {% else %}
+                                                    État inconnu
                                                 {% endif %}
                                             </h1>
 
@@ -549,7 +549,7 @@
 
         <div class="col-sm-12 col-lg-12 d-flex justify-content-center">
 
-            <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-3 bouton_categories"
+            <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories"
                 style="width: 15rem; height: 3rem;" href="{{ path('app_logout') }}" role="button">Se déconnecter</a>
 
         </div>

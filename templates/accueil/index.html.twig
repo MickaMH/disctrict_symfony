@@ -10,7 +10,7 @@
 
 
 {# MAIN #}
-<main class="container-fluid pb-lg-5">
+<main class="container-fluid">
 
         {# CAROUSEL BIENVENUE DESKTOP #}
         <div class="container-fluid d-lg-flex align-self-center justify-content-center d-none d-lg-block">
@@ -110,43 +110,43 @@
 
 
         {# Cards Navigation Mobile #}
-            <div class="row d-flex d-md-flex justify-content-center mt-5 d-md-block d-lg-none">
+        <div class="row d-flex d-md-flex justify-content-center mt-5 d-md-block d-lg-none">
 
-                <div class="col-6 col-md-5 d-flex justify-content-center mb-3">
-                    <div class="card w-100 border-3 border-black rounded-4 shadow-lg">
-                        <div class="card-body d-flex justify-content-center flex-column p-2">
-                            <h5 class="card-title text-center">Les catégories</h5>
-                            <img src="/images/icones/icone_categories_transp_2.webp" class="img-fluid mx-auto w-50">
-                            <a href="{{ path('app_categories') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none text-center rounded-3 mt-2">CATÉGORIES</a>
-                        </div>
+            <div class="col-6 col-md-5 d-flex justify-content-center mb-3">
+                <div class="card w-100 border-3 border-black rounded-4 shadow-lg">
+                    <div class="card-body d-flex justify-content-center flex-column p-2">
+                        <h5 class="card-title text-center">Les catégories</h5>
+                        <img src="/images/icones/icone_categories_transp_2.webp" class="img-fluid mx-auto w-50">
+                        <a href="{{ path('app_categories') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none text-center rounded-3 mt-2">CATÉGORIES</a>
                     </div>
                 </div>
-
             </div>
 
-            <div class="row d-flex d-md-flex justify-content-around d-md-block d-lg-none">
+        </div>
 
-                <div class="col-6 col-md-5 d-flex justify-content-center">
-                    <div class="card w-100 border-3 border-black rounded-4 shadow-lg">
-                        <div class="card-body d-flex justify-content-center flex-column p-2">
-                            <h5 class="card-title text-center">Les plats actifs</h5>
-                            <img src="/images/icones/icone_plats_transp_2.webp" class="img-fluid mx-auto w-50 m-2">
-                            <a href="{{ path('app_plats') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none text-center rounded-3 mt-2">PLATS</a>
-                        </div>
+        <div class="row d-flex d-md-flex justify-content-around d-md-block d-lg-none">
+
+            <div class="col-6 col-md-5 d-flex justify-content-center">
+                <div class="card w-100 border-3 border-black rounded-4 shadow-lg">
+                    <div class="card-body d-flex justify-content-center flex-column p-2">
+                        <h5 class="card-title text-center">Les plats</h5>
+                        <img src="/images/icones/icone_plats_transp_2.webp" class="img-fluid mx-auto w-50 m-2">
+                        <a href="{{ path('app_plats') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none text-center rounded-3 mt-2">PLATS</a>
                     </div>
                 </div>
-
-                <div class="col-6 col-md-5 d-flex justify-content-center">
-                    <div class="card w-100 border-3 border-black rounded-4 shadow-lg">
-                        <div class="card-body d-flex justify-content-center flex-column p-2">
-                            <h5 class="card-title text-center">Vos demandes</h5>
-                            <img src="/images/icones/icone_contact_transp_2.webp" class="img-fluid mx-auto w-50 m-1">
-                            <a href="{{ path('app_contact') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none text-center rounded-3 mt-2">CONTACT</a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
+            <div class="col-6 col-md-5 d-flex justify-content-center">
+                <div class="card w-100 border-3 border-black rounded-4 shadow-lg">
+                    <div class="card-body d-flex justify-content-center flex-column p-2">
+                        <h5 class="card-title text-center">Vos demandes</h5>
+                        <img src="/images/icones/icone_contact_transp_2.webp" class="img-fluid mx-auto w-50 m-1">
+                        <a href="{{ path('app_contact') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none text-center rounded-3 mt-2">CONTACT</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
 
         {# INTITULE TOP 3 CATEGORIES #}
