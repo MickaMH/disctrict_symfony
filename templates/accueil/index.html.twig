@@ -58,20 +58,28 @@
         {# Cards Navigation Desktop #}
         <div class="col-5 border border-3 border-black rounded-5 mx-auto p-3 m-5 d-none d-lg-block">
 
+            {# Card navigation Categories #}
             <div class="row d-flex justify-content-center">
 
-                <div class="col-5 d-flex justify-content-center">
-                    <div class="card w-100 border-3 border-black rounded-4 zoom z-1 shadow-lg">
-                        <div class="card-body d-flex justify-content-center flex-column">
-                            <h5 class="card-title text-center">Les catégories de plat</h5>
-                            <img src="/images/icones/icone_categories_transp_2.webp" class="img-fluid mx-auto w-50">
-                            <a href="{{ path('app_categories') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none text-center rounded-3 mt-2">CATÉGORIES</a>
+                <div class="col-5">
+                    <div class="card w-100 text-center border-3 border-black rounded-4 zoom z-1 shadow-lg">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Les catégories de plat</h5>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24">
+                                    <path fill="#980848" d="M3 20.5q-.425 0-.712-.288T2 19.5v-6q0-.425.288-.712T3 12.5h6q.425 0 .713.288T10 13.5v6q0 .425-.288.713T9 20.5zm1-2h4v-4H4zM14.725 10h-7.45q-.575 0-.862-.513t.012-1.012L10.15 2.4q.3-.5.85-.5t.85.5l3.725 6.075q.3.5.013 1.013t-.863.512M9.05 8h3.9L11 4.85zm11.825 14.25l-1.95-1.95q-.525.35-1.137.525T16.5 21q-1.875 0-3.187-1.312T12 16.5t1.313-3.187T16.5 12t3.188 1.313T21 16.5q0 .65-.175 1.263t-.5 1.137l1.95 1.95q.275.275.275.7t-.275.7t-.7.275t-.7-.275M16.5 19q1.05 0 1.775-.725T19 16.5t-.725-1.775T16.5 14t-1.775.725T14 16.5t.725 1.775T16.5 19M11 8"/>
+                                </svg>
+                            </div>
+                            <a href="{{ path('app_categories') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none rounded-3 mt-2">
+                                CATÉGORIES
+                            </a>
                         </div>
                     </div>
                 </div>
 
             </div>
 
+            {# Boussole #}
             <div class="row mt-4 mb-4">
 
                 <div class="col-12 d-flex justify-content-center">
@@ -84,22 +92,36 @@
 
             <div class="row d-flex justify-content-around">
 
-                <div class="col-5 d-flex justify-content-center">
-                    <div class="card w-100 border-3 border-black rounded-4 zoom z-1 shadow-lg">
-                        <div class="card-body d-flex justify-content-center flex-column">
-                            <h5 class="card-title text-center">Retrouvez tous les plats actifs</h5>
-                            <img src="/images/icones/icone_plats_transp_2.webp" class="img-fluid mx-auto w-50 m-2">
-                            <a href="{{ path('app_plats') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none text-center rounded-3 mt-2">PLATS</a>
+                {# Card navigation Plats #}
+                <div class="col-5">
+                    <div class="card w-100 text-center border-3 border-black rounded-4 zoom z-1 shadow-lg">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Retrouvez tous les plats</h5>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 32 32">
+                                    <g fill="#980848"><path d="M6.82 20.575v3.834A12.475 12.475 0 0 0 16.5 29c4.324 0 8.136-2.196 10.38-5.533v-5.374C26.112 23.136 21.757 27 16.5 27c-4.354 0-8.089-2.65-9.68-6.425Zm18.21-10.199V8.654a3.32 3.32 0 0 1 .184-1.116A12.459 12.459 0 0 0 16.5 4a12.45 12.45 0 0 0-7.976 2.875l.005.061l.001.027v2.7A10.476 10.476 0 0 1 16.5 6c3.514 0 6.624 1.726 8.53 4.376Z"/><path d="M24.5 16.5a8 8 0 1 1-16 0a8 8 0 0 1 16 0Zm-8 7a7 7 0 1 0 0-14a7 7 0 0 0 0 14ZM29.99 7.94c0-.9-.73-1.63-1.63-1.63c-1.3 0-2.34 1.05-2.33 2.34v5.55c0 1.253.726 2.375 1.85 2.883V25.7c0 .52.42.94.94.94h.23c.52 0 .94-.42.94-.94V7.94ZM6.82 6.31a.68.68 0 0 0-.68.68v2.69c0 .2-.16.35-.35.35c-.2 0-.35-.16-.35-.35V7.02c0-.37-.29-.7-.66-.71c-.39-.01-.71.3-.71.68v2.69c0 .2-.16.35-.35.35c-.2 0-.35-.16-.35-.35V7.02c0-.37-.29-.7-.66-.71c-.39-.01-.71.3-.71.68v4.58c0 .902.437 1.707 1.109 2.209c.601.339.601 1.891.601 1.891v10.02c0 .52.42.94.94.94h.23c.52 0 .94-.42.94-.94V15.67s0-1.491.601-1.891A2.757 2.757 0 0 0 7.53 11.57V6.99a.72.72 0 0 0-.71-.68Z"/></g>
+                                </svg>
+                            </div>
+                            <a href="{{ path('app_plats') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none rounded-3 mt-2">
+                                PLATS
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-5 d-flex justify-content-center">
-                    <div class="card w-100 border-3 border-black rounded-4 zoom z-1 shadow-lg">
-                        <div class="card-body d-flex justify-content-center flex-column">
-                            <h5 class="card-title text-center">Adressez nous vos demandes</h5>
-                            <img src="/images/icones/icone_contact_transp_2.webp" class="img-fluid mx-auto w-50">
-                            <a href="{{ path('app_contact') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none text-center rounded-3 mt-2">CONTACT</a>
+                {# Card navigation Contact #}
+                <div class="col-5">
+                    <div class="card w-100 text-center border-3 border-black rounded-4 zoom z-1 shadow-lg">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Adressez nous vos demandes</h5>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24">
+                                    <g fill="#980848" fill-rule="evenodd" clip-rule="evenodd"><path d="M9.75 20.5V22h-3a2.25 2.25 0 0 1-2.25-2.25V9.621c0-.596.237-1.169.659-1.59l5.367-5.371A2.25 2.25 0 0 1 12.118 2h5.132a2.25 2.25 0 0 1 2.25 2.25v5.5H18v-5.5a.75.75 0 0 0-.75-.75h-5.002l.003 3.998A2.25 2.25 0 0 1 10 9.75H6v10c0 .414.336.75.75.75zm.999-15.941L7.059 8.25h2.942a.75.75 0 0 0 .75-.75z"/><path d="M20.299 12.339a1.75 1.75 0 0 0-2.475 0l-5.158 5.158a2.25 2.25 0 0 0-.646 1.35l-.19 1.746a.75.75 0 0 0 .827.826l1.747-.189a2.25 2.25 0 0 0 1.349-.646l5.158-5.158a1.75 1.75 0 0 0 0-2.475zm-2.277 1.923l.966.966l-4.296 4.296a.75.75 0 0 1-.45.215l-.82.089l.089-.82a.75.75 0 0 1 .215-.45z"/></g>
+                                </svg>
+                            </div>
+                            <a href="{{ path('app_contact') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none rounded-3 mt-2">
+                                CONTACT
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -109,15 +131,22 @@
         </div>
 
 
-        {# Cards Navigation Mobile #}
+        {# Cards Navigation Mobile/Tablette #}
         <div class="row d-flex d-md-flex justify-content-center mt-5 d-md-block d-lg-none">
 
-            <div class="col-6 col-md-5 d-flex justify-content-center mb-3">
-                <div class="card w-100 border-3 border-black rounded-4 shadow-lg">
-                    <div class="card-body d-flex justify-content-center flex-column p-2">
-                        <h5 class="card-title text-center">Les catégories</h5>
-                        <img src="/images/icones/icone_categories_transp_2.webp" class="img-fluid mx-auto w-50">
-                        <a href="{{ path('app_categories') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none text-center rounded-3 mt-2">CATÉGORIES</a>
+            {# Card navigation mobile/tablette Categories #}
+            <div class="col-6 col-md-5 mb-3">
+                <div class="card w-100 text-center border-3 border-black rounded-4 shadow-lg">
+                    <div class="card-body d-flex flex-column p-2">
+                        <h5 class="card-title">Les catégories</h5>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24">
+                                <path fill="#980848" d="M3 20.5q-.425 0-.712-.288T2 19.5v-6q0-.425.288-.712T3 12.5h6q.425 0 .713.288T10 13.5v6q0 .425-.288.713T9 20.5zm1-2h4v-4H4zM14.725 10h-7.45q-.575 0-.862-.513t.012-1.012L10.15 2.4q.3-.5.85-.5t.85.5l3.725 6.075q.3.5.013 1.013t-.863.512M9.05 8h3.9L11 4.85zm11.825 14.25l-1.95-1.95q-.525.35-1.137.525T16.5 21q-1.875 0-3.187-1.312T12 16.5t1.313-3.187T16.5 12t3.188 1.313T21 16.5q0 .65-.175 1.263t-.5 1.137l1.95 1.95q.275.275.275.7t-.275.7t-.7.275t-.7-.275M16.5 19q1.05 0 1.775-.725T19 16.5t-.725-1.775T16.5 14t-1.775.725T14 16.5t.725 1.775T16.5 19M11 8"/>
+                            </svg>
+                        </div>
+                        <a href="{{ path('app_categories') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none rounded-3 mt-2">
+                            CATÉGORIES
+                        </a>
                     </div>
                 </div>
             </div>
@@ -126,22 +155,36 @@
 
         <div class="row d-flex d-md-flex justify-content-around d-md-block d-lg-none">
 
-            <div class="col-6 col-md-5 d-flex justify-content-center">
-                <div class="card w-100 border-3 border-black rounded-4 shadow-lg">
-                    <div class="card-body d-flex justify-content-center flex-column p-2">
-                        <h5 class="card-title text-center">Les plats</h5>
-                        <img src="/images/icones/icone_plats_transp_2.webp" class="img-fluid mx-auto w-50 m-2">
-                        <a href="{{ path('app_plats') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none text-center rounded-3 mt-2">PLATS</a>
+            {# Card navigation mobile/tablette Plats #}
+            <div class="col-6 col-md-5 mb-3">
+                <div class="card w-100 text-center border-3 border-black rounded-4 shadow-lg">
+                    <div class="card-body d-flex flex-column p-2">
+                        <h5 class="card-title">Les plats</h5>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 32 32">
+                                <g fill="#980848"><path d="M6.82 20.575v3.834A12.475 12.475 0 0 0 16.5 29c4.324 0 8.136-2.196 10.38-5.533v-5.374C26.112 23.136 21.757 27 16.5 27c-4.354 0-8.089-2.65-9.68-6.425Zm18.21-10.199V8.654a3.32 3.32 0 0 1 .184-1.116A12.459 12.459 0 0 0 16.5 4a12.45 12.45 0 0 0-7.976 2.875l.005.061l.001.027v2.7A10.476 10.476 0 0 1 16.5 6c3.514 0 6.624 1.726 8.53 4.376Z"/><path d="M24.5 16.5a8 8 0 1 1-16 0a8 8 0 0 1 16 0Zm-8 7a7 7 0 1 0 0-14a7 7 0 0 0 0 14ZM29.99 7.94c0-.9-.73-1.63-1.63-1.63c-1.3 0-2.34 1.05-2.33 2.34v5.55c0 1.253.726 2.375 1.85 2.883V25.7c0 .52.42.94.94.94h.23c.52 0 .94-.42.94-.94V7.94ZM6.82 6.31a.68.68 0 0 0-.68.68v2.69c0 .2-.16.35-.35.35c-.2 0-.35-.16-.35-.35V7.02c0-.37-.29-.7-.66-.71c-.39-.01-.71.3-.71.68v2.69c0 .2-.16.35-.35.35c-.2 0-.35-.16-.35-.35V7.02c0-.37-.29-.7-.66-.71c-.39-.01-.71.3-.71.68v4.58c0 .902.437 1.707 1.109 2.209c.601.339.601 1.891.601 1.891v10.02c0 .52.42.94.94.94h.23c.52 0 .94-.42.94-.94V15.67s0-1.491.601-1.891A2.757 2.757 0 0 0 7.53 11.57V6.99a.72.72 0 0 0-.71-.68Z"/></g>
+                            </svg>
+                        </div>
+                        <a href="{{ path('app_plats') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none rounded-3 mt-2">
+                            PLATS
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-6 col-md-5 d-flex justify-content-center">
-                <div class="card w-100 border-3 border-black rounded-4 shadow-lg">
-                    <div class="card-body d-flex justify-content-center flex-column p-2">
-                        <h5 class="card-title text-center">Vos demandes</h5>
-                        <img src="/images/icones/icone_contact_transp_2.webp" class="img-fluid mx-auto w-50 m-1">
-                        <a href="{{ path('app_contact') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none text-center rounded-3 mt-2">CONTACT</a>
+            {# Card navigation mobile/tablette Contact #}
+            <div class="col-6 col-md-5 mb-3">
+                <div class="card w-100 text-center border-3 border-black rounded-4 shadow-lg">
+                    <div class="card-body d-flex flex-column p-2">
+                        <h5 class="card-title">Vos demandes</h5>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24">
+                                <g fill="#980848" fill-rule="evenodd" clip-rule="evenodd"><path d="M9.75 20.5V22h-3a2.25 2.25 0 0 1-2.25-2.25V9.621c0-.596.237-1.169.659-1.59l5.367-5.371A2.25 2.25 0 0 1 12.118 2h5.132a2.25 2.25 0 0 1 2.25 2.25v5.5H18v-5.5a.75.75 0 0 0-.75-.75h-5.002l.003 3.998A2.25 2.25 0 0 1 10 9.75H6v10c0 .414.336.75.75.75zm.999-15.941L7.059 8.25h2.942a.75.75 0 0 0 .75-.75z"/><path d="M20.299 12.339a1.75 1.75 0 0 0-2.475 0l-5.158 5.158a2.25 2.25 0 0 0-.646 1.35l-.19 1.746a.75.75 0 0 0 .827.826l1.747-.189a2.25 2.25 0 0 0 1.349-.646l5.158-5.158a1.75 1.75 0 0 0 0-2.475zm-2.277 1.923l.966.966l-4.296 4.296a.75.75 0 0 1-.45.215l-.82.089l.089-.82a.75.75 0 0 1 .215-.45z"/></g>
+                            </svg>
+                        </div>
+                        <a href="{{ path('app_contact') }}" class="shadow-lg fond_logo lettres_blanches fw-medium text-decoration-none rounded-3 mt-2">
+                            CONTACT
+                        </a>
                     </div>
                 </div>
             </div>
@@ -208,9 +251,12 @@
                     <img src="/images/plats/{{ plat.plat.image }}" class="img-fluid m-3 rounded-4 border_image" alt="{{ plat.plat.libelle }}" title="{{ plat.plat.libelle }}">
 
                     {# BOUTON AJOUTER AU PANIER ABSOLUTE #}
-                    <a href="{{ path('app_panier_add', {'id': plat.plat.id}) }}" class="position-absolute d-flex justify-content-end">
+                    <a href="{{ path('app_panier_add', {'id': plat.plat.id}) }}" class="position-absolute end-0 rounded-circle fond_logo p-3 mt-1 me-1">
 
-                        <img src="/images/icones/icone_panier_plus_district.webp" class="mt-1 me-1 mt-lg-0 me-lg-0 p-lg-2 w-25 panier_plus">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 16 16">
+                            <g fill="white" fill-rule="evenodd">
+                            <path d="M9.927 12.918a.648.648 0 0 1-.067-.279V8.483c0-.338.286-.576.588-.576h.021c.301 0 .594.238.594.576v3.46h.902V9.982h1.293l.164-3.006h.766c.4 0 .725-1.22.725-1.22c0-.37-.324-.672-.725-.672H12.26l-1.035-3.637a.614.614 0 0 0-.838-.286l-.072.036a.658.658 0 0 0-.288.863l.741 3.023H4.114l.768-3.019a.658.658 0 0 0-.281-.865l-.07-.036a.616.616 0 0 0-.842.277L2.616 5.083H.726c-.4 0-.725.302-.725.672c0 0 .324 1.22.725 1.22h.636l.449 6.677s.052 1.309 2.113 1.309h6.004v-2.043h-.001zM11.969 6h1.062v1.062h-1.062V6zM3.094 7.031H1.912V5.906h1.182v1.125zm1.912 5.711c0 .35-.251.633-.559.633h-.023c-.311 0-.561-.283-.561-.633V8.413c0-.35.25-.632.561-.632h.023c.308 0 .559.282.559.632v4.329zm2.998-.195c0 .334-.23.605-.514.605h-.021c-.284 0-.514-.271-.514-.605V8.448c0-.334.229-.604.514-.604h.021c.283 0 .514.271.514.604v4.099z"/><path d="M16 13.012h-2.008v-1.906h-.937v1.906h-2.003v.894h2.003v2.032h.937v-2.032H16v-.894z"/></g>
+                        </svg>
 
                     </a>
 

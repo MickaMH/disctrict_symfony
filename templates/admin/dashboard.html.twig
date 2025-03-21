@@ -36,945 +36,949 @@
 
 <div class="row m-5">
 
-    {# TITRES ONGLETS #}
-    <ul class="nav nav-tabs fs-3 fw-medium border-3">
+    <div class="col-12">
 
-        <li class="nav-item">
-            <a class="nav-link active text-danger border-3" data-toggle="tab" href="#enregistree" role="tab" aria-controls="enregistree" aria-selected="true">Nouvelles commandes</a>
-        </li>
+        {# TITRES ONGLETS #}
+        <ul class="nav nav-tabs fs-3 fw-medium border-3">
 
-        <li class="nav-item">
-            <a class="nav-link text-warning border-3" data-toggle="tab" href="#preparation" role="tab" aria-controls="preparation" aria-selected="false">En préparation</a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link active text-danger border-3" data-toggle="tab" href="#enregistree" role="tab" aria-controls="enregistree" aria-selected="true">Nouvelles commandes</a>
+            </li>
 
-        <li class="nav-item">
-            <a class="nav-link border-3" style="color: yellowgreen;" data-toggle="tab" href="#livraison" role="tab" aria-controls="livraison" aria-selected="false">En livraison</a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning border-3" data-toggle="tab" href="#preparation" role="tab" aria-controls="preparation" aria-selected="false">En préparation</a>
+            </li>
 
-        <li class="nav-item">
-            <a class="nav-link text-success border-3" data-toggle="tab" href="#livrees" role="tab" aria-controls="livrees" aria-selected="false">Livrées</a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link border-3" style="color: yellowgreen;" data-toggle="tab" href="#livraison" role="tab" aria-controls="livraison" aria-selected="false">En livraison</a>
+            </li>
 
-        <li class="nav-item">
-            <a class="nav-link text-black border-3" data-toggle="tab" href="#statistiques" role="tab" aria-controls="statistiques" aria-selected="false">Statistiques</a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link text-success border-3" data-toggle="tab" href="#livrees" role="tab" aria-controls="livrees" aria-selected="false">Livrées</a>
+            </li>
 
-    </ul>
+            <li class="nav-item">
+                <a class="nav-link text-black border-3" data-toggle="tab" href="#statistiques" role="tab" aria-controls="statistiques" aria-selected="false">Statistiques</a>
+            </li>
 
-    {# CONTENU ONGLETS #}
-    <div class="tab-content fs-4">
+        </ul>
 
-        {# ONGLET NOUVELLES COMMANDES #}
-        <div class="tab-pane fade show active" id="enregistree" role="tabpanel" aria-labelledby="home-tab">
+        {# CONTENU ONGLETS #}
+        <div class="tab-content fs-4">
 
-            <h2 class="mt-4 text-danger">Nouvelles commandes</h2>
+            {# ONGLET NOUVELLES COMMANDES #}
+            <div class="tab-pane fade show active" id="enregistree" role="tabpanel" aria-labelledby="home-tab">
 
-            {% if commandesAvecDetails|length > 0 %}
+                <h2 class="mt-4 text-danger">Nouvelles commandes</h2>
 
-            {% for commande in commandesAvecDetails %}
-            <div class="card mt-5" style="width: auto;">
+                {% if commandesAvecDetails|length > 0 %}
 
-                <div class="card-header fw-medium d-flex justify-content-between">
+                {% for commande in commandesAvecDetails %}
+                <div class="card mt-5" style="width: auto;">
 
-                    <p>Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}.<p>
+                    <div class="card-header fw-medium d-flex justify-content-between">
 
-                    <p>
-                        {% if commande.commande.etat == 0 %}
-                        Enregistrée
-                        {% elseif commande.commande.etat == 1 %}
-                        En préparation
-                        {% elseif commande.commande.etat == 2 %}
-                        En livraison
-                        {% elseif commande.commande.etat == 3 %}
-                        Livrée
-                        {% else %}
-                        État inconnu
-                        {% endif %}
-                    </p>
+                        <p>Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}.<p>
 
-                </div>
-
-                <ul class="list-group list-group-flush">
-
-                    {% for detail in commande.details %}
-                    <li class="list-group-item d-flex align-items-center">
-                        
-                        <img src="/images/plats/{{ detail.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 6rem; height: 6rem;" alt="{{ detail.plat.libelle }}" title="{{ detail.plat.libelle }}">
-                        
-                        <div class="col-4 ms-5">{{ detail.plat.libelle }}</div>
-                        
-                        <div class="col-4">x {{ detail.quantite }}</div>
-
-                    </li>
-                    {% endfor %}
-
-                    {# ADRESSE FACTURATION COMMANDE #}
-                    <li class="list-group-item mt-3">
-                    
-                        <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de facturation</span> :</p>
-
-                        <table class="table">
-                            <tbody class="fs-4">
-                                <tr class="">
-                                    <td class="col-lg-3 fw-medium">
-                                        Nom :
-                                    </td>
-                                    <td class="col-lg-9">
-                                        {{ commande.commande.utilisateur.nom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Prénom :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.utilisateur.prenom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Adresse :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.adresseFacturation }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Code postal :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.cpFacturation }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Ville :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.villeFacturation }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-                    </li>
-
-                    {# ADRESSE LIVRAISON COMMANDE #}
-                    <li class="list-group-item">
-                    
-                        <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de livraison</span> :</p>
-
-                        <table class="table">
-                            <tbody class="fs-4">
-                                <tr class="">
-                                    <td class="col-lg-3 fw-medium">
-                                        Nom :
-                                    </td>
-                                    <td class="col-lg-9">
-                                        {{ commande.commande.utilisateur.nom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Prénom :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.utilisateur.prenom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Adresse :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.adresseLivraison }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Code postal :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.cpLivraison }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Ville :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.villeLivraison }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    
-                    </li>
-
-                    {# CONTACTER CLIENT #}
-                    <li class="list-group-item">
-
-                        <p class="fs-4 fw-medium"><span class="text-decoration-underline">Contacter le client</span> :</p>
-
-                        <table class="table">
-                            <tbody class="fs-4">
-                                <tr class="">
-                                    <td class="col-lg-3 fw-medium">
-                                        Téléphone :
-                                    </td>
-                                    <td class="col-lg-9">
-                                        {{ commande.commande.utilisateur.telephone }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Email :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.utilisateur.email }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </li>
-
-                    {# BOUTON PREPARER LA COMMANDE #}
-                    <li class="list-group-item mx-auto">
-
-                        <a class="btn-danger d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-3"
-                            href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
-                            role="button" style="width: 15rem; height: 3rem;">
-                            Préparer la commande
-                        </a>
-
-                    </li>
-
-                </ul>
-
-            </div>
-            {% endfor %}
-
-            {% else %}
-            <p class="text-center mt-5">" Pas de nouvelle commande pour le moment. "</p>
-            {% endif %}
-
-        </div>
-
-
-        {# ONGLET COMMANDES EN PREPARATION #}
-        <div class="tab-pane fade" id="preparation" role="tabpanel" aria-labelledby="contact-tab">
-            <h2 class="mt-4 text-warning">En préparation</h2>
-            {% if commandesEnCoursAvecDetails|length > 0 %}
-
-            {% for commande in commandesEnCoursAvecDetails %}
-            <div class="card mt-5" style="width: auto;">
-
-                <div class="card-header fw-medium d-flex justify-content-between">
-
-                    <p>Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}.<p>
-
-                    <p>
-                        {% if commande.commande.etat == 0 %}
-                        Enregistrée
-                        {% elseif commande.commande.etat == 1 %}
-                        En préparation
-                        {% elseif commande.commande.etat == 2 %}
-                        En livraison
-                        {% elseif commande.commande.etat == 3 %}
-                        Livrée
-                        {% else %}
-                        État inconnu
-                        {% endif %}
-                    </p>
-
-                </div>
-
-                <ul class="list-group list-group-flush">
-
-                    {% for detail in commande.details %}
-                    <li class="list-group-item d-flex align-items-center">
-
-                        <img src="/images/plats/{{ detail.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 6rem; height: 6rem;" alt="{{ detail.plat.libelle }}" title="{{ detail.plat.libelle }}">
-                        
-                        <div class="col-4 ms-5">{{ detail.plat.libelle }}</div>
-                        
-                        <div class="col-4">x {{ detail.quantite }}</div>
-
-                    </li>
-                    {% endfor %}
-
-                    {# ADRESSE FACTURATION COMMANDE #}
-                    <li class="list-group-item mt-3">
-                    
-                        <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de facturation</span> :</p>
-
-                        <table class="table">
-                            <tbody class="fs-4">
-                                <tr class="">
-                                    <td class="col-lg-3 fw-medium">
-                                        Nom :
-                                    </td>
-                                    <td class="col-lg-9">
-                                        {{ commande.commande.utilisateur.nom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Prénom :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.utilisateur.prenom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Adresse :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.adresseFacturation }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Code postal :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.cpFacturation }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Ville :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.villeFacturation }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-                    </li>
-
-                    {# ADRESSE LIVRAISON COMMANDE #}
-                    <li class="list-group-item">
-                    
-                        <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de livraison</span> :</p>
-
-                        <table class="table">
-                            <tbody class="fs-4">
-                                <tr class="">
-                                    <td class="col-lg-3 fw-medium">
-                                        Nom :
-                                    </td>
-                                    <td class="col-lg-9">
-                                        {{ commande.commande.utilisateur.nom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Prénom :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.utilisateur.prenom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Adresse :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.adresseLivraison }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Code postal :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.cpLivraison }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Ville :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.villeLivraison }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    
-                    </li>
-
-                    {# CONTACTER CLIENT #}
-                    <li class="list-group-item">
-
-                        <p class="fs-4 fw-medium"><span class="text-decoration-underline">Contacter le client</span> :</p>
-
-                        <table class="table">
-                            <tbody class="fs-4">
-                                <tr class="">
-                                    <td class="col-lg-3 fw-medium">
-                                        Téléphone :
-                                    </td>
-                                    <td class="col-lg-9">
-                                        {{ commande.commande.utilisateur.telephone }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Email :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.utilisateur.email }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </li>
-
-                    {# BOUTON COMMANDE PRETE #}
-                    <li class="list-group-item mx-auto">
-
-                        <a class="bg-warning text-white d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-3"
-                            href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
-                            role="button" style="width: 15rem; height: 3rem;">
-                            Commande prête
-                        </a>
-
-                    </li>
-
-                </ul>
-
-            </div>
-            {% endfor %}
-
-            {% else %}
-            <p class="text-center mt-5">" Pas de commande en préparation pour le moment. "</p>
-            {% endif %}
-
-        </div>
-
-
-        {# ONGLET COMMANDES EN LIVRAISON #}
-        <div class="tab-pane fade" id="livraison" role="tabpanel" aria-labelledby="profile-tab">
-
-            <h2 class="mt-4" style="color: yellowgreen;">En livraison</h2>
-
-            {% if commandesTermineesAvecDetails|length > 0 %}
-
-            {% for commande in commandesTermineesAvecDetails %}
-            <div class="card mt-5" style="width: auto;">
-
-                <div class="card-header fw-medium d-flex justify-content-between">
-
-                    <p>Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}.<p>
-
-                    <p>
-                        {% if commande.commande.etat == 0 %}
-                        Enregistrée
-                        {% elseif commande.commande.etat == 1 %}
-                        En préparation
-                        {% elseif commande.commande.etat == 2 %}
-                        En livraison
-                        {% elseif commande.commande.etat == 3 %}
-                        Livrée
-                        {% else %}
-                        État inconnu
-                        {% endif %}
-                    </p>
-
-                </div>
-
-                <ul class="list-group list-group-flush">
-
-                    {% for detail in commande.details %}
-                    <li class="list-group-item d-flex align-items-center">
-                        
-                        <img src="/images/plats/{{ detail.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 6rem; height: 6rem;" alt="{{ detail.plat.libelle }}" title="{{ detail.plat.libelle }}">
-                        
-                        <div class="col-4 ms-5">{{ detail.plat.libelle }}</div>
-                        
-                        <div class="col-4">x {{ detail.quantite }}</div>
-
-                    </li>
-                    {% endfor %}
-
-                    {# ADRESSE FACTURATION COMMANDE #}
-                    <li class="list-group-item mt-3">
-                    
-                        <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de facturation</span> :</p>
-
-                        <table class="table">
-                            <tbody class="fs-4">
-                                <tr class="">
-                                    <td class="col-lg-3 fw-medium">
-                                        Nom :
-                                    </td>
-                                    <td class="col-lg-9">
-                                        {{ commande.commande.utilisateur.nom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Prénom :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.utilisateur.prenom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Adresse :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.adresseFacturation }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Code postal :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.cpFacturation }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Ville :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.villeFacturation }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-                    </li>
-
-                    {# ADRESSE LIVRAISON COMMANDE #}
-                    <li class="list-group-item">
-                    
-                        <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de livraison</span> :</p>
-
-                        <table class="table">
-                            <tbody class="fs-4">
-                                <tr class="">
-                                    <td class="col-lg-3 fw-medium">
-                                        Nom :
-                                    </td>
-                                    <td class="col-lg-9">
-                                        {{ commande.commande.utilisateur.nom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Prénom :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.utilisateur.prenom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Adresse :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.adresseLivraison }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Code postal :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.cpLivraison }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Ville :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.villeLivraison }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    
-                    </li>
-
-                    {# CONTACTER CLIENT #}
-                    <li class="list-group-item">
-
-                        <p class="fs-4 fw-medium"><span class="text-decoration-underline">Contacter le client</span> :</p>
-
-                        <table class="table">
-                            <tbody class="fs-4">
-                                <tr class="">
-                                    <td class="col-lg-3 fw-medium">
-                                        Téléphone :
-                                    </td>
-                                    <td class="col-lg-9">
-                                        {{ commande.commande.utilisateur.telephone }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Email :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.utilisateur.email }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </li>
-
-                    {# BOUTON COMMANDE LIVREE #}
-                    <li class="list-group-item mx-auto">
-
-                        <a class="btn d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-3 text-white"
-                            href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
-                            role="button" style="width: 15rem; height: 3rem; background-color: yellowgreen;">
-                            Commande livrée
-                        </a>
-
-                    </li>
-
-                </ul>
-
-            </div>
-            {% endfor %}
-
-            {% else %}
-            <p class="text-center mt-5">" Pas de commande en livraison pour le moment. "</p>
-            {% endif %}
-
-        </div>
-
-        {# ONGLET COMMANDES LIVREES #}
-        <div class="tab-pane fade" id="livrees" role="tabpanel" aria-labelledby="contact-tab">
-
-            <h2 class="mt-4 mb-4 text-success">Livrées <span class="text-success fw-bold">&#x2713;</span></h2>
-
-            {% if commandesLivreesAvecDetails|length > 0 %}
-
-            {# {% for commande in commandesLivreesAvecDetails %} #}
-            {% for commande in commandesLivreesAvecDetails|sort((a, b) => b.commande.dateCommande <=> a.commande.dateCommande) %}
-            <!-- Bouton pour ouvrir la modal -->
-            <div class="d-flex flex-column">
-
-                <button type="button" class="bg-white border-0" data-toggle="modal" data-target="#modal-{{ commande.commande.id }}">
-
-                    <div>
-
-                        <table class="table">
-                            <tbody class="fs-4">
-                                <tr>
-                                    <td class="col-7 text-start">
-                                        Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}
-                                    </td>
-                                    <td class="col-5 text-start">
-                                        Montant total : {{ commande.commande.total }} €
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <p>
+                            {% if commande.commande.etat == 0 %}
+                            Enregistrée
+                            {% elseif commande.commande.etat == 1 %}
+                            En préparation
+                            {% elseif commande.commande.etat == 2 %}
+                            En livraison
+                            {% elseif commande.commande.etat == 3 %}
+                            Livrée
+                            {% else %}
+                            État inconnu
+                            {% endif %}
+                        </p>
 
                     </div>
 
-                </button>
+                    <ul class="list-group list-group-flush">
 
-            </div>
+                        {% for detail in commande.details %}
+                        <li class="list-group-item d-flex align-items-center">
+                            
+                            <img src="/images/plats/{{ detail.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 6rem; height: 6rem;" alt="{{ detail.plat.libelle }}" title="{{ detail.plat.libelle }}">
+                            
+                            <div class="col-4 ms-5">{{ detail.plat.libelle }}</div>
+                            
+                            <div class="col-4">x {{ detail.quantite }}</div>
 
-            <!-- La modal -->
-            <div class="modal fade" id="modal-{{ commande.commande.id }}" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl" role="document">
-                    <div class="modal-content">
+                        </li>
+                        {% endfor %}
 
-                        <div class="modal-body">
-                        <!-- Contenu de la modal -->
-        
-                            <div class="card mt-5" style="width: auto;">
-
-                                <div class="card-header fw-medium d-flex justify-content-between">
-
-                                    <p>Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}</p>
-
-                                    <p>Montant total : {{ commande.commande.total }} €</p>
-
-                                    <p>
-                                    {% if commande.commande.etat == 0 %}
-                                    Enregistrée
-                                    {% elseif commande.commande.etat == 1 %}
-                                    En préparation
-                                    {% elseif commande.commande.etat == 2 %}
-                                    En livraison
-                                    {% elseif commande.commande.etat == 3 %}
-                                    Livrée <span class="text-success fw-bold">&#x2713;</span>
-                                    {% else %}
-                                    État inconnu
-                                    {% endif %}
-                                    </p>
-
-                                    <button type="button" class="close w-auto h-25 rounded-2" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true" class="fw-bold">&times;</span>
-                                    </button>
-
-                                </div>
-
-                <ul class="list-group list-group-flush">
-
-                    {% for detail in commande.details %}
-                    <li class="list-group-item d-flex align-items-center">
+                        {# ADRESSE FACTURATION COMMANDE #}
+                        <li class="list-group-item mt-3">
                         
-                        <img src="/images/plats/{{ detail.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 6rem; height: 6rem;" alt="{{ detail.plat.libelle }}" title="{{ detail.plat.libelle }}">
+                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de facturation</span> :</p>
+
+                            <table class="table">
+                                <tbody class="fs-4">
+                                    <tr class="">
+                                        <td class="col-lg-3 fw-medium">
+                                            Nom :
+                                        </td>
+                                        <td class="col-lg-9">
+                                            {{ commande.commande.utilisateur.nom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Prénom :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.utilisateur.prenom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Adresse :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.adresseFacturation }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Code postal :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.cpFacturation }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Ville :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.villeFacturation }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </li>
+
+                        {# ADRESSE LIVRAISON COMMANDE #}
+                        <li class="list-group-item">
                         
-                        <div class="col-4 ms-5">{{ detail.plat.libelle }}</div>
+                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de livraison</span> :</p>
+
+                            <table class="table">
+                                <tbody class="fs-4">
+                                    <tr class="">
+                                        <td class="col-lg-3 fw-medium">
+                                            Nom :
+                                        </td>
+                                        <td class="col-lg-9">
+                                            {{ commande.commande.utilisateur.nom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Prénom :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.utilisateur.prenom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Adresse :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.adresseLivraison }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Code postal :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.cpLivraison }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Ville :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.villeLivraison }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         
-                        <div class="col-4">x {{ detail.quantite }}</div>
+                        </li>
 
-                    </li>
-                    {% endfor %}
+                        {# CONTACTER CLIENT #}
+                        <li class="list-group-item">
 
-                    {# ADRESSE FACTURATION COMMANDE #}
-                    <li class="list-group-item mt-3">
-                    
-                        <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de facturation</span> :</p>
+                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Contacter le client</span> :</p>
 
-                        <table class="table">
-                            <tbody class="fs-4">
-                                <tr class="">
-                                    <td class="col-lg-3 fw-medium">
-                                        Nom :
-                                    </td>
-                                    <td class="col-lg-9">
-                                        {{ commande.commande.utilisateur.nom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Prénom :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.utilisateur.prenom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Adresse :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.adresseFacturation }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Code postal :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.cpFacturation }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Ville :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.villeFacturation }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-                    </li>
+                            <table class="table">
+                                <tbody class="fs-4">
+                                    <tr class="">
+                                        <td class="col-lg-3 fw-medium">
+                                            Téléphone :
+                                        </td>
+                                        <td class="col-lg-9">
+                                            {{ commande.commande.utilisateur.telephone }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Email :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.utilisateur.email }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                    {# ADRESSE LIVRAISON COMMANDE #}
-                    <li class="list-group-item">
-                    
-                        <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de livraison</span> :</p>
+                        </li>
 
-                        <table class="table">
-                            <tbody class="fs-4">
-                                <tr class="">
-                                    <td class="col-lg-3 fw-medium">
-                                        Nom :
-                                    </td>
-                                    <td class="col-lg-9">
-                                        {{ commande.commande.utilisateur.nom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Prénom :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.utilisateur.prenom }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Adresse :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.adresseLivraison }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Code postal :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.cpLivraison }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Ville :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.villeLivraison }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    
-                    </li>
+                        {# BOUTON PREPARER LA COMMANDE #}
+                        <li class="list-group-item mx-auto">
 
-                    {# CONTACTER CLIENT #}
-                    <li class="list-group-item">
+                            <a class="btn-danger d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-3"
+                                href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
+                                role="button" style="width: 15rem; height: 3rem;">
+                                Préparer la commande
+                            </a>
 
-                        <p class="fs-4 fw-medium"><span class="text-decoration-underline">Contacter le client</span> :</p>
+                        </li>
 
-                        <table class="table">
-                            <tbody class="fs-4">
-                                <tr class="">
-                                    <td class="col-lg-3 fw-medium">
-                                        Téléphone :
-                                    </td>
-                                    <td class="col-lg-9">
-                                        {{ commande.commande.utilisateur.telephone }}
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="fw-medium">
-                                        Email :
-                                    </td>
-                                    <td>
-                                        {{ commande.commande.utilisateur.email }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    </ul>
 
-                    </li>
+                </div>
+                {% endfor %}
 
-                </ul>
+                {% else %}
+                <p class="text-center mt-5">" Pas de nouvelle commande pour le moment. "</p>
+                {% endif %}
 
             </div>
 
-            </div>
 
-            <div class="modal-footer">
-                {# <button type="button" class="btn d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 me-5" data-dismiss="modal">Fermer</button> #}
+            {# ONGLET COMMANDES EN PREPARATION #}
+            <div class="tab-pane fade" id="preparation" role="tabpanel" aria-labelledby="contact-tab">
+                <h2 class="mt-4 text-warning">En préparation</h2>
+                {% if commandesEnCoursAvecDetails|length > 0 %}
 
-                <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5"
-                        style="width: 5rem; height: 3rem;" data-dismiss="modal">
-                    Fermer
-                </button>
-            </div>
+                {% for commande in commandesEnCoursAvecDetails %}
+                <div class="card mt-5" style="width: auto;">
 
-            </div>
-            </div>
-            </div>
-            {% endfor %}
+                    <div class="card-header fw-medium d-flex justify-content-between">
 
-            {% else %}
-            <p class="text-center mt-5">" Pas de commande livrée pour le moment. "</p>
-            {% endif %}
+                        <p>Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}.<p>
 
-
-        </div>
-
-        {# ONGLET STATISTIQUES #}
-        <div class="tab-pane fade" id="statistiques" role="tabpanel" aria-labelledby="contact-tab">
-
-            <h2 class="mt-4">Statistiques</h2>
-
-            <table class="table">
-
-                <thead class="">
-                <tr class="">
-                <th class="">
-                    Date
-                </th>
-                <th class="">
-                    N° commande
-                </th>
-                <th class="">
-                    Libelle
-                </th>
-                <th class="">
-                    Prix unitaire
-                </th>
-                <th class="">
-                    Quantité
-                </th>
-                <th class="">
-                    Montant total
-                </th>
-                <th class="">
-                    Etat
-                </th>
-                </tr>
-                </thead>
-
-                <tbody class="">
-                {% for commande in commandesAll|sort((a, b) => b.dateCommande <=> a.dateCommande) %}
-                {% for detail in commande.details %}
-                    <tr class="">
-                        <td class="">
-                            {{ commande.dateCommande|date('d/m/Y') }}
-                        </td>
-                        <td>
-                            {{ commande.id }}
-                        </td>
-                        <td class="">
-                            {{ detail.plat.libelle }}
-                        </td>
-                        <td>
-                            {{ detail.plat.prix }} €
-                        </td>
-                        <td class="">
-                            {{ detail.quantite }}
-                        </td>
-                        <td>
-                            {{ detail.plat.prix * detail.quantite }}.00 €
-                        </td>
-                        <td>
-                            {% if commande.etat == 0 %}
-                                    Enregistrée
-                                    {% elseif commande.etat == 1 %}
-                                    En préparation
-                                    {% elseif commande.etat == 2 %}
-                                    En livraison
-                                    {% elseif commande.etat == 3 %}
-                                    Livrée <span class="text-success fw-bold">&#x2713;</span>
-                                    {% else %}
-                                    État inconnu
+                        <p>
+                            {% if commande.commande.etat == 0 %}
+                            Enregistrée
+                            {% elseif commande.commande.etat == 1 %}
+                            En préparation
+                            {% elseif commande.commande.etat == 2 %}
+                            En livraison
+                            {% elseif commande.commande.etat == 3 %}
+                            Livrée
+                            {% else %}
+                            État inconnu
                             {% endif %}
-                        </td>
+                        </p>
+
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+
+                        {% for detail in commande.details %}
+                        <li class="list-group-item d-flex align-items-center">
+
+                            <img src="/images/plats/{{ detail.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 6rem; height: 6rem;" alt="{{ detail.plat.libelle }}" title="{{ detail.plat.libelle }}">
+                            
+                            <div class="col-4 ms-5">{{ detail.plat.libelle }}</div>
+                            
+                            <div class="col-4">x {{ detail.quantite }}</div>
+
+                        </li>
+                        {% endfor %}
+
+                        {# ADRESSE FACTURATION COMMANDE #}
+                        <li class="list-group-item mt-3">
+                        
+                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de facturation</span> :</p>
+
+                            <table class="table">
+                                <tbody class="fs-4">
+                                    <tr class="">
+                                        <td class="col-lg-3 fw-medium">
+                                            Nom :
+                                        </td>
+                                        <td class="col-lg-9">
+                                            {{ commande.commande.utilisateur.nom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Prénom :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.utilisateur.prenom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Adresse :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.adresseFacturation }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Code postal :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.cpFacturation }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Ville :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.villeFacturation }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </li>
+
+                        {# ADRESSE LIVRAISON COMMANDE #}
+                        <li class="list-group-item">
+                        
+                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de livraison</span> :</p>
+
+                            <table class="table">
+                                <tbody class="fs-4">
+                                    <tr class="">
+                                        <td class="col-lg-3 fw-medium">
+                                            Nom :
+                                        </td>
+                                        <td class="col-lg-9">
+                                            {{ commande.commande.utilisateur.nom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Prénom :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.utilisateur.prenom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Adresse :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.adresseLivraison }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Code postal :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.cpLivraison }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Ville :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.villeLivraison }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+                        </li>
+
+                        {# CONTACTER CLIENT #}
+                        <li class="list-group-item">
+
+                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Contacter le client</span> :</p>
+
+                            <table class="table">
+                                <tbody class="fs-4">
+                                    <tr class="">
+                                        <td class="col-lg-3 fw-medium">
+                                            Téléphone :
+                                        </td>
+                                        <td class="col-lg-9">
+                                            {{ commande.commande.utilisateur.telephone }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Email :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.utilisateur.email }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </li>
+
+                        {# BOUTON COMMANDE PRETE #}
+                        <li class="list-group-item mx-auto">
+
+                            <a class="bg-warning text-white d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-3"
+                                href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
+                                role="button" style="width: 15rem; height: 3rem;">
+                                Commande prête
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+                {% endfor %}
+
+                {% else %}
+                <p class="text-center mt-5">" Pas de commande en préparation pour le moment. "</p>
+                {% endif %}
+
+            </div>
+
+
+            {# ONGLET COMMANDES EN LIVRAISON #}
+            <div class="tab-pane fade" id="livraison" role="tabpanel" aria-labelledby="profile-tab">
+
+                <h2 class="mt-4" style="color: yellowgreen;">En livraison</h2>
+
+                {% if commandesTermineesAvecDetails|length > 0 %}
+
+                {% for commande in commandesTermineesAvecDetails %}
+                <div class="card mt-5" style="width: auto;">
+
+                    <div class="card-header fw-medium d-flex justify-content-between">
+
+                        <p>Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}.<p>
+
+                        <p>
+                            {% if commande.commande.etat == 0 %}
+                            Enregistrée
+                            {% elseif commande.commande.etat == 1 %}
+                            En préparation
+                            {% elseif commande.commande.etat == 2 %}
+                            En livraison
+                            {% elseif commande.commande.etat == 3 %}
+                            Livrée
+                            {% else %}
+                            État inconnu
+                            {% endif %}
+                        </p>
+
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+
+                        {% for detail in commande.details %}
+                        <li class="list-group-item d-flex align-items-center">
+                            
+                            <img src="/images/plats/{{ detail.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 6rem; height: 6rem;" alt="{{ detail.plat.libelle }}" title="{{ detail.plat.libelle }}">
+                            
+                            <div class="col-4 ms-5">{{ detail.plat.libelle }}</div>
+                            
+                            <div class="col-4">x {{ detail.quantite }}</div>
+
+                        </li>
+                        {% endfor %}
+
+                        {# ADRESSE FACTURATION COMMANDE #}
+                        <li class="list-group-item mt-3">
+                        
+                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de facturation</span> :</p>
+
+                            <table class="table">
+                                <tbody class="fs-4">
+                                    <tr class="">
+                                        <td class="col-lg-3 fw-medium">
+                                            Nom :
+                                        </td>
+                                        <td class="col-lg-9">
+                                            {{ commande.commande.utilisateur.nom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Prénom :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.utilisateur.prenom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Adresse :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.adresseFacturation }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Code postal :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.cpFacturation }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Ville :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.villeFacturation }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </li>
+
+                        {# ADRESSE LIVRAISON COMMANDE #}
+                        <li class="list-group-item">
+                        
+                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de livraison</span> :</p>
+
+                            <table class="table">
+                                <tbody class="fs-4">
+                                    <tr class="">
+                                        <td class="col-lg-3 fw-medium">
+                                            Nom :
+                                        </td>
+                                        <td class="col-lg-9">
+                                            {{ commande.commande.utilisateur.nom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Prénom :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.utilisateur.prenom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Adresse :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.adresseLivraison }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Code postal :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.cpLivraison }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Ville :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.villeLivraison }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+                        </li>
+
+                        {# CONTACTER CLIENT #}
+                        <li class="list-group-item">
+
+                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Contacter le client</span> :</p>
+
+                            <table class="table">
+                                <tbody class="fs-4">
+                                    <tr class="">
+                                        <td class="col-lg-3 fw-medium">
+                                            Téléphone :
+                                        </td>
+                                        <td class="col-lg-9">
+                                            {{ commande.commande.utilisateur.telephone }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Email :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.utilisateur.email }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </li>
+
+                        {# BOUTON COMMANDE LIVREE #}
+                        <li class="list-group-item mx-auto">
+
+                            <a class="btn d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-3 text-white"
+                                href="{{ path('admin_commande_update_etat', {'id': commande.commande.id}) }}"
+                                role="button" style="width: 15rem; height: 3rem; background-color: yellowgreen;">
+                                Commande livrée
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+                {% endfor %}
+
+                {% else %}
+                <p class="text-center mt-5">" Pas de commande en livraison pour le moment. "</p>
+                {% endif %}
+
+            </div>
+
+            {# ONGLET COMMANDES LIVREES #}
+            <div class="tab-pane fade" id="livrees" role="tabpanel" aria-labelledby="contact-tab">
+
+                <h2 class="mt-4 mb-4 text-success">Livrées <span class="text-success fw-bold">&#x2713;</span></h2>
+
+                {% if commandesLivreesAvecDetails|length > 0 %}
+
+                {# {% for commande in commandesLivreesAvecDetails %} #}
+                {% for commande in commandesLivreesAvecDetails|sort((a, b) => b.commande.dateCommande <=> a.commande.dateCommande) %}
+                <!-- Bouton pour ouvrir la modal -->
+                <div class="d-flex flex-column">
+
+                    <button type="button" class="bg-white border-0" data-toggle="modal" data-target="#modal-{{ commande.commande.id }}">
+
+                        <div>
+
+                            <table class="table">
+                                <tbody class="fs-4">
+                                    <tr>
+                                        <td class="col-7 text-start">
+                                            Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}
+                                        </td>
+                                        <td class="col-5 text-start">
+                                            Montant total : {{ commande.commande.total }} €
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </button>
+
+                </div>
+
+                <!-- La modal -->
+                <div class="modal fade" id="modal-{{ commande.commande.id }}" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl" role="document">
+                        <div class="modal-content">
+
+                            <div class="modal-body">
+                            <!-- Contenu de la modal -->
+            
+                                <div class="card mt-5" style="width: auto;">
+
+                                    <div class="card-header fw-medium d-flex justify-content-between">
+
+                                        <p>Commande n° {{ commande.commande.id }} du {{ commande.commande.dateCommande|date('d/m/Y') }}</p>
+
+                                        <p>Montant total : {{ commande.commande.total }} €</p>
+
+                                        <p>
+                                        {% if commande.commande.etat == 0 %}
+                                        Enregistrée
+                                        {% elseif commande.commande.etat == 1 %}
+                                        En préparation
+                                        {% elseif commande.commande.etat == 2 %}
+                                        En livraison
+                                        {% elseif commande.commande.etat == 3 %}
+                                        Livrée <span class="text-success fw-bold">&#x2713;</span>
+                                        {% else %}
+                                        État inconnu
+                                        {% endif %}
+                                        </p>
+
+                                        <button type="button" class="close w-auto h-25 rounded-2" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true" class="fw-bold">&times;</span>
+                                        </button>
+
+                                    </div>
+
+                    <ul class="list-group list-group-flush">
+
+                        {% for detail in commande.details %}
+                        <li class="list-group-item d-flex align-items-center">
+                            
+                            <img src="/images/plats/{{ detail.plat.image }}" class="img-fluid m-3 rounded-4 border_image" style="width: 6rem; height: 6rem;" alt="{{ detail.plat.libelle }}" title="{{ detail.plat.libelle }}">
+                            
+                            <div class="col-4 ms-5">{{ detail.plat.libelle }}</div>
+                            
+                            <div class="col-4">x {{ detail.quantite }}</div>
+
+                        </li>
+                        {% endfor %}
+
+                        {# ADRESSE FACTURATION COMMANDE #}
+                        <li class="list-group-item mt-3">
+                        
+                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de facturation</span> :</p>
+
+                            <table class="table">
+                                <tbody class="fs-4">
+                                    <tr class="">
+                                        <td class="col-lg-3 fw-medium">
+                                            Nom :
+                                        </td>
+                                        <td class="col-lg-9">
+                                            {{ commande.commande.utilisateur.nom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Prénom :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.utilisateur.prenom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Adresse :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.adresseFacturation }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Code postal :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.cpFacturation }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Ville :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.villeFacturation }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </li>
+
+                        {# ADRESSE LIVRAISON COMMANDE #}
+                        <li class="list-group-item">
+                        
+                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de livraison</span> :</p>
+
+                            <table class="table">
+                                <tbody class="fs-4">
+                                    <tr class="">
+                                        <td class="col-lg-3 fw-medium">
+                                            Nom :
+                                        </td>
+                                        <td class="col-lg-9">
+                                            {{ commande.commande.utilisateur.nom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Prénom :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.utilisateur.prenom }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Adresse :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.adresseLivraison }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Code postal :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.cpLivraison }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Ville :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.villeLivraison }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+                        </li>
+
+                        {# CONTACTER CLIENT #}
+                        <li class="list-group-item">
+
+                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Contacter le client</span> :</p>
+
+                            <table class="table">
+                                <tbody class="fs-4">
+                                    <tr class="">
+                                        <td class="col-lg-3 fw-medium">
+                                            Téléphone :
+                                        </td>
+                                        <td class="col-lg-9">
+                                            {{ commande.commande.utilisateur.telephone }}
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="fw-medium">
+                                            Email :
+                                        </td>
+                                        <td>
+                                            {{ commande.commande.utilisateur.email }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    {# <button type="button" class="btn d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 me-5" data-dismiss="modal">Fermer</button> #}
+
+                    <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5"
+                            style="width: 5rem; height: 3rem;" data-dismiss="modal">
+                        Fermer
+                    </button>
+                </div>
+
+                </div>
+                </div>
+                </div>
+                {% endfor %}
+
+                {% else %}
+                <p class="text-center mt-5">" Pas de commande livrée pour le moment. "</p>
+                {% endif %}
+
+
+            </div>
+
+            {# ONGLET STATISTIQUES #}
+            <div class="tab-pane fade" id="statistiques" role="tabpanel" aria-labelledby="contact-tab">
+
+                <h2 class="mt-4">Statistiques</h2>
+
+                <table class="table">
+
+                    <thead class="">
+                    <tr class="">
+                    <th class="">
+                        Date
+                    </th>
+                    <th class="">
+                        N° commande
+                    </th>
+                    <th class="">
+                        Libelle
+                    </th>
+                    <th class="">
+                        Prix unitaire
+                    </th>
+                    <th class="">
+                        Quantité
+                    </th>
+                    <th class="">
+                        Montant total
+                    </th>
+                    <th class="">
+                        Etat
+                    </th>
                     </tr>
-                {% endfor %}
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+
+                    <tbody class="">
+                    {% for commande in commandesAll|sort((a, b) => b.dateCommande <=> a.dateCommande) %}
+                    {% for detail in commande.details %}
+                        <tr class="">
+                            <td class="">
+                                {{ commande.dateCommande|date('d/m/Y') }}
+                            </td>
+                            <td>
+                                {{ commande.id }}
+                            </td>
+                            <td class="">
+                                {{ detail.plat.libelle }}
+                            </td>
+                            <td>
+                                {{ detail.plat.prix }} €
+                            </td>
+                            <td class="">
+                                {{ detail.quantite }}
+                            </td>
+                            <td>
+                                {{ detail.plat.prix * detail.quantite }}.00 €
+                            </td>
+                            <td>
+                                {% if commande.etat == 0 %}
+                                        Enregistrée
+                                        {% elseif commande.etat == 1 %}
+                                        En préparation
+                                        {% elseif commande.etat == 2 %}
+                                        En livraison
+                                        {% elseif commande.etat == 3 %}
+                                        Livrée <span class="text-success fw-bold">&#x2713;</span>
+                                        {% else %}
+                                        État inconnu
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
 
         </div>
 
