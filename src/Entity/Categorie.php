@@ -105,4 +105,10 @@ class Categorie
 
         return $this;
     }
+
+    // Ajout de la méthode __toString()
+    public function __toString(): string
+    {
+        return $this->libelle ?? ''; // Retourne le libellé ou une chaîne vide si null
+    }
 }

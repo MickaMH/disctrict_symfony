@@ -4,9 +4,9 @@
 
 {% block body %}
 
-<main class="min-vh-100">
+<main>
 
-    <div class="container">
+    <div class="container mb-5">
 
         <div class="row">
 
@@ -18,14 +18,14 @@
                     If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password.
                     This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
                 </p> #}
-                <p>
+                <p class="fs-4">
                     Si un compte correspond à cette adresse email, un email contenant un lien de réinitialisation de votre mot de passe vous a été envoyé.
                     Ce lien expire dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
                     Vous pouvez fermer cette page.
                 </p>
 
                 {# <p>If you don't receive an email please check your spam folder or <a href="{{ path('app_forgot_password_request') }}">try again</a>.</p> #}
-                <p>Si vous n'avez pas reçu d'email, consultez le dossier spam ou essayez à nouveau <a href="{{ path('app_forgot_password_request') }}">Réinitialisation</a></p>
+                <p class="fs-4">Si vous n'avez pas reçu d'email, consultez le dossier spam ou essayez à nouveau <a href="{{ path('app_forgot_password_request') }}">Réinitialisation</a></p>
 
             </div>
 

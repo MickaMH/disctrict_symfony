@@ -3,7 +3,7 @@
 {% block title %}Réinitialisation{% endblock %}
 
 {% block body %}
-<main class="min-vh-100">
+<main>
 
     <div class="container">
 
@@ -17,29 +17,35 @@
 
                 <p class="fs-1 mb-5 text-center">Nouveau mot de passe</p>
 
-                {{ form_start(requestForm) }}
+                <div class="fs-4">
 
-                    {{ form_row(requestForm.email) }}
+                    {{ form_start(requestForm) }}
 
-                    <div>
-                        <p>
-                            Entrez votre adresse email, un email contenant un lien de réinitialisation
-                            vous sera envoyé.
-                        </p>
-                    </div>
+                        {{ form_row(requestForm.email) }}
 
-                    <div class="text-center">
-                        <button class="btn btn-dark border_white mt-4 mb-4">Envoyer l'email</button>
-                    </div>
+                        <div>
+                            <p>
+                                Entrez votre adresse email, un email contenant un lien de réinitialisation
+                                vous sera envoyé.
+                            </p>
+                        </div>
 
-                    {# Bouton Retour #}
-                    <div class="d-flex justify-content-center">
-                        <a href="{{ path('app_login') }}" class="btn bg_white text_black border_black" type="submit">
-                            Retour
-                        </a>
-                    </div>
+                        <div class="text-center mb-5">
+                            <button class="btn fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories" style="width: 15rem; height: 3rem;">
+                                Envoyer l'email
+                            </button>
+                        </div>
 
-                {{ form_end(requestForm) }}
+                        {# Bouton Retour #}
+                        <div class="d-flex justify-content-center mb-5">
+                            <a href="{{ path('app_login') }}" class="btn fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_fermer_panier" style="width: 10rem; height: 3rem;" type="submit">
+                                Retour
+                            </a>
+                        </div>
+
+                    {{ form_end(requestForm) }}
+
+                </div>
 
             </div>
     

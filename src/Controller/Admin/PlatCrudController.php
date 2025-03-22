@@ -5,12 +5,10 @@ namespace App\Controller\Admin;
 use App\Entity\Plat;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Validator\Constraints\Image;
 
@@ -36,7 +34,9 @@ class PlatCrudController extends AbstractCrudController
             IdField::new('id')
             ->setFormTypeOption('disabled', 'disabled'),
 
-            IntegerField::new('categories_id'),
+            // IntegerField::new('categories_id'),
+            AssociationField::new('categories', 'Catégorie') // Relation avec Categorie
+            ->setRequired(true), // Catégorie obligatoire
 
             TextField::new('libelle'),
 

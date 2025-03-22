@@ -3,15 +3,15 @@
 {% block title %}Confirmation password{% endblock %}
 
 {% block body %}
-<main class="min-vh-100">
+<main>
 
-    <div class="container mt-5">
+    <div class="container mt-5 fs-4">
 
         <div class="row text-center mb-3">
 
             <div class="col mt-5">
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="mediumseagreen" class="mb-3 bi bi-check2-circle" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="mediumseagreen" class="mb-3 bi bi-check2-circle" viewBox="0 0 16 16">
                     <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
                     <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
                 </svg>
@@ -28,7 +28,8 @@
 
             <div class="col mb-5">
 
-                <a class="btn btn-dark border_white" href="{{ path('app_login') }}" role="button">
+                <a class="btn d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories" style="width: 10rem; height: 3rem;"
+                    href="{{ path('app_login') }}" role="button">
                     Se connecter
                 </a>
 
@@ -36,7 +37,8 @@
 
             <div class="col">
 
-                <a class="btn bg_white text_black border_black" href="{{ path('app_accueil') }}" role="button">
+                <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_fermer_panier" style="width: 15rem; height: 3rem;"
+                    href="{{ path('app_accueil') }}" role="button">
                     Aller à l'accueil
                 </a>
 

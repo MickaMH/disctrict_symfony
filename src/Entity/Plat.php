@@ -31,14 +31,9 @@ class Plat
     #[ORM\Column]
     private ?bool $active = null;
 
-    #[ORM\ManyToOne(inversedBy: 'plat')]
+    #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'plat')]
+    #[ORM\JoinColumn(nullable: false)] // Nullable=false pour rendre la catégorie obligatoire
     private ?Categorie $categories = null;
-
-    #[ORM\Column(type: Types::INTEGER)]
-    private $categories_id;
-
-
-
 
     /**
      * @var Collection<int, Detail>
@@ -51,23 +46,7 @@ class Plat
         $this->detail = new ArrayCollection();
     }
 
-    
-public function getCategoriesId(): ?int
-{
-    return $this->categories_id;
-}
-
-public function setCategoriesId(int $categories_id): self
-{
-    $this->categories_id = $categories_id;
-
-    return $this;
-}
-
-    public function getCategorie(): ?Categorie
-    {
-    return $this->categories;
-    }
+    // Getters et Setters
 
     public function getId(): ?int
     {
@@ -167,7 +146,7 @@ public function setCategoriesId(int $categories_id): self
     public function removeDetail(Detail $detail): static
     {
         if ($this->detail->removeElement($detail)) {
-            // set the owning side to null (unless already changed)
+            // Set the owning side to null (unless already changed)
             if ($detail->getPlats() === $this) {
                 $detail->setPlats(null);
             }

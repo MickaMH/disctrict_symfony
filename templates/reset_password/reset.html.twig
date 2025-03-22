@@ -12,17 +12,23 @@
 
             <div class="col col-md-6 col-lg-6 mx-auto">
 
-                <p class="fs-1 mb-5 text-center">Nouveau mot de passe</p >
+                <p class="fs-1 mb-5 text-center">Nouveau mot de passe</p>
 
-                {{ form_start(resetForm) }}
+                <div class="fs-4">
 
-                    {{ form_row(resetForm.plainPassword) }}
+                    {{ form_start(resetForm) }}
 
-                    <div class="text-center">
-                        <button class="btn btn-dark border_white mt-4">Réinitialiser</button>
-                    </div>
+                        {{ form_row(resetForm.plainPassword) }}
 
-                {{ form_end(resetForm) }}
+                        <div class="text-center mt-3">
+                            <button class="btn fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories" style="width: 10rem; height: 3rem;">
+                                Réinitialiser
+                            </button>
+                        </div>
+
+                    {{ form_end(resetForm) }}
+
+                </div>
 
             </div>
 
