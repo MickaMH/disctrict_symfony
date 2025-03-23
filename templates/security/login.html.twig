@@ -39,15 +39,15 @@
                 value="{{ csrf_token('authenticate') }}">
 
         {# Lien Reset password #}
-        <div class="col-sm-10 col-lg-7 fs-4 text-end">
+        <div class="col-sm-10 col-lg-7 fs-4 text-end mb-5">
             <a href="{{ path('app_forgot_password_request') }}" class="lettres">Mot de passe oublié</a>
         </div>
 
-        <div class="checkbox mb-3 col-sm-10 col-lg-7 fs-4">
+        {# <div class="checkbox mb-3 col-sm-10 col-lg-7 fs-4">
             <label>
                 Se souvenir de moi<input type="checkbox" name="_remember_me" class="ms-2 case_coche">
             </label>
-        </div>
+        </div> #}
 
         <div class="col-12 col-lg-12 d-flex justify-content-center mb-5">
             <button class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer" style="width: 10rem; height: 3rem;" type="submit">
