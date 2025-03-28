@@ -7,14 +7,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Symfony\Component\Intl\DateTime;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_ADMIN')]
 class CommandeCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
@@ -69,6 +68,9 @@ class CommandeCrudController extends AbstractCrudController
             ->setFormTypeOption('disabled', 'disabled'),
 
             TextField::new('ville_livraison')
+            ->setFormTypeOption('disabled', 'disabled'),
+
+            TextField::new('mode_paiement')
             ->setFormTypeOption('disabled', 'disabled'),
         ];
     }

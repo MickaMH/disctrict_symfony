@@ -2,10 +2,6 @@
 
 {% block content %}
 
-{# {% for message in app.flashes('error') %}
-    <div class="alert alert-danger">{{ message }}</div>
-{% endfor %} #}
-
 <main>
 
 <div class="row m-5 d-flex">
@@ -17,17 +13,13 @@
         </a>
 
         <p class="d-flex align-items-center fs-1 fw-medium text-center">
-            Bienvenue dans l'interface de gestion
-            <br>
-            The District
+            Interface de gestion<br>The District
         </p>
 
         {# BOUTON RETOUR AU SITE #}
         <a class="btn btn-primary fw-medium shadow-lg fs-5 rounded-4 d-flex align-items-center justify-content-center" href="{{ path('app_compte') }}"
-            role="button" style="width: 10rem; height: auto;">
-            Retour<br>
-            au<br>
-            compte
+            role="button" style="width: 10rem;height: auto;">
+            Retour<br>au compte
         </a>
 
     </div>
@@ -109,58 +101,6 @@
 
                         </li>
                         {% endfor %}
-
-                        {# ADRESSE FACTURATION COMMANDE #}
-                        <li class="list-group-item mt-3">
-                        
-                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de facturation</span> :</p>
-
-                            <table class="table">
-                                <tbody class="fs-4">
-                                    <tr class="">
-                                        <td class="col-lg-3 fw-medium">
-                                            Nom :
-                                        </td>
-                                        <td class="col-lg-9">
-                                            {{ commande.commande.utilisateur.nom }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Prénom :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.utilisateur.prenom }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Adresse :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.adresseFacturation }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Code postal :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.cpFacturation }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Ville :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.villeFacturation }}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            
-                        </li>
 
                         {# ADRESSE LIVRAISON COMMANDE #}
                         <li class="list-group-item">
@@ -306,58 +246,6 @@
 
                         </li>
                         {% endfor %}
-
-                        {# ADRESSE FACTURATION COMMANDE #}
-                        <li class="list-group-item mt-3">
-                        
-                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de facturation</span> :</p>
-
-                            <table class="table">
-                                <tbody class="fs-4">
-                                    <tr class="">
-                                        <td class="col-lg-3 fw-medium">
-                                            Nom :
-                                        </td>
-                                        <td class="col-lg-9">
-                                            {{ commande.commande.utilisateur.nom }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Prénom :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.utilisateur.prenom }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Adresse :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.adresseFacturation }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Code postal :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.cpFacturation }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Ville :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.villeFacturation }}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            
-                        </li>
 
                         {# ADRESSE LIVRAISON COMMANDE #}
                         <li class="list-group-item">
@@ -506,58 +394,6 @@
                         </li>
                         {% endfor %}
 
-                        {# ADRESSE FACTURATION COMMANDE #}
-                        <li class="list-group-item mt-3">
-                        
-                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de facturation</span> :</p>
-
-                            <table class="table">
-                                <tbody class="fs-4">
-                                    <tr class="">
-                                        <td class="col-lg-3 fw-medium">
-                                            Nom :
-                                        </td>
-                                        <td class="col-lg-9">
-                                            {{ commande.commande.utilisateur.nom }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Prénom :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.utilisateur.prenom }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Adresse :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.adresseFacturation }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Code postal :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.cpFacturation }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Ville :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.villeFacturation }}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            
-                        </li>
-
                         {# ADRESSE LIVRAISON COMMANDE #}
                         <li class="list-group-item">
                         
@@ -667,7 +503,6 @@
 
                 {% if commandesLivreesAvecDetails|length > 0 %}
 
-                {# {% for commande in commandesLivreesAvecDetails %} #}
                 {% for commande in commandesLivreesAvecDetails|sort((a, b) => b.commande.dateCommande <=> a.commande.dateCommande) %}
                 <!-- Bouton pour ouvrir la modal -->
                 <div class="d-flex flex-column">
@@ -744,58 +579,6 @@
 
                         </li>
                         {% endfor %}
-
-                        {# ADRESSE FACTURATION COMMANDE #}
-                        <li class="list-group-item mt-3">
-                        
-                            <p class="fs-4 fw-medium"><span class="text-decoration-underline">Adresse de facturation</span> :</p>
-
-                            <table class="table">
-                                <tbody class="fs-4">
-                                    <tr class="">
-                                        <td class="col-lg-3 fw-medium">
-                                            Nom :
-                                        </td>
-                                        <td class="col-lg-9">
-                                            {{ commande.commande.utilisateur.nom }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Prénom :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.utilisateur.prenom }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Adresse :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.adresseFacturation }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Code postal :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.cpFacturation }}
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="fw-medium">
-                                            Ville :
-                                        </td>
-                                        <td>
-                                            {{ commande.commande.villeFacturation }}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            
-                        </li>
 
                         {# ADRESSE LIVRAISON COMMANDE #}
                         <li class="list-group-item">
@@ -884,8 +667,6 @@
                 </div>
 
                 <div class="modal-footer">
-                    {# <button type="button" class="btn d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 me-5" data-dismiss="modal">Fermer</button> #}
-
                     <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center fw-medium  shadow-lg fs-5"
                             style="width: 5rem; height: 3rem;" data-dismiss="modal">
                         Fermer

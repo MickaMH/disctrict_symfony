@@ -311,10 +311,14 @@
                                                     {% endfor %}
                                                 </tbody>
 
-                                                <tfoot>
+                                                <tfoot class="border-white">
                                                     <tr>
                                                         <td colspan="3" class="fs-3 fw-bold">Total de la commande</td>
                                                         <td class="fw-bold">{{ commande.commande.total }} €</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fs-3 fw-bold">Mode de paiement :</td>
+                                                        <td>{{ commande.commande.modePaiement }}</td>
                                                     </tr>
                                                 </tfoot>
 
@@ -322,7 +326,7 @@
 
                                         </div>
 
-                                        <div class="modal-footer">
+                                        <div class="modal-footer border-white">
                                             <button type="button" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-4 me-5 bouton_fermer_panier" data-bs-dismiss="modal">Fermer</button>
                                         </div>
 
@@ -421,17 +425,24 @@
 
                                                 <tfoot class="border_top">
                                                     <tr>
-                                                        <td class="fs-4 fw-bold">
-                                                            <p>Total commande: {{ commande.commande.total }} €</p>
+                                                        <td>
+
+                                                            <p class="fs-4 fw-bold">Total commande: {{ commande.commande.total }} €</p>
+
+                                                            <p><span class="fs-4 fw-bold">Mode de paiement:</span><br>
+                                                                {{ commande.commande.modePaiement }}
+                                                            </p>
+
                                                         </td>
                                                     </tr>
+                                                   
                                                 </tfoot>
 
                                             </table>
 
                                         </div>
 
-                                        <div class="modal-footer mx-auto">
+                                        <div class="modal-footer mx-auto border-white">
                                             <button type="button" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 bouton_fermer_panier" data-bs-dismiss="modal">Fermer</button>
                                         </div>
 

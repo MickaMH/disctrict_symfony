@@ -52,6 +52,9 @@ class Commande
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $ville_livraison = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $mode_paiement = null;
+
     public function __construct()
     {
         $this->details = new ArrayCollection();
@@ -208,6 +211,18 @@ class Commande
     public function setVilleLivraison(?string $ville_livraison): static
     {
         $this->ville_livraison = $ville_livraison;
+
+        return $this;
+    }
+
+    public function getModePaiement(): ?string
+    {
+        return $this->mode_paiement;
+    }
+
+    public function setModePaiement(string $mode_paiement): static
+    {
+        $this->mode_paiement = $mode_paiement;
 
         return $this;
     }

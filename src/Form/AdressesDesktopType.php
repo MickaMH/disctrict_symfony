@@ -82,56 +82,22 @@ class AdressesDesktopType extends AbstractType
                 ],
             ])
 
-            // ->add('boutons_radio', ChoiceType::class, [
-            //     'choices' => [
-            //         'Carte bancaire' => 'option1',
-            //         'Paypal' => 'option2',
-            //         'Virement bancaire' => 'option3',
-            //     ],
-            //     'expanded' => true,
-            //     'multiple' => false,
-            //     'attr' => [
-                
-            //     'class' => '',
-            //     'disabled' => true,
-            // ],
-            // ])
-
-            // ->add('numero_carte', TextType::class, [
-            //     'attr' => [
-            //         'class' => 'col-3 fs-4 border-3 bordures fond_input rounded-3',
-            //         'placeholder' => '0000 0000 0000 0000',
-            //         'maxlength' => 19,
-            //         'disabled' => true,
-            //     ],
-            // ])
-
-            // ->add('titulaire_carte', TextType::class, [
-            //     'attr' => [
-            //         'class' => 'col-4 fs-4 border-3 bordures fond_input rounded-3',
-            //         'placeholder' => 'Dupont Pierre',
-            //         'maxlength' => 50,
-            //         'disabled' => true,
-            //     ],
-            // ])
-
-            // ->add('expiration_carte', TextType::class, [
-            //     'attr' => [
-            //         'class' => 'col-1 fs-4 border-3 bordures fond_input rounded-3',
-            //         'placeholder' => '10/25',
-            //         'maxlength' => 5,
-            //         'disabled' => true,
-            //     ],
-            // ])
-
-            // ->add('cvv_carte', TextType::class, [
-            //     'attr' => [
-            //         'class' => 'col-1 fs-4 border-3 bordures fond_input rounded-3',
-            //         'placeholder' => '000',
-            //         'maxlength' => 3,
-            //         'disabled' => true,
-            //     ],
-            // ])
+            ->add('mode_paiement', ChoiceType::class, [
+                'choices' => [
+                    'Carte bancaire' => 'Carte bancaire',
+                    'Paypal' => 'Paypal',
+                    'Virement bancaire' => 'Virement bancaire',
+                ],
+                'expanded' => true, // Affiche les choix sous forme de boutons radio
+                'multiple' => false, // Permet une seule sélection
+                'choice_attr' => [
+                    // Applique la classe Bootstrap "form-check" pour chaque bouton radio
+                    'class' => 'form-check-input',
+                ],
+                'attr' => [
+                    'class' => 'form-check', // Conteneur principal
+                ],
+            ])
 
             ->add('cgu', CheckboxType::class, [
                 'mapped' => false,

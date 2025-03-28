@@ -189,7 +189,7 @@
                             <div class="col-12 col-lg-9">
                                 {{ form_widget(formAdressesDesktop.cp_facturation, {
                                     'attr': {
-                                        'class': 'col-6 col-lg-3 fs-4 bordures fond_input rounded-3 border-3',
+                                        'class': 'col-4 col-lg-3 fs-4 bordures fond_input rounded-3 border-3',
                                         },
                                     'value': app.user.cp
                                 }) }}
@@ -256,7 +256,7 @@
                             <div class="col-12 col-lg-9">
                                 {{ form_widget(formAdressesDesktop.cp_livraison, {
                                     'attr': {
-                                        'class': 'col-6 col-lg-3 fs-4 bordures fond_input rounded-3 border-3',
+                                        'class': 'col-4 col-lg-3 fs-4 bordures fond_input rounded-3 border-3',
                                             },
                                     'value': app.user.cp
                                 }) }}
@@ -309,98 +309,70 @@
 
         <div class="col-12 fs-4">
 
-                {# BOUTONS RADIO / NON FONCTIONNEL, PAS DANS BASE DE DONNEES #}
-                {# {{ form_widget(formAdressesDesktop.boutons_radio) }} #}
+            {# BOUTONS RADIO / NON FONCTIONNEL, PAS DANS BASE DE DONNEES #}
+            <div class="form-group ms-lg-3">
+                {% for child in formAdressesDesktop.mode_paiement %}
+                    <div class="form-check">
+                        {{ form_widget(child, { 'attr': {'class': 'form-check-input bordures border-2'} }) }}
+                        {{ form_label(child, null, { 'label_attr': {'class': 'form-check-label'} }) }}
+                    </div>
+                {% endfor %}
+            </div>
 
-                {# PARTIE PAIEMENT DESKTOP #}
-                {# <table class="table mt-3 d-none d-lg-block">
+            {# PARTIE PAIEMENT / ESTHETIQUE #}
+            <div class="mt-2 m-lg-3 bg-body-secondary p-1" style="position: relative;">
 
-                    <tbody class="fs-4">
-                        <tr>
-                            <td class="col-lg-2 bg-transparent">Numéro de carte :</td>
-                            <td class="bg-transparent">{{ form_widget(formAdressesDesktop.numero_carte) }}</td>
-                        </tr>
-                        <tr>
-                            <td class="col-lg-2 bg-transparent">Nom du titulaire :</td>
-                            <td class="bg-transparent">{{ form_widget(formAdressesDesktop.titulaire_carte) }}</td>
-                        </tr>
-                        <tr>
-                            <td class="col-lg-2 bg-transparent">Date d'expiration :</td>
-                            <td class="bg-transparent">{{ form_widget(formAdressesDesktop.expiration_carte) }}</td>
-                        </tr>
-                        <tr>
-                            <td class="col-lg-2 bg-transparent">CVV :</td>
-                            <td class="bg-transparent">{{ form_widget(formAdressesDesktop.cvv_carte) }}</td>
-                        </tr>
-                    </tbody>
+                <div class="position-absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-10deg);">
+                    <p class="text-danger fw-medium" style="font-size: 3.5rem;">
+                        Non fonctionnel
+                    </p>
+                </div>
+            
+                <div class="fs-4 d-lg-flex">
 
-                </table> #}
-
-
-                {# BOUTONS RADIO / ESTHETIQUE #}
-                <div class="ms-lg-3">
-
-                    <label for="carte">Carte bancaire</label>
-                    <input type="radio" id="carte" name="moyen_paiement" value="carte">
-                    <br>
-
-                    <label for="paypal">PayPal</label>
-                    <input type="radio" id="paypal" name="moyen_paiement" value="paypal">
-                    <br>
-
-                    <label for="virement">Virement bancaire</label>
-                    <input type="radio" id="virement" name="moyen_paiement" value="virement">
+                    <p class="col-12 col-lg-3 mb-0 mb-lg-3">Numéro de carte :</p>
+                
+                    <div class="col-12 col-lg-11">
+                        <input type="text" id="numero_carte" name="numero_carte" class="col-9 col-lg-3 bordures fond_input rounded-3 border-3"
+                                maxlength="19" placeholder="0000 0000 0000 0000">
+                    </div>
 
                 </div>
 
-                {# PARTIE PAIEMENT / ESTHETIQUE #}
-                <div class="mt-2 m-lg-3 ms-lg-5">
+                <div class="fs-4 d-lg-flex">
+
+                    <p class="col-12 col-lg-3 mb-0 mb-lg-3">Nom du titulaire :</p>
                 
-                        <div class="fs-4 d-lg-flex">
-
-                            <p class="col-12 col-lg-2 mb-0 mb-lg-3">Numéro de carte :</p>
-                        
-                            <div class="col-12 col-lg-9">
-                                <input type="text" id="numero_carte" name="numero_carte" class="col-9 col-lg-3 bordures fond_input rounded-3 border-3"
-                                        maxlength="19" placeholder="0000 0000 0000 0000">
-                            </div>
-
-                        </div>
-
-                        <div class="fs-4 d-lg-flex">
-
-                            <p class="col-12 col-lg-2 mb-0 mb-lg-3">Nom du titulaire :</p>
-                        
-                            <div class="col-12 col-lg-9">
-                                <input type="text" id="nom_titulaire" name="nom_titulaire" class="col-12 col-lg-5 bordures fond_input rounded-3 border-3"
-                                        maxlength="50" placeholder="Dupont Pierre">
-                            </div>
-
-                        </div>
-
-                        <div class="fs-4 d-lg-flex">
-
-                            <p class="col-12 col-lg-2 mb-0 mb-lg-3">Date d'expiration :</p>
-                        
-                            <div class="col-12 col-lg-9">
-                                <input type="text" id="date_expiration" name="date_expiration" class="col-3 col-lg-1 bordures fond_input rounded-3 border-3"
-                                        maxlength="5" placeholder="01/25">
-                            </div>
-
-                        </div>
-
-                        <div class="fs-4 d-lg-flex">
-
-                            <p class="col-12 col-lg-2 mb-0 mb-lg-3">CVV :</p>
-                        
-                            <div class="col-12 col-lg-9">
-                                <input type="text" id="cvv" name="cvv" class="col-2 col-lg-1 bordures fond_input rounded-3 border-3"
-                                        maxlength="3" placeholder="000">
-                            </div>
-
-                        </div>
-
+                    <div class="col-12 col-lg-9">
+                        <input type="text" id="nom_titulaire" name="nom_titulaire" class="col-12 col-lg-5 bordures fond_input rounded-3 border-3"
+                                maxlength="50" placeholder="Dupont Pierre">
                     </div>
+
+                </div>
+
+                <div class="fs-4 d-lg-flex">
+
+                    <p class="col-12 col-lg-3 mb-0 mb-lg-3">Date d'expiration :</p>
+                
+                    <div class="col-12 col-lg-10">
+                        <input type="text" id="date_expiration" name="date_expiration" class="col-3 col-lg-1 bordures fond_input rounded-3 border-3"
+                                maxlength="5" placeholder="01/25">
+                    </div>
+
+                </div>
+
+                <div class="fs-4 d-lg-flex">
+
+                    <p class="col-12 col-lg-3 mb-0 mb-lg-3">CVV :</p>
+                
+                    <div class="col-12 col-lg-7">
+                        <input type="text" id="cvv" name="cvv" class="col-2 col-lg-1 bordures fond_input rounded-3 border-3"
+                                maxlength="3" placeholder="000">
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 

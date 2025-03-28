@@ -60,6 +60,9 @@ class ResumeCommandeController extends AbstractController
         $villeLivraison = $dataFacturation->getVilleLivraison();
         $commande->setVilleLivraison($villeLivraison);
 
+        $modePaiement = $dataFacturation->getModePaiement();
+        $commande->setModePaiement($modePaiement);
+
         $commande->setUtilisateur($this->getUser());
         $commande->setDateCommande(new \DateTime());
         $commande->setEtat('0');
