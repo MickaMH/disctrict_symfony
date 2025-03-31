@@ -9,40 +9,42 @@ use ApiPlatform\Metadata\Put;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Post;
+use Symfony\Component\Serializer\Annotation\Groups;
 use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
-#[ApiResource(operations: [
-    new Get(),  
-//    new Put(),
-//    new Patch(),
-//    new Delete(),
-    new GetCollection(),
-//    new Post(),
-])]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read']],
+    denormalizationContext: ['groups' => []],
+)]
 class Categorie
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['read'])]
     private ?string $libelle = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['read'])]
     private ?string $image = null;
 
     #[ORM\Column]
+    #[Groups(['read'])]
     private ?bool $active = null;
 
     /**
      * @var Collection<int, Plat>
      */
     #[ORM\OneToMany(targetEntity: Plat::class, mappedBy: 'categories')]
+    #[Groups(['read'])]
     private Collection $plat;
 
     public function __construct()

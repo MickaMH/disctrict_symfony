@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CatégoriesReact{% endblock %}
+
+{% block body %}
+
+
+{# MAIN #}
+<main class="container-fluid">
+
+    {# EN-TETE CATEGORIES #}
+    <div class="row d-flex justify-content-center">
+
+        <div class="col fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
+
+            <p>LES CATÉGORIES DE PLAT</p>
+
+        </div>
+
+    </div>
+
+    {# CARD CATEGORIE #}
+    <div class="row d-flex justify-content-around">
+
+          <div id="react-app">
+               {{ encore_entry_link_tags('app-react') }}
+               {{ encore_entry_script_tags('app-react') }}
+          </div>
+
+    </div>
+
+</main>
+
+
+{% endblock %}
