@@ -43,7 +43,6 @@ class Categorie
      * @var Collection<int, Plat>
      */
     #[ORM\OneToMany(targetEntity: Plat::class, mappedBy: 'categories')]
-    #[Groups(['read'])]
     private Collection $plat;
 
     public function __construct()

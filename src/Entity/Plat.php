@@ -59,6 +59,7 @@ class Plat
 
     #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'plat')]
     #[ORM\JoinColumn(nullable: false)] // Nullable=false pour rendre la catégorie obligatoire
+    #[Groups(['read', 'write'])]
     private ?Categorie $categories = null;
 
     /**
