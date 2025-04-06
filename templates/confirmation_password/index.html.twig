@@ -5,11 +5,11 @@
 {% block body %}
 <main>
 
-    <div class="container mt-5 fs-4">
+    <div class="container mt-5">
 
         <div class="row text-center mb-3">
 
-            <div class="col mt-5">
+            <div class="col">
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="mediumseagreen" class="mb-3 bi bi-check2-circle" viewBox="0 0 16 16">
                     <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
@@ -18,7 +18,7 @@
 
                 <p>Votre mot de passe a bien été réinitialisé,</p>
 
-                <p>à bientôt chez The District</p>
+                <p>à bientôt chez The District.</p>
 
             </div>
 
@@ -26,18 +26,18 @@
 
         <div class="row text-center flex-column">
 
-            <div class="col mb-5">
+            <div class="col mb-3">
 
-                <a class="btn d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories" style="width: 10rem; height: 3rem;"
+                <a class="d-flex justify-content-center align-items-center mx-auto shadow-lg rounded-3 bouton_categories" style="width: 10rem; height: 2rem;"
                     href="{{ path('app_login') }}" role="button">
                     Se connecter
                 </a>
 
             </div>
 
-            <div class="col">
+            <div class="col mb-3">
 
-                <a class="d-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_fermer_panier" style="width: 15rem; height: 3rem;"
+                <a class="d-flex justify-content-center align-items-center mx-auto shadow-lg rounded-3 bouton_fermer_panier" style="width: 10rem; height: 2rem;"
                     href="{{ path('app_accueil') }}" role="button">
                     Aller à l'accueil
                 </a>

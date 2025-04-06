@@ -22,7 +22,7 @@ class ChangePasswordFormType extends AbstractType
                 'options' => [
                     'attr' => [
                         'autocomplete' => 'new-password',
-                        'class' => 'form-control fs-4 border-3 bordures fond_input',
+                        'class' => 'form-control border-3 bordures fond_input',
                     ],
                 ],
                 'first_options' => [

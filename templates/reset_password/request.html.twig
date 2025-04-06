@@ -17,7 +17,7 @@
 
                 <p class="fs-1 mb-5 text-center">Nouveau mot de passe</p>
 
-                <div class="fs-4">
+                <div>
 
                     {{ form_start(requestForm) }}
 
@@ -30,15 +30,15 @@
                             </p>
                         </div>
 
-                        <div class="text-center mb-5">
-                            <button class="btn fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories" style="width: 15rem; height: 3rem;">
+                        <div class="d-flex justify-content-center mb-5">
+                            <button class="d-flex justify-content-center align-items-center shadow-lg rounded-3 bouton_categories" style="width: 10rem; height: 2rem;">
                                 Envoyer l'email
                             </button>
                         </div>
 
                         {# Bouton Retour #}
                         <div class="d-flex justify-content-center mb-5">
-                            <a href="{{ path('app_login') }}" class="btn fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_fermer_panier" style="width: 10rem; height: 3rem;" type="submit">
+                            <a href="{{ path('app_login') }}" class="d-flex justify-content-center align-items-center shadow-lg rounded-3 bouton_fermer_panier" style="width: 6rem; height: 2rem;" type="submit">
                                 Retour
                             </a>
                         </div>

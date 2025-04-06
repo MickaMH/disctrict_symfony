@@ -29,8 +29,7 @@ class ContactFormType extends AbstractType
             'label' => '*Nom',
             'attr' => [
                 
-                'class' => 'form-control fs-4 border-3 bordures fond_input',
-                // 'placeholder' => 'Entrez votre nom',
+                'class' => 'form-control border-3 bordures fond_input',
             ],
         ])
 
@@ -45,8 +44,7 @@ class ContactFormType extends AbstractType
             'label' => '*Prénom',
             'attr' => [
                 
-                'class' => 'form-control fs-4 border-3 bordures fond_input',
-                // 'placeholder' => 'Entrez votre nom',
+                'class' => 'form-control border-3 bordures fond_input',
             ],
         ])
 
@@ -61,8 +59,7 @@ class ContactFormType extends AbstractType
             'label' => '*Email',
             'attr' => [
                 
-                'class' => 'form-control fs-4 border-3 bordures fond_input',
-                // 'placeholder' => 'Entrez votre nom',
+                'class' => 'form-control border-3 bordures fond_input',
             ],
         ])
 
@@ -77,8 +74,7 @@ class ContactFormType extends AbstractType
             'label' => '*Téléphone',
             'attr' => [
                 
-                'class' => 'form-control fs-4 border-3 bordures fond_input',
-                // 'placeholder' => 'Entrez votre nom',
+                'class' => 'form-control border-3 bordures fond_input',
             ],
         ])
 
@@ -93,8 +89,7 @@ class ContactFormType extends AbstractType
             'label' => '*Votre demande ou question',
             'attr' => [
                 
-                'class' => 'form-control fs-4 border-3 bordures fond_input',
-                // 'placeholder' => 'Entrez votre nom',
+                'class' => 'form-control border-3 bordures fond_input',
             ],
         ])
 
@@ -102,9 +97,8 @@ class ContactFormType extends AbstractType
             'label' => 'Envoyer',
             'attr' => [
                 
-                'class' => 'd-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg fs-5 rounded-4 bouton_categories',
-                'style' => 'width: 10rem; height: 3rem;',
-                // 'placeholder' => 'Entrez votre nom',
+                'class' => 'd-flex justify-content-center align-items-center fw-medium mx-auto shadow-lg rounded-3 bouton_categories',
+                'style' => 'width: 6rem; height: 2rem;',
             ],
         ]);
 

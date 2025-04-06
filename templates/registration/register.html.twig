@@ -12,7 +12,7 @@
 
     <div class="row d-flex justify-content-center">
 
-        <div class="col-12 col-lg-4 fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
+        <div class="col fs-1 fw-medium mb-3 mb-lg-3 mt-3 mt-lg-3 text-center">
 
             <p>CRÉER UN COMPTE</p>
 
@@ -23,11 +23,11 @@
     {{ form_start(registrationForm, {'attr': {'class': 'row m-sm-1 m-lg-5 d-flex justify-content-center'}}) }}
     {{ form_errors(registrationForm) }}
 
-        <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
+        <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-3">
             {{ form_label(registrationForm.nom) }}
             {{ form_widget(registrationForm.nom, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input',
+                    'class': 'form-control border-3 bordures fond_input',
                 }
             }) }}
             {{ form_help(registrationForm.nom) }}
@@ -36,11 +36,11 @@
             </div>
         </div>
 
-        <div class="col-sm-10 col-lg-5 mt-3 mt-lg-0 mb-5 fs-4">
+        <div class="col-sm-10 col-lg-5 mb-3">
             {{ form_label(registrationForm.prenom, 'Prénom' ) }}
             {{ form_widget(registrationForm.prenom, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input',
+                    'class': 'form-control border-3 bordures fond_input',
                 }
             }) }}
             {{ form_help(registrationForm.prenom) }}
@@ -49,11 +49,11 @@
             </div>
         </div>
 
-        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+        <div class="col-sm-10 col-lg-5 mb-3">
             {{ form_label(registrationForm.email) }}
             {{ form_widget(registrationForm.email, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input',
+                    'class': 'form-control border-3 bordures fond_input',
                 }
             }) }}
             {{ form_help(registrationForm.email) }}
@@ -62,11 +62,11 @@
             </div>
         </div>
 
-        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+        <div class="col-sm-10 col-lg-5 mb-3">
             {{ form_label(registrationForm.plainPassword, 'Mot de passe' ) }}
             {{ form_widget(registrationForm.plainPassword, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input',
+                    'class': 'form-control border-3 bordures fond_input',
                 }
             }) }}
             {{ form_help(registrationForm.plainPassword) }}
@@ -75,11 +75,11 @@
             </div>
         </div>
 
-        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+        <div class="col-sm-10 col-lg-5 mb-3">
             {{ form_label(registrationForm.telephone, 'Téléphone' ) }}
             {{ form_widget(registrationForm.telephone, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input',
+                    'class': 'form-control border-3 bordures fond_input',
                 }
             }) }}
             {{ form_help(registrationForm.telephone) }}
@@ -88,11 +88,11 @@
             </div>
         </div>
 
-        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+        <div class="col-sm-10 col-lg-5 mb-3">
             {{ form_label(registrationForm.adresse) }}
             {{ form_widget(registrationForm.adresse, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input',
+                    'class': 'form-control border-3 bordures fond_input',
                 }
             }) }}
             {{ form_help(registrationForm.adresse) }}
@@ -101,11 +101,11 @@
             </div>
         </div>
 
-        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+        <div class="col-sm-10 col-lg-5 mb-3">
             {{ form_label(registrationForm.cp, 'Code postal' ) }}
             {{ form_widget(registrationForm.cp, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input',
+                    'class': 'form-control border-3 bordures fond_input',
                 }
             }) }}
             {{ form_help(registrationForm.cp) }}
@@ -114,11 +114,11 @@
             </div>
         </div>
 
-        <div class="col-sm-10 col-lg-5 mb-5 fs-4">
+        <div class="col-sm-10 col-lg-5 mb-3">
             {{ form_label(registrationForm.ville) }}
             {{ form_widget(registrationForm.ville, {
                 'attr': {
-                    'class': 'form-control fs-4 border-3 bordures fond_input',
+                    'class': 'form-control border-3 bordures fond_input',
                 }
             }) }}
             {{ form_help(registrationForm.ville) }}
@@ -127,22 +127,30 @@
             </div>
         </div>
 
-        <div class="col-sm-10 col-lg-10 mb-5 fs-4">
+        <div class="col-sm-10 col-lg-10 mb-3">
             {{ form_row(registrationForm.agreeTerms, {
                 label: "Accepter les conditions d'utilisation",
                 'attr': {
-                    'class': 'ms-3 mt-3 case_coche'
+                    'class': 'ms-3 mt-3'
                 }
             }) }}
         </div>
 
         <div class="col-12 col-lg-12 d-flex justify-content-center mb-5 mb-lg-0">
-            <button type="submit" class="d-flex justify-content-center align-items-center fw-medium shadow-lg fs-5 rounded-4 bouton_envoyer"
-                    style="width: 15rem; height: 3rem;">
+            <button type="submit" class="d-flex justify-content-center align-items-center shadow-lg rounded-3 bouton_envoyer"
+                    style="width: 10rem; height: 2rem;">
                 Créer le compte
             </button>
         </div>
 
     {{ form_end(registrationForm) }}
+
+    {# Bouton Retour #}
+    <div class="d-flex justify-content-center">
+        <a href="{{ path('app_login') }}" class="d-flex justify-content-center align-items-center shadow-lg rounded-3 bouton_fermer_panier" style="width: 6rem; height: 2rem;" type="submit">
+            Retour
+        </a>
+    </div>
+
 </main>
 {% endblock %}
