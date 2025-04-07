@@ -38,3 +38,9 @@ app_compte_changer_email:
     path: /compte/modifEmail
     controller: App\Controller\CompteController::changerEmail
     methods: [GET, POST]
+
+
+send_email:
+    path: /send-email
+    controller: App\Controller\ContactController::sendEmail
+    methods: ['POST', 'GET']

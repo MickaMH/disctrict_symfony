@@ -72,7 +72,7 @@
                             <ul style="width: 17rem; height: auto;">
 
                                 {% for plat in plats %}
-                                <li class="li_recherche fond_input">
+                                <li class="li_recherche fond_input border_historique">
 
                                     <a href="{{ path('app_page_plat', {'id': plat.id}) }}" class="d-flex liens_header_bonjour">
 
@@ -386,7 +386,6 @@
     {# FOOTER #}
     <footer>
 
-        {# FOOTER #}
         <div class="container-fluid bordures_footer fond_logo">
 
             {# PHRASE RESEAUX SOCIAUX #}
@@ -437,13 +436,13 @@
 
                 <div class="col-12 col-md-6 col-lg-6 text-center mb-2">
 
-                    <a href="{{ path('app_polit_confid') }}" class="lettres_blanches fs-5 text-decoration-none">Politique de confidentialité</a>
+                    <a href="{{ path('app_polit_confid') }}" class="lettres_blanches text-decoration-none">Politique de confidentialité</a>
 
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-6 text-center mb-2">
 
-                    <a href="{{ path('app_ment_legal') }}" class="lettres_blanches fs-5 text-decoration-none">Mentions légales</a>
+                    <a href="{{ path('app_ment_legal') }}" class="lettres_blanches text-decoration-none">Mentions légales</a>
 
                 </div>
 

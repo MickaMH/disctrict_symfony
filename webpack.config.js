@@ -22,6 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('app-react', './react/my_react_app/index.js')
+    .addEntry('app-formulaire', './react/my_react_app/formulaire.js')
     .addStyleEntry('app_style', './assets/styles/app.css')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.

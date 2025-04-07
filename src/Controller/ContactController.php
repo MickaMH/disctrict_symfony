@@ -2,55 +2,60 @@
 
 namespace App\Controller;
 
-use App\Form\ContactFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Attribute\Route;
 
-
 class ContactController extends AbstractController
 {
-    #[Route('/contact', name: 'app_contact')]
-    public function index(Request $request, MailerInterface $mailer): Response
+    #[Route('/contact', name: 'app_contact', methods: ['GET', 'POST'])]
+    public function contact(Request $request, MailerInterface $mailer): Response
     {
-        $form = $this->createForm(ContactFormType::class);
+        // Gestion des requêtes GET
+        if ($request->isMethod('GET')) {
+            return $this->render('contact/index.html.twig'); // Retourne la vue Twig pour afficher le formulaire
+        }
 
-        $form->handleRequest($request);
+        // Gestion des requêtes POST
+        $data = json_decode($request->getContent(), true);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if (!$data || !isset($data['email'], $data['name'], $data['firstName'], $data['question'])) {
+            return new JsonResponse(['message' => 'Données invalides ou champs manquants.'], 400);
+        }
 
-            $data = $form->getData();
-
-            $nom = $data['nom'];
-            $prenom = $data['prenom'];
-            $mailUser = $data['email'];
-            $telephone = $data['telephone'];
-            $demande = $data['demande'];
-            
+        try {
             $email = (new Email())
-            ->from($mailUser)
-            ->to('admin@admin.com')
-            ->subject('Demande ou question')
-            ->html(
-                '<h1>Demande ou question</h1>'.
-                '<p>Nom : ' . $nom . '</p>' .
-                '<p>Prénom : ' . $prenom . '</p>' .
-                '<p>Adresse email : ' . $mailUser . '</p>' .
-                '<p>Téléphone : ' . $telephone . '</p>' .
-                '<p>Demande : ' . $demande . '</p>'
-            );
+                ->from($data['email'])
+                ->to('votre_email@example.com') // Remplacez par votre email de réception
+                ->subject('Nouvelle demande de contact')
+                ->html(sprintf(
+                    "<p><strong>Nom :</strong> %s</p>
+                    <p><strong>Prénom :</strong> %s</p>
+                    <p><strong>Email :</strong> %s</p>
+                    <p><strong>Adresse :</strong> %s</p>
+                    <p><strong>Téléphone :</strong> %s</p>
+                    <p><strong>Question :</strong> %s</p>",
+                    htmlspecialchars($data['name']),
+                    htmlspecialchars($data['firstName']),
+                    htmlspecialchars($data['email']),
+                    htmlspecialchars($data['address'] ?? 'Non fourni'),
+                    htmlspecialchars($data['phone'] ?? 'Non fourni'),
+                    nl2br(htmlspecialchars($data['question']))
+                ));
 
             $mailer->send($email);
 
-            return $this->redirectToRoute('app_confirm_demande');
+            // Retourne un message de succès au frontend
+            return new JsonResponse(['message' => 'Email envoyé avec succès.'], 200);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'message' => 'Erreur lors de l\'envoi de l\'email.',
+                'error' => $e->getMessage()
+            ], 500);
         }
-
-        return $this->render('contact/index.html.twig', [
-            'controller_name' => 'ContactController',
-            'contactForm' => $form
-        ]);
     }
 }

@@ -22,6 +22,9 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.14.0",
+        "@mui/material": "^7.0.1",
         "@symfony/stimulus-bundle": "^2.23.0",
         "axios": "^1.8.4",
         "prop-types": "^15.8.1",
